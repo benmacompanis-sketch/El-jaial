@@ -15,6 +15,13 @@ muestra el degradado de marca y no se rompe nada.
 Cuando la foto carga, el hero apaga sus tramas decorativas (ladrillos y
 puntitos) y el resplandor naranja, para no ensuciar la imagen.
 
+## Archivo actual
+
+`hero.jpg` — 1264 × 848 px, 221 KB. Viene de un original de 654 KB guardado
+con calidad muy alta; se recomprimió a calidad 92, que a este tamaño de
+pantalla es indistinguible y pesa un tercio. El original está en el historial
+de git si hiciera falta.
+
 ## Qué conviene subir
 
 - **Ancho:** ~1800 px (mínimo 1400). El hero la muestra a todo el ancho de la
