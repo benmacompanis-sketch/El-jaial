@@ -7,8 +7,7 @@
 <meta name="description" content="Mercado y supermercado kosher en Buenos Aires. Panadería, lácteos, fiambrería, carnicería, congelados e importados. Sucursales en Palermo y Belgrano." />
 <meta property="og:title" content="El Jaial" />
 <meta property="og:description" content="Mercado y supermercado kosher en Buenos Aires. Productos frescos del día e importados seleccionados." />
-<meta property="og:type" content="grocery_or_supermarket" />
-<meta name="theme-color" content="#09090B" />
+<meta name="theme-color" content="#FFFFFF" />
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -16,24 +15,15 @@
     theme: {
       extend: {
         colors: {
-          brand:   { DEFAULT: '#1E5FBF', dark: '#17499A', light: '#4A87DD' },
-          gold:    '#58A5F0',
-          surface: { 0: '#09090B', 1: '#111115', 2: '#18181D', 3: '#222229' },
-          ink:     { 1: '#F4F4F6', 2: '#8B8B99', 3: '#55555F' },
+          brand: { DEFAULT: '#1E5FBF', dark: '#17499A', soft: '#EEF4FC' },
+          ink:   { 1: '#0F2E5F', 2: '#5A7191', 3: '#93A5BE' },
+          paper: { DEFAULT: '#FFFFFF', alt: '#F7F9FC' },
+          line:  { DEFAULT: '#E6ECF4', strong: '#D3DEEC' },
         },
         fontFamily: {
           sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
         },
-        boxShadow: {
-          brand: '0 8px 32px rgba(30,95,191,0.4)',
-          card:  '0 1px 3px rgba(0,0,0,0.5), 0 4px 16px rgba(0,0,0,0.4)',
-          hover: '0 8px 40px rgba(0,0,0,0.7), 0 2px 8px rgba(0,0,0,0.5)',
-          lg2:   '0 24px 64px rgba(0,0,0,0.8)',
-        },
-        keyframes: {
-          floaty: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(7px)' } },
-        },
-        animation: { floaty: 'floaty 2s ease-in-out infinite' },
+        maxWidth: { content: '68rem' },
       },
     },
   }
@@ -41,37 +31,9 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-  :root {
-    /* Azul de marca */
-    --brand: #1E5FBF;
-    --brand-dark: #17499A;
-    --brand-light: #4A87DD;
-    --brand-soft: #E8F0FC;
-    --accent: #58A5F0;
-
-    /* Superficies claras: blanco puro y azules muy lavados */
-    --surface-0: #FFFFFF;
-    --surface-1: #F4F8FD;
-    --surface-2: #FFFFFF;
-    --surface-3: #E9F1FB;
-
-    --border: rgba(16,49,96,0.10);
-    --border-strong: rgba(16,49,96,0.20);
-
-    /* Texto: azul profundo en vez de negro */
-    --text-1: #0F2E5F;
-    --text-2: #506C93;
-    --text-3: #8FA4C0;
-
-    --shadow-brand: 0 8px 28px rgba(30,95,191,0.30);
-    --shadow-card: 0 1px 2px rgba(16,49,96,0.05), 0 8px 24px -10px rgba(16,49,96,0.16);
-    --shadow-hover: 0 2px 4px rgba(16,49,96,0.07), 0 22px 44px -16px rgba(16,49,96,0.28);
-    --shadow-lg: 0 28px 64px -20px rgba(16,49,96,0.30);
-  }
-
   *, *::before, *::after { box-sizing: border-box; }
 
   html {
@@ -80,143 +42,36 @@
   }
 
   body {
-    background-color: var(--surface-0);
-    color: var(--text-1);
+    background: #FFFFFF;
+    color: #0F2E5F;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
     font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
   }
 
-  ::selection { background: rgba(30,95,191,0.22); color: var(--text-1); }
+  ::selection { background: #D6E4F8; color: #0F2E5F; }
 
-  ::-webkit-scrollbar { width: 5px; }
-  ::-webkit-scrollbar-track { background: var(--surface-1); }
-  ::-webkit-scrollbar-thumb { background: #C6DAF2; border-radius: 99px; }
-  ::-webkit-scrollbar-thumb:hover { background: var(--brand-light); }
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: #FFFFFF; }
+  ::-webkit-scrollbar-thumb { background: #DCE5F0; border: 3px solid #FFFFFF; border-radius: 99px; }
+  ::-webkit-scrollbar-thumb:hover { background: #C3D2E6; }
 
-  .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-  .hide-scrollbar::-webkit-scrollbar { display: none; }
+  /* La barra atraviesa dos fondos: la foto del hero y el blanco de la página */
+  .nav-link { color: rgba(255,255,255,0.82); transition: color .2s, background-color .2s; }
+  .nav-link:hover { color: #fff; }
+  .nav-solid .nav-link { color: #5A7191; }
+  .nav-solid .nav-link:hover { color: #0F2E5F; }
 
-  .gradient-brand { background: linear-gradient(135deg, var(--brand) 0%, var(--accent) 100%); }
+  /* El texto va sobre la foto: una sombra breve lo sostiene sin oscurecer la imagen */
+  [data-hero] .rv { text-shadow: 0 1px 12px rgba(6,24,58,0.55); }
 
-  .text-gradient {
-    background: linear-gradient(135deg, #6FB4FF 0%, #BFDCFF 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .text-gradient-white {
-    background: linear-gradient(180deg, #FFFFFF 0%, rgba(255,255,255,0.65) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .glass {
-    background: rgba(255,255,255,0.70);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border: 1px solid var(--border);
-  }
-
-  /* La barra arranca sobre la foto (texto claro) y al scrollear pasa a blanco
-     (texto azul oscuro). El color lo decide la clase glass-dark del header. */
-  .nav-link { color: rgba(255,255,255,0.78); transition: color .2s, background-color .2s; }
-  .nav-link:hover { color: #fff; background: rgba(255,255,255,0.14); }
-  [data-header].glass-dark .nav-link { color: var(--text-2); }
-  [data-header].glass-dark .nav-link:hover { color: var(--text-1); background: var(--surface-1); }
-
-  /* Barra al hacer scroll: blanco translúcido sobre contenido claro */
-  .glass-dark {
-    background: rgba(255,255,255,0.88);
-    backdrop-filter: blur(24px) saturate(160%);
-    -webkit-backdrop-filter: blur(24px) saturate(160%);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .card {
-    background: var(--surface-1);
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow-card);
-  }
-
-  .card-hover {
-    transition: transform 250ms cubic-bezier(0.4,0,0.2,1),
-                box-shadow 250ms cubic-bezier(0.4,0,0.2,1),
-                border-color 250ms cubic-bezier(0.4,0,0.2,1);
-  }
-  .card-hover:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-hover);
-    border-color: var(--border-strong);
-  }
-
-  .btn-brand {
-    background: var(--brand);
-    color: #fff;
-    font-weight: 700;
-    box-shadow: var(--shadow-brand);
-    transition: all 200ms cubic-bezier(0.4,0,0.2,1);
-  }
-  .btn-brand:hover {
-    background: var(--brand-dark);
-    box-shadow: 0 12px 36px rgba(30,95,191,0.38);
-    transform: translateY(-1px);
-  }
-  .btn-brand:active { transform: scale(0.97); }
-
-  .section-pad { padding-top: 6rem; padding-bottom: 6rem; }
-  @media (max-width: 640px) { .section-pad { padding-top: 4rem; padding-bottom: 4rem; } }
-
-  .glow { box-shadow: 0 0 60px rgba(30,95,191,0.18), 0 8px 32px rgba(30,95,191,0.28); }
-
-  .dot-grid {
-    background-image: radial-gradient(rgba(16,49,96,0.07) 1px, transparent 1px);
-    background-size: 24px 24px;
-  }
-
-  /* Scrim del hero: se endurece cuando hay foto de fondo */
-  .scrim-photo { opacity: 0; transition: opacity .4s ease; }
-  .scrim-plain { opacity: 1; transition: opacity .4s ease; }
-  .has-photo .scrim-photo { opacity: 1; }
-  .has-photo .scrim-plain { opacity: 0; }
-  .has-photo .hero-fallback { opacity: 0; }
-
-  /* Tonos del texto del hero: con foto se aclaran para no depender del velo */
-  :root { --hero-sub: rgba(255,255,255,0.55); --hero-dim: rgba(255,255,255,0.50); --hero-dimmer: rgba(255,255,255,0.38); }
-  .has-photo { --hero-sub: rgba(255,255,255,0.82); --hero-dim: rgba(255,255,255,0.78); --hero-dimmer: rgba(255,255,255,0.66); }
-
-  /* Con foto la legibilidad la da la sombra del texto, no un velo sobre la imagen */
-  .has-photo .hero-copy { text-shadow: 0 2px 16px rgba(0,0,0,0.65), 0 1px 3px rgba(0,0,0,0.5); }
-  /* El texto en degradado usa background-clip: la text-shadow se ve a través
-     de las letras y las ensucia. drop-shadow sí respeta la silueta. */
-  .has-photo .hero-copy .text-gradient {
-    text-shadow: none;
-    filter: drop-shadow(0 2px 12px rgba(0,0,0,0.75)) drop-shadow(0 1px 3px rgba(0,0,0,0.6));
-  }
-  /* con foto no van las tramas encima: ensucian la imagen */
-  .has-photo [data-hero-tiles],
-  .has-photo [data-hero-dots],
-  .has-photo [data-hero-glow] { opacity: 0; }
-
-  /* Pared de azulejos del cartel de la sucursal */
-  .tile-wall {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='72'%3E%3Cg stroke='rgba(255,255,255,0.07)' stroke-width='2' fill='none'%3E%3Cpath d='M0 1H80M0 37H80M1 0V36M41 36V72'/%3E%3C/g%3E%3C/svg%3E");
-    background-size: 80px 72px;
-  }
-
-  /* Equivalente en CSS a los whileInView de framer-motion */
-  .rv { opacity: 0; transform: translateY(18px); transition: opacity .55s cubic-bezier(.4,0,.2,1), transform .55s cubic-bezier(.4,0,.2,1); }
-  .rv-x-l { transform: translateX(-24px); }
-  .rv-x-r { transform: translateX(24px); }
+  /* Aparición al hacer scroll: mínima, sólo un desplazamiento corto */
+  .rv { opacity: 0; transform: translateY(10px); transition: opacity .5s ease, transform .5s ease; }
   .rv.in { opacity: 1; transform: none; }
 
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .rv { opacity: 1 !important; transform: none !important; transition: none; }
-    .animate-floaty, .animate-pulse { animation: none !important; }
   }
 </style>
 <noscript><style>.rv { opacity: 1 !important; transform: none !important; }</style></noscript>
@@ -224,895 +79,355 @@
 
 <body class="font-sans">
 
-<!-- ════════════════════════════ HEADER ════════════════════════════ -->
-<header data-header class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-transparent">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6">
-    <div class="flex items-center justify-between h-16 sm:h-[72px]">
+<!-- ─────────────────────────── Barra ─────────────────────────── -->
+<header data-header class="fixed inset-x-0 top-0 z-50 transition-colors duration-300">
+  <div class="mx-auto flex h-20 max-w-content items-center justify-between px-6 lg:px-10">
 
-      <!-- Logo: reproduce el cartel de la sucursal -->
-      <a href="#top" class="flex items-center group" aria-label="El Jaial, inicio">
-        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 flex-shrink-0 transition-transform group-hover:scale-105 drop-shadow-lg sm:hidden" aria-hidden="true">
-          <defs><clipPath id="mark-clip-m1"><rect width="64" height="64" rx="15"/></clipPath></defs>
-          <g clip-path="url(#mark-clip-m1)">
-            <rect width="64" height="64" fill="#0A0A0C"/>
-            <g stroke="rgba(255,255,255,0.13)" stroke-width="1.5" fill="none">
-              <path d="M0 16h64M0 32h64M0 48h64M16 0v16M48 0v16M0 16v16M32 16v16M64 16v16M16 32v16M48 32v16M0 48v16M32 48v16"/>
-            </g>
-            <text x="32" y="34" text-anchor="middle" dominant-baseline="central" fill="#FFFFFF"
-                  font-family="Inter, system-ui, sans-serif" font-weight="900" font-size="23" letter-spacing="0.5"
-                  transform="skewX(-7)" transform-origin="32 34">EJ</text>
+    <a href="#top" class="flex items-center" aria-label="El Jaial, inicio">
+      <svg viewBox="0 0 208 64" xmlns="http://www.w3.org/2000/svg" class="h-11 w-auto" role="img" aria-label="El Jaial · Kosher Market">
+        <defs><clipPath id="sign"><rect width="208" height="64" rx="6"/></clipPath></defs>
+        <g clip-path="url(#sign)">
+          <rect width="208" height="64" fill="#0A0A0C"/>
+          <g stroke="rgba(255,255,255,0.12)" stroke-width="1.5" fill="none">
+            <path d="M0 16h208M0 32h208M0 48h208M26 0v16M78 0v16M130 0v16M182 0v16M0 16v16M52 16v16M104 16v16M156 16v16M208 16v16M26 32v16M78 32v16M130 32v16M182 32v16M0 48v16M52 48v16M104 48v16M156 48v16"/>
           </g>
-          <rect x="0.75" y="0.75" width="62.5" height="62.5" rx="14.5" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
-        </svg>
-        <svg viewBox="0 0 208 64" xmlns="http://www.w3.org/2000/svg" class="hidden h-[46px] w-auto transition-transform group-hover:scale-[1.03] drop-shadow-lg sm:block" role="img" aria-label="El Jaial · Kosher Market">
-          <defs>
-            <clipPath id="sign-clip-h"><rect width="208" height="64" rx="9"/></clipPath>
-          </defs>
-          <g clip-path="url(#sign-clip-h)">
-            <rect width="208" height="64" fill="#0A0A0C"/>
-            <g stroke="rgba(255,255,255,0.13)" stroke-width="1.5" fill="none">
-              <path d="M0 16h208M0 32h208M0 48h208M26 0v16M78 0v16M130 0v16M182 0v16M0 16v16M52 16v16M104 16v16M156 16v16M208 16v16M26 32v16M78 32v16M130 32v16M182 32v16M0 48v16M52 48v16M104 48v16M156 48v16"/>
-            </g>
-            <g transform="rotate(-2.2 104 28)">
-              <text x="104" y="30" text-anchor="middle" fill="#FFFFFF"
-                    font-family="Inter, system-ui, sans-serif" font-weight="900" font-size="30" letter-spacing="2.5"
-                    transform="skewX(-7)" transform-origin="104 30">EL JAIAL</text>
-            </g>
-            <g transform="rotate(-2.2 104 48)">
-              <text x="104" y="50" text-anchor="middle" fill="#FFFFFF"
-                    font-family="Inter, system-ui, sans-serif" font-weight="800" font-size="10.5" letter-spacing="1.6"
-                    transform="skewX(-7)" transform-origin="104 50"><tspan fill="#E5352B">&#9733;</tspan> KOSHER MARKET <tspan fill="#E5352B">&#9733;</tspan></text>
-            </g>
+          <g transform="rotate(-2.2 104 28)">
+            <text x="104" y="30" text-anchor="middle" fill="#FFFFFF" font-family="Inter, system-ui, sans-serif"
+                  font-weight="700" font-size="29" letter-spacing="2.5" transform="skewX(-7)" transform-origin="104 30">EL JAIAL</text>
           </g>
-        </svg>
+          <g transform="rotate(-2.2 104 48)">
+            <text x="104" y="50" text-anchor="middle" fill="#FFFFFF" font-family="Inter, system-ui, sans-serif"
+                  font-weight="600" font-size="10" letter-spacing="1.6" transform="skewX(-7)" transform-origin="104 50">KOSHER MARKET</text>
+          </g>
+        </g>
+      </svg>
+    </a>
+
+    <nav class="hidden items-center gap-8 md:flex">
+      <a href="#pasillos"   class="nav-link text-sm">Pasillos</a>
+      <a href="#sucursales" class="nav-link text-sm">Sucursales</a>
+      <a href="#resenas"    class="nav-link text-sm">Reseñas</a>
+      <a href="#contacto"   class="nav-link text-sm">Contacto</a>
+    </nav>
+
+    <div class="flex items-center gap-4">
+      <a href="tel:+541145326985"
+         class="hidden rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-white transition-colors duration-200 hover:bg-brand-dark sm:inline-flex">
+        Llamar
       </a>
-
-      <!-- Nav desktop -->
-      <nav class="hidden md:flex items-center gap-0.5">
-        <a href="#top" class="nav-link px-4 py-2 text-sm font-medium rounded-xl">Inicio</a>
-        <a href="#pasillos" class="nav-link px-4 py-2 text-sm font-medium rounded-xl">Pasillos</a>
-        <a href="#sucursales" class="nav-link px-4 py-2 text-sm font-medium rounded-xl">Sucursales</a>
-        <a href="#resenas" class="nav-link px-4 py-2 text-sm font-medium rounded-xl">Reseñas</a>
-        <a href="#whatsapp" class="nav-link px-4 py-2 text-sm font-medium rounded-xl">WhatsApp</a>
-        <a href="#info" class="nav-link px-4 py-2 text-sm font-medium rounded-xl">Contacto</a>
-      </nav>
-
-      <!-- Acciones -->
-      <div class="flex items-center gap-1.5">
-        <a href="tel:+541145326985"
-           class="relative flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-sm text-white transition-all active:scale-95 hover:brightness-110"
-           style="background:#1E5FBF; box-shadow:0 4px 20px rgba(30,95,191,0.4)">
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 5.5c0 8 6 14 14 14l1.6-3.3-4-1.9-1.7 2a12 12 0 0 1-6.7-6.7l2-1.7-1.9-4L4.5 5.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
-          <span class="hidden sm:inline text-sm">Llamar</span>
-        </a>
-
-        <button type="button" data-menu-btn aria-expanded="false" aria-label="Abrir menú"
-                class="nav-link md:hidden p-2.5 rounded-xl">
-          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-        </button>
-      </div>
+      <button type="button" data-menu-btn aria-expanded="false" aria-label="Abrir menú" class="nav-link -mr-2 p-2 md:hidden">
+        <svg viewBox="0 0 24 24" fill="none" class="h-6 w-6" aria-hidden="true"><path d="M4 8h16M4 16h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
     </div>
   </div>
 </header>
 
-<!-- Menú mobile (drawer derecho) -->
-<div data-overlay hidden class="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm md:hidden opacity-0 transition-opacity duration-300"></div>
+<div data-overlay hidden class="fixed inset-0 z-40 bg-ink-1/30 opacity-0 backdrop-blur-sm transition-opacity duration-300 md:hidden"></div>
 <aside data-drawer hidden
-       class="fixed top-0 right-0 bottom-0 z-50 w-72 flex flex-col md:hidden translate-x-full transition-transform duration-300"
-       style="background:#FFFFFF; border-left:1px solid var(--border)">
-  <div class="flex items-center justify-between p-5" style="border-bottom:1px solid var(--border)">
-    <div class="flex items-center gap-2.5">
-        <svg viewBox="0 0 208 64" xmlns="http://www.w3.org/2000/svg" class="h-9 w-auto" role="img" aria-label="El Jaial · Kosher Market">
-          <defs>
-            <clipPath id="sign-clip-d"><rect width="208" height="64" rx="9"/></clipPath>
-          </defs>
-          <g clip-path="url(#sign-clip-d)">
-            <rect width="208" height="64" fill="#0A0A0C"/>
-            <g stroke="rgba(255,255,255,0.13)" stroke-width="1.5" fill="none">
-              <path d="M0 16h208M0 32h208M0 48h208M26 0v16M78 0v16M130 0v16M182 0v16M0 16v16M52 16v16M104 16v16M156 16v16M208 16v16M26 32v16M78 32v16M130 32v16M182 32v16M0 48v16M52 48v16M104 48v16M156 48v16"/>
-            </g>
-            <g transform="rotate(-2.2 104 28)">
-              <text x="104" y="30" text-anchor="middle" fill="#FFFFFF"
-                    font-family="Inter, system-ui, sans-serif" font-weight="900" font-size="30" letter-spacing="2.5"
-                    transform="skewX(-7)" transform-origin="104 30">EL JAIAL</text>
-            </g>
-            <g transform="rotate(-2.2 104 48)">
-              <text x="104" y="50" text-anchor="middle" fill="#FFFFFF"
-                    font-family="Inter, system-ui, sans-serif" font-weight="800" font-size="10.5" letter-spacing="1.6"
-                    transform="skewX(-7)" transform-origin="104 50"><tspan fill="#E5352B">&#9733;</tspan> KOSHER MARKET <tspan fill="#E5352B">&#9733;</tspan></text>
-            </g>
-          </g>
-        </svg>
-    </div>
-    <button type="button" data-menu-close aria-label="Cerrar menú" class="p-2 rounded-lg transition-all hover:bg-[#F4F8FD]" style="color:var(--text-2)">
-      <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+       class="fixed inset-y-0 right-0 z-50 flex w-72 translate-x-full flex-col border-l border-line bg-white transition-transform duration-300 md:hidden">
+  <div class="flex h-20 items-center justify-between border-b border-line px-6">
+    <span class="text-sm font-semibold tracking-[0.09em] text-ink-1">EL JAIAL</span>
+    <button type="button" data-menu-close aria-label="Cerrar menú" class="-mr-2 p-2 text-ink-2 transition-colors hover:text-ink-1">
+      <svg viewBox="0 0 24 24" fill="none" class="h-6 w-6" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
     </button>
   </div>
-
-  <nav class="p-4 flex-1 overflow-y-auto" data-drawer-nav>
-    <a href="#top"        class="flex items-center px-4 py-3.5 rounded-xl font-semibold transition-all mb-1 text-sm hover:bg-[#F4F8FD]" style="color:var(--text-1)">Inicio</a>
-    <a href="#pasillos"   class="flex items-center px-4 py-3.5 rounded-xl font-semibold transition-all mb-1 text-sm hover:bg-[#F4F8FD]" style="color:var(--text-1)">Pasillos</a>
-    <a href="#sucursales" class="flex items-center px-4 py-3.5 rounded-xl font-semibold transition-all mb-1 text-sm hover:bg-[#F4F8FD]" style="color:var(--text-1)">Sucursales</a>
-    <a href="#resenas"    class="flex items-center px-4 py-3.5 rounded-xl font-semibold transition-all mb-1 text-sm hover:bg-[#F4F8FD]" style="color:var(--text-1)">Reseñas</a>
-    <a href="#whatsapp"   class="flex items-center px-4 py-3.5 rounded-xl font-semibold transition-all mb-1 text-sm hover:bg-[#F4F8FD]" style="color:var(--text-1)">WhatsApp</a>
-    <a href="#info"       class="flex items-center px-4 py-3.5 rounded-xl font-semibold transition-all mb-1 text-sm hover:bg-[#F4F8FD]" style="color:var(--text-1)">Contacto</a>
+  <nav class="flex flex-col gap-1 p-4" data-drawer-nav>
+    <a href="#pasillos"   class="rounded-lg px-4 py-3 text-sm text-ink-1 transition-colors hover:bg-paper-alt">Pasillos</a>
+    <a href="#sucursales" class="rounded-lg px-4 py-3 text-sm text-ink-1 transition-colors hover:bg-paper-alt">Sucursales</a>
+    <a href="#resenas"    class="rounded-lg px-4 py-3 text-sm text-ink-1 transition-colors hover:bg-paper-alt">Reseñas</a>
+    <a href="#whatsapp"   class="rounded-lg px-4 py-3 text-sm text-ink-1 transition-colors hover:bg-paper-alt">WhatsApp</a>
+    <a href="#contacto"   class="rounded-lg px-4 py-3 text-sm text-ink-1 transition-colors hover:bg-paper-alt">Contacto</a>
   </nav>
-
-  <div class="p-4" style="border-top:1px solid var(--border)">
-    <a href="https://wa.me/541145326985" target="_blank" rel="noopener noreferrer"
-       class="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl text-sm font-bold text-white transition-all" style="background:#16a34a">
-      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Contactar por WhatsApp
+  <div class="mt-auto border-t border-line p-4">
+    <a href="tel:+541145326985" class="block rounded-full bg-brand px-5 py-3 text-center text-sm font-medium text-white transition-colors hover:bg-brand-dark">
+      +54 11 4532-6985
     </a>
   </div>
 </aside>
 
 <main id="top">
 
-<!-- ════════════════════════════ HERO ════════════════════════════ -->
-<section data-hero class="relative min-h-[100svh] flex items-center overflow-hidden">
-
-  <!--
-    FONDO DEL HERO
-    Foto en  assets/hero.{png,jpg,webp}  (ver assets/README.md).
-    Si no hay ninguna, la imagen se oculta y queda el degradado de marca.
-  -->
-  <div class="absolute inset-0">
-    <img data-hero-img src="assets/hero.png" alt=""
-         class="absolute inset-0 w-full h-full object-cover object-center" />
-
-    <div class="hero-fallback absolute inset-0 transition-opacity duration-500" style="background:
-      radial-gradient(1100px 620px at 78% 18%, rgba(88,165,240,0.30) 0%, transparent 62%),
-      radial-gradient(760px 520px at 12% 82%, rgba(30,95,191,0.22) 0%, transparent 66%),
-      linear-gradient(160deg, #123C7A 0%, #0C2A57 48%, #071C3D 100%)"></div>
-
-    <!-- scrim con foto: oscurece lo suficiente para que el texto siga legible -->
-    <div class="scrim-photo absolute inset-0" style="background:linear-gradient(100deg, rgba(6,26,58,0.82) 0%, rgba(6,26,58,0.55) 28%, rgba(6,26,58,0.14) 55%, rgba(6,26,58,0) 72%)"></div>
-    <!-- scrim sin foto -->
-    <div class="scrim-plain absolute inset-0" style="background:linear-gradient(105deg, rgba(6,26,58,0.82) 0%, rgba(6,26,58,0.58) 45%, rgba(6,26,58,0.14) 100%)"></div>
-
-    <div data-hero-foot class="absolute inset-0" style="background:linear-gradient(to top, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.45) 14%, transparent 38%)"></div>
-    <div data-hero-glow class="absolute bottom-0 left-0 w-[700px] h-[500px] pointer-events-none transition-opacity duration-500" style="background:radial-gradient(ellipse at bottom left, rgba(88,165,240,0.16) 0%, transparent 70%)"></div>
+<!-- ─────────────────────────── Hero ─────────────────────────── -->
+<section data-hero class="relative flex min-h-[92svh] items-end overflow-hidden">
+  <!-- La foto va en assets/hero.{png,jpg,webp}. Sin archivo queda el azul plano. -->
+  <div class="absolute inset-0 bg-[#0C2A57]">
+    <img data-hero-img src="assets/hero.png" alt="" class="absolute inset-0 h-full w-full object-cover" />
+    <div class="absolute inset-0 bg-gradient-to-t from-[#06183a]/90 via-[#06183a]/45 to-[#06183a]/15"></div>
   </div>
 
-  <div data-hero-tiles class="absolute inset-0 tile-wall opacity-[0.55] transition-opacity duration-500"></div>
-  <div data-hero-dots class="absolute inset-0 dot-grid opacity-[0.10] transition-opacity duration-500"></div>
-
-  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-28 sm:py-40 w-full">
-    <div class="hero-copy max-w-[760px]">
-
-      <!-- Badge de estado -->
-      <div class="rv in inline-flex items-center gap-2.5 mb-8 px-4 py-2.5 rounded-full text-xs font-semibold"
-           style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); backdrop-filter:blur(16px); color:rgba(255,255,255,0.8)">
-        <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
-        Certificado kosher
-        <span class="w-px h-3 bg-white/20"></span>
-        <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" style="color:#7FBEFF" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
-        Palermo &amp; Belgrano, CABA
-      </div>
-
-      <!-- Titular -->
-      <h1 class="font-black leading-[1.04] tracking-[-0.02em] mb-6" style="font-size:clamp(2.6rem, 6vw, 4.4rem); color:#FFFFFF">
-        El mercado kosher<br />
-        <span class="text-gradient">de todos los días</span>
+  <div class="relative mx-auto w-full max-w-content px-6 pb-24 pt-40 lg:px-10 lg:pb-28">
+    <div class="max-w-2xl">
+      <p class="rv text-sm text-white/70">Kosher Market · Buenos Aires</p>
+      <h1 class="rv mt-6 text-[2.6rem] font-semibold leading-[1.08] tracking-[-0.03em] text-white sm:text-6xl">
+        El mercado kosher<br />de todos los días
       </h1>
-
-      <p class="text-base sm:text-[17px] mb-10 leading-relaxed" style="color:var(--hero-sub); max-width:480px">
-        Góndolas surtidas, productos frescos del día e importados seleccionados.
-        Panadería, lácteos, fiambrería, carnicería y almacén — todo bajo estricta supervisión kosher.
+      <p class="rv mt-7 max-w-lg text-lg leading-relaxed text-white/70">
+        Panadería, lácteos, fiambrería, carnicería y almacén. Productos frescos
+        del día e importados seleccionados, con supervisión kosher.
       </p>
-
-      <!-- CTAs -->
-      <div class="flex flex-col sm:flex-row gap-3 mb-14">
-        <a href="#pasillos"
-           class="group inline-flex items-center justify-center gap-2.5 font-bold px-8 py-[14px] rounded-2xl text-white text-[15px] transition-all active:scale-[0.97] hover:brightness-110"
-           style="background:#1E5FBF; box-shadow:0 8px 32px rgba(30,95,191,0.45)">
-          Ver nuestros pasillos
-          <svg class="w-[18px] h-[18px] group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m0 0-5.5-5.5M19 12l-5.5 5.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="rv mt-10 flex flex-wrap items-center gap-3">
+        <a href="#pasillos" class="rounded-full bg-white px-7 py-3.5 text-sm font-medium text-ink-1 transition-colors duration-200 hover:bg-white/90">
+          Ver los pasillos
         </a>
-        <a href="https://wa.me/541145326985" target="_blank" rel="noopener noreferrer"
-           class="inline-flex items-center justify-center gap-2.5 font-semibold px-8 py-[14px] rounded-2xl text-white/85 text-[15px] transition-all hover:bg-white/[0.1] active:scale-[0.97]"
-           style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); backdrop-filter:blur(12px)">
-          <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Consultar por WhatsApp
+        <a href="#sucursales" class="rounded-full border border-white/30 px-7 py-3.5 text-sm font-medium text-white transition-colors duration-200 hover:border-white/60">
+          Sucursales
         </a>
-      </div>
-
-      <!-- Indicadores de confianza -->
-      <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
-        <div class="flex items-center gap-2">
-          <div class="flex gap-0.5">
-            <svg viewBox="0 0 24 24" class="w-3.5 h-3.5 text-[#7FBEFF] fill-[#7FBEFF]"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
-            <svg viewBox="0 0 24 24" class="w-3.5 h-3.5 text-[#7FBEFF] fill-[#7FBEFF]"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
-            <svg viewBox="0 0 24 24" class="w-3.5 h-3.5 text-[#7FBEFF] fill-[#7FBEFF]"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
-            <svg viewBox="0 0 24 24" class="w-3.5 h-3.5 text-[#7FBEFF] fill-[#7FBEFF]"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
-            <svg viewBox="0 0 24 24" class="w-3.5 h-3.5"><defs><linearGradient id="hs-hero"><stop offset="20%" stop-color="#7FBEFF"/><stop offset="20%" stop-color="#7FBEFF" stop-opacity=".25"/></linearGradient></defs><path fill="url(#hs-hero)" d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
-          </div>
-          <span class="text-white font-bold text-sm">4.2</span>
-          <span class="text-sm" style="color:var(--hero-dimmer)">reseñas de clientes</span>
-        </div>
-        <span class="w-px h-4" style="background:rgba(255,255,255,0.1)"></span>
-        <div class="flex items-center gap-1.5">
-          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" style="color:#7FBEFF" aria-hidden="true"><circle cx="12" cy="12" r="8.2" stroke="currentColor" stroke-width="1.7"/><path d="M12 7.4V12l3 1.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-          <span class="text-[13px]" style="color:var(--hero-dim)">Abierto de domingo a viernes</span>
-        </div>
-        <span class="w-px h-4" style="background:rgba(255,255,255,0.1)"></span>
-        <div class="flex items-center gap-1.5">
-          <svg class="w-3.5 h-3.5 text-[#7FBEFF]" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2 20 6.6v5.1c0 4.6-3.2 8.2-8 9.1-4.8-.9-8-4.5-8-9.1V6.6l8-3.4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m8.8 12.2 2.2 2.2 4.2-4.4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span class="text-[13px]" style="color:var(--hero-dim)">Supervisión rabínica</span>
-        </div>
       </div>
     </div>
   </div>
-
-  <!-- Scroll cue -->
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2">
-    <div class="animate-floaty w-px h-12 mx-auto" style="background:linear-gradient(to bottom, transparent, rgba(255,255,255,0.25))"></div>
-  </div>
 </section>
 
-<!-- ══════════════════════════ PASILLOS ══════════════════════════ -->
-<section id="pasillos" class="section-pad scroll-mt-20" style="background:var(--surface-0)">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+<!-- ─────────────────────────── Pasillos ─────────────────────────── -->
+<section id="pasillos" class="scroll-mt-20 py-28 lg:py-36">
+  <div class="mx-auto max-w-content px-6 lg:px-10">
 
-    <div class="rv text-center mb-12">
-      <span class="inline-block text-xs font-bold uppercase tracking-[0.18em] mb-3 px-3 py-1 rounded-full"
-            style="color:#1E5FBF; background:rgba(30,95,191,0.1); border:1px solid rgba(30,95,191,0.2)">
-        Nuestros pasillos
-      </span>
-      <h2 class="font-black leading-tight tracking-tight mb-3" style="font-size:clamp(1.75rem, 4vw, 2.75rem); color:var(--text-1)">
+    <div class="rv max-w-xl">
+      <p class="text-sm text-brand">Nuestros pasillos</p>
+      <h2 class="mt-4 text-3xl font-semibold tracking-[-0.02em] text-ink-1 sm:text-4xl">
         Todo el supermercado, sector por sector
       </h2>
-      <p class="text-base max-w-sm mx-auto" style="color:var(--text-2)">
-        Cada góndola con su propia selección, repuesta a diario y con certificación kosher
+    </div>
+
+    <div class="mt-16 grid gap-x-12 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+
+      <article class="rv">
+        <svg viewBox="0 0 24 24" fill="none" class="h-7 w-7 text-brand" aria-hidden="true">
+          <path d="M4.5 9.5c0-2.2 1.8-4 4-4h7c2.2 0 4 1.8 4 4l-1 8a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8l-1-8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+          <path d="M9.5 6v13M14.5 6v13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+        <h3 class="mt-5 text-lg font-semibold text-ink-1">Panadería</h3>
+        <p class="mt-2 text-sm leading-relaxed text-ink-2">Jalot trenzadas, pan fresco del día, facturas y masas horneadas en el local.</p>
+      </article>
+
+      <article class="rv">
+        <svg viewBox="0 0 24 24" fill="none" class="h-7 w-7 text-brand" aria-hidden="true">
+          <path d="M9 3h6v3l2.5 4v9a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-9L9 6V3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+          <path d="M6.5 13h11" stroke="currentColor" stroke-width="1.2"/>
+        </svg>
+        <h3 class="mt-5 text-lg font-semibold text-ink-1">Lácteos</h3>
+        <p class="mt-2 text-sm leading-relaxed text-ink-2">Quesos, yogures, cremas, dulce de leche y leches de todas las marcas.</p>
+      </article>
+
+      <article class="rv">
+        <svg viewBox="0 0 24 24" fill="none" class="h-7 w-7 text-brand" aria-hidden="true">
+          <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.2"/>
+        </svg>
+        <h3 class="mt-5 text-lg font-semibold text-ink-1">Fiambrería</h3>
+        <p class="mt-2 text-sm leading-relaxed text-ink-2">Pastrón, salames, pavita y cortes al peso, cortados en el momento.</p>
+      </article>
+
+      <article class="rv">
+        <svg viewBox="0 0 24 24" fill="none" class="h-7 w-7 text-brand" aria-hidden="true">
+          <path d="M5 10.5A5.5 5.5 0 0 1 10.5 5h3A5.5 5.5 0 0 1 19 10.5c0 3-2.2 4.9-4.6 5.4l-.7 2.6a1.6 1.6 0 0 1-1.6 1.2h-1a1.6 1.6 0 0 1-1.5-1.2l-.7-2.6C6.9 15.2 5 13.3 5 10.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+          <circle cx="12" cy="10.5" r="2.2" stroke="currentColor" stroke-width="1.2"/>
+        </svg>
+        <h3 class="mt-5 text-lg font-semibold text-ink-1">Carnicería</h3>
+        <p class="mt-2 text-sm leading-relaxed text-ink-2">Cortes vacunos y pollo con shjitá supervisada, listos para la parrilla o el horno.</p>
+      </article>
+
+      <article class="rv">
+        <svg viewBox="0 0 24 24" fill="none" class="h-7 w-7 text-brand" aria-hidden="true">
+          <path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5 4.2 16.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        <h3 class="mt-5 text-lg font-semibold text-ink-1">Congelados</h3>
+        <p class="mt-2 text-sm leading-relaxed text-ink-2">Viandas listas, kneidalaj, empanadas, pescados y verduras congeladas.</p>
+      </article>
+
+      <article class="rv">
+        <svg viewBox="0 0 24 24" fill="none" class="h-7 w-7 text-brand" aria-hidden="true">
+          <path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+          <path d="M3.5 8v8l8.5 4 8.5-4V8M12 12v8" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+        </svg>
+        <h3 class="mt-5 text-lg font-semibold text-ink-1">Almacén e importados</h3>
+        <p class="mt-2 text-sm leading-relaxed text-ink-2">Vinos, aceites, conservas y productos de Israel, Estados Unidos y Europa.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────── Diferenciales ─────────────────────────── -->
+<section class="border-y border-line bg-paper-alt py-24">
+  <div class="mx-auto max-w-content px-6 lg:px-10">
+    <dl class="grid gap-12 sm:grid-cols-3">
+      <div class="rv">
+        <dt class="text-base font-semibold text-ink-1">Supervisión en todos los sectores</dt>
+        <dd class="mt-2 text-sm leading-relaxed text-ink-2">Carnicería, fiambrería, panadería y góndola bajo control rabínico permanente.</dd>
+      </div>
+      <div class="rv">
+        <dt class="text-base font-semibold text-ink-1">Jalá fresca los viernes</dt>
+        <dd class="mt-2 text-sm leading-relaxed text-ink-2">Horneada en el local. Llegá temprano: los viernes vuela antes del mediodía.</dd>
+      </div>
+      <div class="rv">
+        <dt class="text-base font-semibold text-ink-1">Importados difíciles de conseguir</dt>
+        <dd class="mt-2 text-sm leading-relaxed text-ink-2">Traemos de Israel, Estados Unidos y Europa lo que no se encuentra en otro lado.</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<!-- ─────────────────────────── Reseñas ─────────────────────────── -->
+<section id="resenas" class="scroll-mt-20 py-28 lg:py-36">
+  <div class="mx-auto max-w-content px-6 lg:px-10">
+
+    <div class="rv flex flex-wrap items-end justify-between gap-6">
+      <div class="max-w-xl">
+        <p class="text-sm text-brand">Reseñas</p>
+        <h2 class="mt-4 text-3xl font-semibold tracking-[-0.02em] text-ink-1 sm:text-4xl">Lo que dicen nuestros clientes</h2>
+      </div>
+      <p class="flex items-baseline gap-2 text-sm text-ink-2">
+        <span class="text-3xl font-semibold text-ink-1">4,2</span>
+        <span>de 5 en Google</span>
       </p>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div class="mt-16 grid gap-x-12 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
 
-      <!-- Panadería -->
-      <article class="rv group rounded-2xl overflow-hidden flex flex-col card-hover" style="background:var(--surface-1); border:1px solid var(--border); box-shadow:var(--shadow-card)">
-        <div class="relative aspect-[16/10] overflow-hidden" style="background:linear-gradient(135deg, rgba(30,95,191,0.15) 0%, rgba(88,165,240,0.06) 100%)">
-          <div class="absolute inset-0 dot-grid opacity-[0.18]"></div>
-          <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto w-16 h-16 transition-transform duration-500 group-hover:scale-110" style="color:#1E5FBF" aria-hidden="true">
-            <path d="M4.5 9.5c0-2.2 1.8-4 4-4h7c2.2 0 4 1.8 4 4l-1 8a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8l-1-8Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
-            <path d="M9.5 6v13M14.5 6v13" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
-          </svg>
-          <span class="absolute top-2.5 left-2.5 inline-flex items-center rounded-full font-semibold text-[10px] px-2 py-0.5 bg-[#1E5FBF] text-white">🔥 Popular</span>
-        </div>
-        <div class="p-4 flex flex-col flex-1">
-          <h3 class="font-bold text-sm leading-tight mb-1" style="color:var(--text-1)">Panadería</h3>
-          <p class="text-xs flex-1 mb-3" style="color:var(--text-2)">Jalot trenzadas, pan fresco del día, facturas y masas horneadas en el local.</p>
-          <div class="flex flex-wrap gap-1.5">
-            <span class="text-[10px] px-2 py-0.5 rounded-full" style="background:var(--surface-3); color:var(--text-2)">Jalá</span>
-            <span class="text-[10px] px-2 py-0.5 rounded-full" style="background:var(--surface-3); color:var(--text-2)">Facturas</span>
-            <span class="text-[10px] px-2 py-0.5 rounded-full" style="background:var(--surface-3); color:var(--text-2)">Galletas</span>
-          </div>
-        </div>
-      </article>
+      <figure class="rv flex flex-col">
+        <blockquote class="text-sm leading-relaxed text-ink-1">
+          “Voy siempre a la sucursal de Belgrano y nunca me falta nada. La panadería es un lujo: la jalá del viernes sale calentita y se termina enseguida.”
+        </blockquote>
+        <figcaption class="mt-5 border-t border-line pt-4 text-sm text-ink-2 sm:mt-auto">
+          Débora K.<span class="mx-2 text-line-strong">·</span>Belgrano
+        </figcaption>
+      </figure>
 
-      <!-- Lácteos -->
-      <article class="rv group rounded-2xl overflow-hidden flex flex-col card-hover" style="background:var(--surface-1); border:1px solid var(--border); box-shadow:var(--shadow-card)">
-        <div class="relative aspect-[16/10] overflow-hidden" style="background:linear-gradient(135deg, rgba(46,123,214,0.15) 0%, rgba(46,123,214,0.05) 100%)">
-          <div class="absolute inset-0 dot-grid opacity-[0.18]"></div>
-          <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto w-16 h-16 transition-transform duration-500 group-hover:scale-110" style="color:#2E7BD6" aria-hidden="true">
-            <path d="M9 3h6v3l2.5 4v9a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-9L9 6V3Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
-            <path d="M6.5 13h11" stroke="currentColor" stroke-width="1.2"/>
-          </svg>
-          <span class="absolute top-2.5 left-2.5 inline-flex items-center rounded-full font-semibold text-[10px] px-2 py-0.5 bg-[#2E7BD6] text-white">Jalav Israel</span>
-        </div>
-        <div class="p-4 flex flex-col flex-1">
-          <h3 class="font-bold text-sm leading-tight mb-1" style="color:var(--text-1)">Lácteos</h3>
-          <p class="text-xs flex-1 mb-3" style="color:var(--text-2)">Quesos, yogures, cremas, dulce de leche y leches de todas las marcas.</p>
-          <div class="flex flex-wrap gap-1.5">
-            <span class="text-[10px] px-2 py-0.5 rounded-full" style="background:var(--surface-3); color:var(--text-2)">Quesos</span>
-            <span class="text-[10px] px-2 py-0.5 rounded-full" style="background:var(--surface-3); color:var(--text-2)">Yogur</span>
-            <span class="text-[10px] px-2 py-0.5 rounded-full" style="background:var(--surface-3); color:var(--text-2)">Cremas</span>
-          </div>
-        </div>
-      </article>
+      <figure class="rv flex flex-col">
+        <blockquote class="text-sm leading-relaxed text-ink-1">
+          “Muy buena variedad de importados, sobre todo en almacén. Los chicos de fiambrería te cortan todo como pedís y con mucha paciencia.”
+        </blockquote>
+        <figcaption class="mt-5 border-t border-line pt-4 text-sm text-ink-2 sm:mt-auto">
+          Ariel M.<span class="mx-2 text-line-strong">·</span>Palermo
+        </figcaption>
+      </figure>
 
-      <!-- Fiambrería -->
-      <article class="rv group rounded-2xl overflow-hidden flex flex-col card-hover" style="background:var(--surface-1); border:1px solid var(--border); box-shadow:var(--shadow-card)">
-        <div class="relative aspect-[16/10] overflow-hidden" style="background:linear-gradient(135deg, rgba(23,73,154,0.15) 0%, rgba(30,95,191,0.05) 100%)">
-          <div class="absolute inset-0 dot-grid opacity-[0.18]"></div>
-          <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto w-16 h-16 transition-transform duration-500 group-hover:scale-110" style="color:#17499A" aria-hidden="true">
-            <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.3"/>
-            <circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.2"/>
-            <path d="M12 4v2m0 12v2M4 12h2m12 0h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-          </svg>
-          <span class="absolute top-2.5 left-2.5 inline-flex items-center rounded-full font-semibold text-[10px] px-2 py-0.5 bg-[#17499A] text-white">Al peso</span>
-        </div>
-        <div class="p-4 flex flex-col flex-1">
-          <h3 class="font-bold text-sm leading-tight mb-1" style="color:var(--text-1)">Fiambrería kosher</h3>
-          <p class="text-xs flex-1 mb-3" style="color:var(--text-2)">Pastrón, salames, pavita y cortes al peso, cortados en el momento como te guste.</p>
-          <div class="flex flex-wrap gap-1.5">
-            <span class="text-[10px] px-2 py-0.5 rounded-full" style="background:var(--surface-3); color:var(--text-2)">Pastrón</span>
-            <span class="text-[10px] px-2 py-0.5 rounded-full" style="background:var(--surface-3); color:var(--text-2)">Pavita</span>
-            <span class="text-[10px] px-2 py-0.5 rounded-full" style="background:var(--surface-3); color:var(--text-2)">Salames</span>
-          </div>
-        </div>
-      </article>
+      <figure class="rv flex flex-col">
+        <blockquote class="text-sm leading-relaxed text-ink-1">
+          “La carne siempre fresca y bien cortada. Resolvés toda la compra de la semana en un solo lugar, sin ir a tres negocios distintos.”
+        </blockquote>
+        <figcaption class="mt-5 border-t border-line pt-4 text-sm text-ink-2 sm:mt-auto">
+          Sabrina L.<span class="mx-2 text-line-strong">·</span>Belgrano
+        </figcaption>
+      </figure>
 
-      <!-- Carnicería -->
-      <article class="rv group rounded-2xl overflow-hidden flex flex-col card-hover" style="background:var(--surface-1); border:1px solid var(--border); box-shadow:var(--shadow-card)">
-        <div class="relative aspect-[16/10] overflow-hidden" style="background:linear-gradient(135deg, rgba(88,165,240,0.18) 0%, rgba(30,95,191,0.06) 100%)">
-          <div class="absolute inset-0 dot-grid opacity-[0.18]"></div>
-          <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto w-16 h-16 transition-transform duration-500 group-hover:scale-110" style="color:#1E5FBF" aria-hidden="true">
-            <path d="M5 10.5A5.5 5.5 0 0 1 10.5 5h3A5.5 5.5 0 0 1 19 10.5c0 3-2.2 4.9-4.6 5.4l-.7 2.6a1.6 1.6 0 0 1-1.6 1.2h-1a1.6 1.6 0 0 1-1.5-1.2l-.7-2.6C6.9 15.2 5 13.3 5 10.5Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
-            <circle cx="12" cy="10.5" r="2.2" stroke="currentColor" stroke-width="1.2"/>
-          </svg>
-          <span class="absolute top-2.5 left-2.5 inline-flex items-center rounded-full font-semibold text-[10px] px-2 py-0.5 bg-[#58A5F0] text-white">Shjitá supervisada</span>
-        </div>
-        <div class="p-4 flex flex-col flex-1">
-          <h3 class="font-bold text-sm leading-tight mb-1" style="color:var(--text-1)">Carnicería</h3>
-          <p class="text-xs flex-1 mb-3" style="color:var(--text-2)">Cortes vacunos y pollo, listos para la parrilla o el horno.</p>
-          <div class="flex flex-wrap gap-1.5">
-            <span class="text-[10px] px-2 py-0.5 rounded-full" style="background:var(--surface-3); color:var(--text-2)">Vacuno</span>
-            <span class="text-[10px] px-2 py-0.5 rounded-full" style="background:var(--surface-3); color:var(--text-2)">Pollo</span>
-            <span class="text-[10px] px-2 py-0.5 rounded-full" style="background:var(--surface-3); color:var(--text-2)">Milanesas</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Congelados -->
-      <article class="rv group rounded-2xl overflow-hidden flex flex-col card-hover" style="background:var(--surface-1); border:1px solid var(--border); box-shadow:var(--shadow-card)">
-        <div class="relative aspect-[16/10] overflow-hidden" style="background:linear-gradient(135deg, rgba(62,139,224,0.16) 0%, rgba(111,180,255,0.06) 100%)">
-          <div class="absolute inset-0 dot-grid opacity-[0.18]"></div>
-          <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto w-16 h-16 transition-transform duration-500 group-hover:scale-110" style="color:#3E8BE0" aria-hidden="true">
-            <path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5 4.2 16.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
-            <path d="M12 6.6 9.8 4.6M12 6.6l2.2-2M12 17.4l-2.2 2M12 17.4l2.2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-          </svg>
-          <span class="absolute top-2.5 left-2.5 inline-flex items-center rounded-full font-semibold text-[10px] px-2 py-0.5 bg-[#3E8BE0] text-white">Listo para servir</span>
-        </div>
-        <div class="p-4 flex flex-col flex-1">
-          <h3 class="font-bold text-sm leading-tight mb-1" style="color:var(--text-1)">Congelados</h3>
-          <p class="text-xs flex-1 mb-3" style="color:var(--text-2)">Viandas listas, kneidalaj, empanadas, pescados y verduras congeladas.</p>
-          <div class="flex flex-wrap gap-1.5">
-            <span class="text-[10px] px-2 py-0.5 rounded-full" style="background:var(--surface-3); color:var(--text-2)">Viandas</span>
-            <span class="text-[10px] px-2 py-0.5 rounded-full" style="background:var(--surface-3); color:var(--text-2)">Pescados</span>
-            <span class="text-[10px] px-2 py-0.5 rounded-full" style="background:var(--surface-3); color:var(--text-2)">Verduras</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Almacén e importados -->
-      <article class="rv group rounded-2xl overflow-hidden flex flex-col card-hover" style="background:var(--surface-1); border:1px solid var(--border); box-shadow:var(--shadow-card)">
-        <div class="relative aspect-[16/10] overflow-hidden" style="background:linear-gradient(135deg, rgba(18,60,122,0.14) 0%, rgba(88,165,240,0.06) 100%)">
-          <div class="absolute inset-0 dot-grid opacity-[0.18]"></div>
-          <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto w-16 h-16 transition-transform duration-500 group-hover:scale-110" style="color:#123C7A" aria-hidden="true">
-            <path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
-            <path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
-            <path d="M12 12v8" stroke="currentColor" stroke-width="1.2"/>
-          </svg>
-          <span class="absolute top-2.5 left-2.5 inline-flex items-center rounded-full font-semibold text-[10px] px-2 py-0.5 bg-[#123C7A] text-white">🌍 Importados</span>
-        </div>
-        <div class="p-4 flex flex-col flex-1">
-          <h3 class="font-bold text-sm leading-tight mb-1" style="color:var(--text-1)">Almacén &amp; importados</h3>
-          <p class="text-xs flex-1 mb-3" style="color:var(--text-2)">Vinos, aceites, conservas, snacks y productos de Israel, EE.UU. y Europa.</p>
-          <div class="flex flex-wrap gap-1.5">
-            <span class="text-[10px] px-2 py-0.5 rounded-full" style="background:var(--surface-3); color:var(--text-2)">Vinos</span>
-            <span class="text-[10px] px-2 py-0.5 rounded-full" style="background:var(--surface-3); color:var(--text-2)">Aceites</span>
-            <span class="text-[10px] px-2 py-0.5 rounded-full" style="background:var(--surface-3); color:var(--text-2)">Snacks</span>
-          </div>
-        </div>
-      </article>
-    </div>
-
-    <div class="rv mt-14 flex justify-center">
-      <a href="#sucursales"
-         class="group inline-flex items-center gap-3 font-bold px-10 py-4 rounded-2xl text-white text-base transition-all active:scale-[0.97] hover:brightness-110"
-         style="background:#1E5FBF; box-shadow:0 8px 32px rgba(30,95,191,0.4)">
-        Visitanos en nuestras sucursales
-        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m0 0-5.5-5.5M19 12l-5.5 5.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
+      <figure class="rv flex flex-col">
+        <blockquote class="text-sm leading-relaxed text-ink-1">
+          “Muy cómodo para hacer las compras antes de Shabat. Los viernes se llena, pero la atención sigue siendo rápida y amable.”
+        </blockquote>
+        <figcaption class="mt-5 border-t border-line pt-4 text-sm text-ink-2 sm:mt-auto">
+          Gabriel F.<span class="mx-2 text-line-strong">·</span>Palermo
+        </figcaption>
+      </figure>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════ BENEFICIOS (promos) ═══════════════════════ -->
-<section class="section-pad" style="background:var(--surface-1)">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+<!-- ─────────────────────────── Sucursales ─────────────────────────── -->
+<section id="sucursales" class="scroll-mt-20 border-t border-line py-28 lg:py-36">
+  <div class="mx-auto max-w-content px-6 lg:px-10">
 
-    <div class="rv text-center mb-12">
-      <span class="inline-block text-xs font-bold uppercase tracking-[0.18em] mb-3 px-3 py-1 rounded-full"
-            style="color:#58A5F0; background:var(--brand-soft); border:1px solid rgba(88,165,240,0.2)">
-        Por qué El Jaial
-      </span>
-      <h2 class="font-black leading-tight tracking-tight" style="font-size:clamp(1.75rem, 4vw, 2.75rem); color:var(--text-1)">
-        Lo que nos diferencia
-      </h2>
+    <div class="rv max-w-xl">
+      <p class="text-sm text-brand">Sucursales</p>
+      <h2 class="mt-4 text-3xl font-semibold tracking-[-0.02em] text-ink-1 sm:text-4xl">Dos puntos en la ciudad</h2>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+    <div class="mt-16 grid gap-x-12 gap-y-16 lg:grid-cols-2">
 
-      <div class="rv relative rounded-3xl p-7 overflow-hidden flex flex-col card-hover"
-           style="background:linear-gradient(135deg, #123C7A 0%, #1E5FBF 100%); box-shadow:0 14px 36px -10px rgba(18,60,122,0.45)">
-        <div class="absolute top-0 right-0 w-40 h-40 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" style="background:rgba(255,255,255,0.08)"></div>
-        <div class="absolute bottom-0 left-0 w-28 h-28 rounded-full translate-y-1/2 -translate-x-1/2 pointer-events-none" style="background:rgba(0,0,0,0.12)"></div>
-        <div class="relative z-10 flex flex-col flex-1">
-          <div class="flex items-center gap-2 mb-5">
-            <div class="w-11 h-11 rounded-2xl flex items-center justify-center" style="background:rgba(255,255,255,0.18)">
-              <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2 20 6.6v5.1c0 4.6-3.2 8.2-8 9.1-4.8-.9-8-4.5-8-9.1V6.6l8-3.4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m8.8 12.2 2.2 2.2 4.2-4.4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <span class="text-xs font-black uppercase tracking-widest text-white/60">Kashrut</span>
+      <div class="rv">
+        <h3 class="text-2xl font-semibold text-ink-1">Palermo</h3>
+        <p class="mt-3 text-ink-2">Raúl Scalabrini Ortiz 3306, CABA</p>
+        <a href="tel:+541148078617" class="mt-1 inline-block text-brand transition-colors hover:text-brand-dark">+54 11 4807-8617</a>
+
+        <dl class="mt-8 divide-y divide-line border-y border-line text-sm">
+          <div class="flex items-center justify-between gap-4 py-3">
+            <dt class="text-ink-2">Lunes a jueves</dt><dd class="text-ink-1">9:30 – 19:00</dd>
           </div>
-          <h3 class="text-xl font-black text-white mb-2 leading-tight">Supervisión en todos los sectores</h3>
-          <p class="text-sm text-white/70 mb-6 leading-relaxed flex-1">Carnicería, fiambrería, panadería y góndola: todo bajo control rabínico permanente.</p>
-          <a href="#info" class="group inline-flex items-center gap-2 self-start px-5 py-2.5 rounded-xl font-bold text-sm transition-all active:scale-95"
-             style="background:rgba(255,255,255,0.15); color:#fff; backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.2)">
-            Más info
-            <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m0 0-5.5-5.5M19 12l-5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <div class="rv relative rounded-3xl p-7 overflow-hidden flex flex-col card-hover"
-           style="background:linear-gradient(135deg, #1E5FBF 0%, #2E7BD6 100%); box-shadow:0 14px 36px -10px rgba(30,95,191,0.45)">
-        <div class="absolute top-0 right-0 w-40 h-40 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" style="background:rgba(255,255,255,0.08)"></div>
-        <div class="absolute bottom-0 left-0 w-28 h-28 rounded-full translate-y-1/2 -translate-x-1/2 pointer-events-none" style="background:rgba(0,0,0,0.12)"></div>
-        <div class="relative z-10 flex flex-col flex-1">
-          <div class="flex items-center gap-2 mb-5">
-            <div class="w-11 h-11 rounded-2xl flex items-center justify-center" style="background:rgba(255,255,255,0.18)">
-              <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 9.5c0-2.2 1.8-4 4-4h7c2.2 0 4 1.8 4 4l-1 8a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8l-1-8Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9.5 6v13M14.5 6v13" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-            </div>
-            <span class="text-xs font-black uppercase tracking-widest text-white/60">Panadería</span>
+          <div class="flex items-center justify-between gap-4 py-3">
+            <dt class="text-ink-2">Viernes</dt><dd class="text-ink-1">9:00 – 16:00</dd>
           </div>
-          <h3 class="text-xl font-black text-white mb-2 leading-tight">Jalá fresca todos los viernes</h3>
-          <p class="text-sm text-white/70 mb-6 leading-relaxed flex-1">Horneada en el local. Llegá temprano: los viernes vuela antes del mediodía.</p>
-          <a href="#pasillos" class="group inline-flex items-center gap-2 self-start px-5 py-2.5 rounded-xl font-bold text-sm transition-all active:scale-95"
-             style="background:rgba(255,255,255,0.15); color:#fff; backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.2)">
-            Ver panadería
-            <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m0 0-5.5-5.5M19 12l-5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <div class="rv relative rounded-3xl p-7 overflow-hidden flex flex-col card-hover"
-           style="background:linear-gradient(135deg, #3E8BE0 0%, #6FB4FF 100%); box-shadow:0 14px 36px -10px rgba(62,139,224,0.42)">
-        <div class="absolute top-0 right-0 w-40 h-40 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" style="background:rgba(255,255,255,0.08)"></div>
-        <div class="absolute bottom-0 left-0 w-28 h-28 rounded-full translate-y-1/2 -translate-x-1/2 pointer-events-none" style="background:rgba(0,0,0,0.12)"></div>
-        <div class="relative z-10 flex flex-col flex-1">
-          <div class="flex items-center gap-2 mb-5">
-            <div class="w-11 h-11 rounded-2xl flex items-center justify-center" style="background:rgba(255,255,255,0.18)">
-              <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-            </div>
-            <span class="text-xs font-black uppercase tracking-widest text-white/60">Importados</span>
+          <div class="flex items-center justify-between gap-4 py-3">
+            <dt class="text-ink-2">Sábados y domingos</dt><dd class="text-ink-3">Cerrado</dd>
           </div>
-          <h3 class="text-xl font-black text-white mb-2 leading-tight">Productos difíciles de conseguir</h3>
-          <p class="text-sm text-white/70 mb-6 leading-relaxed flex-1">Traemos de Israel, Estados Unidos y Europa lo que no encontrás en otro lado.</p>
-          <a href="#pasillos" class="group inline-flex items-center gap-2 self-start px-5 py-2.5 rounded-xl font-bold text-sm transition-all active:scale-95"
-             style="background:rgba(255,255,255,0.15); color:#fff; backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.2)">
-            Ver almacén
-            <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m0 0-5.5-5.5M19 12l-5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+        </dl>
 
-<!-- ══════════════════════════ RESEÑAS ══════════════════════════ -->
-<section id="resenas" class="section-pad scroll-mt-20" style="background:var(--surface-1)">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6">
-
-    <div class="rv flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10 p-5 rounded-2xl"
-         style="background:var(--surface-2); border:1px solid var(--border)">
-      <div class="flex flex-wrap items-center gap-4">
-        <div class="flex items-center gap-2">
-          <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" aria-hidden="true">
-            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/>
-            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-          </svg>
-          <span class="font-semibold text-sm" style="color:var(--text-1)">Reseñas de Google</span>
-        </div>
-        <div class="w-px h-5" style="background:var(--border-strong)"></div>
-        <div class="flex items-center gap-2.5">
-          <span class="text-3xl font-black" style="color:#1E5FBF">4.2</span>
-          <div class="flex gap-0.5">
-            <svg viewBox="0 0 24 24" class="w-4 h-4 text-[#1E5FBF] fill-[#1E5FBF]"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
-            <svg viewBox="0 0 24 24" class="w-4 h-4 text-[#1E5FBF] fill-[#1E5FBF]"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
-            <svg viewBox="0 0 24 24" class="w-4 h-4 text-[#1E5FBF] fill-[#1E5FBF]"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
-            <svg viewBox="0 0 24 24" class="w-4 h-4 text-[#1E5FBF] fill-[#1E5FBF]"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
-            <svg viewBox="0 0 24 24" class="w-4 h-4"><defs><linearGradient id="hs-rev"><stop offset="20%" stop-color="#1E5FBF"/><stop offset="20%" stop-color="#1E5FBF" stop-opacity=".25"/></linearGradient></defs><path fill="url(#hs-rev)" d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
-          </div>
-        </div>
-        <span class="text-sm hidden sm:block" style="color:var(--text-2)">promedio de nuestras dos sucursales</span>
-      </div>
-      <a href="https://www.google.com/search?q=El+Jaial+kosher+Buenos+Aires" target="_blank" rel="noopener noreferrer"
-         class="text-sm font-semibold transition-colors whitespace-nowrap" style="color:#1E5FBF">
-        Ver todas en Google ↗
-      </a>
-    </div>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-
-      <div class="rv rounded-2xl p-5 flex flex-col gap-4 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background:#1E5FBF">
-              <span class="text-white text-sm font-black">DK</span>
-            </div>
-            <div>
-              <p class="font-semibold text-sm leading-tight" style="color:var(--text-1)">Débora K.</p>
-              <p class="text-xs mt-0.5" style="color:var(--text-3)">Local Guide · Google Maps</p>
-            </div>
-          </div>
-          <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-        </div>
-        <div class="flex items-center gap-2">
-          <div class="flex gap-0.5">
-            <svg viewBox="0 0 24 24" class="w-3 h-3 text-[#1E5FBF] fill-[#1E5FBF]"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="w-3 h-3 text-[#1E5FBF] fill-[#1E5FBF]"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="w-3 h-3 text-[#1E5FBF] fill-[#1E5FBF]"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="w-3 h-3 text-[#1E5FBF] fill-[#1E5FBF]"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="w-3 h-3 text-[#1E5FBF] fill-[#1E5FBF]"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
-          </div>
-          <span class="text-xs" style="color:var(--text-3)">hace 2 semanas</span>
-        </div>
-        <p class="text-sm leading-relaxed flex-1" style="color:var(--text-2)">
-          Voy siempre a la sucursal de Belgrano y nunca me falta nada. <span class="font-semibold" style="color:#1E5FBF">La panadería es un lujo</span>: la jalá del viernes sale calentita y se termina enseguida.
-        </p>
-      </div>
-
-      <div class="rv rounded-2xl p-5 flex flex-col gap-4 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background:#2E7BD6">
-              <span class="text-white text-sm font-black">AM</span>
-            </div>
-            <div>
-              <p class="font-semibold text-sm leading-tight" style="color:var(--text-1)">Ariel M.</p>
-              <p class="text-xs mt-0.5" style="color:var(--text-3)">Reseñas locales · Google Maps</p>
-            </div>
-          </div>
-          <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-        </div>
-        <div class="flex items-center gap-2">
-          <div class="flex gap-0.5">
-            <svg viewBox="0 0 24 24" class="w-3 h-3 text-[#1E5FBF] fill-[#1E5FBF]"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="w-3 h-3 text-[#1E5FBF] fill-[#1E5FBF]"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="w-3 h-3 text-[#1E5FBF] fill-[#1E5FBF]"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="w-3 h-3 text-[#1E5FBF] fill-[#1E5FBF]"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="w-3 h-3 fill-[#C8DAF2]"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
-          </div>
-          <span class="text-xs" style="color:var(--text-3)">hace 1 mes</span>
-        </div>
-        <p class="text-sm leading-relaxed flex-1" style="color:var(--text-2)">
-          Muy buena variedad de importados, sobre todo en almacén. Los chicos de fiambrería te cortan todo como pedís y con <span class="font-semibold" style="color:#1E5FBF">mucha paciencia</span>.
-        </p>
-      </div>
-
-      <div class="rv rounded-2xl p-5 flex flex-col gap-4 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background:#58A5F0">
-              <span class="text-white text-sm font-black">SL</span>
-            </div>
-            <div>
-              <p class="font-semibold text-sm leading-tight" style="color:var(--text-1)">Sabrina L.</p>
-              <p class="text-xs mt-0.5" style="color:var(--text-3)">Local Guide · Google Maps</p>
-            </div>
-          </div>
-          <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-        </div>
-        <div class="flex items-center gap-2">
-          <div class="flex gap-0.5">
-            <svg viewBox="0 0 24 24" class="w-3 h-3 text-[#1E5FBF] fill-[#1E5FBF]"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="w-3 h-3 text-[#1E5FBF] fill-[#1E5FBF]"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="w-3 h-3 text-[#1E5FBF] fill-[#1E5FBF]"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="w-3 h-3 text-[#1E5FBF] fill-[#1E5FBF]"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="w-3 h-3 text-[#1E5FBF] fill-[#1E5FBF]"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
-          </div>
-          <span class="text-xs" style="color:var(--text-3)">hace 3 semanas</span>
-        </div>
-        <p class="text-sm leading-relaxed flex-1" style="color:var(--text-2)">
-          <span class="font-semibold" style="color:#1E5FBF">La carne siempre fresca</span> y bien cortada. Resolvés toda la compra de la semana en un solo lugar, sin tener que ir a tres negocios distintos.
-        </p>
-      </div>
-
-      <div class="rv rounded-2xl p-5 flex flex-col gap-4 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background:#1E5FBF">
-              <span class="text-white text-sm font-black">GF</span>
-            </div>
-            <div>
-              <p class="font-semibold text-sm leading-tight" style="color:var(--text-1)">Gabriel F.</p>
-              <p class="text-xs mt-0.5" style="color:var(--text-3)">Reseñas locales · Google Maps</p>
-            </div>
-          </div>
-          <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-        </div>
-        <div class="flex items-center gap-2">
-          <div class="flex gap-0.5">
-            <svg viewBox="0 0 24 24" class="w-3 h-3 text-[#1E5FBF] fill-[#1E5FBF]"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="w-3 h-3 text-[#1E5FBF] fill-[#1E5FBF]"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="w-3 h-3 text-[#1E5FBF] fill-[#1E5FBF]"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="w-3 h-3 text-[#1E5FBF] fill-[#1E5FBF]"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="w-3 h-3 fill-[#C8DAF2]"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
-          </div>
-          <span class="text-xs" style="color:var(--text-3)">hace 2 meses</span>
-        </div>
-        <p class="text-sm leading-relaxed flex-1" style="color:var(--text-2)">
-          Muy cómodo para hacer las compras antes de Shabat. Los viernes se llena, pero la <span class="font-semibold" style="color:#1E5FBF">atención sigue siendo rápida</span> y amable.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════ BANNER WHATSAPP ══════════════════════════ -->
-<section id="whatsapp" class="section-pad scroll-mt-20" style="background:var(--surface-0)">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6">
-    <div class="rv relative rounded-3xl overflow-hidden px-8 py-12 sm:px-14 sm:py-16"
-         style="background:linear-gradient(135deg, #0F3573 0%, #1E5FBF 100%); box-shadow:0 24px 56px -18px rgba(15,53,115,0.45)">
-
-      <!-- formas de fondo -->
-      <div class="absolute inset-0 tile-wall opacity-[0.35] pointer-events-none"></div>
-      <div class="absolute top-0 right-0 w-72 h-72 rounded-full -translate-y-1/2 translate-x-1/3 pointer-events-none" style="background:rgba(255,255,255,0.10)"></div>
-      <div class="absolute bottom-0 left-0 w-52 h-52 rounded-full translate-y-1/2 -translate-x-1/3 pointer-events-none" style="background:rgba(0,0,0,0.12)"></div>
-
-      <div class="relative z-10 grid lg:grid-cols-2 gap-10 items-center">
-
-        <div>
-          <div class="inline-flex items-center gap-2 mb-5 px-3.5 py-1.5 rounded-full text-[11px] font-black uppercase tracking-[0.18em] text-white"
-               style="background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.22)">
-            <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
-            Respondemos en el día
-          </div>
-
-          <h2 class="font-black text-white leading-tight tracking-tight mb-4" style="font-size:clamp(1.75rem, 4vw, 2.75rem)">
-            Escribinos por WhatsApp
-          </h2>
-          <p class="text-white/75 text-base leading-relaxed max-w-md">
-            Consultá stock, encargá tu pedido para Shabat o pedí que te lo dejemos
-            preparado. Elegí la sucursal y te contestamos directo.
-          </p>
-        </div>
-
-        <div class="flex flex-col gap-3">
-
-          <a href="https://wa.me/541148078617?text=Hola%20El%20Jaial%20Palermo!%20Quer%C3%ADa%20hacer%20una%20consulta."
-             target="_blank" rel="noopener noreferrer"
-             class="group flex items-center gap-4 rounded-2xl px-5 py-4 transition-all hover:-translate-y-0.5 active:scale-[0.98]"
-             style="background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.25); backdrop-filter:blur(8px)">
-            <span class="w-12 h-12 rounded-xl grid place-items-center flex-shrink-0" style="background:rgba(255,255,255,0.95)">
-              <svg class="w-6 h-6" style="color:#16a34a" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            </span>
-            <span class="flex-1 min-w-0">
-              <span class="block text-[10px] font-bold uppercase tracking-[0.18em] text-white/60">Sucursal Palermo</span>
-              <span class="block text-white font-black text-lg leading-tight mt-0.5">+54 11 4807-8617</span>
-              <span class="block text-xs text-white/60 mt-0.5">Raúl Scalabrini Ortiz 3306, CABA</span>
-            </span>
-            <svg class="w-5 h-5 text-white flex-shrink-0 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m0 0-5.5-5.5M19 12l-5.5 5.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-
-          <a href="https://wa.me/541145326985?text=Hola%20El%20Jaial%20Belgrano!%20Quer%C3%ADa%20hacer%20una%20consulta."
-             target="_blank" rel="noopener noreferrer"
-             class="group flex items-center gap-4 rounded-2xl px-5 py-4 transition-all hover:-translate-y-0.5 active:scale-[0.98]"
-             style="background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.25); backdrop-filter:blur(8px)">
-            <span class="w-12 h-12 rounded-xl grid place-items-center flex-shrink-0" style="background:rgba(255,255,255,0.95)">
-              <svg class="w-6 h-6" style="color:#16a34a" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            </span>
-            <span class="flex-1 min-w-0">
-              <span class="block text-[10px] font-bold uppercase tracking-[0.18em] text-white/60">Sucursal Belgrano</span>
-              <span class="block text-white font-black text-lg leading-tight mt-0.5">+54 11 4532-6985</span>
-              <span class="block text-xs text-white/60 mt-0.5">Moldes 2454, CABA</span>
-            </span>
-            <svg class="w-5 h-5 text-white flex-shrink-0 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m0 0-5.5-5.5M19 12l-5.5 5.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-
-          <p class="text-xs text-white/55 text-center mt-1">Sábados cerrado · viernes hasta el mediodía</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════ SUCURSALES ══════════════════════════ -->
-<section id="sucursales" class="section-pad scroll-mt-20" style="background:var(--surface-0)">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6">
-
-    <div class="rv text-center mb-12">
-      <span class="inline-block text-xs font-bold uppercase tracking-[0.18em] mb-3 px-3 py-1 rounded-full"
-            style="color:#1E5FBF; background:rgba(30,95,191,0.1); border:1px solid rgba(30,95,191,0.2)">
-        Nuestras sucursales
-      </span>
-      <h2 class="font-black leading-tight tracking-tight" style="font-size:clamp(1.75rem, 4vw, 2.75rem); color:var(--text-1)">
-        Dos puntos en la ciudad
-      </h2>
-    </div>
-
-    <!-- Palermo -->
-    <div class="rv grid grid-cols-1 lg:grid-cols-2 gap-0 rounded-3xl overflow-hidden mb-6"
-         style="border:1px solid var(--border); box-shadow:0 24px 64px rgba(0,0,0,0.5)">
-      <div class="p-10 sm:p-14 flex flex-col justify-center gap-8" style="background:var(--surface-1)">
-        <div style="border-bottom:1px solid var(--border); padding-bottom:2rem">
-          <p class="text-xs font-bold tracking-[0.2em] uppercase mb-3" style="color:var(--text-3)">Sucursal Palermo</p>
-          <p class="font-black leading-tight" style="font-size:clamp(1.75rem, 4vw, 2.5rem); color:var(--text-1)">Raúl Scalabrini Ortiz 3306</p>
-          <p class="mt-2" style="color:var(--text-2)">CABA, Buenos Aires</p>
-          <a href="tel:+541148078617" class="inline-flex items-center gap-2 mt-4 text-sm font-semibold transition-colors" style="color:#1E5FBF">
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 5.5c0 8 6 14 14 14l1.6-3.3-4-1.9-1.7 2a12 12 0 0 1-6.7-6.7l2-1.7-1.9-4L4.5 5.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
-            +54 11 4807-8617
-          </a>
-        </div>
-
-        <div style="border-bottom:1px solid var(--border); padding-bottom:2rem">
-          <p class="text-xs font-bold tracking-[0.2em] uppercase mb-4" style="color:var(--text-3)">Horarios</p>
-          <div class="space-y-2">
-            <div class="flex items-baseline justify-between gap-4">
-              <span class="text-sm" style="color:var(--text-2)">Lunes a jueves</span>
-              <span class="text-sm font-bold" style="color:var(--text-1)">9:30 – 19:00</span>
-            </div>
-            <div class="flex items-baseline justify-between gap-4">
-              <span class="text-sm" style="color:var(--text-2)">Viernes</span>
-              <span class="text-sm font-bold" style="color:var(--text-1)">9:00 – 16:00</span>
-            </div>
-            <div class="flex items-baseline justify-between gap-4">
-              <span class="text-sm" style="color:var(--text-2)">Sábados y domingos</span>
-              <span class="text-sm font-bold" style="color:var(--text-3)">Cerrado</span>
-            </div>
-          </div>
+        <div class="mt-8 overflow-hidden rounded-lg border border-line">
+          <iframe src="https://maps.google.com/maps?q=Ra%C3%BAl+Scalabrini+Ortiz+3306,+Buenos+Aires,+Argentina&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  class="block h-64 w-full border-0 grayscale" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                  title="Ubicación El Jaial Palermo"></iframe>
         </div>
 
         <a href="https://maps.google.com/?q=Ra%C3%BAl+Scalabrini+Ortiz+3306,+CABA" target="_blank" rel="noopener noreferrer"
-           class="group inline-flex items-center gap-2 font-bold px-7 py-4 rounded-2xl text-sm w-fit transition-all hover:brightness-110 active:scale-95"
-           style="background:var(--text-1); color:var(--surface-0)">
+           class="mt-6 inline-flex items-center gap-2 text-sm text-ink-1 transition-colors hover:text-brand">
           Cómo llegar
-          <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m0 0-5.5-5.5M19 12l-5.5 5.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" class="h-4 w-4" aria-hidden="true"><path d="M5 12h14m0 0-5.5-5.5M19 12l-5.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
 
-      <div class="relative min-h-[380px] lg:min-h-0">
-        <iframe src="https://maps.google.com/maps?q=Ra%C3%BAl+Scalabrini+Ortiz+3306,+Buenos+Aires,+Argentina&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                class="absolute inset-0 w-full h-full border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                title="Ubicación El Jaial Palermo"></iframe>
-      </div>
-    </div>
+      <div class="rv">
+        <h3 class="text-2xl font-semibold text-ink-1">Belgrano</h3>
+        <p class="mt-3 text-ink-2">Moldes 2454, CABA</p>
+        <a href="tel:+541145326985" class="mt-1 inline-block text-brand transition-colors hover:text-brand-dark">+54 11 4532-6985</a>
 
-    <!-- Belgrano -->
-    <div class="rv grid grid-cols-1 lg:grid-cols-2 gap-0 rounded-3xl overflow-hidden"
-         style="border:1px solid var(--border); box-shadow:0 24px 64px rgba(0,0,0,0.5)">
-      <div class="relative min-h-[380px] lg:min-h-0 order-last lg:order-first">
-        <iframe src="https://maps.google.com/maps?q=Moldes+2454,+Buenos+Aires,+Argentina&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                class="absolute inset-0 w-full h-full border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                title="Ubicación El Jaial Belgrano"></iframe>
-      </div>
-
-      <div class="p-10 sm:p-14 flex flex-col justify-center gap-8" style="background:var(--surface-1)">
-        <div style="border-bottom:1px solid var(--border); padding-bottom:2rem">
-          <p class="text-xs font-bold tracking-[0.2em] uppercase mb-3" style="color:var(--text-3)">Sucursal Belgrano</p>
-          <p class="font-black leading-tight" style="font-size:clamp(1.75rem, 4vw, 2.5rem); color:var(--text-1)">Moldes 2454</p>
-          <p class="mt-2" style="color:var(--text-2)">CABA, Buenos Aires</p>
-          <a href="tel:+541145326985" class="inline-flex items-center gap-2 mt-4 text-sm font-semibold transition-colors" style="color:#1E5FBF">
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 5.5c0 8 6 14 14 14l1.6-3.3-4-1.9-1.7 2a12 12 0 0 1-6.7-6.7l2-1.7-1.9-4L4.5 5.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
-            +54 11 4532-6985
-          </a>
-        </div>
-
-        <div style="border-bottom:1px solid var(--border); padding-bottom:2rem">
-          <p class="text-xs font-bold tracking-[0.2em] uppercase mb-4" style="color:var(--text-3)">Horarios</p>
-          <div class="space-y-2">
-            <div class="flex items-baseline justify-between gap-4">
-              <span class="text-sm" style="color:var(--text-2)">Lunes a jueves y domingos</span>
-              <span class="text-sm font-bold" style="color:var(--text-1)">8:00 – 20:00</span>
-            </div>
-            <div class="flex items-baseline justify-between gap-4">
-              <span class="text-sm" style="color:var(--text-2)">Viernes</span>
-              <span class="text-sm font-bold" style="color:var(--text-1)">8:00 – 14:30</span>
-            </div>
-            <div class="flex items-baseline justify-between gap-4">
-              <span class="text-sm" style="color:var(--text-2)">Sábados</span>
-              <span class="text-sm font-bold" style="color:var(--text-3)">Cerrado</span>
-            </div>
+        <dl class="mt-8 divide-y divide-line border-y border-line text-sm">
+          <div class="flex items-center justify-between gap-4 py-3">
+            <dt class="text-ink-2">Lunes a jueves y domingos</dt><dd class="text-ink-1">8:00 – 20:00</dd>
           </div>
+          <div class="flex items-center justify-between gap-4 py-3">
+            <dt class="text-ink-2">Viernes</dt><dd class="text-ink-1">8:00 – 14:30</dd>
+          </div>
+          <div class="flex items-center justify-between gap-4 py-3">
+            <dt class="text-ink-2">Sábados</dt><dd class="text-ink-3">Cerrado</dd>
+          </div>
+        </dl>
+
+        <div class="mt-8 overflow-hidden rounded-lg border border-line">
+          <iframe src="https://maps.google.com/maps?q=Moldes+2454,+Buenos+Aires,+Argentina&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  class="block h-64 w-full border-0 grayscale" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                  title="Ubicación El Jaial Belgrano"></iframe>
         </div>
 
         <a href="https://maps.google.com/?q=Moldes+2454,+CABA" target="_blank" rel="noopener noreferrer"
-           class="group inline-flex items-center gap-2 font-bold px-7 py-4 rounded-2xl text-sm w-fit transition-all hover:brightness-110 active:scale-95"
-           style="background:var(--text-1); color:var(--surface-0)">
+           class="mt-6 inline-flex items-center gap-2 text-sm text-ink-1 transition-colors hover:text-brand">
           Cómo llegar
-          <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m0 0-5.5-5.5M19 12l-5.5 5.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" class="h-4 w-4" aria-hidden="true"><path d="M5 12h14m0 0-5.5-5.5M19 12l-5.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════ NOSOTROS ══════════════════════════ -->
-<section id="info" class="section-pad scroll-mt-20" style="background:var(--surface-0)">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6">
-    <div class="grid lg:grid-cols-2 gap-14 items-center">
+<!-- ─────────────────────────── WhatsApp ─────────────────────────── -->
+<section id="whatsapp" class="scroll-mt-20 border-y border-line bg-paper-alt py-24">
+  <div class="mx-auto max-w-content px-6 lg:px-10">
+    <div class="rv grid gap-10 lg:grid-cols-2 lg:items-center">
 
-      <div class="rv rv-x-l">
-        <span class="inline-block text-xs font-bold uppercase tracking-[0.18em] mb-4 px-3 py-1 rounded-full"
-              style="color:#1E5FBF; background:rgba(30,95,191,0.1); border:1px solid rgba(30,95,191,0.2)">
-          Sobre nosotros
-        </span>
-        <h2 class="font-black leading-tight tracking-tight mb-5" style="font-size:clamp(1.75rem, 4vw, 2.75rem); color:var(--text-1)">
-          El mercado kosher de barrio, con escala de supermercado
-        </h2>
-        <p class="text-base leading-relaxed mb-8" style="color:var(--text-2)">
-          En El Jaial resolvés toda la compra en un solo lugar. Panadería propia, carnicería y
-          fiambrería con supervisión, góndolas repuestas cada mañana e importados que no
-          se consiguen en otro lado — con la atención personalizada de siempre.
+      <div>
+        <h2 class="text-3xl font-semibold tracking-[-0.02em] text-ink-1">Escribinos por WhatsApp</h2>
+        <p class="mt-4 max-w-md leading-relaxed text-ink-2">
+          Consultá stock, encargá tu pedido para Shabat o pedí que te lo dejemos
+          preparado. Elegí la sucursal y te contestamos directo.
         </p>
-
-        <div class="grid grid-cols-3 gap-3 mb-8">
-          <div class="rounded-2xl p-4 text-center" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="w-9 h-9 rounded-xl flex items-center justify-center mx-auto mb-2" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" style="color:#58A5F0" fill="currentColor"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
-            </div>
-            <p class="font-black text-2xl leading-none mb-1" style="color:var(--text-1)">4.2</p>
-            <p class="text-xs" style="color:var(--text-2)">Calificación</p>
-          </div>
-          <div class="rounded-2xl p-4 text-center" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="w-9 h-9 rounded-xl flex items-center justify-center mx-auto mb-2" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" style="color:#2E7BD6" fill="none" aria-hidden="true"><path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-            </div>
-            <p class="font-black text-2xl leading-none mb-1" style="color:var(--text-1)">+2.500</p>
-            <p class="text-xs" style="color:var(--text-2)">Productos</p>
-          </div>
-          <div class="rounded-2xl p-4 text-center" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="w-9 h-9 rounded-xl flex items-center justify-center mx-auto mb-2" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" style="color:#3E8BE0" fill="none" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
-            </div>
-            <p class="font-black text-2xl leading-none mb-1" style="color:var(--text-1)">2</p>
-            <p class="text-xs" style="color:var(--text-2)">Sucursales</p>
-          </div>
-        </div>
-
-        <div class="flex flex-wrap gap-2">
-          <a href="#" class="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all hover:bg-white/[0.06]"
-             style="background:var(--surface-2); border:1px solid var(--border); color:var(--text-2)">Instagram</a>
-          <a href="#" class="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all hover:bg-white/[0.06]"
-             style="background:var(--surface-2); border:1px solid var(--border); color:var(--text-2)">Facebook</a>
-        </div>
       </div>
 
-      <div class="rv rv-x-r rounded-3xl p-6 sm:p-8 space-y-6" style="background:var(--surface-1); border:1px solid var(--border)">
-        <h3 class="font-black text-xl" style="color:var(--text-1)">Información de contacto</h3>
+      <div class="flex flex-col gap-3">
+        <a href="https://wa.me/541148078617?text=Hola%20El%20Jaial%20Palermo!%20Quer%C3%ADa%20hacer%20una%20consulta."
+           target="_blank" rel="noopener noreferrer"
+           class="group flex items-center justify-between gap-4 rounded-lg border border-line bg-white px-6 py-5 transition-colors duration-200 hover:border-brand">
+          <span>
+            <span class="block text-sm text-ink-2">Palermo</span>
+            <span class="mt-0.5 block font-medium text-ink-1">+54 11 4807-8617</span>
+          </span>
+          <svg viewBox="0 0 24 24" fill="none" class="h-5 w-5 flex-shrink-0 text-ink-3 transition-colors group-hover:text-brand" aria-hidden="true"><path d="M5 12h14m0 0-5.5-5.5M19 12l-5.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
 
-        <div class="space-y-5">
-          <div class="flex items-start gap-4">
-            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(30,95,191,0.1)">
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" style="color:#1E5FBF" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
-            </div>
-            <div>
-              <p class="text-xs font-bold uppercase tracking-[0.12em] mb-0.5" style="color:var(--text-3)">Palermo</p>
-              <p class="text-sm font-medium" style="color:var(--text-1)">Raúl Scalabrini Ortiz 3306, CABA</p>
-              <a href="tel:+541148078617" class="text-sm" style="color:var(--text-2)">+54 11 4807-8617</a>
-            </div>
-          </div>
-
-          <div class="flex items-start gap-4">
-            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:var(--brand-soft)">
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" style="color:#2E7BD6" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
-            </div>
-            <div>
-              <p class="text-xs font-bold uppercase tracking-[0.12em] mb-0.5" style="color:var(--text-3)">Belgrano</p>
-              <p class="text-sm font-medium" style="color:var(--text-1)">Moldes 2454, CABA</p>
-              <a href="tel:+541145326985" class="text-sm" style="color:var(--text-2)">+54 11 4532-6985</a>
-            </div>
-          </div>
-
-          <div class="flex items-start gap-4">
-            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(34,197,94,0.1)">
-              <svg class="w-5 h-5 text-green-500" fill="none" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.2" stroke="currentColor" stroke-width="1.7"/><path d="M12 7.4V12l3 1.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-            </div>
-            <div class="flex-1">
-              <p class="text-xs font-bold uppercase tracking-[0.12em] mb-2" style="color:var(--text-3)">Atención</p>
-              <div class="space-y-1.5">
-                <div class="flex items-center justify-between gap-4">
-                  <span class="text-sm" style="color:var(--text-2)">Domingo a jueves</span>
-                  <span class="text-sm font-semibold" style="color:var(--text-1)">8:00 – 20:00</span>
-                </div>
-                <div class="flex items-center justify-between gap-4">
-                  <span class="text-sm" style="color:var(--text-2)">Viernes</span>
-                  <span class="text-sm font-semibold" style="color:var(--text-1)">8:00 – 16:00</span>
-                </div>
-                <div class="flex items-center justify-between gap-4">
-                  <span class="text-sm" style="color:var(--text-2)">Sábado</span>
-                  <span class="text-sm font-semibold" style="color:var(--text-3)">Cerrado</span>
-                </div>
-              </div>
-              <p class="text-xs mt-3" style="color:var(--text-3)">Los horarios varían por sucursal · ver detalle arriba.</p>
-            </div>
-          </div>
-        </div>
-
-        <a href="https://wa.me/541145326985" target="_blank" rel="noopener noreferrer"
-           class="flex items-center justify-center gap-2 w-full font-bold py-4 rounded-2xl text-white text-sm transition-all hover:brightness-110"
-           style="background:#16a34a; box-shadow:0 4px 20px rgba(22,163,74,0.35)">
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Contactar por WhatsApp
+        <a href="https://wa.me/541145326985?text=Hola%20El%20Jaial%20Belgrano!%20Quer%C3%ADa%20hacer%20una%20consulta."
+           target="_blank" rel="noopener noreferrer"
+           class="group flex items-center justify-between gap-4 rounded-lg border border-line bg-white px-6 py-5 transition-colors duration-200 hover:border-brand">
+          <span>
+            <span class="block text-sm text-ink-2">Belgrano</span>
+            <span class="mt-0.5 block font-medium text-ink-1">+54 11 4532-6985</span>
+          </span>
+          <svg viewBox="0 0 24 24" fill="none" class="h-5 w-5 flex-shrink-0 text-ink-3 transition-colors group-hover:text-brand" aria-hidden="true"><path d="M5 12h14m0 0-5.5-5.5M19 12l-5.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
     </div>
@@ -1121,188 +436,107 @@
 
 </main>
 
-<!-- ════════════════════════════ FOOTER ════════════════════════════ -->
-<footer style="background:var(--surface-1); border-top:1px solid var(--border)">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-8">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
+<!-- ─────────────────────────── Pie ─────────────────────────── -->
+<footer id="contacto" class="scroll-mt-20 py-20">
+  <div class="mx-auto max-w-content px-6 lg:px-10">
 
-      <!-- Marca -->
+    <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+
       <div class="lg:col-span-1">
-        <div class="mb-5">
-        <svg viewBox="0 0 208 64" xmlns="http://www.w3.org/2000/svg" class="h-[52px] w-auto" role="img" aria-label="El Jaial · Kosher Market">
-          <defs>
-            <clipPath id="sign-clip-f"><rect width="208" height="64" rx="9"/></clipPath>
-          </defs>
-          <g clip-path="url(#sign-clip-f)">
+        <svg viewBox="0 0 208 64" xmlns="http://www.w3.org/2000/svg" class="h-11 w-auto" role="img" aria-label="El Jaial · Kosher Market">
+          <defs><clipPath id="sign-foot"><rect width="208" height="64" rx="6"/></clipPath></defs>
+          <g clip-path="url(#sign-foot)">
             <rect width="208" height="64" fill="#0A0A0C"/>
-            <g stroke="rgba(255,255,255,0.13)" stroke-width="1.5" fill="none">
+            <g stroke="rgba(255,255,255,0.12)" stroke-width="1.5" fill="none">
               <path d="M0 16h208M0 32h208M0 48h208M26 0v16M78 0v16M130 0v16M182 0v16M0 16v16M52 16v16M104 16v16M156 16v16M208 16v16M26 32v16M78 32v16M130 32v16M182 32v16M0 48v16M52 48v16M104 48v16M156 48v16"/>
             </g>
             <g transform="rotate(-2.2 104 28)">
-              <text x="104" y="30" text-anchor="middle" fill="#FFFFFF"
-                    font-family="Inter, system-ui, sans-serif" font-weight="900" font-size="30" letter-spacing="2.5"
-                    transform="skewX(-7)" transform-origin="104 30">EL JAIAL</text>
+              <text x="104" y="30" text-anchor="middle" fill="#FFFFFF" font-family="Inter, system-ui, sans-serif"
+                    font-weight="700" font-size="29" letter-spacing="2.5" transform="skewX(-7)" transform-origin="104 30">EL JAIAL</text>
             </g>
             <g transform="rotate(-2.2 104 48)">
-              <text x="104" y="50" text-anchor="middle" fill="#FFFFFF"
-                    font-family="Inter, system-ui, sans-serif" font-weight="800" font-size="10.5" letter-spacing="1.6"
-                    transform="skewX(-7)" transform-origin="104 50"><tspan fill="#E5352B">&#9733;</tspan> KOSHER MARKET <tspan fill="#E5352B">&#9733;</tspan></text>
+              <text x="104" y="50" text-anchor="middle" fill="#FFFFFF" font-family="Inter, system-ui, sans-serif"
+                    font-weight="600" font-size="10" letter-spacing="1.6" transform="skewX(-7)" transform-origin="104 50">KOSHER MARKET</text>
             </g>
           </g>
         </svg>
-        </div>
-        <p class="text-sm leading-relaxed mb-6" style="color:var(--text-2)">
-          Mercado y supermercado kosher en Buenos Aires. Productos frescos del día e
-          importados seleccionados, bajo supervisión rabínica.
+        <p class="mt-6 max-w-xs text-sm leading-relaxed text-ink-2">
+          Mercado y supermercado kosher en Buenos Aires, bajo supervisión rabínica.
         </p>
-
-        <div class="flex gap-2">
-          <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-xl flex items-center justify-center transition-all hover:bg-white/[0.1]"
-             style="background:var(--surface-2); color:var(--text-2); border:1px solid var(--border)">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          </a>
-          <a href="#" aria-label="Facebook" class="w-9 h-9 rounded-xl flex items-center justify-center transition-all hover:bg-white/[0.1]"
-             style="background:var(--surface-2); color:var(--text-2); border:1px solid var(--border)">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-          </a>
-          <a href="https://wa.me/541145326985" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"
-             class="w-9 h-9 rounded-xl flex items-center justify-center transition-all hover:bg-white/[0.1]"
-             style="background:var(--surface-2); color:var(--text-2); border:1px solid var(--border)">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          </a>
-        </div>
       </div>
 
-      <!-- Navegación -->
       <div>
-        <h3 class="font-bold text-xs uppercase tracking-[0.15em] mb-5" style="color:var(--text-3)">Navegación</h3>
-        <ul class="space-y-3">
-          <li><a href="#top" class="text-sm transition-colors hover:text-[#1E5FBF]" style="color:var(--text-2)">Inicio</a></li>
-          <li><a href="#pasillos" class="text-sm transition-colors hover:text-[#1E5FBF]" style="color:var(--text-2)">Nuestros pasillos</a></li>
-          <li><a href="#sucursales" class="text-sm transition-colors hover:text-[#1E5FBF]" style="color:var(--text-2)">Sucursales</a></li>
-          <li><a href="#resenas" class="text-sm transition-colors hover:text-[#1E5FBF]" style="color:var(--text-2)">Reseñas</a></li>
-          <li><a href="#info" class="text-sm transition-colors hover:text-[#1E5FBF]" style="color:var(--text-2)">Contacto</a></li>
-        </ul>
+        <h3 class="text-sm font-semibold text-ink-1">Palermo</h3>
+        <address class="mt-4 space-y-1 not-italic text-sm text-ink-2">
+          <p>Raúl Scalabrini Ortiz 3306, CABA</p>
+          <p><a href="tel:+541148078617" class="transition-colors hover:text-brand">+54 11 4807-8617</a></p>
+          <p class="pt-2 text-ink-3">Lun a jue 9:30–19:00<br />Vie 9:00–16:00<br />Sáb y dom cerrado</p>
+        </address>
       </div>
 
-      <!-- Horarios -->
       <div>
-        <h3 class="font-bold text-xs uppercase tracking-[0.15em] mb-5" style="color:var(--text-3)">Horarios</h3>
-        <ul class="space-y-3">
-          <li class="flex items-start gap-2">
-            <svg class="w-3.5 h-3.5 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" style="color:#1E5FBF" aria-hidden="true"><circle cx="12" cy="12" r="8.2" stroke="currentColor" stroke-width="1.7"/><path d="M12 7.4V12l3 1.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-            <div>
-              <p class="text-sm font-medium" style="color:var(--text-1)">Palermo · Lun a jue</p>
-              <p class="text-xs" style="color:var(--text-2)">9:30 – 19:00 · Vie 9:00 – 16:00</p>
-            </div>
-          </li>
-          <li class="flex items-start gap-2">
-            <svg class="w-3.5 h-3.5 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" style="color:#1E5FBF" aria-hidden="true"><circle cx="12" cy="12" r="8.2" stroke="currentColor" stroke-width="1.7"/><path d="M12 7.4V12l3 1.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-            <div>
-              <p class="text-sm font-medium" style="color:var(--text-1)">Belgrano · Lun a jue y dom</p>
-              <p class="text-xs" style="color:var(--text-2)">8:00 – 20:00 · Vie 8:00 – 14:30</p>
-            </div>
-          </li>
-          <li class="flex items-start gap-2">
-            <svg class="w-3.5 h-3.5 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" style="color:#1E5FBF" aria-hidden="true"><circle cx="12" cy="12" r="8.2" stroke="currentColor" stroke-width="1.7"/><path d="M12 7.4V12l3 1.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-            <div>
-              <p class="text-sm font-medium" style="color:var(--text-1)">Shabat</p>
-              <p class="text-xs" style="color:var(--text-2)">Cerrado en ambas sucursales</p>
-            </div>
-          </li>
-        </ul>
+        <h3 class="text-sm font-semibold text-ink-1">Belgrano</h3>
+        <address class="mt-4 space-y-1 not-italic text-sm text-ink-2">
+          <p>Moldes 2454, CABA</p>
+          <p><a href="tel:+541145326985" class="transition-colors hover:text-brand">+54 11 4532-6985</a></p>
+          <p class="pt-2 text-ink-3">Lun a jue y dom 8:00–20:00<br />Vie 8:00–14:30<br />Sáb cerrado</p>
+        </address>
       </div>
 
-      <!-- Contacto -->
       <div>
-        <h3 class="font-bold text-xs uppercase tracking-[0.15em] mb-5" style="color:var(--text-3)">Contacto</h3>
-        <ul class="space-y-4 mb-6">
-          <li class="flex items-start gap-3">
-            <svg class="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" style="color:#1E5FBF" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
-            <p class="text-sm" style="color:var(--text-2)">Raúl Scalabrini Ortiz 3306, CABA</p>
-          </li>
-          <li class="flex items-start gap-3">
-            <svg class="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" style="color:#1E5FBF" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
-            <p class="text-sm" style="color:var(--text-2)">Moldes 2454, CABA</p>
-          </li>
-          <li class="flex items-center gap-3">
-            <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" style="color:#1E5FBF" aria-hidden="true"><path d="M4.5 5.5c0 8 6 14 14 14l1.6-3.3-4-1.9-1.7 2a12 12 0 0 1-6.7-6.7l2-1.7-1.9-4L4.5 5.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
-            <a href="tel:+541148078617" class="text-sm transition-colors hover:text-[#1E5FBF]" style="color:var(--text-2)">+54 11 4807-8617</a>
-          </li>
-          <li class="flex items-center gap-3">
-            <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" style="color:#1E5FBF" aria-hidden="true"><path d="M4.5 5.5c0 8 6 14 14 14l1.6-3.3-4-1.9-1.7 2a12 12 0 0 1-6.7-6.7l2-1.7-1.9-4L4.5 5.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
-            <a href="tel:+541145326985" class="text-sm transition-colors hover:text-[#1E5FBF]" style="color:var(--text-2)">+54 11 4532-6985</a>
-          </li>
+        <h3 class="text-sm font-semibold text-ink-1">Seguinos</h3>
+        <ul class="mt-4 space-y-2 text-sm text-ink-2">
+          <li><a href="#" class="transition-colors hover:text-brand">Instagram</a></li>
+          <li><a href="#" class="transition-colors hover:text-brand">Facebook</a></li>
+          <li><a href="https://wa.me/541145326985" target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-brand">WhatsApp</a></li>
         </ul>
-
-        <a href="https://wa.me/541145326985" target="_blank" rel="noopener noreferrer"
-           class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold text-white transition-all hover:brightness-110"
-           style="background:#16a34a; box-shadow:0 4px 16px rgba(22,163,74,0.3)">
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          WhatsApp
-        </a>
       </div>
     </div>
 
-    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8" style="border-top:1px solid var(--border)">
-      <p class="text-xs" style="color:var(--text-3)">© <span data-year>2026</span> El Jaial. Todos los derechos reservados.</p>
-      <p class="text-xs" style="color:var(--text-3)">Buenos Aires, Argentina · Productos bajo supervisión kosher</p>
-    </div>
+    <p class="mt-16 border-t border-line pt-8 text-xs text-ink-3">
+      © <span data-year>2026</span> El Jaial · Buenos Aires, Argentina
+    </p>
   </div>
 </footer>
-
-<!-- FAB WhatsApp -->
-<a href="https://wa.me/541145326985" target="_blank" rel="noopener noreferrer" title="Contactar por WhatsApp"
-   class="fixed bottom-6 right-6 z-40 w-14 h-14 bg-green-500 hover:bg-green-400 rounded-2xl flex items-center justify-center shadow-2xl shadow-green-500/40 transition-all hover:scale-110 active:scale-95">
-  <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
 
 <script>
 (function () {
   'use strict';
 
-  /* Foto del hero. Prueba las extensiones habituales, así da igual si el
-     archivo es .png, .jpg o .webp. Si carga, endurecemos el scrim y apagamos
-     las tramas; si no hay ninguna, queda el degradado de marca. */
-  var heroSection = document.querySelector('[data-hero]');
+  /* Foto del hero: prueba las extensiones habituales y usa la primera que exista */
   var heroImg = document.querySelector('[data-hero-img]');
   if (heroImg) {
     var sources = ['assets/hero.png', 'assets/hero.jpg', 'assets/hero.jpeg', 'assets/hero.webp'];
     var at = 0;
-    var applyPhoto = function () { heroSection.classList.add('has-photo'); };
     var tryNext = function () {
       at += 1;
       if (at < sources.length) heroImg.src = sources[at];
       else heroImg.style.display = 'none';
     };
-    heroImg.addEventListener('load', applyPhoto);
     heroImg.addEventListener('error', tryNext);
-    if (heroImg.complete) {
-      if (heroImg.naturalWidth > 0) applyPhoto(); else tryNext();
-    }
+    if (heroImg.complete && heroImg.naturalWidth === 0) tryNext();
   }
 
-  /* Header: transparente → glass-dark al hacer scroll (scrollY > 30) */
+  /* La barra se vuelve blanca al dejar atrás el hero */
   var header = document.querySelector('[data-header]');
-  function onScroll() {
-    if (window.scrollY > 30) {
-      header.classList.add('glass-dark', 'shadow-2xl', 'shadow-black/40');
-      header.classList.remove('bg-transparent');
-    } else {
-      header.classList.remove('glass-dark', 'shadow-2xl', 'shadow-black/40');
-      header.classList.add('bg-transparent');
-    }
-  }
+  var onScroll = function () {
+    var solid = window.scrollY > 40;
+    header.classList.toggle('nav-solid', solid);
+    header.classList.toggle('bg-white/90', solid);
+    header.classList.toggle('backdrop-blur', solid);
+    header.classList.toggle('border-b', solid);
+    header.classList.toggle('border-line', solid);
+  };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  /* Drawer mobile */
+  /* Menú mobile */
   var btn = document.querySelector('[data-menu-btn]');
   var closeBtn = document.querySelector('[data-menu-close]');
   var drawer = document.querySelector('[data-drawer]');
   var overlay = document.querySelector('[data-overlay]');
 
-  function openMenu() {
+  var openMenu = function () {
     drawer.hidden = false;
     overlay.hidden = false;
     requestAnimationFrame(function () {
@@ -1311,9 +545,9 @@
     });
     btn.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
-  }
+  };
 
-  function closeMenu() {
+  var closeMenu = function () {
     drawer.classList.add('translate-x-full');
     overlay.classList.add('opacity-0');
     btn.setAttribute('aria-expanded', 'false');
@@ -1322,22 +556,16 @@
       drawer.hidden = true;
       overlay.hidden = true;
     }, 300);
-  }
+  };
 
-  btn.addEventListener('click', function () {
-    if (drawer.hidden) openMenu(); else closeMenu();
-  });
+  btn.addEventListener('click', function () { if (drawer.hidden) openMenu(); else closeMenu(); });
   closeBtn.addEventListener('click', closeMenu);
   overlay.addEventListener('click', closeMenu);
-  document.querySelectorAll('[data-drawer-nav] a').forEach(function (a) {
-    a.addEventListener('click', closeMenu);
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && !drawer.hidden) closeMenu();
-  });
+  document.querySelectorAll('[data-drawer-nav] a').forEach(function (a) { a.addEventListener('click', closeMenu); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !drawer.hidden) closeMenu(); });
 
-  /* Reveal on scroll (equivalente a whileInView + stagger) */
-  var items = document.querySelectorAll('.rv:not(.in)');
+  /* Aparición al entrar en pantalla */
+  var items = document.querySelectorAll('.rv');
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
@@ -1345,23 +573,17 @@
         entry.target.classList.add('in');
         io.unobserve(entry.target);
       });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
-
-    items.forEach(function (el) {
-      var siblings = Array.prototype.slice.call(el.parentElement.children).filter(function (n) {
-        return n.classList && n.classList.contains('rv');
-      });
-      var i = siblings.indexOf(el);
-      el.style.transitionDelay = (i > 0 ? Math.min(i, 4) * 80 : 0) + 'ms';
+    }, { rootMargin: '0px 0px -6% 0px', threshold: 0.05 });
+    items.forEach(function (el, i) {
+      el.style.transitionDelay = (i % 4) * 60 + 'ms';
       io.observe(el);
     });
   } else {
     items.forEach(function (el) { el.classList.add('in'); });
   }
 
-  /* Año */
-  var y = document.querySelector('[data-year]');
-  if (y) y.textContent = new Date().getFullYear();
+  var year = document.querySelector('[data-year]');
+  if (year) year.textContent = new Date().getFullYear();
 })();
 </script>
 </body>
