@@ -161,6 +161,13 @@
     background-size: 24px 24px;
   }
 
+  /* Scrim del hero: se endurece cuando hay foto de fondo */
+  .scrim-photo { opacity: 0; transition: opacity .4s ease; }
+  .scrim-plain { opacity: 1; transition: opacity .4s ease; }
+  .has-photo .scrim-photo { opacity: 1; }
+  .has-photo .scrim-plain { opacity: 0; }
+  .has-photo .hero-fallback { opacity: 0; }
+
   /* Pared de azulejos del cartel de la sucursal */
   .tile-wall {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='72'%3E%3Cg stroke='rgba(255,255,255,0.07)' stroke-width='2' fill='none'%3E%3Cpath d='M0 1H80M0 37H80M1 0V36M41 36V72'/%3E%3C/g%3E%3C/svg%3E");
@@ -189,24 +196,42 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
     <div class="flex items-center justify-between h-16 sm:h-[72px]">
 
-      <!-- Logo: wordmark del cartel de la sucursal -->
-      <a href="#top" class="flex items-center gap-3 group">
-        <svg width="40" height="40" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg"
-             class="flex-shrink-0 transition-transform group-hover:scale-105 drop-shadow-lg" aria-label="El Jaial">
-          <rect width="160" height="160" rx="36" fill="#141418"/>
-          <g stroke="rgba(255,255,255,0.10)" stroke-width="3" fill="none">
-            <path d="M0 40h160M0 80h160M0 120h160M40 0v40M120 40v40M40 80v40M120 120v40"/>
+      <!-- Logo: reproduce el cartel de la sucursal -->
+      <a href="#top" class="flex items-center group" aria-label="El Jaial, inicio">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 flex-shrink-0 transition-transform group-hover:scale-105 drop-shadow-lg sm:hidden" aria-hidden="true">
+          <defs><clipPath id="mark-clip-m1"><rect width="64" height="64" rx="15"/></clipPath></defs>
+          <g clip-path="url(#mark-clip-m1)">
+            <rect width="64" height="64" fill="#0A0A0C"/>
+            <g stroke="rgba(255,255,255,0.13)" stroke-width="1.5" fill="none">
+              <path d="M0 16h64M0 32h64M0 48h64M16 0v16M48 0v16M0 16v16M32 16v16M64 16v16M16 32v16M48 32v16M0 48v16M32 48v16"/>
+            </g>
+            <text x="32" y="34" text-anchor="middle" dominant-baseline="central" fill="#FFFFFF"
+                  font-family="Inter, system-ui, sans-serif" font-weight="900" font-size="23" letter-spacing="0.5"
+                  transform="skewX(-7)" transform-origin="32 34">EJ</text>
           </g>
-          <rect x="2" y="2" width="156" height="156" rx="35" fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="3"/>
-          <text x="80" y="82" text-anchor="middle" dominant-baseline="central" fill="#FFFFFF"
-                font-family="Inter, system-ui, sans-serif" font-weight="900" font-size="60" letter-spacing="-3">EJ</text>
+          <rect x="0.75" y="0.75" width="62.5" height="62.5" rx="14.5" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
         </svg>
-        <div class="hidden sm:block">
-          <p class="font-black text-white text-[16px] leading-none tracking-[0.09em]">EL JAIAL</p>
-          <p class="mt-1 flex items-center gap-1.5 text-[9px] font-bold tracking-[0.2em] uppercase text-white/50">
-            <span style="color:#FF6B35">&#9733;</span> Kosher Market <span style="color:#FF6B35">&#9733;</span>
-          </p>
-        </div>
+        <svg viewBox="0 0 208 64" xmlns="http://www.w3.org/2000/svg" class="hidden h-[46px] w-auto transition-transform group-hover:scale-[1.03] drop-shadow-lg sm:block" role="img" aria-label="El Jaial · Kosher Market">
+          <defs>
+            <clipPath id="sign-clip-h"><rect width="208" height="64" rx="9"/></clipPath>
+          </defs>
+          <g clip-path="url(#sign-clip-h)">
+            <rect width="208" height="64" fill="#0A0A0C"/>
+            <g stroke="rgba(255,255,255,0.13)" stroke-width="1.5" fill="none">
+              <path d="M0 16h208M0 32h208M0 48h208M26 0v16M78 0v16M130 0v16M182 0v16M0 16v16M52 16v16M104 16v16M156 16v16M208 16v16M26 32v16M78 32v16M130 32v16M182 32v16M0 48v16M52 48v16M104 48v16M156 48v16"/>
+            </g>
+            <g transform="rotate(-2.2 104 28)">
+              <text x="104" y="30" text-anchor="middle" fill="#FFFFFF"
+                    font-family="Inter, system-ui, sans-serif" font-weight="900" font-size="30" letter-spacing="2.5"
+                    transform="skewX(-7)" transform-origin="104 30">EL JAIAL</text>
+            </g>
+            <g transform="rotate(-2.2 104 48)">
+              <text x="104" y="50" text-anchor="middle" fill="#FFFFFF"
+                    font-family="Inter, system-ui, sans-serif" font-weight="800" font-size="10.5" letter-spacing="1.6"
+                    transform="skewX(-7)" transform-origin="104 50"><tspan fill="#E5352B">&#9733;</tspan> KOSHER MARKET <tspan fill="#E5352B">&#9733;</tspan></text>
+            </g>
+          </g>
+        </svg>
       </a>
 
       <!-- Nav desktop -->
@@ -244,13 +269,27 @@
        style="background:#111115; border-left:1px solid rgba(255,255,255,0.06)">
   <div class="flex items-center justify-between p-5" style="border-bottom:1px solid rgba(255,255,255,0.06)">
     <div class="flex items-center gap-2.5">
-      <svg width="32" height="32" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0" aria-hidden="true">
-        <rect width="160" height="160" rx="36" fill="#141418"/>
-        <g stroke="rgba(255,255,255,0.10)" stroke-width="3" fill="none"><path d="M0 40h160M0 80h160M0 120h160M40 0v40M120 40v40M40 80v40M120 120v40"/></g>
-        <rect x="2" y="2" width="156" height="156" rx="35" fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="3"/>
-        <text x="80" y="82" text-anchor="middle" dominant-baseline="central" fill="#FFFFFF" font-family="Inter, system-ui, sans-serif" font-weight="900" font-size="60" letter-spacing="-3">EJ</text>
-      </svg>
-      <span class="font-black text-white text-sm tracking-[0.08em]">EL JAIAL</span>
+        <svg viewBox="0 0 208 64" xmlns="http://www.w3.org/2000/svg" class="h-9 w-auto" role="img" aria-label="El Jaial · Kosher Market">
+          <defs>
+            <clipPath id="sign-clip-d"><rect width="208" height="64" rx="9"/></clipPath>
+          </defs>
+          <g clip-path="url(#sign-clip-d)">
+            <rect width="208" height="64" fill="#0A0A0C"/>
+            <g stroke="rgba(255,255,255,0.13)" stroke-width="1.5" fill="none">
+              <path d="M0 16h208M0 32h208M0 48h208M26 0v16M78 0v16M130 0v16M182 0v16M0 16v16M52 16v16M104 16v16M156 16v16M208 16v16M26 32v16M78 32v16M130 32v16M182 32v16M0 48v16M52 48v16M104 48v16M156 48v16"/>
+            </g>
+            <g transform="rotate(-2.2 104 28)">
+              <text x="104" y="30" text-anchor="middle" fill="#FFFFFF"
+                    font-family="Inter, system-ui, sans-serif" font-weight="900" font-size="30" letter-spacing="2.5"
+                    transform="skewX(-7)" transform-origin="104 30">EL JAIAL</text>
+            </g>
+            <g transform="rotate(-2.2 104 48)">
+              <text x="104" y="50" text-anchor="middle" fill="#FFFFFF"
+                    font-family="Inter, system-ui, sans-serif" font-weight="800" font-size="10.5" letter-spacing="1.6"
+                    transform="skewX(-7)" transform-origin="104 50"><tspan fill="#E5352B">&#9733;</tspan> KOSHER MARKET <tspan fill="#E5352B">&#9733;</tspan></text>
+            </g>
+          </g>
+        </svg>
     </div>
     <button type="button" data-menu-close aria-label="Cerrar menú" class="p-2 rounded-lg text-white/50 hover:text-white hover:bg-white/[0.07] transition-all">
       <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
@@ -278,20 +317,32 @@
 <main id="top">
 
 <!-- ════════════════════════════ HERO ════════════════════════════ -->
-<section class="relative min-h-[100svh] flex items-center overflow-hidden">
+<section data-hero class="relative min-h-[100svh] flex items-center overflow-hidden">
 
-  <!-- Fondo. Para usar una foto: poné <img src="..." class="w-full h-full object-cover"> como primer hijo de este div. -->
+  <!--
+    FONDO DEL HERO
+    Poné la foto en  assets/hero.jpg  y aparece sola (ver assets/README.md).
+    Si el archivo no está, la imagen se oculta y queda el degradado de marca.
+  -->
   <div class="absolute inset-0">
-    <div class="w-full h-full" style="background:
+    <img data-hero-img src="assets/hero.jpg" alt=""
+         class="absolute inset-0 w-full h-full object-cover object-center" />
+
+    <div class="hero-fallback absolute inset-0 transition-opacity duration-500" style="background:
       radial-gradient(1100px 620px at 78% 18%, rgba(255,107,53,0.32) 0%, transparent 62%),
       radial-gradient(760px 520px at 12% 82%, rgba(255,184,0,0.14) 0%, transparent 66%),
       linear-gradient(160deg, #16161B 0%, #0D0D11 48%, #09090B 100%)"></div>
-    <div class="absolute inset-0" style="background:linear-gradient(105deg, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0.12) 100%)"></div>
-    <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(9,9,11,0.9) 0%, transparent 55%)"></div>
-    <div class="absolute bottom-0 left-0 w-[700px] h-[500px] pointer-events-none" style="background:radial-gradient(ellipse at bottom left, rgba(255,107,53,0.1) 0%, transparent 70%)"></div>
+
+    <!-- scrim con foto: oscurece lo suficiente para que el texto siga legible -->
+    <div class="scrim-photo absolute inset-0" style="background:linear-gradient(105deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.72) 42%, rgba(0,0,0,0.28) 100%)"></div>
+    <!-- scrim sin foto -->
+    <div class="scrim-plain absolute inset-0" style="background:linear-gradient(105deg, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0.12) 100%)"></div>
+
+    <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(9,9,11,0.92) 0%, transparent 55%)"></div>
+    <div class="absolute bottom-0 left-0 w-[700px] h-[500px] pointer-events-none" style="background:radial-gradient(ellipse at bottom left, rgba(255,107,53,0.12) 0%, transparent 70%)"></div>
   </div>
 
-  <div class="absolute inset-0 tile-wall opacity-[0.55]"></div>
+  <div data-hero-tiles class="absolute inset-0 tile-wall opacity-[0.55] transition-opacity duration-500"></div>
   <div class="absolute inset-0 dot-grid opacity-[0.10]"></div>
 
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-28 sm:py-40 w-full">
@@ -1044,19 +1095,28 @@
 
       <!-- Marca -->
       <div class="lg:col-span-1">
-        <div class="flex items-center gap-3 mb-5">
-          <svg width="40" height="40" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0" aria-hidden="true">
-            <rect width="160" height="160" rx="36" fill="#141418"/>
-            <g stroke="rgba(255,255,255,0.10)" stroke-width="3" fill="none"><path d="M0 40h160M0 80h160M0 120h160M40 0v40M120 40v40M40 80v40M120 120v40"/></g>
-            <rect x="2" y="2" width="156" height="156" rx="35" fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="3"/>
-            <text x="80" y="82" text-anchor="middle" dominant-baseline="central" fill="#FFFFFF" font-family="Inter, system-ui, sans-serif" font-weight="900" font-size="60" letter-spacing="-3">EJ</text>
-          </svg>
-          <div>
-            <p class="font-black text-base leading-none tracking-[0.09em]" style="color:var(--text-1)">EL JAIAL</p>
-            <p class="mt-1 flex items-center gap-1.5 text-[9px] font-bold tracking-[0.2em] uppercase" style="color:var(--text-2)">
-              <span style="color:#FF6B35">&#9733;</span> Kosher Market <span style="color:#FF6B35">&#9733;</span>
-            </p>
-          </div>
+        <div class="mb-5">
+        <svg viewBox="0 0 208 64" xmlns="http://www.w3.org/2000/svg" class="h-[52px] w-auto" role="img" aria-label="El Jaial · Kosher Market">
+          <defs>
+            <clipPath id="sign-clip-f"><rect width="208" height="64" rx="9"/></clipPath>
+          </defs>
+          <g clip-path="url(#sign-clip-f)">
+            <rect width="208" height="64" fill="#0A0A0C"/>
+            <g stroke="rgba(255,255,255,0.13)" stroke-width="1.5" fill="none">
+              <path d="M0 16h208M0 32h208M0 48h208M26 0v16M78 0v16M130 0v16M182 0v16M0 16v16M52 16v16M104 16v16M156 16v16M208 16v16M26 32v16M78 32v16M130 32v16M182 32v16M0 48v16M52 48v16M104 48v16M156 48v16"/>
+            </g>
+            <g transform="rotate(-2.2 104 28)">
+              <text x="104" y="30" text-anchor="middle" fill="#FFFFFF"
+                    font-family="Inter, system-ui, sans-serif" font-weight="900" font-size="30" letter-spacing="2.5"
+                    transform="skewX(-7)" transform-origin="104 30">EL JAIAL</text>
+            </g>
+            <g transform="rotate(-2.2 104 48)">
+              <text x="104" y="50" text-anchor="middle" fill="#FFFFFF"
+                    font-family="Inter, system-ui, sans-serif" font-weight="800" font-size="10.5" letter-spacing="1.6"
+                    transform="skewX(-7)" transform-origin="104 50"><tspan fill="#E5352B">&#9733;</tspan> KOSHER MARKET <tspan fill="#E5352B">&#9733;</tspan></text>
+            </g>
+          </g>
+        </svg>
         </div>
         <p class="text-sm leading-relaxed mb-6" style="color:var(--text-2)">
           Mercado y supermercado kosher en Buenos Aires. Productos frescos del día e
@@ -1167,6 +1227,24 @@
 <script>
 (function () {
   'use strict';
+
+  /* Foto del hero: si assets/hero.jpg existe, endurecemos el scrim; si no, degradado */
+  var heroSection = document.querySelector('[data-hero]');
+  var heroImg = document.querySelector('[data-hero-img]');
+  var heroTiles = document.querySelector('[data-hero-tiles]');
+  if (heroImg) {
+    var applyPhoto = function () {
+      heroSection.classList.add('has-photo');
+      if (heroTiles) heroTiles.classList.replace('opacity-[0.55]', 'opacity-[0.22]');
+    };
+    var dropPhoto = function () { heroImg.style.display = 'none'; };
+    if (heroImg.complete) {
+      if (heroImg.naturalWidth > 0) applyPhoto(); else dropPhoto();
+    } else {
+      heroImg.addEventListener('load', applyPhoto);
+      heroImg.addEventListener('error', dropPhoto);
+    }
+  }
 
   /* Header: transparente → glass-dark al hacer scroll (scrollY > 30) */
   var header = document.querySelector('[data-header]');
