@@ -161,20 +161,15 @@
     background-size: 24px 24px;
   }
 
-  /* La foto del hero es de baja resolución (389x261): un desenfoque mínimo
-     en pantallas grandes disimula el escalado. En mobile se ve casi 1:1,
-     así que ahí va nítida. El scale evita bordes translúcidos por el blur. */
-  [data-hero-img] { transform: scale(1.04); }
-  @media (min-width: 768px) {
-    [data-hero-img] { filter: blur(2px); transform: scale(1.06); }
-  }
-
   /* Scrim del hero: se endurece cuando hay foto de fondo */
   .scrim-photo { opacity: 0; transition: opacity .4s ease; }
   .scrim-plain { opacity: 1; transition: opacity .4s ease; }
   .has-photo .scrim-photo { opacity: 1; }
   .has-photo .scrim-plain { opacity: 0; }
   .has-photo .hero-fallback { opacity: 0; }
+  /* con foto no van las tramas encima: ensucian la imagen */
+  .has-photo [data-hero-tiles],
+  .has-photo [data-hero-dots] { opacity: 0; }
 
   /* Pared de azulejos del cartel de la sucursal */
   .tile-wall {
@@ -351,7 +346,7 @@
   </div>
 
   <div data-hero-tiles class="absolute inset-0 tile-wall opacity-[0.55] transition-opacity duration-500"></div>
-  <div class="absolute inset-0 dot-grid opacity-[0.10]"></div>
+  <div data-hero-dots class="absolute inset-0 dot-grid opacity-[0.10] transition-opacity duration-500"></div>
 
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-28 sm:py-40 w-full">
     <div class="max-w-[760px]">
@@ -1239,12 +1234,8 @@
   /* Foto del hero: si assets/hero.jpg existe, endurecemos el scrim; si no, degradado */
   var heroSection = document.querySelector('[data-hero]');
   var heroImg = document.querySelector('[data-hero-img]');
-  var heroTiles = document.querySelector('[data-hero-tiles]');
   if (heroImg) {
-    var applyPhoto = function () {
-      heroSection.classList.add('has-photo');
-      if (heroTiles) heroTiles.classList.replace('opacity-[0.55]', 'opacity-[0.22]');
-    };
+    var applyPhoto = function () { heroSection.classList.add('has-photo'); };
     var dropPhoto = function () { heroImg.style.display = 'none'; };
     if (heroImg.complete) {
       if (heroImg.naturalWidth > 0) applyPhoto(); else dropPhoto();
