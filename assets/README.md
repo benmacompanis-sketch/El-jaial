@@ -1,17 +1,29 @@
 # Imágenes
 
-## `hero.jpg` — foto de fondo de la pantalla principal
+## `hero.png` — foto de fondo de la pantalla principal
 
-Guardá acá la foto de la mesa familiar con la januquiá, con ese nombre exacto:
+Es la foto de la mesa familiar con la januquiá. La página la toma sola desde
+`index.html`; si el archivo falta, el hero cae al degradado de marca y no se
+rompe nada.
 
-    assets/hero.jpg
+### Sobre la resolución
 
-La página la toma sola. Recomendado:
+El archivo actual mide **389 × 261 px**. En celulares se ve bien (el ancho de
+pantalla es parecido), pero en una notebook o monitor la imagen se estira
+unas 3,7 veces y pierde nitidez. Para compensarlo, `index.html` le aplica un
+desenfoque de 2 px de 768 px de ancho en adelante.
 
-- **Formato:** JPG (o WebP, renombrando el `src` en `index.html`)
-- **Tamaño:** ~1800 px de ancho, calidad 80–85 (que pese menos de ~400 KB)
-- **Encuadre:** apaisado; el texto del hero cae sobre la mitad izquierda,
-  así que conviene que el motivo principal quede hacia la derecha
+**Si conseguís el original en alta**, reemplazá este archivo y queda nítido:
 
-Si el archivo no está, el hero muestra el degradado de marca y la foto
-simplemente no aparece — la página no se rompe.
+- **Ancho:** ~1800 px (mínimo 1400)
+- **Formato:** JPG con calidad 80–85, o WebP — ambos pesan bastante menos que
+  un PNG para una foto
+- **Peso ideal:** por debajo de ~400 KB
+
+Si cambiás la extensión, hay que actualizar el `src` de `[data-hero-img]` en
+`index.html` y se puede sacar el bloque de desenfoque del `<style>`.
+
+### Encuadre
+
+El texto del hero cae sobre la mitad izquierda, así que conviene que el motivo
+principal de la foto quede hacia la derecha (que es como está ahora).

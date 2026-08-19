@@ -161,6 +161,14 @@
     background-size: 24px 24px;
   }
 
+  /* La foto del hero es de baja resolución (389x261): un desenfoque mínimo
+     en pantallas grandes disimula el escalado. En mobile se ve casi 1:1,
+     así que ahí va nítida. El scale evita bordes translúcidos por el blur. */
+  [data-hero-img] { transform: scale(1.04); }
+  @media (min-width: 768px) {
+    [data-hero-img] { filter: blur(2px); transform: scale(1.06); }
+  }
+
   /* Scrim del hero: se endurece cuando hay foto de fondo */
   .scrim-photo { opacity: 0; transition: opacity .4s ease; }
   .scrim-plain { opacity: 1; transition: opacity .4s ease; }
@@ -321,11 +329,11 @@
 
   <!--
     FONDO DEL HERO
-    Poné la foto en  assets/hero.jpg  y aparece sola (ver assets/README.md).
+    Foto en  assets/hero.png  (ver assets/README.md).
     Si el archivo no está, la imagen se oculta y queda el degradado de marca.
   -->
   <div class="absolute inset-0">
-    <img data-hero-img src="assets/hero.jpg" alt=""
+    <img data-hero-img src="assets/hero.png" alt=""
          class="absolute inset-0 w-full h-full object-cover object-center" />
 
     <div class="hero-fallback absolute inset-0 transition-opacity duration-500" style="background:
