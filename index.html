@@ -2,720 +2,966 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>El Jaial · Kosher Market — Supermercado kosher en Buenos Aires</title>
-<meta name="description" content="El Jaial es el mercado kosher de Buenos Aires: panadería, lácteos, fiambrería, carnicería, congelados y almacén importado. Sucursales en Palermo y Belgrano." />
-<meta name="theme-color" content="#0B2E4F" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>El Jaial — Kosher Market</title>
+<meta name="description" content="Mercado y supermercado kosher en Buenos Aires. Panadería, lácteos, fiambrería, carnicería, congelados e importados. Sucursales en Palermo y Belgrano." />
+<meta property="og:title" content="El Jaial" />
+<meta property="og:description" content="Mercado y supermercado kosher en Buenos Aires. Productos frescos del día e importados seleccionados." />
+<meta property="og:type" content="grocery_or_supermarket" />
+<meta name="theme-color" content="#09090B" />
 
-<!-- Tailwind CSS (CDN) -->
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
     theme: {
       extend: {
         colors: {
-          navy:  { 50:'#f2f6fb', 100:'#e2ebf5', 200:'#c2d6ea', 300:'#93b5d8', 400:'#5b8dc0', 500:'#376da6', 600:'#27568a', 700:'#1D466F', 800:'#12365a', 900:'#0B2E4F', 950:'#061C31' },
-          leaf:  { 50:'#f1f8f4', 100:'#dcefe3', 200:'#badfc9', 300:'#8cc7a6', 400:'#57a87e', 500:'#358B62', 600:'#26704E', 700:'#1f5940', 800:'#1b4735', 900:'#173b2d' },
-          cream: { 50:'#FDFCF9', 100:'#FAF7F1', 200:'#F4EFE4', 300:'#EBE3D2', 400:'#DED2B8' },
-          gold:  { 400:'#D9A441', 500:'#C58F2E' }
+          brand:   { DEFAULT: '#FF6B35', dark: '#E55520', light: '#FF8A5C' },
+          gold:    '#FFB800',
+          surface: { 0: '#09090B', 1: '#111115', 2: '#18181D', 3: '#222229' },
+          ink:     { 1: '#F4F4F6', 2: '#8B8B99', 3: '#55555F' },
         },
         fontFamily: {
-          display: ['"Fraunces"','ui-serif','Georgia','serif'],
-          sans: ['"Plus Jakarta Sans"','ui-sans-serif','system-ui','-apple-system','Segoe UI','Roboto','sans-serif']
+          sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
         },
         boxShadow: {
-          card: '0 1px 2px rgba(11,46,79,.04), 0 12px 32px -12px rgba(11,46,79,.14)',
-          hover: '0 2px 4px rgba(11,46,79,.06), 0 28px 56px -20px rgba(11,46,79,.28)',
-          ring: '0 0 0 1px rgba(11,46,79,.06)'
+          brand: '0 8px 32px rgba(255,107,53,0.4)',
+          card:  '0 1px 3px rgba(0,0,0,0.5), 0 4px 16px rgba(0,0,0,0.4)',
+          hover: '0 8px 40px rgba(0,0,0,0.7), 0 2px 8px rgba(0,0,0,0.5)',
+          lg2:   '0 24px 64px rgba(0,0,0,0.8)',
         },
         keyframes: {
-          floaty: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } },
-          marquee: { from: { transform: 'translateX(0)' }, to: { transform: 'translateX(-50%)' } }
+          floaty: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(7px)' } },
         },
-        animation: {
-          floaty: 'floaty 7s ease-in-out infinite',
-          marquee: 'marquee 32s linear infinite'
-        }
-      }
-    }
+        animation: { floaty: 'floaty 2s ease-in-out infinite' },
+      },
+    },
   }
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-  html { scroll-behavior: smooth; }
-  body { -webkit-font-smoothing: antialiased; }
-  ::selection { background: #0B2E4F; color: #fff; }
-
-  /* Textura sutil de fondo tipo papel */
-  .paper {
-    background-image:
-      radial-gradient(circle at 1px 1px, rgba(11,46,79,.055) 1px, transparent 0);
-    background-size: 22px 22px;
+  :root {
+    --brand: #FF6B35;
+    --brand-dark: #E55520;
+    --brand-light: #FF8A5C;
+    --gold: #FFB800;
+    --surface-0: #09090B;
+    --surface-1: #111115;
+    --surface-2: #18181D;
+    --surface-3: #222229;
+    --border: rgba(255,255,255,0.06);
+    --border-strong: rgba(255,255,255,0.11);
+    --text-1: #F4F4F6;
+    --text-2: #8B8B99;
+    --text-3: #55555F;
+    --shadow-brand: 0 8px 32px rgba(255,107,53,0.4);
+    --shadow-card: 0 1px 3px rgba(0,0,0,0.5), 0 4px 16px rgba(0,0,0,0.4);
+    --shadow-hover: 0 8px 40px rgba(0,0,0,0.7), 0 2px 8px rgba(0,0,0,0.5);
+    --shadow-lg: 0 24px 64px rgba(0,0,0,0.8);
   }
 
-  /* Reveal on scroll */
-  .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
-  .reveal.is-visible { opacity: 1; transform: none; }
+  *, *::before, *::after { box-sizing: border-box; }
 
-  /* Carrusel */
-  .snap-x-mandatory { scroll-snap-type: x mandatory; }
-  .snap-center-item { scroll-snap-align: center; }
-  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-  .no-scrollbar::-webkit-scrollbar { display: none; }
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: var(--surface-0);
+    color: var(--text-1);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  }
+
+  ::selection { background: rgba(255,107,53,0.28); color: #fff; }
+
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: var(--surface-1); }
+  ::-webkit-scrollbar-thumb { background: var(--surface-3); border-radius: 99px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--text-3); }
+
+  .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .hide-scrollbar::-webkit-scrollbar { display: none; }
+
+  .gradient-brand { background: linear-gradient(135deg, var(--brand) 0%, var(--gold) 100%); }
+
+  .text-gradient {
+    background: linear-gradient(135deg, #FF6B35 0%, #FFB800 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-white {
+    background: linear-gradient(180deg, #FFFFFF 0%, rgba(255,255,255,0.65) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass {
+    background: rgba(255,255,255,0.04);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--border);
+  }
+
+  .glass-dark {
+    background: rgba(9,9,11,0.82);
+    backdrop-filter: blur(24px) saturate(160%);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .card {
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-card);
+  }
+
+  .card-hover {
+    transition: transform 250ms cubic-bezier(0.4,0,0.2,1),
+                box-shadow 250ms cubic-bezier(0.4,0,0.2,1),
+                border-color 250ms cubic-bezier(0.4,0,0.2,1);
+  }
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--border-strong);
+  }
+
+  .btn-brand {
+    background: var(--brand);
+    color: #fff;
+    font-weight: 700;
+    box-shadow: var(--shadow-brand);
+    transition: all 200ms cubic-bezier(0.4,0,0.2,1);
+  }
+  .btn-brand:hover {
+    background: var(--brand-dark);
+    box-shadow: 0 12px 40px rgba(255,107,53,0.5);
+    transform: translateY(-1px);
+  }
+  .btn-brand:active { transform: scale(0.97); }
+
+  .section-pad { padding-top: 6rem; padding-bottom: 6rem; }
+  @media (max-width: 640px) { .section-pad { padding-top: 4rem; padding-bottom: 4rem; } }
+
+  .glow { box-shadow: 0 0 60px rgba(255,107,53,0.2), 0 8px 32px rgba(255,107,53,0.35); }
+
+  .dot-grid {
+    background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* Equivalente en CSS a los whileInView de framer-motion */
+  .rv { opacity: 0; transform: translateY(18px); transition: opacity .55s cubic-bezier(.4,0,.2,1), transform .55s cubic-bezier(.4,0,.2,1); }
+  .rv-x-l { transform: translateX(-24px); }
+  .rv-x-r { transform: translateX(24px); }
+  .rv.in { opacity: 1; transform: none; }
 
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    .reveal { opacity: 1 !important; transform: none !important; transition: none; }
-    .animate-floaty, .animate-marquee { animation: none !important; }
+    .rv { opacity: 1 !important; transform: none !important; transition: none; }
+    .animate-floaty, .animate-pulse { animation: none !important; }
   }
 </style>
-<noscript>
-  <style>.reveal { opacity: 1 !important; transform: none !important; }</style>
-</noscript>
+<noscript><style>.rv { opacity: 1 !important; transform: none !important; }</style></noscript>
 </head>
 
-<body class="bg-cream-50 font-sans text-navy-900 antialiased">
+<body class="font-sans">
 
-<!-- ══════════════════════════════ NAV ══════════════════════════════ -->
-<header id="top" class="fixed inset-x-0 top-0 z-50 transition-all duration-300" data-nav>
-  <div class="mx-auto max-w-7xl px-5 sm:px-8">
-    <nav class="mt-3 flex items-center justify-between rounded-2xl border border-navy-900/5 bg-white/80 px-4 py-3 shadow-card backdrop-blur-xl transition-all duration-300 sm:px-6">
+<!-- ════════════════════════════ HEADER ════════════════════════════ -->
+<header data-header class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-transparent">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="flex items-center justify-between h-16 sm:h-[72px]">
 
       <!-- Logo -->
-      <a href="#top" class="group flex items-center gap-3">
-        <span class="grid h-10 w-10 place-items-center rounded-xl bg-navy-900 text-cream-100 shadow-sm transition-transform duration-300 group-hover:-rotate-6">
-          <svg viewBox="0 0 24 24" fill="none" class="h-5 w-5" aria-hidden="true">
-            <path d="M4 9h16l-1.2 9.2A2 2 0 0 1 16.8 20H7.2a2 2 0 0 1-2-1.8L4 9Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-            <path d="M9 9V7a3 3 0 1 1 6 0v2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-          </svg>
-        </span>
-        <span class="leading-tight">
-          <span class="block font-display text-xl font-bold tracking-tight text-navy-900">El Jaial</span>
-          <span class="block text-[10px] font-semibold uppercase tracking-[0.22em] text-leaf-600">Kosher Market</span>
-        </span>
+      <a href="#top" class="flex items-center gap-3 group">
+        <svg width="40" height="40" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg"
+             class="transition-transform group-hover:scale-105 drop-shadow-lg" aria-label="El Jaial logo">
+          <defs>
+            <linearGradient id="ej-bg" x1="0" y1="0" x2="160" y2="160" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#FF7B40"/><stop offset="100%" stop-color="#D94000"/>
+            </linearGradient>
+            <linearGradient id="ej-fo" x1="80" y1="26" x2="80" y2="136" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#FFE066"/><stop offset="45%" stop-color="#FFB800"/><stop offset="100%" stop-color="#FF6B35"/>
+            </linearGradient>
+            <linearGradient id="ej-fi" x1="80" y1="60" x2="80" y2="126" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="rgba(255,255,255,0.95)"/><stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+            </linearGradient>
+            <filter id="ej-glow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/>
+              <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+            </filter>
+          </defs>
+          <rect width="160" height="160" rx="36" fill="url(#ej-bg)"/>
+          <rect x="1" y="1" width="158" height="158" rx="35" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="2"/>
+          <!-- bolsa de mercado -->
+          <path d="M44 60h72l-7 66a8 8 0 0 1-8 7H59a8 8 0 0 1-8-7L44 60Z" fill="url(#ej-fo)" filter="url(#ej-glow)"/>
+          <path d="M63 60V47a17 17 0 0 1 34 0v13" stroke="#FFF3D6" stroke-width="9" stroke-linecap="round" fill="none" opacity="0.92"/>
+          <path d="M62 78h36c-2 26-8 42-18 48-10-6-16-22-18-48Z" fill="url(#ej-fi)" opacity="0.65"/>
+          <circle cx="80" cy="28" r="3" fill="#FFE066" opacity="0.8"/>
+        </svg>
+        <div class="hidden sm:block">
+          <p class="font-black text-white text-[15px] leading-none tracking-tight">El Jaial</p>
+          <p class="text-[11px] font-bold tracking-[0.12em] uppercase mt-0.5" style="color:#FF6B35">Kosher Market</p>
+        </div>
       </a>
 
-      <!-- Links desktop -->
-      <ul class="hidden items-center gap-1 lg:flex">
-        <li><a class="rounded-lg px-4 py-2 text-sm font-medium text-navy-800/80 transition-colors duration-200 hover:bg-navy-50 hover:text-navy-900" href="#pasillos">Nuestros pasillos</a></li>
-        <li><a class="rounded-lg px-4 py-2 text-sm font-medium text-navy-800/80 transition-colors duration-200 hover:bg-navy-50 hover:text-navy-900" href="#sucursales">Sucursales</a></li>
-        <li><a class="rounded-lg px-4 py-2 text-sm font-medium text-navy-800/80 transition-colors duration-200 hover:bg-navy-50 hover:text-navy-900" href="#resenas">Reseñas</a></li>
-        <li><a class="rounded-lg px-4 py-2 text-sm font-medium text-navy-800/80 transition-colors duration-200 hover:bg-navy-50 hover:text-navy-900" href="#contacto">Contacto</a></li>
-      </ul>
+      <!-- Nav desktop -->
+      <nav class="hidden md:flex items-center gap-0.5">
+        <a href="#top" class="px-4 py-2 text-sm font-medium text-white/60 hover:text-white rounded-xl hover:bg-white/[0.07] transition-all duration-200">Inicio</a>
+        <a href="#pasillos" class="px-4 py-2 text-sm font-medium text-white/60 hover:text-white rounded-xl hover:bg-white/[0.07] transition-all duration-200">Pasillos</a>
+        <a href="#sucursales" class="px-4 py-2 text-sm font-medium text-white/60 hover:text-white rounded-xl hover:bg-white/[0.07] transition-all duration-200">Sucursales</a>
+        <a href="#resenas" class="px-4 py-2 text-sm font-medium text-white/60 hover:text-white rounded-xl hover:bg-white/[0.07] transition-all duration-200">Reseñas</a>
+        <a href="#info" class="px-4 py-2 text-sm font-medium text-white/60 hover:text-white rounded-xl hover:bg-white/[0.07] transition-all duration-200">Contacto</a>
+      </nav>
 
-      <div class="flex items-center gap-2">
-        <a href="tel:+541148078617" class="hidden items-center gap-2 rounded-xl bg-navy-900 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-navy-800 hover:shadow-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-400 focus-visible:ring-offset-2 sm:inline-flex">
-          <svg viewBox="0 0 24 24" fill="none" class="h-4 w-4" aria-hidden="true"><path d="M4.5 5.5c0 8 6 14 14 14l1.6-3.3-4-1.9-1.7 2a12 12 0 0 1-6.7-6.7l2-1.7-1.9-4L4.5 5.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-          Llamar
+      <!-- Acciones -->
+      <div class="flex items-center gap-1.5">
+        <a href="tel:+541145326985"
+           class="relative flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-sm text-white transition-all active:scale-95 hover:brightness-110"
+           style="background:#FF6B35; box-shadow:0 4px 20px rgba(255,107,53,0.4)">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 5.5c0 8 6 14 14 14l1.6-3.3-4-1.9-1.7 2a12 12 0 0 1-6.7-6.7l2-1.7-1.9-4L4.5 5.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+          <span class="hidden sm:inline text-sm">Llamar</span>
         </a>
 
-        <!-- Botón menú mobile -->
-        <button type="button" data-menu-btn aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menú"
-          class="grid h-10 w-10 place-items-center rounded-xl border border-navy-900/10 text-navy-900 transition-colors duration-200 hover:bg-navy-50 lg:hidden">
-          <svg viewBox="0 0 24 24" fill="none" class="h-5 w-5" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        <button type="button" data-menu-btn aria-expanded="false" aria-label="Abrir menú"
+                class="md:hidden p-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/[0.07] transition-all">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
         </button>
       </div>
-    </nav>
-
-    <!-- Menú mobile -->
-    <div id="mobile-menu" data-menu hidden
-      class="mt-2 overflow-hidden rounded-2xl border border-navy-900/5 bg-white/95 p-2 shadow-card backdrop-blur-xl lg:hidden">
-      <a class="block rounded-xl px-4 py-3 text-sm font-medium text-navy-800 transition-colors hover:bg-cream-100" href="#pasillos">Nuestros pasillos</a>
-      <a class="block rounded-xl px-4 py-3 text-sm font-medium text-navy-800 transition-colors hover:bg-cream-100" href="#sucursales">Sucursales</a>
-      <a class="block rounded-xl px-4 py-3 text-sm font-medium text-navy-800 transition-colors hover:bg-cream-100" href="#resenas">Reseñas</a>
-      <a class="block rounded-xl px-4 py-3 text-sm font-medium text-navy-800 transition-colors hover:bg-cream-100" href="#contacto">Contacto</a>
-      <a class="mt-1 block rounded-xl bg-navy-900 px-4 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-navy-800" href="tel:+541148078617">Llamar ahora</a>
     </div>
   </div>
 </header>
 
-<main>
-
-<!-- ══════════════════════════════ HERO ══════════════════════════════ -->
-<section class="relative overflow-hidden bg-cream-100 pt-32 pb-20 sm:pt-40 sm:pb-28">
-  <!-- fondo decorativo -->
-  <div class="pointer-events-none absolute inset-0 paper opacity-70" aria-hidden="true"></div>
-  <div class="pointer-events-none absolute -top-40 -right-28 h-[34rem] w-[34rem] rounded-full bg-leaf-200/40 blur-3xl" aria-hidden="true"></div>
-  <div class="pointer-events-none absolute -bottom-52 -left-32 h-[30rem] w-[30rem] rounded-full bg-navy-200/40 blur-3xl" aria-hidden="true"></div>
-
-  <div class="relative mx-auto grid max-w-7xl items-center gap-14 px-5 sm:px-8 lg:grid-cols-12 lg:gap-10">
-
-    <!-- Texto -->
-    <div class="reveal lg:col-span-6">
-      <span class="inline-flex items-center gap-2 rounded-full border border-leaf-300/60 bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-leaf-700 shadow-ring">
-        <span class="relative flex h-2 w-2">
-          <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-leaf-400 opacity-70"></span>
-          <span class="relative inline-flex h-2 w-2 rounded-full bg-leaf-500"></span>
-        </span>
-        Certificado Kosher · Buenos Aires
+<!-- Menú mobile (drawer derecho) -->
+<div data-overlay hidden class="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm md:hidden opacity-0 transition-opacity duration-300"></div>
+<aside data-drawer hidden
+       class="fixed top-0 right-0 bottom-0 z-50 w-72 flex flex-col md:hidden translate-x-full transition-transform duration-300"
+       style="background:#111115; border-left:1px solid rgba(255,255,255,0.06)">
+  <div class="flex items-center justify-between p-5" style="border-bottom:1px solid rgba(255,255,255,0.06)">
+    <div class="flex items-center gap-2.5">
+      <span class="w-8 h-8 rounded-xl grid place-items-center" style="background:linear-gradient(135deg,#FF7B40,#D94000)">
+        <svg viewBox="0 0 24 24" fill="none" class="w-4 h-4 text-white" aria-hidden="true"><path d="M4 9h16l-1.2 9.2A2 2 0 0 1 16.8 20H7.2a2 2 0 0 1-2-1.8L4 9Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 9V7a3 3 0 1 1 6 0v2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
       </span>
+      <span class="font-black text-white text-sm">El Jaial</span>
+    </div>
+    <button type="button" data-menu-close aria-label="Cerrar menú" class="p-2 rounded-lg text-white/50 hover:text-white hover:bg-white/[0.07] transition-all">
+      <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+  </div>
 
-      <h1 class="mt-7 font-display text-[2.7rem] font-bold leading-[1.05] tracking-tight text-navy-900 sm:text-6xl lg:text-[4.1rem]">
-        El mercado kosher<br class="hidden sm:block" />
-        <span class="relative inline-block">
-          <span class="relative z-10">de todos los días.</span>
-          <span class="absolute inset-x-0 bottom-1.5 z-0 h-3 rounded-full bg-gold-400/30 sm:h-4" aria-hidden="true"></span>
-        </span>
+  <nav class="p-4 flex-1 overflow-y-auto" data-drawer-nav>
+    <a href="#top"        class="flex items-center px-4 py-3.5 text-white/75 hover:text-white hover:bg-white/[0.06] rounded-xl font-semibold transition-all mb-1 text-sm">Inicio</a>
+    <a href="#pasillos"   class="flex items-center px-4 py-3.5 text-white/75 hover:text-white hover:bg-white/[0.06] rounded-xl font-semibold transition-all mb-1 text-sm">Pasillos</a>
+    <a href="#sucursales" class="flex items-center px-4 py-3.5 text-white/75 hover:text-white hover:bg-white/[0.06] rounded-xl font-semibold transition-all mb-1 text-sm">Sucursales</a>
+    <a href="#resenas"    class="flex items-center px-4 py-3.5 text-white/75 hover:text-white hover:bg-white/[0.06] rounded-xl font-semibold transition-all mb-1 text-sm">Reseñas</a>
+    <a href="#info"       class="flex items-center px-4 py-3.5 text-white/75 hover:text-white hover:bg-white/[0.06] rounded-xl font-semibold transition-all mb-1 text-sm">Contacto</a>
+  </nav>
+
+  <div class="p-4" style="border-top:1px solid rgba(255,255,255,0.06)">
+    <a href="https://wa.me/541145326985" target="_blank" rel="noopener noreferrer"
+       class="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl text-sm font-bold text-white transition-all" style="background:#16a34a">
+      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Contactar por WhatsApp
+    </a>
+  </div>
+</aside>
+
+<main id="top">
+
+<!-- ════════════════════════════ HERO ════════════════════════════ -->
+<section class="relative min-h-[100svh] flex items-center overflow-hidden">
+
+  <!-- Fondo. Para usar una foto: poné <img src="..." class="w-full h-full object-cover"> como primer hijo de este div. -->
+  <div class="absolute inset-0">
+    <div class="w-full h-full" style="background:
+      radial-gradient(1100px 620px at 78% 18%, rgba(255,107,53,0.32) 0%, transparent 62%),
+      radial-gradient(760px 520px at 12% 82%, rgba(255,184,0,0.14) 0%, transparent 66%),
+      linear-gradient(160deg, #16161B 0%, #0D0D11 48%, #09090B 100%)"></div>
+    <div class="absolute inset-0" style="background:linear-gradient(105deg, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0.12) 100%)"></div>
+    <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(9,9,11,0.9) 0%, transparent 55%)"></div>
+    <div class="absolute bottom-0 left-0 w-[700px] h-[500px] pointer-events-none" style="background:radial-gradient(ellipse at bottom left, rgba(255,107,53,0.1) 0%, transparent 70%)"></div>
+  </div>
+
+  <div class="absolute inset-0 dot-grid opacity-[0.15]"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-28 sm:py-40 w-full">
+    <div class="max-w-[760px]">
+
+      <!-- Badge de estado -->
+      <div class="rv in inline-flex items-center gap-2.5 mb-8 px-4 py-2.5 rounded-full text-xs font-semibold"
+           style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); backdrop-filter:blur(16px); color:rgba(255,255,255,0.8)">
+        <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
+        Certificado kosher
+        <span class="w-px h-3 bg-white/20"></span>
+        <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" style="color:#FF6B35" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
+        Palermo &amp; Belgrano, CABA
+      </div>
+
+      <!-- Titular -->
+      <h1 class="font-black leading-[1.04] tracking-[-0.02em] mb-6" style="font-size:clamp(2.6rem, 6vw, 4.4rem); color:#FFFFFF">
+        El mercado kosher<br />
+        <span class="text-gradient">de todos los días</span>
       </h1>
 
-      <p class="mt-7 max-w-xl text-lg leading-relaxed text-navy-800/70">
+      <p class="text-base sm:text-[17px] mb-10 leading-relaxed" style="color:rgba(255,255,255,0.55); max-width:480px">
         Góndolas surtidas, productos frescos del día e importados seleccionados.
-        Panadería, lácteos, fiambrería, carnicería y almacén — todo bajo estricta
-        supervisión kosher, en dos sucursales de la Ciudad de Buenos Aires.
+        Panadería, lácteos, fiambrería, carnicería y almacén — todo bajo estricta supervisión kosher.
       </p>
 
-      <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
-        <a href="#sucursales"
-           class="group inline-flex items-center justify-center gap-2 rounded-2xl bg-navy-900 px-7 py-4 text-sm font-semibold text-white shadow-card transition-all duration-300 hover:-translate-y-0.5 hover:bg-navy-800 hover:shadow-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-400 focus-visible:ring-offset-2">
-          Conocé nuestras sucursales
-          <svg viewBox="0 0 24 24" fill="none" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true"><path d="M5 12h14m0 0-5.5-5.5M19 12l-5.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row gap-3 mb-14">
         <a href="#pasillos"
-           class="inline-flex items-center justify-center gap-2 rounded-2xl border border-navy-900/15 bg-white px-7 py-4 text-sm font-semibold text-navy-900 shadow-ring transition-all duration-300 hover:-translate-y-0.5 hover:border-navy-900/25 hover:shadow-card focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-300 focus-visible:ring-offset-2">
-          Ver categorías
+           class="group inline-flex items-center justify-center gap-2.5 font-bold px-8 py-[14px] rounded-2xl text-white text-[15px] transition-all active:scale-[0.97] hover:brightness-110"
+           style="background:#FF6B35; box-shadow:0 8px 32px rgba(255,107,53,0.45)">
+          Ver nuestros pasillos
+          <svg class="w-[18px] h-[18px] group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m0 0-5.5-5.5M19 12l-5.5 5.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="https://wa.me/541145326985" target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center justify-center gap-2.5 font-semibold px-8 py-[14px] rounded-2xl text-white/85 text-[15px] transition-all hover:bg-white/[0.1] active:scale-[0.97]"
+           style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); backdrop-filter:blur(12px)">
+          <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Consultar por WhatsApp
         </a>
       </div>
 
-      <!-- Mini stats -->
-      <dl class="mt-12 grid max-w-lg grid-cols-3 gap-6 border-t border-navy-900/10 pt-8">
-        <div>
-          <dt class="text-xs font-medium uppercase tracking-wider text-navy-800/55">Sucursales</dt>
-          <dd class="mt-1 font-display text-3xl font-bold text-navy-900">2</dd>
-        </div>
-        <div>
-          <dt class="text-xs font-medium uppercase tracking-wider text-navy-800/55">Productos</dt>
-          <dd class="mt-1 font-display text-3xl font-bold text-navy-900">+2.500</dd>
-        </div>
-        <div>
-          <dt class="text-xs font-medium uppercase tracking-wider text-navy-800/55">Calificación</dt>
-          <dd class="mt-1 flex items-baseline gap-1.5 font-display text-3xl font-bold text-navy-900">
-            4,2
-            <svg viewBox="0 0 24 24" class="h-4 w-4 translate-y-[-2px] fill-gold-400" aria-hidden="true"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
-          </dd>
-        </div>
-      </dl>
-    </div>
-
-    <!-- Composición visual -->
-    <div class="reveal lg:col-span-6">
-      <div class="relative mx-auto mb-12 max-w-lg sm:mb-10 lg:mb-0 lg:max-w-none">
-
-        <!-- tarjeta principal: góndola ilustrada -->
-        <div class="relative overflow-hidden rounded-[2rem] border border-navy-900/10 bg-white shadow-hover">
-          <div class="bg-gradient-to-br from-navy-900 via-navy-800 to-navy-700 px-7 py-6">
-            <div class="flex items-center justify-between">
-              <p class="font-display text-lg font-semibold text-cream-100">Góndola del día</p>
-              <span class="rounded-full bg-white/15 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-cream-100">Fresco</span>
-            </div>
-            <p class="mt-1 text-sm text-cream-100/65">Repuesta cada mañana, antes de abrir.</p>
+      <!-- Indicadores de confianza -->
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
+        <div class="flex items-center gap-2">
+          <div class="flex gap-0.5">
+            <svg viewBox="0 0 24 24" class="w-3.5 h-3.5 text-yellow-400 fill-yellow-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
+            <svg viewBox="0 0 24 24" class="w-3.5 h-3.5 text-yellow-400 fill-yellow-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
+            <svg viewBox="0 0 24 24" class="w-3.5 h-3.5 text-yellow-400 fill-yellow-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
+            <svg viewBox="0 0 24 24" class="w-3.5 h-3.5 text-yellow-400 fill-yellow-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
+            <svg viewBox="0 0 24 24" class="w-3.5 h-3.5"><defs><linearGradient id="hs-hero"><stop offset="20%" stop-color="#facc15"/><stop offset="20%" stop-color="#facc15" stop-opacity=".25"/></linearGradient></defs><path fill="url(#hs-hero)" d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
           </div>
-
-          <!-- estantes -->
-          <div class="space-y-4 bg-cream-50 px-6 pt-6 pb-16">
-            <div>
-              <div class="flex items-end justify-center gap-2 sm:gap-3">
-                <svg viewBox="0 0 40 64" class="h-16 w-11" aria-hidden="true"><rect x="7" y="18" width="26" height="42" rx="5" class="fill-leaf-500"/><rect x="7" y="31" width="26" height="15" rx="2" class="fill-white/85"/><rect x="15" y="4" width="10" height="12" rx="3" class="fill-leaf-600"/></svg>
-                <svg viewBox="0 0 40 64" class="h-14 w-11" aria-hidden="true"><rect x="5" y="24" width="30" height="36" rx="4" class="fill-navy-700"/><rect x="5" y="24" width="30" height="7" rx="3" class="fill-black/15"/><rect x="5" y="37" width="30" height="13" rx="2" class="fill-cream-100"/></svg>
-                <svg viewBox="0 0 40 64" class="h-[4.6rem] w-11" aria-hidden="true"><path d="M13 5h14v11l5 9v31a4 4 0 0 1-4 4H12a4 4 0 0 1-4-4V25l5-9V5Z" class="fill-gold-400"/><rect x="9" y="34" width="22" height="14" rx="2" class="fill-white/85"/></svg>
-                <svg viewBox="0 0 40 64" class="h-[3.6rem] w-11" aria-hidden="true"><rect x="7" y="18" width="26" height="42" rx="5" class="fill-navy-300"/><rect x="7" y="31" width="26" height="15" rx="2" class="fill-white/85"/></svg>
-                <svg viewBox="0 0 40 64" class="h-[3.4rem] w-11" aria-hidden="true"><rect x="5" y="24" width="30" height="36" rx="4" class="fill-leaf-600"/><rect x="5" y="24" width="30" height="7" rx="3" class="fill-black/15"/><rect x="5" y="37" width="30" height="13" rx="2" class="fill-cream-100"/></svg>
-                <svg viewBox="0 0 40 64" class="h-14 w-11" aria-hidden="true"><path d="M13 5h14v11l5 9v31a4 4 0 0 1-4 4H12a4 4 0 0 1-4-4V25l5-9V5Z" class="fill-navy-800"/><rect x="9" y="34" width="22" height="14" rx="2" class="fill-white/85"/></svg>
-              </div>
-              <div class="mt-1 h-2 rounded-full bg-cream-300"></div>
-            </div>
-            <div>
-              <div class="flex items-end justify-center gap-2 sm:gap-3">
-                <svg viewBox="0 0 40 64" class="h-[3.4rem] w-11" aria-hidden="true"><rect x="5" y="24" width="30" height="36" rx="4" class="fill-leaf-600"/><rect x="5" y="24" width="30" height="7" rx="3" class="fill-black/15"/><rect x="5" y="37" width="30" height="13" rx="2" class="fill-cream-100"/></svg>
-                <svg viewBox="0 0 40 64" class="h-[4.4rem] w-11" aria-hidden="true"><path d="M13 5h14v11l5 9v31a4 4 0 0 1-4 4H12a4 4 0 0 1-4-4V25l5-9V5Z" class="fill-navy-600"/><rect x="9" y="34" width="22" height="14" rx="2" class="fill-white/85"/></svg>
-                <svg viewBox="0 0 40 64" class="h-16 w-11" aria-hidden="true"><rect x="7" y="18" width="26" height="42" rx="5" class="fill-gold-500"/><rect x="7" y="31" width="26" height="15" rx="2" class="fill-white/85"/><rect x="15" y="4" width="10" height="12" rx="3" class="fill-gold-400"/></svg>
-                <svg viewBox="0 0 40 64" class="h-14 w-11" aria-hidden="true"><rect x="5" y="24" width="30" height="36" rx="4" class="fill-navy-800"/><rect x="5" y="24" width="30" height="7" rx="3" class="fill-black/15"/><rect x="5" y="37" width="30" height="13" rx="2" class="fill-cream-100"/></svg>
-                <svg viewBox="0 0 40 64" class="h-[3.6rem] w-11" aria-hidden="true"><rect x="7" y="18" width="26" height="42" rx="5" class="fill-leaf-400"/><rect x="7" y="31" width="26" height="15" rx="2" class="fill-white/85"/></svg>
-                <svg viewBox="0 0 40 64" class="h-[4.2rem] w-11" aria-hidden="true"><path d="M13 5h14v11l5 9v31a4 4 0 0 1-4 4H12a4 4 0 0 1-4-4V25l5-9V5Z" class="fill-cream-400"/><rect x="9" y="34" width="22" height="14" rx="2" class="fill-white/85"/></svg>
-              </div>
-              <div class="mt-1 h-2 rounded-full bg-cream-300"></div>
-            </div>
-            <div>
-              <div class="flex items-end justify-center gap-2 sm:gap-3">
-                <svg viewBox="0 0 40 64" class="h-[4.2rem] w-11" aria-hidden="true"><path d="M13 5h14v11l5 9v31a4 4 0 0 1-4 4H12a4 4 0 0 1-4-4V25l5-9V5Z" class="fill-navy-700"/><rect x="9" y="34" width="22" height="14" rx="2" class="fill-white/85"/></svg>
-                <svg viewBox="0 0 40 64" class="h-[3.6rem] w-11" aria-hidden="true"><rect x="7" y="18" width="26" height="42" rx="5" class="fill-leaf-600"/><rect x="7" y="31" width="26" height="15" rx="2" class="fill-white/85"/></svg>
-                <svg viewBox="0 0 40 64" class="h-14 w-11" aria-hidden="true"><rect x="5" y="24" width="30" height="36" rx="4" class="fill-gold-400"/><rect x="5" y="24" width="30" height="7" rx="3" class="fill-black/15"/><rect x="5" y="37" width="30" height="13" rx="2" class="fill-cream-100"/></svg>
-                <svg viewBox="0 0 40 64" class="h-15 w-11" aria-hidden="true"><path d="M13 5h14v11l5 9v31a4 4 0 0 1-4 4H12a4 4 0 0 1-4-4V25l5-9V5Z" class="fill-navy-400"/><rect x="9" y="34" width="22" height="14" rx="2" class="fill-white/85"/></svg>
-                <svg viewBox="0 0 40 64" class="h-16 w-11" aria-hidden="true"><rect x="7" y="18" width="26" height="42" rx="5" class="fill-navy-800"/><rect x="7" y="31" width="26" height="15" rx="2" class="fill-white/85"/><rect x="15" y="4" width="10" height="12" rx="3" class="fill-navy-900"/></svg>
-                <svg viewBox="0 0 40 64" class="h-[3.4rem] w-11" aria-hidden="true"><rect x="5" y="24" width="30" height="36" rx="4" class="fill-leaf-500"/><rect x="5" y="24" width="30" height="7" rx="3" class="fill-black/15"/><rect x="5" y="37" width="30" height="13" rx="2" class="fill-cream-100"/></svg>
-              </div>
-              <div class="mt-1 h-2 rounded-full bg-cream-300"></div>
-            </div>
-          </div>
+          <span class="text-white font-bold text-sm">4.2</span>
+          <span class="text-sm" style="color:rgba(255,255,255,0.38)">reseñas de clientes</span>
         </div>
-
-        <!-- tarjeta flotante: kashrut -->
-        <div class="animate-floaty absolute -bottom-8 left-2 hidden w-56 rounded-2xl border border-navy-900/10 bg-white p-4 shadow-hover sm:block lg:-left-8">
-          <div class="flex items-center gap-3">
-            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-leaf-100 text-leaf-700">
-              <svg viewBox="0 0 24 24" fill="none" class="h-5 w-5" aria-hidden="true"><path d="M12 3.2 20 6.6v5.1c0 4.6-3.2 8.2-8 9.1-4.8-.9-8-4.5-8-9.1V6.6l8-3.4Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m8.8 12.2 2.2 2.2 4.2-4.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-            <div>
-              <p class="text-sm font-semibold text-navy-900">Supervisión kosher</p>
-              <p class="text-xs text-navy-800/60">En todos los sectores</p>
-            </div>
-          </div>
+        <span class="w-px h-4" style="background:rgba(255,255,255,0.1)"></span>
+        <div class="flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" style="color:#FF6B35" aria-hidden="true"><circle cx="12" cy="12" r="8.2" stroke="currentColor" stroke-width="1.7"/><path d="M12 7.4V12l3 1.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+          <span class="text-[13px]" style="color:rgba(255,255,255,0.5)">Abierto de domingo a viernes</span>
         </div>
-
-        <!-- tarjeta flotante: horarios -->
-        <div class="animate-floaty absolute -bottom-8 right-2 w-52 rounded-2xl border border-navy-900/10 bg-navy-900 p-4 shadow-hover lg:-right-6" style="animation-delay:-3.5s">
-          <p class="text-[10px] font-semibold uppercase tracking-[0.18em] text-cream-100/60">Hoy abierto</p>
-          <p class="mt-1 font-display text-lg font-semibold text-cream-100">Belgrano · 8 a 20 hs</p>
+        <span class="w-px h-4" style="background:rgba(255,255,255,0.1)"></span>
+        <div class="flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5 text-green-400" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2 20 6.6v5.1c0 4.6-3.2 8.2-8 9.1-4.8-.9-8-4.5-8-9.1V6.6l8-3.4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m8.8 12.2 2.2 2.2 4.2-4.4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="text-[13px]" style="color:rgba(255,255,255,0.5)">Supervisión rabínica</span>
         </div>
       </div>
     </div>
   </div>
-</section>
 
-<!-- ══════════════════════ BANDA DE ATRIBUTOS ══════════════════════ -->
-<section class="border-y border-navy-900/10 bg-navy-900 py-4 text-cream-100">
-  <div class="flex overflow-hidden">
-    <!-- pista duplicada para un desplazamiento continuo -->
-    <div class="animate-marquee flex w-max shrink-0">
-      <div class="flex shrink-0 items-center gap-10 whitespace-nowrap pr-10 text-sm font-medium tracking-wide">
-        <span class="opacity-85">Productos frescos del día</span><span class="text-gold-400">✦</span>
-        <span class="opacity-85">Panadería propia</span><span class="text-gold-400">✦</span>
-        <span class="opacity-85">Importados seleccionados</span><span class="text-gold-400">✦</span>
-        <span class="opacity-85">Carnicería y fiambrería kosher</span><span class="text-gold-400">✦</span>
-        <span class="opacity-85">Atención personalizada</span><span class="text-gold-400">✦</span>
-        <span class="opacity-85">Palermo &amp; Belgrano</span><span class="text-gold-400">✦</span>
-      </div>
-      <div class="flex shrink-0 items-center gap-10 whitespace-nowrap pr-10 text-sm font-medium tracking-wide" aria-hidden="true">
-        <span class="opacity-85">Productos frescos del día</span><span class="text-gold-400">✦</span>
-        <span class="opacity-85">Panadería propia</span><span class="text-gold-400">✦</span>
-        <span class="opacity-85">Importados seleccionados</span><span class="text-gold-400">✦</span>
-        <span class="opacity-85">Carnicería y fiambrería kosher</span><span class="text-gold-400">✦</span>
-        <span class="opacity-85">Atención personalizada</span><span class="text-gold-400">✦</span>
-        <span class="opacity-85">Palermo &amp; Belgrano</span><span class="text-gold-400">✦</span>
-      </div>
-    </div>
+  <!-- Scroll cue -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2">
+    <div class="animate-floaty w-px h-12 mx-auto" style="background:linear-gradient(to bottom, transparent, rgba(255,255,255,0.25))"></div>
   </div>
 </section>
 
 <!-- ══════════════════════════ PASILLOS ══════════════════════════ -->
-<section id="pasillos" class="relative scroll-mt-28 bg-cream-50 py-24 sm:py-32">
-  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+<section id="pasillos" class="section-pad scroll-mt-20" style="background:var(--surface-0)">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
 
-    <div class="reveal mx-auto max-w-2xl text-center">
-      <p class="text-xs font-semibold uppercase tracking-[0.22em] text-leaf-600">Nuestros pasillos</p>
-      <h2 class="mt-4 font-display text-4xl font-bold leading-tight tracking-tight text-navy-900 sm:text-5xl">
-        Todo el supermercado,<br class="hidden sm:block" /> sector por sector
+    <div class="rv text-center mb-12">
+      <span class="inline-block text-xs font-bold uppercase tracking-[0.18em] mb-3 px-3 py-1 rounded-full"
+            style="color:#FF6B35; background:rgba(255,107,53,0.1); border:1px solid rgba(255,107,53,0.2)">
+        Nuestros pasillos
+      </span>
+      <h2 class="font-black leading-tight tracking-tight mb-3" style="font-size:clamp(1.75rem, 4vw, 2.75rem); color:var(--text-1)">
+        Todo el supermercado, sector por sector
       </h2>
-      <p class="mt-5 text-lg leading-relaxed text-navy-800/65">
-        Recorré las góndolas de El Jaial: cada sector con su propia selección,
-        repuesta a diario y con certificación kosher.
+      <p class="text-base max-w-sm mx-auto" style="color:var(--text-2)">
+        Cada góndola con su propia selección, repuesta a diario y con certificación kosher
       </p>
     </div>
 
-    <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
 
       <!-- Panadería -->
-      <article class="reveal group relative overflow-hidden rounded-3xl border border-navy-900/10 bg-white p-7 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:border-navy-900/15 hover:shadow-hover">
-        <div class="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-gold-400/10 transition-transform duration-500 group-hover:scale-150" aria-hidden="true"></div>
-        <span class="relative grid h-14 w-14 place-items-center rounded-2xl bg-gold-400/15 text-gold-500 transition-colors duration-300 group-hover:bg-gold-400 group-hover:text-white">
-          <svg viewBox="0 0 24 24" fill="none" class="h-7 w-7" aria-hidden="true"><path d="M4.5 9.5c0-2.2 1.8-4 4-4h7c2.2 0 4 1.8 4 4l-1 8a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8l-1-8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M9.5 6v13M14.5 6v13" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-        </span>
-        <h3 class="relative mt-6 font-display text-2xl font-semibold text-navy-900">Panadería</h3>
-        <p class="relative mt-2 text-sm leading-relaxed text-navy-800/65">Jalot trenzadas, pan fresco del día, facturas y masas horneadas en el local.</p>
-        <p class="relative mt-5 text-xs font-semibold uppercase tracking-wider text-navy-800/40">Pan · Jalá · Masas · Galletas</p>
+      <article class="rv group rounded-2xl overflow-hidden flex flex-col card-hover" style="background:var(--surface-1); border:1px solid var(--border); box-shadow:var(--shadow-card)">
+        <div class="relative aspect-[16/10] overflow-hidden" style="background:linear-gradient(135deg, rgba(255,184,0,0.22) 0%, rgba(255,107,53,0.10) 100%)">
+          <div class="absolute inset-0 dot-grid opacity-[0.18]"></div>
+          <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto w-16 h-16 transition-transform duration-500 group-hover:scale-110" style="color:#FFB800" aria-hidden="true">
+            <path d="M4.5 9.5c0-2.2 1.8-4 4-4h7c2.2 0 4 1.8 4 4l-1 8a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8l-1-8Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+            <path d="M9.5 6v13M14.5 6v13" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+          </svg>
+          <span class="absolute top-2.5 left-2.5 inline-flex items-center rounded-full font-semibold text-[10px] px-2 py-0.5 bg-orange-500 text-white">🔥 Popular</span>
+        </div>
+        <div class="p-4 flex flex-col flex-1">
+          <h3 class="font-bold text-sm leading-tight mb-1" style="color:var(--text-1)">Panadería</h3>
+          <p class="text-xs flex-1 mb-3" style="color:var(--text-2)">Jalot trenzadas, pan fresco del día, facturas y masas horneadas en el local.</p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-[10px] px-2 py-0.5 rounded-full" style="background:var(--surface-3); color:var(--text-2)">Jalá</span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full" style="background:var(--surface-3); color:var(--text-2)">Facturas</span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full" style="background:var(--surface-3); color:var(--text-2)">Galletas</span>
+          </div>
+        </div>
       </article>
 
       <!-- Lácteos -->
-      <article class="reveal group relative overflow-hidden rounded-3xl border border-navy-900/10 bg-white p-7 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:border-navy-900/15 hover:shadow-hover">
-        <div class="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-navy-300/10 transition-transform duration-500 group-hover:scale-150" aria-hidden="true"></div>
-        <span class="relative grid h-14 w-14 place-items-center rounded-2xl bg-navy-100 text-navy-700 transition-colors duration-300 group-hover:bg-navy-700 group-hover:text-white">
-          <svg viewBox="0 0 24 24" fill="none" class="h-7 w-7" aria-hidden="true"><path d="M9 3h6v3l2.5 4v9a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-9L9 6V3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M6.5 13h11" stroke="currentColor" stroke-width="1.4"/></svg>
-        </span>
-        <h3 class="relative mt-6 font-display text-2xl font-semibold text-navy-900">Lácteos</h3>
-        <p class="relative mt-2 text-sm leading-relaxed text-navy-800/65">Quesos jalav israel, yogures, cremas, dulce de leche y leches de todas las marcas.</p>
-        <p class="relative mt-5 text-xs font-semibold uppercase tracking-wider text-navy-800/40">Quesos · Yogur · Leche · Cremas</p>
+      <article class="rv group rounded-2xl overflow-hidden flex flex-col card-hover" style="background:var(--surface-1); border:1px solid var(--border); box-shadow:var(--shadow-card)">
+        <div class="relative aspect-[16/10] overflow-hidden" style="background:linear-gradient(135deg, rgba(59,130,246,0.20) 0%, rgba(59,130,246,0.05) 100%)">
+          <div class="absolute inset-0 dot-grid opacity-[0.18]"></div>
+          <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto w-16 h-16 transition-transform duration-500 group-hover:scale-110" style="color:#3B82F6" aria-hidden="true">
+            <path d="M9 3h6v3l2.5 4v9a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-9L9 6V3Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+            <path d="M6.5 13h11" stroke="currentColor" stroke-width="1.2"/>
+          </svg>
+          <span class="absolute top-2.5 left-2.5 inline-flex items-center rounded-full font-semibold text-[10px] px-2 py-0.5 bg-blue-500 text-white">Jalav Israel</span>
+        </div>
+        <div class="p-4 flex flex-col flex-1">
+          <h3 class="font-bold text-sm leading-tight mb-1" style="color:var(--text-1)">Lácteos</h3>
+          <p class="text-xs flex-1 mb-3" style="color:var(--text-2)">Quesos, yogures, cremas, dulce de leche y leches de todas las marcas.</p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-[10px] px-2 py-0.5 rounded-full" style="background:var(--surface-3); color:var(--text-2)">Quesos</span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full" style="background:var(--surface-3); color:var(--text-2)">Yogur</span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full" style="background:var(--surface-3); color:var(--text-2)">Cremas</span>
+          </div>
+        </div>
       </article>
 
       <!-- Fiambrería -->
-      <article class="reveal group relative overflow-hidden rounded-3xl border border-navy-900/10 bg-white p-7 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:border-navy-900/15 hover:shadow-hover">
-        <div class="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-leaf-300/15 transition-transform duration-500 group-hover:scale-150" aria-hidden="true"></div>
-        <span class="relative grid h-14 w-14 place-items-center rounded-2xl bg-leaf-100 text-leaf-700 transition-colors duration-300 group-hover:bg-leaf-600 group-hover:text-white">
-          <svg viewBox="0 0 24 24" fill="none" class="h-7 w-7" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.4"/><path d="M12 4v2m0 12v2M4 12h2m12 0h2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-        </span>
-        <h3 class="relative mt-6 font-display text-2xl font-semibold text-navy-900">Fiambrería kosher</h3>
-        <p class="relative mt-2 text-sm leading-relaxed text-navy-800/65">Pastrón, salames, pavita y cortes al peso, cortados en el momento como te guste.</p>
-        <p class="relative mt-5 text-xs font-semibold uppercase tracking-wider text-navy-800/40">Pastrón · Pavita · Salames</p>
+      <article class="rv group rounded-2xl overflow-hidden flex flex-col card-hover" style="background:var(--surface-1); border:1px solid var(--border); box-shadow:var(--shadow-card)">
+        <div class="relative aspect-[16/10] overflow-hidden" style="background:linear-gradient(135deg, rgba(239,68,68,0.18) 0%, rgba(255,107,53,0.06) 100%)">
+          <div class="absolute inset-0 dot-grid opacity-[0.18]"></div>
+          <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto w-16 h-16 transition-transform duration-500 group-hover:scale-110" style="color:#EF4444" aria-hidden="true">
+            <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.3"/>
+            <circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M12 4v2m0 12v2M4 12h2m12 0h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+          <span class="absolute top-2.5 left-2.5 inline-flex items-center rounded-full font-semibold text-[10px] px-2 py-0.5 bg-red-500 text-white">Al peso</span>
+        </div>
+        <div class="p-4 flex flex-col flex-1">
+          <h3 class="font-bold text-sm leading-tight mb-1" style="color:var(--text-1)">Fiambrería kosher</h3>
+          <p class="text-xs flex-1 mb-3" style="color:var(--text-2)">Pastrón, salames, pavita y cortes al peso, cortados en el momento como te guste.</p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-[10px] px-2 py-0.5 rounded-full" style="background:var(--surface-3); color:var(--text-2)">Pastrón</span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full" style="background:var(--surface-3); color:var(--text-2)">Pavita</span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full" style="background:var(--surface-3); color:var(--text-2)">Salames</span>
+          </div>
+        </div>
       </article>
 
       <!-- Carnicería -->
-      <article class="reveal group relative overflow-hidden rounded-3xl border border-navy-900/10 bg-white p-7 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:border-navy-900/15 hover:shadow-hover">
-        <div class="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-gold-400/10 transition-transform duration-500 group-hover:scale-150" aria-hidden="true"></div>
-        <span class="relative grid h-14 w-14 place-items-center rounded-2xl bg-cream-200 text-navy-800 transition-colors duration-300 group-hover:bg-navy-900 group-hover:text-white">
-          <svg viewBox="0 0 24 24" fill="none" class="h-7 w-7" aria-hidden="true"><path d="M5 10.5A5.5 5.5 0 0 1 10.5 5h3A5.5 5.5 0 0 1 19 10.5c0 3-2.2 4.9-4.6 5.4l-.7 2.6a1.6 1.6 0 0 1-1.6 1.2h-1a1.6 1.6 0 0 1-1.5-1.2l-.7-2.6C6.9 15.2 5 13.3 5 10.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="10.5" r="2.2" stroke="currentColor" stroke-width="1.4"/></svg>
-        </span>
-        <h3 class="relative mt-6 font-display text-2xl font-semibold text-navy-900">Carnicería</h3>
-        <p class="relative mt-2 text-sm leading-relaxed text-navy-800/65">Cortes vacunos y pollo con shjitá supervisada, listos para la parrilla o el horno.</p>
-        <p class="relative mt-5 text-xs font-semibold uppercase tracking-wider text-navy-800/40">Vacuno · Pollo · Milanesas</p>
+      <article class="rv group rounded-2xl overflow-hidden flex flex-col card-hover" style="background:var(--surface-1); border:1px solid var(--border); box-shadow:var(--shadow-card)">
+        <div class="relative aspect-[16/10] overflow-hidden" style="background:linear-gradient(135deg, rgba(255,107,53,0.22) 0%, rgba(217,64,0,0.08) 100%)">
+          <div class="absolute inset-0 dot-grid opacity-[0.18]"></div>
+          <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto w-16 h-16 transition-transform duration-500 group-hover:scale-110" style="color:#FF6B35" aria-hidden="true">
+            <path d="M5 10.5A5.5 5.5 0 0 1 10.5 5h3A5.5 5.5 0 0 1 19 10.5c0 3-2.2 4.9-4.6 5.4l-.7 2.6a1.6 1.6 0 0 1-1.6 1.2h-1a1.6 1.6 0 0 1-1.5-1.2l-.7-2.6C6.9 15.2 5 13.3 5 10.5Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+            <circle cx="12" cy="10.5" r="2.2" stroke="currentColor" stroke-width="1.2"/>
+          </svg>
+          <span class="absolute top-2.5 left-2.5 inline-flex items-center rounded-full font-semibold text-[10px] px-2 py-0.5 bg-orange-500 text-white">Shjitá supervisada</span>
+        </div>
+        <div class="p-4 flex flex-col flex-1">
+          <h3 class="font-bold text-sm leading-tight mb-1" style="color:var(--text-1)">Carnicería</h3>
+          <p class="text-xs flex-1 mb-3" style="color:var(--text-2)">Cortes vacunos y pollo, listos para la parrilla o el horno.</p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-[10px] px-2 py-0.5 rounded-full" style="background:var(--surface-3); color:var(--text-2)">Vacuno</span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full" style="background:var(--surface-3); color:var(--text-2)">Pollo</span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full" style="background:var(--surface-3); color:var(--text-2)">Milanesas</span>
+          </div>
+        </div>
       </article>
 
       <!-- Congelados -->
-      <article class="reveal group relative overflow-hidden rounded-3xl border border-navy-900/10 bg-white p-7 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:border-navy-900/15 hover:shadow-hover">
-        <div class="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-navy-300/10 transition-transform duration-500 group-hover:scale-150" aria-hidden="true"></div>
-        <span class="relative grid h-14 w-14 place-items-center rounded-2xl bg-navy-100 text-navy-600 transition-colors duration-300 group-hover:bg-navy-600 group-hover:text-white">
-          <svg viewBox="0 0 24 24" fill="none" class="h-7 w-7" aria-hidden="true"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5 4.2 16.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12 6.6 9.8 4.6M12 6.6l2.2-2M12 17.4l-2.2 2M12 17.4l2.2 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-        </span>
-        <h3 class="relative mt-6 font-display text-2xl font-semibold text-navy-900">Congelados</h3>
-        <p class="relative mt-2 text-sm leading-relaxed text-navy-800/65">Viandas listas, kneidalaj, empanadas, pescados y verduras congeladas al instante.</p>
-        <p class="relative mt-5 text-xs font-semibold uppercase tracking-wider text-navy-800/40">Viandas · Pescados · Verduras</p>
+      <article class="rv group rounded-2xl overflow-hidden flex flex-col card-hover" style="background:var(--surface-1); border:1px solid var(--border); box-shadow:var(--shadow-card)">
+        <div class="relative aspect-[16/10] overflow-hidden" style="background:linear-gradient(135deg, rgba(139,92,246,0.20) 0%, rgba(59,130,246,0.06) 100%)">
+          <div class="absolute inset-0 dot-grid opacity-[0.18]"></div>
+          <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto w-16 h-16 transition-transform duration-500 group-hover:scale-110" style="color:#8B5CF6" aria-hidden="true">
+            <path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5 4.2 16.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+            <path d="M12 6.6 9.8 4.6M12 6.6l2.2-2M12 17.4l-2.2 2M12 17.4l2.2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+          <span class="absolute top-2.5 left-2.5 inline-flex items-center rounded-full font-semibold text-[10px] px-2 py-0.5 bg-purple-600 text-white">Listo para servir</span>
+        </div>
+        <div class="p-4 flex flex-col flex-1">
+          <h3 class="font-bold text-sm leading-tight mb-1" style="color:var(--text-1)">Congelados</h3>
+          <p class="text-xs flex-1 mb-3" style="color:var(--text-2)">Viandas listas, kneidalaj, empanadas, pescados y verduras congeladas.</p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-[10px] px-2 py-0.5 rounded-full" style="background:var(--surface-3); color:var(--text-2)">Viandas</span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full" style="background:var(--surface-3); color:var(--text-2)">Pescados</span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full" style="background:var(--surface-3); color:var(--text-2)">Verduras</span>
+          </div>
+        </div>
       </article>
 
       <!-- Almacén e importados -->
-      <article class="reveal group relative overflow-hidden rounded-3xl border border-navy-900/10 bg-white p-7 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:border-navy-900/15 hover:shadow-hover">
-        <div class="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-leaf-300/15 transition-transform duration-500 group-hover:scale-150" aria-hidden="true"></div>
-        <span class="relative grid h-14 w-14 place-items-center rounded-2xl bg-leaf-100 text-leaf-700 transition-colors duration-300 group-hover:bg-leaf-600 group-hover:text-white">
-          <svg viewBox="0 0 24 24" fill="none" class="h-7 w-7" aria-hidden="true"><path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 12v8" stroke="currentColor" stroke-width="1.4"/></svg>
-        </span>
-        <h3 class="relative mt-6 font-display text-2xl font-semibold text-navy-900">Almacén &amp; importados</h3>
-        <p class="relative mt-2 text-sm leading-relaxed text-navy-800/65">Vinos, aceites, conservas, snacks y productos traídos de Israel, EE.UU. y Europa.</p>
-        <p class="relative mt-5 text-xs font-semibold uppercase tracking-wider text-navy-800/40">Vinos · Aceites · Snacks · Conservas</p>
+      <article class="rv group rounded-2xl overflow-hidden flex flex-col card-hover" style="background:var(--surface-1); border:1px solid var(--border); box-shadow:var(--shadow-card)">
+        <div class="relative aspect-[16/10] overflow-hidden" style="background:linear-gradient(135deg, rgba(22,163,74,0.20) 0%, rgba(255,184,0,0.07) 100%)">
+          <div class="absolute inset-0 dot-grid opacity-[0.18]"></div>
+          <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto w-16 h-16 transition-transform duration-500 group-hover:scale-110" style="color:#16a34a" aria-hidden="true">
+            <path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+            <path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+            <path d="M12 12v8" stroke="currentColor" stroke-width="1.2"/>
+          </svg>
+          <span class="absolute top-2.5 left-2.5 inline-flex items-center rounded-full font-semibold text-[10px] px-2 py-0.5 bg-green-500 text-white">🌍 Importados</span>
+        </div>
+        <div class="p-4 flex flex-col flex-1">
+          <h3 class="font-bold text-sm leading-tight mb-1" style="color:var(--text-1)">Almacén &amp; importados</h3>
+          <p class="text-xs flex-1 mb-3" style="color:var(--text-2)">Vinos, aceites, conservas, snacks y productos de Israel, EE.UU. y Europa.</p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-[10px] px-2 py-0.5 rounded-full" style="background:var(--surface-3); color:var(--text-2)">Vinos</span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full" style="background:var(--surface-3); color:var(--text-2)">Aceites</span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full" style="background:var(--surface-3); color:var(--text-2)">Snacks</span>
+          </div>
+        </div>
       </article>
+    </div>
+
+    <div class="rv mt-14 flex justify-center">
+      <a href="#sucursales"
+         class="group inline-flex items-center gap-3 font-bold px-10 py-4 rounded-2xl text-white text-base transition-all active:scale-[0.97] hover:brightness-110"
+         style="background:#FF6B35; box-shadow:0 8px 32px rgba(255,107,53,0.4)">
+        Visitanos en nuestras sucursales
+        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m0 0-5.5-5.5M19 12l-5.5 5.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════ SUCURSALES ══════════════════════════ -->
-<section id="sucursales" class="relative scroll-mt-28 overflow-hidden bg-white py-24 sm:py-32">
-  <div class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-navy-900/15 to-transparent" aria-hidden="true"></div>
+<!-- ═══════════════════════ BENEFICIOS (promos) ═══════════════════════ -->
+<section class="section-pad" style="background:var(--surface-1)">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
 
-  <div class="mx-auto max-w-7xl px-5 sm:px-8">
-    <div class="reveal flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-      <div class="max-w-xl">
-        <p class="text-xs font-semibold uppercase tracking-[0.22em] text-leaf-600">Nuestras sucursales</p>
-        <h2 class="mt-4 font-display text-4xl font-bold leading-tight tracking-tight text-navy-900 sm:text-5xl">
-          Dos puntos en la ciudad
-        </h2>
-        <p class="mt-5 text-lg leading-relaxed text-navy-800/65">
-          Palermo y Belgrano, con horarios pensados para llegar tranquilo antes de Shabat.
-        </p>
-      </div>
-      <a href="#contacto" class="group inline-flex items-center gap-2 self-start rounded-2xl border border-navy-900/15 px-6 py-3.5 text-sm font-semibold text-navy-900 transition-all duration-300 hover:-translate-y-0.5 hover:border-navy-900/25 hover:bg-cream-100">
-        Escribinos
-        <svg viewBox="0 0 24 24" fill="none" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true"><path d="M5 12h14m0 0-5.5-5.5M19 12l-5.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
+    <div class="rv text-center mb-12">
+      <span class="inline-block text-xs font-bold uppercase tracking-[0.18em] mb-3 px-3 py-1 rounded-full"
+            style="color:#FFB800; background:rgba(255,184,0,0.1); border:1px solid rgba(255,184,0,0.2)">
+        Por qué El Jaial
+      </span>
+      <h2 class="font-black leading-tight tracking-tight" style="font-size:clamp(1.75rem, 4vw, 2.75rem); color:var(--text-1)">
+        Lo que nos diferencia
+      </h2>
     </div>
 
-    <div class="mt-14 grid gap-7 lg:grid-cols-2">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
 
-      <!-- Palermo -->
-      <article class="reveal group overflow-hidden rounded-[1.75rem] border border-navy-900/10 bg-cream-50 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-hover">
-        <div class="relative overflow-hidden bg-gradient-to-br from-navy-900 to-navy-700 px-8 py-8">
-          <div class="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-white/5" aria-hidden="true"></div>
-          <div class="pointer-events-none absolute -bottom-16 -left-8 h-40 w-40 rounded-full bg-leaf-400/10" aria-hidden="true"></div>
-          <div class="relative flex items-start justify-between gap-4">
-            <div>
-              <p class="text-[10px] font-semibold uppercase tracking-[0.22em] text-cream-100/60">Sucursal</p>
-              <h3 class="mt-2 font-display text-3xl font-bold text-cream-50">Palermo</h3>
+      <div class="rv relative rounded-3xl p-7 overflow-hidden flex flex-col card-hover"
+           style="background:linear-gradient(135deg, #16a34a 0%, #059669 100%); box-shadow:0 12px 40px rgba(22,163,74,0.35)">
+        <div class="absolute top-0 right-0 w-40 h-40 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" style="background:rgba(255,255,255,0.08)"></div>
+        <div class="absolute bottom-0 left-0 w-28 h-28 rounded-full translate-y-1/2 -translate-x-1/2 pointer-events-none" style="background:rgba(0,0,0,0.12)"></div>
+        <div class="relative z-10 flex flex-col flex-1">
+          <div class="flex items-center gap-2 mb-5">
+            <div class="w-11 h-11 rounded-2xl flex items-center justify-center" style="background:rgba(255,255,255,0.18)">
+              <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2 20 6.6v5.1c0 4.6-3.2 8.2-8 9.1-4.8-.9-8-4.5-8-9.1V6.6l8-3.4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m8.8 12.2 2.2 2.2 4.2-4.4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <span class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-white/10 text-cream-100">
-              <svg viewBox="0 0 24 24" fill="none" class="h-6 w-6" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.6" stroke="currentColor" stroke-width="1.5"/></svg>
-            </span>
+            <span class="text-xs font-black uppercase tracking-widest text-white/60">Kashrut</span>
           </div>
+          <h3 class="text-xl font-black text-white mb-2 leading-tight">Supervisión en todos los sectores</h3>
+          <p class="text-sm text-white/70 mb-6 leading-relaxed flex-1">Carnicería, fiambrería, panadería y góndola: todo bajo control rabínico permanente.</p>
+          <a href="#info" class="group inline-flex items-center gap-2 self-start px-5 py-2.5 rounded-xl font-bold text-sm transition-all active:scale-95"
+             style="background:rgba(255,255,255,0.15); color:#fff; backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.2)">
+            Más info
+            <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m0 0-5.5-5.5M19 12l-5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
         </div>
+      </div>
 
-        <div class="space-y-6 px-8 py-8">
-          <div class="flex gap-4">
-            <span class="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white text-navy-700 shadow-ring">
-              <svg viewBox="0 0 24 24" fill="none" class="h-[1.125rem] w-[1.125rem]" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.5"/></svg>
-            </span>
-            <div>
-              <p class="text-xs font-semibold uppercase tracking-wider text-navy-800/45">Dirección</p>
-              <p class="mt-1 text-base font-semibold text-navy-900">Raúl Scalabrini Ortiz 3306</p>
-              <p class="text-sm text-navy-800/60">CABA, Buenos Aires</p>
+      <div class="rv relative rounded-3xl p-7 overflow-hidden flex flex-col card-hover"
+           style="background:linear-gradient(135deg, #FF6B35 0%, #E55520 100%); box-shadow:0 12px 40px rgba(255,107,53,0.4)">
+        <div class="absolute top-0 right-0 w-40 h-40 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" style="background:rgba(255,255,255,0.08)"></div>
+        <div class="absolute bottom-0 left-0 w-28 h-28 rounded-full translate-y-1/2 -translate-x-1/2 pointer-events-none" style="background:rgba(0,0,0,0.12)"></div>
+        <div class="relative z-10 flex flex-col flex-1">
+          <div class="flex items-center gap-2 mb-5">
+            <div class="w-11 h-11 rounded-2xl flex items-center justify-center" style="background:rgba(255,255,255,0.18)">
+              <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 9.5c0-2.2 1.8-4 4-4h7c2.2 0 4 1.8 4 4l-1 8a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8l-1-8Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9.5 6v13M14.5 6v13" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
             </div>
+            <span class="text-xs font-black uppercase tracking-widest text-white/60">Panadería</span>
           </div>
-
-          <div class="flex gap-4">
-            <span class="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white text-navy-700 shadow-ring">
-              <svg viewBox="0 0 24 24" fill="none" class="h-[1.125rem] w-[1.125rem]" aria-hidden="true"><path d="M4.5 5.5c0 8 6 14 14 14l1.6-3.3-4-1.9-1.7 2a12 12 0 0 1-6.7-6.7l2-1.7-1.9-4L4.5 5.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-            </span>
-            <div>
-              <p class="text-xs font-semibold uppercase tracking-wider text-navy-800/45">Teléfono</p>
-              <a href="tel:+541148078617" class="mt-1 inline-block text-base font-semibold text-navy-900 underline decoration-leaf-400/60 decoration-2 underline-offset-4 transition-colors duration-200 hover:text-leaf-700">+54 11 4807-8617</a>
-            </div>
-          </div>
-
-          <div class="flex gap-4">
-            <span class="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white text-navy-700 shadow-ring">
-              <svg viewBox="0 0 24 24" fill="none" class="h-[1.125rem] w-[1.125rem]" aria-hidden="true"><circle cx="12" cy="12" r="8.2" stroke="currentColor" stroke-width="1.6"/><path d="M12 7.4V12l3 1.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-            <div class="w-full">
-              <p class="text-xs font-semibold uppercase tracking-wider text-navy-800/45">Horarios</p>
-              <dl class="mt-2 divide-y divide-navy-900/10 overflow-hidden rounded-xl border border-navy-900/10 bg-white text-sm">
-                <div class="flex items-center justify-between gap-4 px-4 py-2.5">
-                  <dt class="text-navy-800/70">Lunes a jueves</dt><dd class="font-semibold text-navy-900">9:30 – 19:00</dd>
-                </div>
-                <div class="flex items-center justify-between gap-4 px-4 py-2.5">
-                  <dt class="text-navy-800/70">Viernes</dt><dd class="font-semibold text-navy-900">9:00 – 16:00</dd>
-                </div>
-                <div class="flex items-center justify-between gap-4 bg-cream-100/70 px-4 py-2.5">
-                  <dt class="text-navy-800/70">Sábados y domingos</dt><dd class="font-semibold text-navy-800/45">Cerrado</dd>
-                </div>
-              </dl>
-            </div>
-          </div>
-
-          <div class="flex flex-col gap-3 pt-1 sm:flex-row">
-            <a href="https://maps.google.com/?q=Ra%C3%BAl+Scalabrini+Ortiz+3306,+CABA" target="_blank" rel="noopener"
-               class="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-navy-900 px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-navy-800 hover:shadow-card">
-              Cómo llegar
-            </a>
-            <a href="tel:+541148078617"
-               class="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-navy-900/15 bg-white px-5 py-3 text-sm font-semibold text-navy-900 transition-all duration-300 hover:-translate-y-0.5 hover:border-navy-900/25 hover:shadow-card">
-              Llamar
-            </a>
-          </div>
+          <h3 class="text-xl font-black text-white mb-2 leading-tight">Jalá fresca todos los viernes</h3>
+          <p class="text-sm text-white/70 mb-6 leading-relaxed flex-1">Horneada en el local. Llegá temprano: los viernes vuela antes del mediodía.</p>
+          <a href="#pasillos" class="group inline-flex items-center gap-2 self-start px-5 py-2.5 rounded-xl font-bold text-sm transition-all active:scale-95"
+             style="background:rgba(255,255,255,0.15); color:#fff; backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.2)">
+            Ver panadería
+            <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m0 0-5.5-5.5M19 12l-5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
         </div>
-      </article>
+      </div>
 
-      <!-- Belgrano -->
-      <article class="reveal group overflow-hidden rounded-[1.75rem] border border-navy-900/10 bg-cream-50 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-hover">
-        <div class="relative overflow-hidden bg-gradient-to-br from-leaf-700 to-leaf-500 px-8 py-8">
-          <div class="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-white/10" aria-hidden="true"></div>
-          <div class="pointer-events-none absolute -bottom-16 -left-8 h-40 w-40 rounded-full bg-navy-900/10" aria-hidden="true"></div>
-          <div class="relative flex items-start justify-between gap-4">
-            <div>
-              <p class="text-[10px] font-semibold uppercase tracking-[0.22em] text-cream-100/70">Sucursal</p>
-              <h3 class="mt-2 font-display text-3xl font-bold text-white">Belgrano</h3>
+      <div class="rv relative rounded-3xl p-7 overflow-hidden flex flex-col card-hover"
+           style="background:linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%); box-shadow:0 12px 40px rgba(124,58,237,0.4)">
+        <div class="absolute top-0 right-0 w-40 h-40 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" style="background:rgba(255,255,255,0.08)"></div>
+        <div class="absolute bottom-0 left-0 w-28 h-28 rounded-full translate-y-1/2 -translate-x-1/2 pointer-events-none" style="background:rgba(0,0,0,0.12)"></div>
+        <div class="relative z-10 flex flex-col flex-1">
+          <div class="flex items-center gap-2 mb-5">
+            <div class="w-11 h-11 rounded-2xl flex items-center justify-center" style="background:rgba(255,255,255,0.18)">
+              <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
             </div>
-            <span class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-white/15 text-white">
-              <svg viewBox="0 0 24 24" fill="none" class="h-6 w-6" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.6" stroke="currentColor" stroke-width="1.5"/></svg>
-            </span>
+            <span class="text-xs font-black uppercase tracking-widest text-white/60">Importados</span>
           </div>
+          <h3 class="text-xl font-black text-white mb-2 leading-tight">Productos difíciles de conseguir</h3>
+          <p class="text-sm text-white/70 mb-6 leading-relaxed flex-1">Traemos de Israel, Estados Unidos y Europa lo que no encontrás en otro lado.</p>
+          <a href="#pasillos" class="group inline-flex items-center gap-2 self-start px-5 py-2.5 rounded-xl font-bold text-sm transition-all active:scale-95"
+             style="background:rgba(255,255,255,0.15); color:#fff; backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.2)">
+            Ver almacén
+            <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m0 0-5.5-5.5M19 12l-5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
         </div>
-
-        <div class="space-y-6 px-8 py-8">
-          <div class="flex gap-4">
-            <span class="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white text-leaf-700 shadow-ring">
-              <svg viewBox="0 0 24 24" fill="none" class="h-[1.125rem] w-[1.125rem]" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.5"/></svg>
-            </span>
-            <div>
-              <p class="text-xs font-semibold uppercase tracking-wider text-navy-800/45">Dirección</p>
-              <p class="mt-1 text-base font-semibold text-navy-900">Moldes 2454</p>
-              <p class="text-sm text-navy-800/60">CABA, Buenos Aires</p>
-            </div>
-          </div>
-
-          <div class="flex gap-4">
-            <span class="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white text-leaf-700 shadow-ring">
-              <svg viewBox="0 0 24 24" fill="none" class="h-[1.125rem] w-[1.125rem]" aria-hidden="true"><path d="M4.5 5.5c0 8 6 14 14 14l1.6-3.3-4-1.9-1.7 2a12 12 0 0 1-6.7-6.7l2-1.7-1.9-4L4.5 5.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-            </span>
-            <div>
-              <p class="text-xs font-semibold uppercase tracking-wider text-navy-800/45">Teléfono</p>
-              <a href="tel:+541145326985" class="mt-1 inline-block text-base font-semibold text-navy-900 underline decoration-leaf-400/60 decoration-2 underline-offset-4 transition-colors duration-200 hover:text-leaf-700">+54 11 4532-6985</a>
-            </div>
-          </div>
-
-          <div class="flex gap-4">
-            <span class="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white text-leaf-700 shadow-ring">
-              <svg viewBox="0 0 24 24" fill="none" class="h-[1.125rem] w-[1.125rem]" aria-hidden="true"><circle cx="12" cy="12" r="8.2" stroke="currentColor" stroke-width="1.6"/><path d="M12 7.4V12l3 1.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-            <div class="w-full">
-              <p class="text-xs font-semibold uppercase tracking-wider text-navy-800/45">Horarios</p>
-              <dl class="mt-2 divide-y divide-navy-900/10 overflow-hidden rounded-xl border border-navy-900/10 bg-white text-sm">
-                <div class="flex items-center justify-between gap-4 px-4 py-2.5">
-                  <dt class="text-navy-800/70">Lunes a jueves y domingos</dt><dd class="font-semibold text-navy-900">8:00 – 20:00</dd>
-                </div>
-                <div class="flex items-center justify-between gap-4 px-4 py-2.5">
-                  <dt class="text-navy-800/70">Viernes</dt><dd class="font-semibold text-navy-900">8:00 – 14:30</dd>
-                </div>
-                <div class="flex items-center justify-between gap-4 bg-cream-100/70 px-4 py-2.5">
-                  <dt class="text-navy-800/70">Sábados</dt><dd class="font-semibold text-navy-800/45">Cerrado</dd>
-                </div>
-              </dl>
-            </div>
-          </div>
-
-          <div class="flex flex-col gap-3 pt-1 sm:flex-row">
-            <a href="https://maps.google.com/?q=Moldes+2454,+CABA" target="_blank" rel="noopener"
-               class="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-leaf-600 px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-leaf-700 hover:shadow-card">
-              Cómo llegar
-            </a>
-            <a href="tel:+541145326985"
-               class="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-navy-900/15 bg-white px-5 py-3 text-sm font-semibold text-navy-900 transition-all duration-300 hover:-translate-y-0.5 hover:border-navy-900/25 hover:shadow-card">
-              Llamar
-            </a>
-          </div>
-        </div>
-      </article>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ══════════════════════════ RESEÑAS ══════════════════════════ -->
-<section id="resenas" class="relative scroll-mt-28 overflow-hidden bg-cream-100 py-24 sm:py-32">
-  <div class="pointer-events-none absolute inset-0 paper opacity-60" aria-hidden="true"></div>
+<section id="resenas" class="section-pad scroll-mt-20" style="background:var(--surface-1)">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
 
-  <div class="relative mx-auto max-w-7xl px-5 sm:px-8">
-    <div class="reveal flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-      <div class="max-w-xl">
-        <p class="text-xs font-semibold uppercase tracking-[0.22em] text-leaf-600">Reseñas</p>
-        <h2 class="mt-4 font-display text-4xl font-bold leading-tight tracking-tight text-navy-900 sm:text-5xl">
-          Lo que dicen<br class="hidden sm:block" /> nuestros clientes
-        </h2>
-      </div>
-
-      <!-- Rating -->
-      <div class="flex items-center gap-5 rounded-2xl border border-navy-900/10 bg-white px-6 py-5 shadow-card">
-        <div>
-          <p class="font-display text-5xl font-bold leading-none text-navy-900">4,2</p>
-          <p class="mt-1 text-xs font-medium text-navy-800/55">sobre 5</p>
+    <div class="rv flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10 p-5 rounded-2xl"
+         style="background:var(--surface-2); border:1px solid var(--border)">
+      <div class="flex flex-wrap items-center gap-4">
+        <div class="flex items-center gap-2">
+          <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/>
+            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+          </svg>
+          <span class="font-semibold text-sm" style="color:var(--text-1)">Reseñas de Google</span>
         </div>
-        <div class="h-14 w-px bg-navy-900/10" aria-hidden="true"></div>
-        <div>
-          <div class="flex gap-0.5" role="img" aria-label="Calificación promedio 4,2 de 5 estrellas">
-            <svg viewBox="0 0 24 24" class="h-5 w-5 fill-gold-400" aria-hidden="true"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
-            <svg viewBox="0 0 24 24" class="h-5 w-5 fill-gold-400" aria-hidden="true"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
-            <svg viewBox="0 0 24 24" class="h-5 w-5 fill-gold-400" aria-hidden="true"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
-            <svg viewBox="0 0 24 24" class="h-5 w-5 fill-gold-400" aria-hidden="true"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
-            <svg viewBox="0 0 24 24" class="h-5 w-5" aria-hidden="true">
-              <defs><linearGradient id="halfStar"><stop offset="20%" stop-color="#D9A441"/><stop offset="20%" stop-color="#D9A441" stop-opacity=".22"/></linearGradient></defs>
-              <path fill="url(#halfStar)" d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/>
-            </svg>
+        <div class="w-px h-5" style="background:var(--border-strong)"></div>
+        <div class="flex items-center gap-2.5">
+          <span class="text-3xl font-black text-yellow-400">4.2</span>
+          <div class="flex gap-0.5">
+            <svg viewBox="0 0 24 24" class="w-4 h-4 text-yellow-400 fill-yellow-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
+            <svg viewBox="0 0 24 24" class="w-4 h-4 text-yellow-400 fill-yellow-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
+            <svg viewBox="0 0 24 24" class="w-4 h-4 text-yellow-400 fill-yellow-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
+            <svg viewBox="0 0 24 24" class="w-4 h-4 text-yellow-400 fill-yellow-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
+            <svg viewBox="0 0 24 24" class="w-4 h-4"><defs><linearGradient id="hs-rev"><stop offset="20%" stop-color="#facc15"/><stop offset="20%" stop-color="#facc15" stop-opacity=".25"/></linearGradient></defs><path fill="url(#hs-rev)" d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
           </div>
-          <p class="mt-2 text-sm text-navy-800/60">Promedio de opiniones<br class="hidden sm:block" /> de nuestras dos sucursales</p>
         </div>
+        <span class="text-sm hidden sm:block" style="color:var(--text-2)">promedio de nuestras dos sucursales</span>
       </div>
+      <a href="https://www.google.com/search?q=El+Jaial+kosher+Buenos+Aires" target="_blank" rel="noopener noreferrer"
+         class="text-sm font-semibold transition-colors whitespace-nowrap" style="color:#FF6B35">
+        Ver todas en Google ↗
+      </a>
     </div>
 
-    <!-- Carrusel -->
-    <div class="reveal relative mt-14">
-      <div data-carousel class="no-scrollbar snap-x-mandatory -mx-5 flex gap-6 overflow-x-auto scroll-smooth px-5 pb-4 sm:-mx-8 sm:px-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
 
-        <!-- 1 -->
-        <figure class="snap-center-item flex w-[86vw] shrink-0 flex-col rounded-3xl border border-navy-900/10 bg-white p-8 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-hover sm:w-[24rem]">
-          <div class="flex gap-0.5" role="img" aria-label="5 de 5 estrellas">
-            <svg viewBox="0 0 24 24" class="h-4 w-4 fill-gold-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="h-4 w-4 fill-gold-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="h-4 w-4 fill-gold-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="h-4 w-4 fill-gold-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="h-4 w-4 fill-gold-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
+      <div class="rv rounded-2xl p-5 flex flex-col gap-4 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background:#3B82F6">
+              <span class="text-white text-sm font-black">DK</span>
+            </div>
+            <div>
+              <p class="font-semibold text-sm leading-tight" style="color:var(--text-1)">Débora K.</p>
+              <p class="text-xs mt-0.5" style="color:var(--text-3)">Local Guide · Google Maps</p>
+            </div>
           </div>
-          <blockquote class="mt-5 flex-1 text-[15px] leading-relaxed text-navy-800/80">
-            “Voy siempre a la sucursal de Belgrano y nunca me falta nada. La panadería es un lujo: la jalá del viernes sale calentita y se termina enseguida.”
-          </blockquote>
-          <figcaption class="mt-7 flex items-center gap-3 border-t border-navy-900/10 pt-5">
-            <span class="grid h-11 w-11 place-items-center rounded-full bg-navy-100 font-display text-sm font-bold text-navy-800">DK</span>
-            <span>
-              <span class="block text-sm font-semibold text-navy-900">Débora K.</span>
-              <span class="block text-xs text-navy-800/55">Sucursal Belgrano</span>
-            </span>
-          </figcaption>
-        </figure>
-
-        <!-- 2 -->
-        <figure class="snap-center-item flex w-[86vw] shrink-0 flex-col rounded-3xl border border-navy-900/10 bg-white p-8 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-hover sm:w-[24rem]">
-          <div class="flex gap-0.5" role="img" aria-label="4 de 5 estrellas">
-            <svg viewBox="0 0 24 24" class="h-4 w-4 fill-gold-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="h-4 w-4 fill-gold-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="h-4 w-4 fill-gold-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="h-4 w-4 fill-gold-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="h-4 w-4 fill-navy-900/15"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
+          <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="flex gap-0.5">
+            <svg viewBox="0 0 24 24" class="w-3 h-3 text-yellow-400 fill-yellow-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="w-3 h-3 text-yellow-400 fill-yellow-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="w-3 h-3 text-yellow-400 fill-yellow-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="w-3 h-3 text-yellow-400 fill-yellow-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="w-3 h-3 text-yellow-400 fill-yellow-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
           </div>
-          <blockquote class="mt-5 flex-1 text-[15px] leading-relaxed text-navy-800/80">
-            “Muy buena variedad de importados, sobre todo en almacén. Los chicos de fiambrería te cortan todo como pedís y con mucha paciencia.”
-          </blockquote>
-          <figcaption class="mt-7 flex items-center gap-3 border-t border-navy-900/10 pt-5">
-            <span class="grid h-11 w-11 place-items-center rounded-full bg-leaf-100 font-display text-sm font-bold text-leaf-700">AM</span>
-            <span>
-              <span class="block text-sm font-semibold text-navy-900">Ariel M.</span>
-              <span class="block text-xs text-navy-800/55">Sucursal Palermo</span>
-            </span>
-          </figcaption>
-        </figure>
-
-        <!-- 3 -->
-        <figure class="snap-center-item flex w-[86vw] shrink-0 flex-col rounded-3xl border border-navy-900/10 bg-white p-8 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-hover sm:w-[24rem]">
-          <div class="flex gap-0.5" role="img" aria-label="5 de 5 estrellas">
-            <svg viewBox="0 0 24 24" class="h-4 w-4 fill-gold-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="h-4 w-4 fill-gold-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="h-4 w-4 fill-gold-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="h-4 w-4 fill-gold-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="h-4 w-4 fill-gold-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
-          </div>
-          <blockquote class="mt-5 flex-1 text-[15px] leading-relaxed text-navy-800/80">
-            “La carne siempre fresca y bien cortada. Resolvés toda la compra de la semana en un solo lugar, sin tener que ir a tres negocios distintos.”
-          </blockquote>
-          <figcaption class="mt-7 flex items-center gap-3 border-t border-navy-900/10 pt-5">
-            <span class="grid h-11 w-11 place-items-center rounded-full bg-gold-400/20 font-display text-sm font-bold text-gold-500">SL</span>
-            <span>
-              <span class="block text-sm font-semibold text-navy-900">Sabrina L.</span>
-              <span class="block text-xs text-navy-800/55">Sucursal Belgrano</span>
-            </span>
-          </figcaption>
-        </figure>
-
-        <!-- 4 -->
-        <figure class="snap-center-item flex w-[86vw] shrink-0 flex-col rounded-3xl border border-navy-900/10 bg-white p-8 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-hover sm:w-[24rem]">
-          <div class="flex gap-0.5" role="img" aria-label="4 de 5 estrellas">
-            <svg viewBox="0 0 24 24" class="h-4 w-4 fill-gold-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="h-4 w-4 fill-gold-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="h-4 w-4 fill-gold-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="h-4 w-4 fill-gold-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="h-4 w-4 fill-navy-900/15"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
-          </div>
-          <blockquote class="mt-5 flex-1 text-[15px] leading-relaxed text-navy-800/80">
-            “Muy cómodo para hacer las compras antes de Shabat. Los viernes se llena, pero la atención sigue siendo rápida y amable.”
-          </blockquote>
-          <figcaption class="mt-7 flex items-center gap-3 border-t border-navy-900/10 pt-5">
-            <span class="grid h-11 w-11 place-items-center rounded-full bg-navy-100 font-display text-sm font-bold text-navy-800">GF</span>
-            <span>
-              <span class="block text-sm font-semibold text-navy-900">Gabriel F.</span>
-              <span class="block text-xs text-navy-800/55">Sucursal Palermo</span>
-            </span>
-          </figcaption>
-        </figure>
-
-        <!-- 5 -->
-        <figure class="snap-center-item flex w-[86vw] shrink-0 flex-col rounded-3xl border border-navy-900/10 bg-white p-8 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-hover sm:w-[24rem]">
-          <div class="flex gap-0.5" role="img" aria-label="4 de 5 estrellas">
-            <svg viewBox="0 0 24 24" class="h-4 w-4 fill-gold-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="h-4 w-4 fill-gold-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="h-4 w-4 fill-gold-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="h-4 w-4 fill-gold-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="h-4 w-4 fill-navy-900/15"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
-          </div>
-          <blockquote class="mt-5 flex-1 text-[15px] leading-relaxed text-navy-800/80">
-            “Las góndolas están siempre ordenadas y todo bien señalizado. Encontrás desde lo básico hasta cosas importadas difíciles de conseguir.”
-          </blockquote>
-          <figcaption class="mt-7 flex items-center gap-3 border-t border-navy-900/10 pt-5">
-            <span class="grid h-11 w-11 place-items-center rounded-full bg-leaf-100 font-display text-sm font-bold text-leaf-700">NR</span>
-            <span>
-              <span class="block text-sm font-semibold text-navy-900">Natalia R.</span>
-              <span class="block text-xs text-navy-800/55">Sucursal Belgrano</span>
-            </span>
-          </figcaption>
-        </figure>
+          <span class="text-xs" style="color:var(--text-3)">hace 2 semanas</span>
+        </div>
+        <p class="text-sm leading-relaxed flex-1" style="color:var(--text-2)">
+          Voy siempre a la sucursal de Belgrano y nunca me falta nada. <span class="font-semibold" style="color:#FF6B35">La panadería es un lujo</span>: la jalá del viernes sale calentita y se termina enseguida.
+        </p>
       </div>
 
-      <!-- Controles -->
-      <div class="mt-6 flex items-center justify-center gap-3">
-        <button type="button" data-carousel-prev aria-label="Reseña anterior"
-          class="grid h-11 w-11 place-items-center rounded-full border border-navy-900/15 bg-white text-navy-900 shadow-ring transition-all duration-300 hover:-translate-y-0.5 hover:border-navy-900/25 hover:shadow-card focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-300">
-          <svg viewBox="0 0 24 24" fill="none" class="h-5 w-5" aria-hidden="true"><path d="M14.5 6 8.5 12l6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <div data-carousel-dots class="flex items-center gap-2"></div>
-        <button type="button" data-carousel-next aria-label="Reseña siguiente"
-          class="grid h-11 w-11 place-items-center rounded-full border border-navy-900/15 bg-white text-navy-900 shadow-ring transition-all duration-300 hover:-translate-y-0.5 hover:border-navy-900/25 hover:shadow-card focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-300">
-          <svg viewBox="0 0 24 24" fill="none" class="h-5 w-5" aria-hidden="true"><path d="m9.5 6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
+      <div class="rv rounded-2xl p-5 flex flex-col gap-4 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background:#8B5CF6">
+              <span class="text-white text-sm font-black">AM</span>
+            </div>
+            <div>
+              <p class="font-semibold text-sm leading-tight" style="color:var(--text-1)">Ariel M.</p>
+              <p class="text-xs mt-0.5" style="color:var(--text-3)">Reseñas locales · Google Maps</p>
+            </div>
+          </div>
+          <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="flex gap-0.5">
+            <svg viewBox="0 0 24 24" class="w-3 h-3 text-yellow-400 fill-yellow-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="w-3 h-3 text-yellow-400 fill-yellow-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="w-3 h-3 text-yellow-400 fill-yellow-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="w-3 h-3 text-yellow-400 fill-yellow-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="w-3 h-3 fill-white/15"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
+          </div>
+          <span class="text-xs" style="color:var(--text-3)">hace 1 mes</span>
+        </div>
+        <p class="text-sm leading-relaxed flex-1" style="color:var(--text-2)">
+          Muy buena variedad de importados, sobre todo en almacén. Los chicos de fiambrería te cortan todo como pedís y con <span class="font-semibold" style="color:#FF6B35">mucha paciencia</span>.
+        </p>
+      </div>
+
+      <div class="rv rounded-2xl p-5 flex flex-col gap-4 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background:#10B981">
+              <span class="text-white text-sm font-black">SL</span>
+            </div>
+            <div>
+              <p class="font-semibold text-sm leading-tight" style="color:var(--text-1)">Sabrina L.</p>
+              <p class="text-xs mt-0.5" style="color:var(--text-3)">Local Guide · Google Maps</p>
+            </div>
+          </div>
+          <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="flex gap-0.5">
+            <svg viewBox="0 0 24 24" class="w-3 h-3 text-yellow-400 fill-yellow-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="w-3 h-3 text-yellow-400 fill-yellow-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="w-3 h-3 text-yellow-400 fill-yellow-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="w-3 h-3 text-yellow-400 fill-yellow-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="w-3 h-3 text-yellow-400 fill-yellow-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
+          </div>
+          <span class="text-xs" style="color:var(--text-3)">hace 3 semanas</span>
+        </div>
+        <p class="text-sm leading-relaxed flex-1" style="color:var(--text-2)">
+          <span class="font-semibold" style="color:#FF6B35">La carne siempre fresca</span> y bien cortada. Resolvés toda la compra de la semana en un solo lugar, sin tener que ir a tres negocios distintos.
+        </p>
+      </div>
+
+      <div class="rv rounded-2xl p-5 flex flex-col gap-4 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background:#FF6B35">
+              <span class="text-white text-sm font-black">GF</span>
+            </div>
+            <div>
+              <p class="font-semibold text-sm leading-tight" style="color:var(--text-1)">Gabriel F.</p>
+              <p class="text-xs mt-0.5" style="color:var(--text-3)">Reseñas locales · Google Maps</p>
+            </div>
+          </div>
+          <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="flex gap-0.5">
+            <svg viewBox="0 0 24 24" class="w-3 h-3 text-yellow-400 fill-yellow-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="w-3 h-3 text-yellow-400 fill-yellow-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="w-3 h-3 text-yellow-400 fill-yellow-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="w-3 h-3 text-yellow-400 fill-yellow-400"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg><svg viewBox="0 0 24 24" class="w-3 h-3 fill-white/15"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
+          </div>
+          <span class="text-xs" style="color:var(--text-3)">hace 2 meses</span>
+        </div>
+        <p class="text-sm leading-relaxed flex-1" style="color:var(--text-2)">
+          Muy cómodo para hacer las compras antes de Shabat. Los viernes se llena, pero la <span class="font-semibold" style="color:#FF6B35">atención sigue siendo rápida</span> y amable.
+        </p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════ CTA ══════════════════════════ -->
-<section class="bg-cream-50 py-20 sm:py-24">
-  <div class="mx-auto max-w-7xl px-5 sm:px-8">
-    <div class="reveal relative overflow-hidden rounded-[2rem] bg-navy-900 px-8 py-14 text-center shadow-hover sm:px-16 sm:py-20">
-      <div class="pointer-events-none absolute -left-20 -top-24 h-72 w-72 rounded-full bg-leaf-500/15 blur-2xl" aria-hidden="true"></div>
-      <div class="pointer-events-none absolute -bottom-28 -right-16 h-72 w-72 rounded-full bg-gold-400/10 blur-2xl" aria-hidden="true"></div>
+<!-- ══════════════════════════ SUCURSALES ══════════════════════════ -->
+<section id="sucursales" class="section-pad scroll-mt-20" style="background:var(--surface-0)">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
 
-      <p class="relative text-xs font-semibold uppercase tracking-[0.22em] text-cream-100/55">Te esperamos</p>
-      <h2 class="relative mx-auto mt-5 max-w-3xl font-display text-4xl font-bold leading-tight tracking-tight text-cream-50 sm:text-5xl">
-        Vení a recorrer las góndolas de El Jaial
+    <div class="rv text-center mb-12">
+      <span class="inline-block text-xs font-bold uppercase tracking-[0.18em] mb-3 px-3 py-1 rounded-full"
+            style="color:#FF6B35; background:rgba(255,107,53,0.1); border:1px solid rgba(255,107,53,0.2)">
+        Nuestras sucursales
+      </span>
+      <h2 class="font-black leading-tight tracking-tight" style="font-size:clamp(1.75rem, 4vw, 2.75rem); color:var(--text-1)">
+        Dos puntos en la ciudad
       </h2>
-      <p class="relative mx-auto mt-5 max-w-xl text-lg leading-relaxed text-cream-100/65">
-        Palermo y Belgrano, de lunes a viernes. Consultá stock por teléfono y te lo dejamos preparado.
-      </p>
-      <div class="relative mt-9 flex flex-col justify-center gap-3 sm:flex-row">
-        <a href="#sucursales" class="inline-flex items-center justify-center rounded-2xl bg-cream-50 px-7 py-4 text-sm font-semibold text-navy-900 transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:shadow-hover">
-          Ver sucursales y horarios
+    </div>
+
+    <!-- Palermo -->
+    <div class="rv grid grid-cols-1 lg:grid-cols-2 gap-0 rounded-3xl overflow-hidden mb-6"
+         style="border:1px solid var(--border); box-shadow:0 24px 64px rgba(0,0,0,0.5)">
+      <div class="p-10 sm:p-14 flex flex-col justify-center gap-8" style="background:var(--surface-1)">
+        <div style="border-bottom:1px solid var(--border); padding-bottom:2rem">
+          <p class="text-xs font-bold tracking-[0.2em] uppercase mb-3" style="color:var(--text-3)">Sucursal Palermo</p>
+          <p class="font-black leading-tight" style="font-size:clamp(1.75rem, 4vw, 2.5rem); color:var(--text-1)">Raúl Scalabrini Ortiz 3306</p>
+          <p class="mt-2" style="color:var(--text-2)">CABA, Buenos Aires</p>
+          <a href="tel:+541148078617" class="inline-flex items-center gap-2 mt-4 text-sm font-semibold transition-colors" style="color:#FF6B35">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 5.5c0 8 6 14 14 14l1.6-3.3-4-1.9-1.7 2a12 12 0 0 1-6.7-6.7l2-1.7-1.9-4L4.5 5.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+            +54 11 4807-8617
+          </a>
+        </div>
+
+        <div style="border-bottom:1px solid var(--border); padding-bottom:2rem">
+          <p class="text-xs font-bold tracking-[0.2em] uppercase mb-4" style="color:var(--text-3)">Horarios</p>
+          <div class="space-y-2">
+            <div class="flex items-baseline justify-between gap-4">
+              <span class="text-sm" style="color:var(--text-2)">Lunes a jueves</span>
+              <span class="text-sm font-bold" style="color:var(--text-1)">9:30 – 19:00</span>
+            </div>
+            <div class="flex items-baseline justify-between gap-4">
+              <span class="text-sm" style="color:var(--text-2)">Viernes</span>
+              <span class="text-sm font-bold" style="color:var(--text-1)">9:00 – 16:00</span>
+            </div>
+            <div class="flex items-baseline justify-between gap-4">
+              <span class="text-sm" style="color:var(--text-2)">Sábados y domingos</span>
+              <span class="text-sm font-bold" style="color:var(--text-3)">Cerrado</span>
+            </div>
+          </div>
+        </div>
+
+        <a href="https://maps.google.com/?q=Ra%C3%BAl+Scalabrini+Ortiz+3306,+CABA" target="_blank" rel="noopener noreferrer"
+           class="group inline-flex items-center gap-2 font-bold px-7 py-4 rounded-2xl text-sm w-fit transition-all hover:brightness-110 active:scale-95"
+           style="background:var(--text-1); color:var(--surface-0)">
+          Cómo llegar
+          <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m0 0-5.5-5.5M19 12l-5.5 5.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-        <a href="tel:+541145326985" class="inline-flex items-center justify-center rounded-2xl border border-white/25 px-7 py-4 text-sm font-semibold text-cream-50 transition-all duration-300 hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/10">
-          +54 11 4532-6985
+      </div>
+
+      <div class="relative min-h-[380px] lg:min-h-0">
+        <iframe src="https://maps.google.com/maps?q=Ra%C3%BAl+Scalabrini+Ortiz+3306,+Buenos+Aires,+Argentina&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                class="absolute inset-0 w-full h-full border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                title="Ubicación El Jaial Palermo"></iframe>
+      </div>
+    </div>
+
+    <!-- Belgrano -->
+    <div class="rv grid grid-cols-1 lg:grid-cols-2 gap-0 rounded-3xl overflow-hidden"
+         style="border:1px solid var(--border); box-shadow:0 24px 64px rgba(0,0,0,0.5)">
+      <div class="relative min-h-[380px] lg:min-h-0 order-last lg:order-first">
+        <iframe src="https://maps.google.com/maps?q=Moldes+2454,+Buenos+Aires,+Argentina&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                class="absolute inset-0 w-full h-full border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                title="Ubicación El Jaial Belgrano"></iframe>
+      </div>
+
+      <div class="p-10 sm:p-14 flex flex-col justify-center gap-8" style="background:var(--surface-1)">
+        <div style="border-bottom:1px solid var(--border); padding-bottom:2rem">
+          <p class="text-xs font-bold tracking-[0.2em] uppercase mb-3" style="color:var(--text-3)">Sucursal Belgrano</p>
+          <p class="font-black leading-tight" style="font-size:clamp(1.75rem, 4vw, 2.5rem); color:var(--text-1)">Moldes 2454</p>
+          <p class="mt-2" style="color:var(--text-2)">CABA, Buenos Aires</p>
+          <a href="tel:+541145326985" class="inline-flex items-center gap-2 mt-4 text-sm font-semibold transition-colors" style="color:#FF6B35">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 5.5c0 8 6 14 14 14l1.6-3.3-4-1.9-1.7 2a12 12 0 0 1-6.7-6.7l2-1.7-1.9-4L4.5 5.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+            +54 11 4532-6985
+          </a>
+        </div>
+
+        <div style="border-bottom:1px solid var(--border); padding-bottom:2rem">
+          <p class="text-xs font-bold tracking-[0.2em] uppercase mb-4" style="color:var(--text-3)">Horarios</p>
+          <div class="space-y-2">
+            <div class="flex items-baseline justify-between gap-4">
+              <span class="text-sm" style="color:var(--text-2)">Lunes a jueves y domingos</span>
+              <span class="text-sm font-bold" style="color:var(--text-1)">8:00 – 20:00</span>
+            </div>
+            <div class="flex items-baseline justify-between gap-4">
+              <span class="text-sm" style="color:var(--text-2)">Viernes</span>
+              <span class="text-sm font-bold" style="color:var(--text-1)">8:00 – 14:30</span>
+            </div>
+            <div class="flex items-baseline justify-between gap-4">
+              <span class="text-sm" style="color:var(--text-2)">Sábados</span>
+              <span class="text-sm font-bold" style="color:var(--text-3)">Cerrado</span>
+            </div>
+          </div>
+        </div>
+
+        <a href="https://maps.google.com/?q=Moldes+2454,+CABA" target="_blank" rel="noopener noreferrer"
+           class="group inline-flex items-center gap-2 font-bold px-7 py-4 rounded-2xl text-sm w-fit transition-all hover:brightness-110 active:scale-95"
+           style="background:var(--text-1); color:var(--surface-0)">
+          Cómo llegar
+          <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m0 0-5.5-5.5M19 12l-5.5 5.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ NOSOTROS ══════════════════════════ -->
+<section id="info" class="section-pad scroll-mt-20" style="background:var(--surface-0)">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+      <div class="rv rv-x-l">
+        <span class="inline-block text-xs font-bold uppercase tracking-[0.18em] mb-4 px-3 py-1 rounded-full"
+              style="color:#FF6B35; background:rgba(255,107,53,0.1); border:1px solid rgba(255,107,53,0.2)">
+          Sobre nosotros
+        </span>
+        <h2 class="font-black leading-tight tracking-tight mb-5" style="font-size:clamp(1.75rem, 4vw, 2.75rem); color:var(--text-1)">
+          El mercado kosher de barrio, con escala de supermercado
+        </h2>
+        <p class="text-base leading-relaxed mb-8" style="color:var(--text-2)">
+          En El Jaial resolvés toda la compra en un solo lugar. Panadería propia, carnicería y
+          fiambrería con supervisión, góndolas repuestas cada mañana e importados que no
+          se consiguen en otro lado — con la atención personalizada de siempre.
+        </p>
+
+        <div class="grid grid-cols-3 gap-3 mb-8">
+          <div class="rounded-2xl p-4 text-center" style="background:var(--surface-2); border:1px solid var(--border)">
+            <div class="w-9 h-9 rounded-xl flex items-center justify-center mx-auto mb-2" style="background:rgba(255,184,0,0.1)">
+              <svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" style="color:#FFB800" fill="currentColor"><path d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
+            </div>
+            <p class="font-black text-2xl leading-none mb-1" style="color:var(--text-1)">4.2</p>
+            <p class="text-xs" style="color:var(--text-2)">Calificación</p>
+          </div>
+          <div class="rounded-2xl p-4 text-center" style="background:var(--surface-2); border:1px solid var(--border)">
+            <div class="w-9 h-9 rounded-xl flex items-center justify-center mx-auto mb-2" style="background:rgba(59,130,246,0.1)">
+              <svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" style="color:#3B82F6" fill="none" aria-hidden="true"><path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            </div>
+            <p class="font-black text-2xl leading-none mb-1" style="color:var(--text-1)">+2.500</p>
+            <p class="text-xs" style="color:var(--text-2)">Productos</p>
+          </div>
+          <div class="rounded-2xl p-4 text-center" style="background:var(--surface-2); border:1px solid var(--border)">
+            <div class="w-9 h-9 rounded-xl flex items-center justify-center mx-auto mb-2" style="background:rgba(139,92,246,0.1)">
+              <svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" style="color:#8B5CF6" fill="none" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
+            </div>
+            <p class="font-black text-2xl leading-none mb-1" style="color:var(--text-1)">2</p>
+            <p class="text-xs" style="color:var(--text-2)">Sucursales</p>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-2">
+          <a href="#" class="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all hover:bg-white/[0.06]"
+             style="background:var(--surface-2); border:1px solid var(--border); color:var(--text-2)">Instagram</a>
+          <a href="#" class="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all hover:bg-white/[0.06]"
+             style="background:var(--surface-2); border:1px solid var(--border); color:var(--text-2)">Facebook</a>
+        </div>
+      </div>
+
+      <div class="rv rv-x-r rounded-3xl p-6 sm:p-8 space-y-6" style="background:var(--surface-1); border:1px solid var(--border)">
+        <h3 class="font-black text-xl" style="color:var(--text-1)">Información de contacto</h3>
+
+        <div class="space-y-5">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(255,107,53,0.1)">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" style="color:#FF6B35" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
+            </div>
+            <div>
+              <p class="text-xs font-bold uppercase tracking-[0.12em] mb-0.5" style="color:var(--text-3)">Palermo</p>
+              <p class="text-sm font-medium" style="color:var(--text-1)">Raúl Scalabrini Ortiz 3306, CABA</p>
+              <a href="tel:+541148078617" class="text-sm" style="color:var(--text-2)">+54 11 4807-8617</a>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(59,130,246,0.1)">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" style="color:#3B82F6" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
+            </div>
+            <div>
+              <p class="text-xs font-bold uppercase tracking-[0.12em] mb-0.5" style="color:var(--text-3)">Belgrano</p>
+              <p class="text-sm font-medium" style="color:var(--text-1)">Moldes 2454, CABA</p>
+              <a href="tel:+541145326985" class="text-sm" style="color:var(--text-2)">+54 11 4532-6985</a>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(34,197,94,0.1)">
+              <svg class="w-5 h-5 text-green-500" fill="none" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.2" stroke="currentColor" stroke-width="1.7"/><path d="M12 7.4V12l3 1.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            </div>
+            <div class="flex-1">
+              <p class="text-xs font-bold uppercase tracking-[0.12em] mb-2" style="color:var(--text-3)">Atención</p>
+              <div class="space-y-1.5">
+                <div class="flex items-center justify-between gap-4">
+                  <span class="text-sm" style="color:var(--text-2)">Domingo a jueves</span>
+                  <span class="text-sm font-semibold" style="color:var(--text-1)">8:00 – 20:00</span>
+                </div>
+                <div class="flex items-center justify-between gap-4">
+                  <span class="text-sm" style="color:var(--text-2)">Viernes</span>
+                  <span class="text-sm font-semibold" style="color:var(--text-1)">8:00 – 16:00</span>
+                </div>
+                <div class="flex items-center justify-between gap-4">
+                  <span class="text-sm" style="color:var(--text-2)">Sábado</span>
+                  <span class="text-sm font-semibold" style="color:var(--text-3)">Cerrado</span>
+                </div>
+              </div>
+              <p class="text-xs mt-3" style="color:var(--text-3)">Los horarios varían por sucursal · ver detalle arriba.</p>
+            </div>
+          </div>
+        </div>
+
+        <a href="https://wa.me/541145326985" target="_blank" rel="noopener noreferrer"
+           class="flex items-center justify-center gap-2 w-full font-bold py-4 rounded-2xl text-white text-sm transition-all hover:brightness-110"
+           style="background:#16a34a; box-shadow:0 4px 20px rgba(22,163,74,0.35)">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Contactar por WhatsApp
         </a>
       </div>
     </div>
@@ -724,189 +970,212 @@
 
 </main>
 
-<!-- ══════════════════════════ FOOTER ══════════════════════════ -->
-<footer id="contacto" class="scroll-mt-28 border-t border-navy-900/10 bg-white pt-20 pb-10">
-  <div class="mx-auto max-w-7xl px-5 sm:px-8">
-    <div class="grid gap-12 lg:grid-cols-12">
+<!-- ════════════════════════════ FOOTER ════════════════════════════ -->
+<footer style="background:var(--surface-1); border-top:1px solid var(--border)">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
 
       <!-- Marca -->
-      <div class="lg:col-span-4">
-        <div class="flex items-center gap-3">
-          <span class="grid h-11 w-11 place-items-center rounded-xl bg-navy-900 text-cream-100">
-            <svg viewBox="0 0 24 24" fill="none" class="h-5 w-5" aria-hidden="true"><path d="M4 9h16l-1.2 9.2A2 2 0 0 1 16.8 20H7.2a2 2 0 0 1-2-1.8L4 9Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 9V7a3 3 0 1 1 6 0v2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <div class="lg:col-span-1">
+        <div class="flex items-center gap-3 mb-5">
+          <span class="w-10 h-10 rounded-xl grid place-items-center flex-shrink-0" style="background:linear-gradient(135deg,#FF7B40,#D94000)">
+            <svg viewBox="0 0 24 24" fill="none" class="w-5 h-5 text-white" aria-hidden="true"><path d="M4 9h16l-1.2 9.2A2 2 0 0 1 16.8 20H7.2a2 2 0 0 1-2-1.8L4 9Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 9V7a3 3 0 1 1 6 0v2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
           </span>
-          <span class="leading-tight">
-            <span class="block font-display text-xl font-bold tracking-tight text-navy-900">El Jaial</span>
-            <span class="block text-[10px] font-semibold uppercase tracking-[0.22em] text-leaf-600">Kosher Market</span>
-          </span>
+          <div>
+            <p class="font-black text-base leading-none" style="color:var(--text-1)">El Jaial</p>
+            <p class="text-xs mt-0.5" style="color:#FF6B35">Kosher Market</p>
+          </div>
         </div>
-        <p class="mt-6 max-w-sm text-sm leading-relaxed text-navy-800/65">
-          Mercado y supermercado kosher en Buenos Aires. Frescura, variedad y atención
-          de barrio, con la confianza de la supervisión rabínica en todos nuestros sectores.
+        <p class="text-sm leading-relaxed mb-6" style="color:var(--text-2)">
+          Mercado y supermercado kosher en Buenos Aires. Productos frescos del día e
+          importados seleccionados, bajo supervisión rabínica.
         </p>
 
-        <div class="mt-7 flex items-center gap-3">
-          <a href="#" aria-label="Instagram de El Jaial" class="grid h-10 w-10 place-items-center rounded-xl border border-navy-900/10 text-navy-800 transition-all duration-300 hover:-translate-y-0.5 hover:border-navy-900/25 hover:bg-navy-900 hover:text-white">
-            <svg viewBox="0 0 24 24" fill="none" class="h-[1.125rem] w-[1.125rem]" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4.5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.6"/><circle cx="16.6" cy="7.4" r="1" fill="currentColor"/></svg>
+        <div class="flex gap-2">
+          <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-xl flex items-center justify-center transition-all hover:bg-white/[0.1]"
+             style="background:var(--surface-2); color:var(--text-2); border:1px solid var(--border)">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
           </a>
-          <a href="#" aria-label="Facebook de El Jaial" class="grid h-10 w-10 place-items-center rounded-xl border border-navy-900/10 text-navy-800 transition-all duration-300 hover:-translate-y-0.5 hover:border-navy-900/25 hover:bg-navy-900 hover:text-white">
-            <svg viewBox="0 0 24 24" fill="none" class="h-[1.125rem] w-[1.125rem]" aria-hidden="true"><path d="M14.5 8.5h2.2V5.6h-2.6c-2.3 0-3.6 1.4-3.6 3.6v1.7H8.2v2.9h2.3V21h3v-7.2h2.3l.4-2.9h-2.7V9.6c0-.7.3-1.1 1-1.1Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          <a href="#" aria-label="Facebook" class="w-9 h-9 rounded-xl flex items-center justify-center transition-all hover:bg-white/[0.1]"
+             style="background:var(--surface-2); color:var(--text-2); border:1px solid var(--border)">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
           </a>
-          <a href="https://wa.me/541145326985" target="_blank" rel="noopener" aria-label="WhatsApp de El Jaial" class="grid h-10 w-10 place-items-center rounded-xl border border-navy-900/10 text-navy-800 transition-all duration-300 hover:-translate-y-0.5 hover:border-leaf-500 hover:bg-leaf-600 hover:text-white">
-            <svg viewBox="0 0 24 24" fill="none" class="h-[1.125rem] w-[1.125rem]" aria-hidden="true"><path d="M4 20l1.2-3.7A7.6 7.6 0 1 1 8.3 19L4 20Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9.4 9c.2 1.6 2 3.4 3.6 3.6l.9-1.1 1.7.9-.6 1.4c-2.2.5-5.5-2.6-5.9-4.8L10.4 8l.9 1.7-1 .9" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+          <a href="https://wa.me/541145326985" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"
+             class="w-9 h-9 rounded-xl flex items-center justify-center transition-all hover:bg-white/[0.1]"
+             style="background:var(--surface-2); color:var(--text-2); border:1px solid var(--border)">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           </a>
         </div>
-      </div>
-
-      <!-- Palermo -->
-      <div class="lg:col-span-3">
-        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-navy-800/45">Sucursal Palermo</p>
-        <address class="mt-5 space-y-2 not-italic text-sm text-navy-800/70">
-          <p class="font-semibold text-navy-900">Raúl Scalabrini Ortiz 3306</p>
-          <p>CABA, Buenos Aires</p>
-          <p><a href="tel:+541148078617" class="transition-colors duration-200 hover:text-leaf-700">+54 11 4807-8617</a></p>
-        </address>
-        <p class="mt-4 text-sm leading-relaxed text-navy-800/55">
-          Lun a jue 9:30–19:00<br />Vie 9:00–16:00<br />Sáb y dom cerrado
-        </p>
-      </div>
-
-      <!-- Belgrano -->
-      <div class="lg:col-span-3">
-        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-navy-800/45">Sucursal Belgrano</p>
-        <address class="mt-5 space-y-2 not-italic text-sm text-navy-800/70">
-          <p class="font-semibold text-navy-900">Moldes 2454</p>
-          <p>CABA, Buenos Aires</p>
-          <p><a href="tel:+541145326985" class="transition-colors duration-200 hover:text-leaf-700">+54 11 4532-6985</a></p>
-        </address>
-        <p class="mt-4 text-sm leading-relaxed text-navy-800/55">
-          Lun a jue y dom 8:00–20:00<br />Vie 8:00–14:30<br />Sáb cerrado
-        </p>
       </div>
 
       <!-- Navegación -->
-      <div class="lg:col-span-2">
-        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-navy-800/45">Navegación</p>
-        <ul class="mt-5 space-y-3 text-sm">
-          <li><a href="#pasillos" class="text-navy-800/70 transition-colors duration-200 hover:text-navy-900">Nuestros pasillos</a></li>
-          <li><a href="#sucursales" class="text-navy-800/70 transition-colors duration-200 hover:text-navy-900">Sucursales</a></li>
-          <li><a href="#resenas" class="text-navy-800/70 transition-colors duration-200 hover:text-navy-900">Reseñas</a></li>
-          <li><a href="#top" class="text-navy-800/70 transition-colors duration-200 hover:text-navy-900">Volver arriba</a></li>
+      <div>
+        <h3 class="font-bold text-xs uppercase tracking-[0.15em] mb-5" style="color:var(--text-3)">Navegación</h3>
+        <ul class="space-y-3">
+          <li><a href="#top" class="text-sm transition-colors hover:text-[#FF6B35]" style="color:var(--text-2)">Inicio</a></li>
+          <li><a href="#pasillos" class="text-sm transition-colors hover:text-[#FF6B35]" style="color:var(--text-2)">Nuestros pasillos</a></li>
+          <li><a href="#sucursales" class="text-sm transition-colors hover:text-[#FF6B35]" style="color:var(--text-2)">Sucursales</a></li>
+          <li><a href="#resenas" class="text-sm transition-colors hover:text-[#FF6B35]" style="color:var(--text-2)">Reseñas</a></li>
+          <li><a href="#info" class="text-sm transition-colors hover:text-[#FF6B35]" style="color:var(--text-2)">Contacto</a></li>
         </ul>
+      </div>
+
+      <!-- Horarios -->
+      <div>
+        <h3 class="font-bold text-xs uppercase tracking-[0.15em] mb-5" style="color:var(--text-3)">Horarios</h3>
+        <ul class="space-y-3">
+          <li class="flex items-start gap-2">
+            <svg class="w-3.5 h-3.5 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" style="color:#FF6B35" aria-hidden="true"><circle cx="12" cy="12" r="8.2" stroke="currentColor" stroke-width="1.7"/><path d="M12 7.4V12l3 1.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            <div>
+              <p class="text-sm font-medium" style="color:var(--text-1)">Palermo · Lun a jue</p>
+              <p class="text-xs" style="color:var(--text-2)">9:30 – 19:00 · Vie 9:00 – 16:00</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="w-3.5 h-3.5 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" style="color:#FF6B35" aria-hidden="true"><circle cx="12" cy="12" r="8.2" stroke="currentColor" stroke-width="1.7"/><path d="M12 7.4V12l3 1.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            <div>
+              <p class="text-sm font-medium" style="color:var(--text-1)">Belgrano · Lun a jue y dom</p>
+              <p class="text-xs" style="color:var(--text-2)">8:00 – 20:00 · Vie 8:00 – 14:30</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="w-3.5 h-3.5 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" style="color:#FF6B35" aria-hidden="true"><circle cx="12" cy="12" r="8.2" stroke="currentColor" stroke-width="1.7"/><path d="M12 7.4V12l3 1.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            <div>
+              <p class="text-sm font-medium" style="color:var(--text-1)">Shabat</p>
+              <p class="text-xs" style="color:var(--text-2)">Cerrado en ambas sucursales</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Contacto -->
+      <div>
+        <h3 class="font-bold text-xs uppercase tracking-[0.15em] mb-5" style="color:var(--text-3)">Contacto</h3>
+        <ul class="space-y-4 mb-6">
+          <li class="flex items-start gap-3">
+            <svg class="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" style="color:#FF6B35" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
+            <p class="text-sm" style="color:var(--text-2)">Raúl Scalabrini Ortiz 3306, CABA</p>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" style="color:#FF6B35" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
+            <p class="text-sm" style="color:var(--text-2)">Moldes 2454, CABA</p>
+          </li>
+          <li class="flex items-center gap-3">
+            <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" style="color:#FF6B35" aria-hidden="true"><path d="M4.5 5.5c0 8 6 14 14 14l1.6-3.3-4-1.9-1.7 2a12 12 0 0 1-6.7-6.7l2-1.7-1.9-4L4.5 5.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+            <a href="tel:+541148078617" class="text-sm transition-colors hover:text-[#FF6B35]" style="color:var(--text-2)">+54 11 4807-8617</a>
+          </li>
+          <li class="flex items-center gap-3">
+            <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" style="color:#FF6B35" aria-hidden="true"><path d="M4.5 5.5c0 8 6 14 14 14l1.6-3.3-4-1.9-1.7 2a12 12 0 0 1-6.7-6.7l2-1.7-1.9-4L4.5 5.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+            <a href="tel:+541145326985" class="text-sm transition-colors hover:text-[#FF6B35]" style="color:var(--text-2)">+54 11 4532-6985</a>
+          </li>
+        </ul>
+
+        <a href="https://wa.me/541145326985" target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold text-white transition-all hover:brightness-110"
+           style="background:#16a34a; box-shadow:0 4px 16px rgba(22,163,74,0.3)">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
       </div>
     </div>
 
-    <div class="mt-14 flex flex-col items-center justify-between gap-4 border-t border-navy-900/10 pt-8 sm:flex-row">
-      <p class="text-xs text-navy-800/50">© <span data-year>2026</span> El Jaial · Kosher Market. Todos los derechos reservados.</p>
-      <p class="text-xs text-navy-800/50">Buenos Aires, Argentina · Productos bajo supervisión kosher</p>
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8" style="border-top:1px solid var(--border)">
+      <p class="text-xs" style="color:var(--text-3)">© <span data-year>2026</span> El Jaial. Todos los derechos reservados.</p>
+      <p class="text-xs" style="color:var(--text-3)">Buenos Aires, Argentina · Productos bajo supervisión kosher</p>
     </div>
   </div>
 </footer>
+
+<!-- FAB WhatsApp -->
+<a href="https://wa.me/541145326985" target="_blank" rel="noopener noreferrer" title="Contactar por WhatsApp"
+   class="fixed bottom-6 right-6 z-40 w-14 h-14 bg-green-500 hover:bg-green-400 rounded-2xl flex items-center justify-center shadow-2xl shadow-green-500/40 transition-all hover:scale-110 active:scale-95">
+  <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
 
 <script>
 (function () {
   'use strict';
 
-  /* ── Nav: sombra al hacer scroll ─────────────────────────────── */
-  var nav = document.querySelector('[data-nav]');
-  var onScroll = function () {
-    if (window.scrollY > 12) nav.classList.add('drop-shadow-sm');
-    else nav.classList.remove('drop-shadow-sm');
-  };
+  /* Header: transparente → glass-dark al hacer scroll (scrollY > 30) */
+  var header = document.querySelector('[data-header]');
+  function onScroll() {
+    if (window.scrollY > 30) {
+      header.classList.add('glass-dark', 'shadow-2xl', 'shadow-black/40');
+      header.classList.remove('bg-transparent');
+    } else {
+      header.classList.remove('glass-dark', 'shadow-2xl', 'shadow-black/40');
+      header.classList.add('bg-transparent');
+    }
+  }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  /* ── Menú mobile ─────────────────────────────────────────────── */
-  var menuBtn = document.querySelector('[data-menu-btn]');
-  var menu = document.querySelector('[data-menu]');
-  menuBtn.addEventListener('click', function () {
-    var open = menu.hasAttribute('hidden');
-    if (open) menu.removeAttribute('hidden'); else menu.setAttribute('hidden', '');
-    menuBtn.setAttribute('aria-expanded', String(open));
-    menuBtn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
-  });
-  menu.querySelectorAll('a').forEach(function (link) {
-    link.addEventListener('click', function () {
-      menu.setAttribute('hidden', '');
-      menuBtn.setAttribute('aria-expanded', 'false');
+  /* Drawer mobile */
+  var btn = document.querySelector('[data-menu-btn]');
+  var closeBtn = document.querySelector('[data-menu-close]');
+  var drawer = document.querySelector('[data-drawer]');
+  var overlay = document.querySelector('[data-overlay]');
+
+  function openMenu() {
+    drawer.hidden = false;
+    overlay.hidden = false;
+    requestAnimationFrame(function () {
+      drawer.classList.remove('translate-x-full');
+      overlay.classList.remove('opacity-0');
     });
+    btn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    drawer.classList.add('translate-x-full');
+    overlay.classList.add('opacity-0');
+    btn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    window.setTimeout(function () {
+      drawer.hidden = true;
+      overlay.hidden = true;
+    }, 300);
+  }
+
+  btn.addEventListener('click', function () {
+    if (drawer.hidden) openMenu(); else closeMenu();
+  });
+  closeBtn.addEventListener('click', closeMenu);
+  overlay.addEventListener('click', closeMenu);
+  document.querySelectorAll('[data-drawer-nav] a').forEach(function (a) {
+    a.addEventListener('click', closeMenu);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !drawer.hidden) closeMenu();
   });
 
-  /* ── Reveal on scroll ────────────────────────────────────────── */
-  var revealables = document.querySelectorAll('.reveal');
+  /* Reveal on scroll (equivalente a whileInView + stagger) */
+  var items = document.querySelectorAll('.rv:not(.in)');
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
-        entry.target.classList.add('is-visible');
+        entry.target.classList.add('in');
         io.unobserve(entry.target);
       });
-    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
-    revealables.forEach(function (el, i) {
-      el.style.transitionDelay = (i % 3) * 90 + 'ms';
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+
+    items.forEach(function (el) {
+      var siblings = Array.prototype.slice.call(el.parentElement.children).filter(function (n) {
+        return n.classList && n.classList.contains('rv');
+      });
+      var i = siblings.indexOf(el);
+      el.style.transitionDelay = (i > 0 ? Math.min(i, 4) * 80 : 0) + 'ms';
       io.observe(el);
     });
   } else {
-    revealables.forEach(function (el) { el.classList.add('is-visible'); });
+    items.forEach(function (el) { el.classList.add('in'); });
   }
 
-  /* ── Carrusel de reseñas ─────────────────────────────────────── */
-  var track = document.querySelector('[data-carousel]');
-  if (track) {
-    var slides = Array.prototype.slice.call(track.children);
-    var dotsWrap = document.querySelector('[data-carousel-dots]');
-
-    var dots = slides.map(function (_, i) {
-      var dot = document.createElement('button');
-      dot.type = 'button';
-      dot.setAttribute('aria-label', 'Ir a la reseña ' + (i + 1));
-      dot.className = 'h-2 rounded-full bg-navy-900/20 transition-all duration-300 hover:bg-navy-900/40';
-      dot.style.width = '8px';
-      dot.addEventListener('click', function () { goTo(i); });
-      dotsWrap.appendChild(dot);
-      return dot;
-    });
-
-    var current = 0;
-
-    function setActive(i) {
-      current = i;
-      dots.forEach(function (dot, k) {
-        var active = k === i;
-        dot.style.width = active ? '26px' : '8px';
-        dot.classList.toggle('bg-navy-900', active);
-        dot.classList.toggle('bg-navy-900/20', !active);
-      });
-    }
-
-    function goTo(i) {
-      var target = slides[Math.max(0, Math.min(slides.length - 1, i))];
-      track.scrollTo({ left: target.offsetLeft - track.offsetLeft, behavior: 'smooth' });
-      setActive(slides.indexOf(target));
-    }
-
-    document.querySelector('[data-carousel-prev]').addEventListener('click', function () { goTo(current - 1); });
-    document.querySelector('[data-carousel-next]').addEventListener('click', function () { goTo(current + 1); });
-
-    var ticking;
-    track.addEventListener('scroll', function () {
-      window.clearTimeout(ticking);
-      ticking = window.setTimeout(function () {
-        var closest = 0, min = Infinity;
-        slides.forEach(function (slide, i) {
-          var d = Math.abs(slide.offsetLeft - track.offsetLeft - track.scrollLeft);
-          if (d < min) { min = d; closest = i; }
-        });
-        setActive(closest);
-      }, 90);
-    }, { passive: true });
-
-    setActive(0);
-  }
-
-  /* ── Año dinámico ────────────────────────────────────────────── */
-  var year = document.querySelector('[data-year]');
-  if (year) year.textContent = new Date().getFullYear();
+  /* Año */
+  var y = document.querySelector('[data-year]');
+  if (y) y.textContent = new Date().getFullYear();
 })();
 </script>
 </body>
