@@ -167,9 +167,23 @@
   .has-photo .scrim-photo { opacity: 1; }
   .has-photo .scrim-plain { opacity: 0; }
   .has-photo .hero-fallback { opacity: 0; }
+
+  /* Tonos del texto del hero: con foto se aclaran para no depender del velo */
+  :root { --hero-sub: rgba(255,255,255,0.55); --hero-dim: rgba(255,255,255,0.50); --hero-dimmer: rgba(255,255,255,0.38); }
+  .has-photo { --hero-sub: rgba(255,255,255,0.82); --hero-dim: rgba(255,255,255,0.78); --hero-dimmer: rgba(255,255,255,0.66); }
+
+  /* Con foto la legibilidad la da la sombra del texto, no un velo sobre la imagen */
+  .has-photo .hero-copy { text-shadow: 0 2px 16px rgba(0,0,0,0.65), 0 1px 3px rgba(0,0,0,0.5); }
+  /* El texto en degradado usa background-clip: la text-shadow se ve a través
+     de las letras y las ensucia. drop-shadow sí respeta la silueta. */
+  .has-photo .hero-copy .text-gradient {
+    text-shadow: none;
+    filter: drop-shadow(0 2px 12px rgba(0,0,0,0.75)) drop-shadow(0 1px 3px rgba(0,0,0,0.6));
+  }
   /* con foto no van las tramas encima: ensucian la imagen */
   .has-photo [data-hero-tiles],
-  .has-photo [data-hero-dots] { opacity: 0; }
+  .has-photo [data-hero-dots],
+  .has-photo [data-hero-glow] { opacity: 0; }
 
   /* Pared de azulejos del cartel de la sucursal */
   .tile-wall {
@@ -337,19 +351,19 @@
       linear-gradient(160deg, #16161B 0%, #0D0D11 48%, #09090B 100%)"></div>
 
     <!-- scrim con foto: oscurece lo suficiente para que el texto siga legible -->
-    <div class="scrim-photo absolute inset-0" style="background:linear-gradient(105deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.72) 42%, rgba(0,0,0,0.28) 100%)"></div>
+    <div class="scrim-photo absolute inset-0" style="background:linear-gradient(100deg, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.52) 28%, rgba(0,0,0,0.12) 55%, rgba(0,0,0,0) 72%)"></div>
     <!-- scrim sin foto -->
     <div class="scrim-plain absolute inset-0" style="background:linear-gradient(105deg, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0.12) 100%)"></div>
 
-    <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(9,9,11,0.92) 0%, transparent 55%)"></div>
-    <div class="absolute bottom-0 left-0 w-[700px] h-[500px] pointer-events-none" style="background:radial-gradient(ellipse at bottom left, rgba(255,107,53,0.12) 0%, transparent 70%)"></div>
+    <div data-hero-foot class="absolute inset-0" style="background:linear-gradient(to top, rgba(9,9,11,0.88) 0%, rgba(9,9,11,0.35) 18%, transparent 42%)"></div>
+    <div data-hero-glow class="absolute bottom-0 left-0 w-[700px] h-[500px] pointer-events-none transition-opacity duration-500" style="background:radial-gradient(ellipse at bottom left, rgba(255,107,53,0.12) 0%, transparent 70%)"></div>
   </div>
 
   <div data-hero-tiles class="absolute inset-0 tile-wall opacity-[0.55] transition-opacity duration-500"></div>
   <div data-hero-dots class="absolute inset-0 dot-grid opacity-[0.10] transition-opacity duration-500"></div>
 
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-28 sm:py-40 w-full">
-    <div class="max-w-[760px]">
+    <div class="hero-copy max-w-[760px]">
 
       <!-- Badge de estado -->
       <div class="rv in inline-flex items-center gap-2.5 mb-8 px-4 py-2.5 rounded-full text-xs font-semibold"
@@ -367,7 +381,7 @@
         <span class="text-gradient">de todos los días</span>
       </h1>
 
-      <p class="text-base sm:text-[17px] mb-10 leading-relaxed" style="color:rgba(255,255,255,0.55); max-width:480px">
+      <p class="text-base sm:text-[17px] mb-10 leading-relaxed" style="color:var(--hero-sub); max-width:480px">
         Góndolas surtidas, productos frescos del día e importados seleccionados.
         Panadería, lácteos, fiambrería, carnicería y almacén — todo bajo estricta supervisión kosher.
       </p>
@@ -399,17 +413,17 @@
             <svg viewBox="0 0 24 24" class="w-3.5 h-3.5"><defs><linearGradient id="hs-hero"><stop offset="20%" stop-color="#facc15"/><stop offset="20%" stop-color="#facc15" stop-opacity=".25"/></linearGradient></defs><path fill="url(#hs-hero)" d="m12 3.6 2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85L12 3.6Z"/></svg>
           </div>
           <span class="text-white font-bold text-sm">4.2</span>
-          <span class="text-sm" style="color:rgba(255,255,255,0.38)">reseñas de clientes</span>
+          <span class="text-sm" style="color:var(--hero-dimmer)">reseñas de clientes</span>
         </div>
         <span class="w-px h-4" style="background:rgba(255,255,255,0.1)"></span>
         <div class="flex items-center gap-1.5">
           <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" style="color:#FF6B35" aria-hidden="true"><circle cx="12" cy="12" r="8.2" stroke="currentColor" stroke-width="1.7"/><path d="M12 7.4V12l3 1.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-          <span class="text-[13px]" style="color:rgba(255,255,255,0.5)">Abierto de domingo a viernes</span>
+          <span class="text-[13px]" style="color:var(--hero-dim)">Abierto de domingo a viernes</span>
         </div>
         <span class="w-px h-4" style="background:rgba(255,255,255,0.1)"></span>
         <div class="flex items-center gap-1.5">
           <svg class="w-3.5 h-3.5 text-green-400" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2 20 6.6v5.1c0 4.6-3.2 8.2-8 9.1-4.8-.9-8-4.5-8-9.1V6.6l8-3.4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m8.8 12.2 2.2 2.2 4.2-4.4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span class="text-[13px]" style="color:rgba(255,255,255,0.5)">Supervisión rabínica</span>
+          <span class="text-[13px]" style="color:var(--hero-dim)">Supervisión rabínica</span>
         </div>
       </div>
     </div>
