@@ -1,29 +1,34 @@
 # Imágenes
 
-## `hero.png` — foto de fondo de la pantalla principal
+## Foto de fondo de la pantalla principal
 
-Es la foto de la mesa familiar con la januquiá. La página la toma sola desde
-`index.html`; si el archivo falta, el hero cae al degradado de marca y no se
-rompe nada. Cuando la foto carga, el hero apaga sus tramas decorativas
-(ladrillos y puntitos) para no ensuciar la imagen.
+Va acá, con el nombre `hero` y cualquiera de estas extensiones:
 
-### Sobre la resolución
+    assets/hero.png
+    assets/hero.jpg
+    assets/hero.webp
 
-El archivo actual mide **389 × 261 px**. En celulares se ve bien, pero en una
-notebook o monitor el navegador lo estira unas 3,5 veces y pierde algo de
-definición. No se aplica ningún desenfoque: se muestra tal cual.
+La página las prueba en ese orden y usa la primera que encuentre, así que no
+hace falta tocar el código según el formato. Si no hay ninguna, el hero
+muestra el degradado de marca y no se rompe nada.
 
-**Si conseguís el original en alta**, reemplazá este archivo y queda perfecto:
+Cuando la foto carga, el hero apaga sus tramas decorativas (ladrillos y
+puntitos) y el resplandor naranja, para no ensuciar la imagen.
 
-- **Ancho:** ~1800 px (mínimo 1400)
-- **Formato:** JPG con calidad 80–85, o WebP — ambos pesan bastante menos que
-  un PNG para una foto
-- **Peso ideal:** por debajo de ~400 KB
+## Qué conviene subir
 
-Si cambiás la extensión, hay que actualizar el `src` de `[data-hero-img]` en
+- **Ancho:** ~1800 px (mínimo 1400). El hero la muestra a todo el ancho de la
+  pantalla, así que por debajo de eso se nota estirada.
+- **Formato:** JPG con calidad 80–85, o WebP. Para una foto pesan bastante
+  menos que un PNG.
+- **Peso:** idealmente por debajo de ~400 KB.
+- **Encuadre:** apaisado. El texto del hero cae sobre la mitad izquierda, así
+  que conviene que el motivo principal quede hacia la derecha.
+
+## Legibilidad
+
+El texto no depende de oscurecer la foto: hay un velo suave sólo en la franja
+izquierda (llega a cero al 72% del ancho) y las letras llevan su propia
+sombra. Si la foto nueva es muy clara del lado izquierdo y el texto queda
+justo, se ajusta el gradiente de `.scrim-photo` en el `<style>` de
 `index.html`.
-
-### Encuadre
-
-El texto del hero cae sobre la mitad izquierda, así que conviene que el motivo
-principal de la foto quede hacia la derecha (que es como está ahora).

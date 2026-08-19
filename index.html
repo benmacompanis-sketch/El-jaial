@@ -338,8 +338,8 @@
 
   <!--
     FONDO DEL HERO
-    Foto en  assets/hero.png  (ver assets/README.md).
-    Si el archivo no está, la imagen se oculta y queda el degradado de marca.
+    Foto en  assets/hero.{png,jpg,webp}  (ver assets/README.md).
+    Si no hay ninguna, la imagen se oculta y queda el degradado de marca.
   -->
   <div class="absolute inset-0">
     <img data-hero-img src="assets/hero.png" alt=""
@@ -1245,17 +1245,24 @@
 (function () {
   'use strict';
 
-  /* Foto del hero: si assets/hero.jpg existe, endurecemos el scrim; si no, degradado */
+  /* Foto del hero. Prueba las extensiones habituales, así da igual si el
+     archivo es .png, .jpg o .webp. Si carga, endurecemos el scrim y apagamos
+     las tramas; si no hay ninguna, queda el degradado de marca. */
   var heroSection = document.querySelector('[data-hero]');
   var heroImg = document.querySelector('[data-hero-img]');
   if (heroImg) {
+    var sources = ['assets/hero.png', 'assets/hero.jpg', 'assets/hero.jpeg', 'assets/hero.webp'];
+    var at = 0;
     var applyPhoto = function () { heroSection.classList.add('has-photo'); };
-    var dropPhoto = function () { heroImg.style.display = 'none'; };
+    var tryNext = function () {
+      at += 1;
+      if (at < sources.length) heroImg.src = sources[at];
+      else heroImg.style.display = 'none';
+    };
+    heroImg.addEventListener('load', applyPhoto);
+    heroImg.addEventListener('error', tryNext);
     if (heroImg.complete) {
-      if (heroImg.naturalWidth > 0) applyPhoto(); else dropPhoto();
-    } else {
-      heroImg.addEventListener('load', applyPhoto);
-      heroImg.addEventListener('error', dropPhoto);
+      if (heroImg.naturalWidth > 0) applyPhoto(); else tryNext();
     }
   }
 
