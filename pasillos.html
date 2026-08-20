@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nuestros pasillos — El Jaial</title>
+<meta name="description" content="Todo lo que encontrás en El Jaial: panadería, lácteos, fiambrería, carnicería, congelados y almacén importado, sector por sector." />
+<meta property="og:title" content="Nuestros pasillos — El Jaial" />
+<meta property="og:description" content="Mercado y supermercado kosher en Buenos Aires. Productos frescos del día e importados seleccionados." />
+<meta property="og:type" content="grocery_or_supermarket" />
+<meta name="theme-color" content="#09090B" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          brand:   { DEFAULT: '#1E5FBF', dark: '#17499A', light: '#4A87DD' },
+          gold:    '#58A5F0',
+          surface: { 0: '#09090B', 1: '#111115', 2: '#18181D', 3: '#222229' },
+          ink:     { 1: '#F4F4F6', 2: '#8B8B99', 3: '#55555F' },
+        },
+        fontFamily: {
+          sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
+        },
+        boxShadow: {
+          brand: '0 8px 32px rgba(30,95,191,0.4)',
+          card:  '0 1px 3px rgba(0,0,0,0.5), 0 4px 16px rgba(0,0,0,0.4)',
+          hover: '0 8px 40px rgba(0,0,0,0.7), 0 2px 8px rgba(0,0,0,0.5)',
+          lg2:   '0 24px 64px rgba(0,0,0,0.8)',
+        },
+        keyframes: {
+          floaty: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(7px)' } },
+        },
+        animation: { floaty: 'floaty 2s ease-in-out infinite' },
+      },
+    },
+  }
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    /* Azul de marca */
+    --brand: #1E5FBF;
+    --brand-dark: #17499A;
+    --brand-light: #4A87DD;
+    --brand-soft: #E8F0FC;
+    --accent: #58A5F0;
+
+    /* Superficies claras: blanco puro y azules muy lavados */
+    --surface-0: #FFFFFF;
+    --surface-1: #F4F8FD;
+    --surface-2: #FFFFFF;
+    --surface-3: #E9F1FB;
+
+    --border: rgba(16,49,96,0.10);
+    --border-strong: rgba(16,49,96,0.20);
+
+    /* Texto: azul profundo en vez de negro */
+    --text-1: #0F2E5F;
+    --text-2: #506C93;
+    --text-3: #8FA4C0;
+
+    --shadow-brand: 0 8px 28px rgba(30,95,191,0.30);
+    --shadow-card: 0 1px 2px rgba(16,49,96,0.05), 0 8px 24px -10px rgba(16,49,96,0.16);
+    --shadow-hover: 0 2px 4px rgba(16,49,96,0.07), 0 22px 44px -16px rgba(16,49,96,0.28);
+    --shadow-lg: 0 28px 64px -20px rgba(16,49,96,0.30);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: var(--surface-0);
+    color: var(--text-1);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  }
+
+  ::selection { background: rgba(30,95,191,0.22); color: var(--text-1); }
+
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: var(--surface-1); }
+  ::-webkit-scrollbar-thumb { background: #C6DAF2; border-radius: 99px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--brand-light); }
+
+  .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .hide-scrollbar::-webkit-scrollbar { display: none; }
+
+  .gradient-brand { background: linear-gradient(135deg, var(--brand) 0%, var(--accent) 100%); }
+
+  .text-gradient {
+    background: linear-gradient(135deg, #6FB4FF 0%, #BFDCFF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-white {
+    background: linear-gradient(180deg, #FFFFFF 0%, rgba(255,255,255,0.65) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass {
+    background: rgba(255,255,255,0.70);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--border);
+  }
+
+  /* La barra arranca sobre la foto (texto claro) y al scrollear pasa a blanco
+     (texto azul oscuro). El color lo decide la clase glass-dark del header. */
+  .nav-link { color: rgba(255,255,255,0.78); transition: color .2s, background-color .2s; }
+  .nav-link:hover { color: #fff; background: rgba(255,255,255,0.14); }
+  [data-header].glass-dark .nav-link { color: var(--text-2); }
+  [data-header].glass-dark .nav-link:hover { color: var(--text-1); background: var(--surface-1); }
+
+  /* Barra al hacer scroll: blanco translúcido sobre contenido claro */
+  .glass-dark {
+    background: rgba(255,255,255,0.88);
+    backdrop-filter: blur(24px) saturate(160%);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .card {
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-card);
+  }
+
+  .card-hover {
+    transition: transform 250ms cubic-bezier(0.4,0,0.2,1),
+                box-shadow 250ms cubic-bezier(0.4,0,0.2,1),
+                border-color 250ms cubic-bezier(0.4,0,0.2,1);
+  }
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--border-strong);
+  }
+
+  .btn-brand {
+    background: var(--brand);
+    color: #fff;
+    font-weight: 700;
+    box-shadow: var(--shadow-brand);
+    transition: all 200ms cubic-bezier(0.4,0,0.2,1);
+  }
+  .btn-brand:hover {
+    background: var(--brand-dark);
+    box-shadow: 0 12px 36px rgba(30,95,191,0.38);
+    transform: translateY(-1px);
+  }
+  .btn-brand:active { transform: scale(0.97); }
+
+  .section-pad { padding-top: 6rem; padding-bottom: 6rem; }
+  @media (max-width: 640px) { .section-pad { padding-top: 4rem; padding-bottom: 4rem; } }
+
+  .glow { box-shadow: 0 0 60px rgba(30,95,191,0.18), 0 8px 32px rgba(30,95,191,0.28); }
+
+  .dot-grid {
+    background-image: radial-gradient(rgba(16,49,96,0.07) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* Scrim del hero: se endurece cuando hay foto de fondo */
+  .scrim-photo { opacity: 0; transition: opacity .4s ease; }
+  .scrim-plain { opacity: 1; transition: opacity .4s ease; }
+  .has-photo .scrim-photo { opacity: 1; }
+  .has-photo .scrim-plain { opacity: 0; }
+  .has-photo .hero-fallback { opacity: 0; }
+
+  /* Tonos del texto del hero: con foto se aclaran para no depender del velo */
+  :root { --hero-sub: rgba(255,255,255,0.55); --hero-dim: rgba(255,255,255,0.50); --hero-dimmer: rgba(255,255,255,0.38); }
+  .has-photo { --hero-sub: rgba(255,255,255,0.82); --hero-dim: rgba(255,255,255,0.78); --hero-dimmer: rgba(255,255,255,0.66); }
+
+  /* Con foto la legibilidad la da la sombra del texto, no un velo sobre la imagen */
+  .has-photo .hero-copy { text-shadow: 0 2px 16px rgba(0,0,0,0.65), 0 1px 3px rgba(0,0,0,0.5); }
+  /* El texto en degradado usa background-clip: la text-shadow se ve a través
+     de las letras y las ensucia. drop-shadow sí respeta la silueta. */
+  .has-photo .hero-copy .text-gradient {
+    text-shadow: none;
+    filter: drop-shadow(0 2px 12px rgba(0,0,0,0.75)) drop-shadow(0 1px 3px rgba(0,0,0,0.6));
+  }
+  /* con foto no van las tramas encima: ensucian la imagen */
+  .has-photo [data-hero-tiles],
+  .has-photo [data-hero-dots],
+  .has-photo [data-hero-glow] { opacity: 0; }
+
+  /* Pared de azulejos del cartel de la sucursal */
+  .tile-wall {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='72'%3E%3Cg stroke='rgba(255,255,255,0.07)' stroke-width='2' fill='none'%3E%3Cpath d='M0 1H80M0 37H80M1 0V36M41 36V72'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 80px 72px;
+  }
+
+  /* Equivalente en CSS a los whileInView de framer-motion */
+  .rv { opacity: 0; transform: translateY(18px); transition: opacity .55s cubic-bezier(.4,0,.2,1), transform .55s cubic-bezier(.4,0,.2,1); }
+  .rv-x-l { transform: translateX(-24px); }
+  .rv-x-r { transform: translateX(24px); }
+  .rv.in { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .rv { opacity: 1 !important; transform: none !important; transition: none; }
+    .animate-floaty, .animate-pulse { animation: none !important; }
+  }
+</style>
+<noscript><style>.rv { opacity: 1 !important; transform: none !important; }</style></noscript>
+</head>
+
+<body class="font-sans">
+
+<!-- ════════════════════════════ HEADER ════════════════════════════ -->
+<header data-header data-header-solid class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 glass-dark">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="flex items-center justify-between h-16 sm:h-[72px]">
+
+      <!-- Logo: reproduce el cartel de la sucursal -->
+      <a href="index.html" class="flex items-center group" aria-label="El Jaial, inicio">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 flex-shrink-0 transition-transform group-hover:scale-105 drop-shadow-lg sm:hidden" aria-hidden="true">
+          <defs><clipPath id="mark-clip-m1"><rect width="64" height="64" rx="15"/></clipPath></defs>
+          <g clip-path="url(#mark-clip-m1)">
+            <rect width="64" height="64" fill="#0A0A0C"/>
+            <g stroke="rgba(255,255,255,0.13)" stroke-width="1.5" fill="none">
+              <path d="M0 16h64M0 32h64M0 48h64M16 0v16M48 0v16M0 16v16M32 16v16M64 16v16M16 32v16M48 32v16M0 48v16M32 48v16"/>
+            </g>
+            <text x="32" y="34" text-anchor="middle" dominant-baseline="central" fill="#FFFFFF"
+                  font-family="Inter, system-ui, sans-serif" font-weight="900" font-size="23" letter-spacing="0.5"
+                  transform="skewX(-7)" transform-origin="32 34">EJ</text>
+          </g>
+          <rect x="0.75" y="0.75" width="62.5" height="62.5" rx="14.5" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
+        </svg>
+        <svg viewBox="0 0 208 64" xmlns="http://www.w3.org/2000/svg" class="hidden h-[46px] w-auto transition-transform group-hover:scale-[1.03] drop-shadow-lg sm:block" role="img" aria-label="El Jaial · Kosher Market">
+          <defs>
+            <clipPath id="sign-clip-h"><rect width="208" height="64" rx="9"/></clipPath>
+          </defs>
+          <g clip-path="url(#sign-clip-h)">
+            <rect width="208" height="64" fill="#0A0A0C"/>
+            <g stroke="rgba(255,255,255,0.13)" stroke-width="1.5" fill="none">
+              <path d="M0 16h208M0 32h208M0 48h208M26 0v16M78 0v16M130 0v16M182 0v16M0 16v16M52 16v16M104 16v16M156 16v16M208 16v16M26 32v16M78 32v16M130 32v16M182 32v16M0 48v16M52 48v16M104 48v16M156 48v16"/>
+            </g>
+            <g transform="rotate(-2.2 104 28)">
+              <text x="104" y="30" text-anchor="middle" fill="#FFFFFF"
+                    font-family="Inter, system-ui, sans-serif" font-weight="900" font-size="30" letter-spacing="2.5"
+                    transform="skewX(-7)" transform-origin="104 30">EL JAIAL</text>
+            </g>
+            <g transform="rotate(-2.2 104 48)">
+              <text x="104" y="50" text-anchor="middle" fill="#FFFFFF"
+                    font-family="Inter, system-ui, sans-serif" font-weight="800" font-size="10.5" letter-spacing="1.6"
+                    transform="skewX(-7)" transform-origin="104 50"><tspan fill="#E5352B">&#9733;</tspan> KOSHER MARKET <tspan fill="#E5352B">&#9733;</tspan></text>
+            </g>
+          </g>
+        </svg>
+      </a>
+
+      <!-- Nav desktop -->
+      <nav class="hidden md:flex items-center gap-0.5">
+        <a href="index.html" class="nav-link px-4 py-2 text-sm font-medium rounded-xl">Inicio</a>
+        <a href="pasillos.html" class="nav-link px-4 py-2 text-sm font-medium rounded-xl">Pasillos</a>
+        <a href="index.html#sucursales" class="nav-link px-4 py-2 text-sm font-medium rounded-xl">Sucursales</a>
+        <a href="index.html#resenas" class="nav-link px-4 py-2 text-sm font-medium rounded-xl">Reseñas</a>
+        <a href="index.html#whatsapp" class="nav-link px-4 py-2 text-sm font-medium rounded-xl">WhatsApp</a>
+        <a href="index.html#info" class="nav-link px-4 py-2 text-sm font-medium rounded-xl">Contacto</a>
+      </nav>
+
+      <!-- Acciones -->
+      <div class="flex items-center gap-1.5">
+        <a href="tel:+541145326985"
+           class="relative flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-sm text-white transition-all active:scale-95 hover:brightness-110"
+           style="background:#1E5FBF; box-shadow:0 4px 20px rgba(30,95,191,0.4)">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 5.5c0 8 6 14 14 14l1.6-3.3-4-1.9-1.7 2a12 12 0 0 1-6.7-6.7l2-1.7-1.9-4L4.5 5.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+          <span class="hidden sm:inline text-sm">Llamar</span>
+        </a>
+
+        <button type="button" data-menu-btn aria-expanded="false" aria-label="Abrir menú"
+                class="nav-link md:hidden p-2.5 rounded-xl">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Menú mobile (drawer derecho) -->
+<div data-overlay hidden class="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm md:hidden opacity-0 transition-opacity duration-300"></div>
+<aside data-drawer hidden
+       class="fixed top-0 right-0 bottom-0 z-50 w-72 flex flex-col md:hidden translate-x-full transition-transform duration-300"
+       style="background:#FFFFFF; border-left:1px solid var(--border)">
+  <div class="flex items-center justify-between p-5" style="border-bottom:1px solid var(--border)">
+    <div class="flex items-center gap-2.5">
+        <svg viewBox="0 0 208 64" xmlns="http://www.w3.org/2000/svg" class="h-9 w-auto" role="img" aria-label="El Jaial · Kosher Market">
+          <defs>
+            <clipPath id="sign-clip-d"><rect width="208" height="64" rx="9"/></clipPath>
+          </defs>
+          <g clip-path="url(#sign-clip-d)">
+            <rect width="208" height="64" fill="#0A0A0C"/>
+            <g stroke="rgba(255,255,255,0.13)" stroke-width="1.5" fill="none">
+              <path d="M0 16h208M0 32h208M0 48h208M26 0v16M78 0v16M130 0v16M182 0v16M0 16v16M52 16v16M104 16v16M156 16v16M208 16v16M26 32v16M78 32v16M130 32v16M182 32v16M0 48v16M52 48v16M104 48v16M156 48v16"/>
+            </g>
+            <g transform="rotate(-2.2 104 28)">
+              <text x="104" y="30" text-anchor="middle" fill="#FFFFFF"
+                    font-family="Inter, system-ui, sans-serif" font-weight="900" font-size="30" letter-spacing="2.5"
+                    transform="skewX(-7)" transform-origin="104 30">EL JAIAL</text>
+            </g>
+            <g transform="rotate(-2.2 104 48)">
+              <text x="104" y="50" text-anchor="middle" fill="#FFFFFF"
+                    font-family="Inter, system-ui, sans-serif" font-weight="800" font-size="10.5" letter-spacing="1.6"
+                    transform="skewX(-7)" transform-origin="104 50"><tspan fill="#E5352B">&#9733;</tspan> KOSHER MARKET <tspan fill="#E5352B">&#9733;</tspan></text>
+            </g>
+          </g>
+        </svg>
+    </div>
+    <button type="button" data-menu-close aria-label="Cerrar menú" class="p-2 rounded-lg transition-all hover:bg-[#F4F8FD]" style="color:var(--text-2)">
+      <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+
+  <nav class="p-4 flex-1 overflow-y-auto" data-drawer-nav>
+    <a href="index.html"        class="flex items-center px-4 py-3.5 rounded-xl font-semibold transition-all mb-1 text-sm hover:bg-[#F4F8FD]" style="color:var(--text-1)">Inicio</a>
+    <a href="pasillos.html"   class="flex items-center px-4 py-3.5 rounded-xl font-semibold transition-all mb-1 text-sm hover:bg-[#F4F8FD]" style="color:var(--text-1)">Pasillos</a>
+    <a href="index.html#sucursales" class="flex items-center px-4 py-3.5 rounded-xl font-semibold transition-all mb-1 text-sm hover:bg-[#F4F8FD]" style="color:var(--text-1)">Sucursales</a>
+    <a href="index.html#resenas"    class="flex items-center px-4 py-3.5 rounded-xl font-semibold transition-all mb-1 text-sm hover:bg-[#F4F8FD]" style="color:var(--text-1)">Reseñas</a>
+    <a href="index.html#whatsapp"   class="flex items-center px-4 py-3.5 rounded-xl font-semibold transition-all mb-1 text-sm hover:bg-[#F4F8FD]" style="color:var(--text-1)">WhatsApp</a>
+    <a href="index.html#info"       class="flex items-center px-4 py-3.5 rounded-xl font-semibold transition-all mb-1 text-sm hover:bg-[#F4F8FD]" style="color:var(--text-1)">Contacto</a>
+  </nav>
+
+  <div class="p-4" style="border-top:1px solid var(--border)">
+    <a href="https://wa.me/541145326985" target="_blank" rel="noopener noreferrer"
+       class="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl text-sm font-bold text-white transition-all" style="background:#16a34a">
+      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Contactar por WhatsApp
+    </a>
+  </div>
+</aside>
+
+<main id="top">
+
+<!-- ══════════════════════ ENCABEZADO DE LA PÁGINA ══════════════════════ -->
+<section class="pt-36 pb-14 sm:pt-44 sm:pb-16" style="background:var(--surface-0)">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="rv max-w-2xl">
+      <span class="inline-block text-xs font-bold uppercase tracking-[0.18em] mb-4 px-3 py-1 rounded-full"
+            style="color:var(--brand); background:rgba(30,95,191,0.08); border:1px solid rgba(30,95,191,0.18)">
+        Nuestros pasillos
+      </span>
+      <h1 class="font-black leading-tight tracking-tight" style="font-size:clamp(2rem, 5vw, 3.25rem); color:var(--text-1)">
+        Todo lo que encontrás en El Jaial
+      </h1>
+      <p class="mt-5 text-base sm:text-lg leading-relaxed" style="color:var(--text-2)">
+        El surtido completo, sector por sector. Las góndolas se reponen cada mañana
+        y el stock puede variar entre sucursales: si buscás algo puntual, consultanos
+        por WhatsApp y te lo dejamos preparado.
+      </p>
+    </div>
+
+    <!-- Accesos rápidos -->
+    <div class="rv mt-10 flex flex-wrap gap-2">
+        <a href="#panaderia" class="rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 hover:-translate-y-0.5" style="background:var(--surface-2); border:1px solid var(--border); color:var(--text-2)">Panadería</a>
+        <a href="#lacteos" class="rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 hover:-translate-y-0.5" style="background:var(--surface-2); border:1px solid var(--border); color:var(--text-2)">Lácteos</a>
+        <a href="#fiambreria" class="rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 hover:-translate-y-0.5" style="background:var(--surface-2); border:1px solid var(--border); color:var(--text-2)">Fiambrería</a>
+        <a href="#carniceria" class="rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 hover:-translate-y-0.5" style="background:var(--surface-2); border:1px solid var(--border); color:var(--text-2)">Carnicería</a>
+        <a href="#congelados" class="rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 hover:-translate-y-0.5" style="background:var(--surface-2); border:1px solid var(--border); color:var(--text-2)">Congelados</a>
+        <a href="#almacen" class="rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 hover:-translate-y-0.5" style="background:var(--surface-2); border:1px solid var(--border); color:var(--text-2)">Almacén e importados</a>
+    </div>
+  </div>
+</section>
+
+<section id="panaderia" class="section-pad scroll-mt-24" style="background:var(--surface-0)">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+    <div class="rv flex items-center gap-4 mb-10">
+      <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl" style="background:var(--brand-soft)"><svg viewBox="0 0 24 24" fill="none" class="h-6 w-6" style="color:#1E5FBF" aria-hidden="true"><path d="M4.5 9.5c0-2.2 1.8-4 4-4h7c2.2 0 4 1.8 4 4l-1 8a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8l-1-8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9.5 6v13M14.5 6v13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
+      <div>
+        <h2 class="font-black leading-tight tracking-tight" style="font-size:clamp(1.5rem, 3vw, 2.25rem); color:var(--text-1)">Panadería</h2>
+        <p class="mt-1 text-sm" style="color:var(--text-2)">Horneado en el local, todos los días.</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Jalá trenzada</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Chica, mediana y grande. Los viernes desde temprano.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Jalá dulce con pasas</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">La versión clásica para las fiestas.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Pan de campo</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">De miga firme, en hogaza o rebanado.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Pan lactal</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Blanco e integral, en molde.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Pan de centeno</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Con y sin semillas de alcaravea.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Bagels</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Naturales, de sésamo y de amapola.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Facturas surtidas</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Medialunas, vigilantes y cañoncitos.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Rugelaj</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">De chocolate, damasco y nuez.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Bizcochuelos y budines</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">De limón, marmolado y de naranja.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Galletas de manteca</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Por peso o en caja.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Masas secas</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Surtido para el café.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Matzá</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Todo el año, y surtido especial en Pésaj.</p>
+          </div>
+    </div>
+  </div>
+</section>
+
+<section id="lacteos" class="section-pad scroll-mt-24" style="background:var(--surface-1)">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+    <div class="rv flex items-center gap-4 mb-10">
+      <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl" style="background:var(--brand-soft)"><svg viewBox="0 0 24 24" fill="none" class="h-6 w-6" style="color:#2E7BD6" aria-hidden="true"><path d="M9 3h6v3l2.5 4v9a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-9L9 6V3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6.5 13h11" stroke="currentColor" stroke-width="1.2"/></svg></span>
+      <div>
+        <h2 class="font-black leading-tight tracking-tight" style="font-size:clamp(1.5rem, 3vw, 2.25rem); color:var(--text-1)">Lácteos</h2>
+        <p class="mt-1 text-sm" style="color:var(--text-2)">Jalav israel y marcas de góndola.</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Leche entera y descremada</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">En sachet, botella y larga vida.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Yogur firme y bebible</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Natural, con frutas y descremado.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Queso cremoso</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">En horma o fraccionado al peso.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Queso port salut</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Entero, en barra o feteado.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Muzzarella</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">En barra y rallada, para pizza.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Queso untable</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Entero, light y con finas hierbas.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Ricota</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Entera y descremada, por kilo.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Queso rallado</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">En sobre y fraccionado.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Manteca y margarina</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Pan de 100 y 200 gramos.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Crema de leche</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Para batir y para cocinar.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Dulce de leche</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Clásico, repostero y light.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Postres y flanes</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Individuales y familiares.</p>
+          </div>
+    </div>
+  </div>
+</section>
+
+<section id="fiambreria" class="section-pad scroll-mt-24" style="background:var(--surface-0)">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+    <div class="rv flex items-center gap-4 mb-10">
+      <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl" style="background:var(--brand-soft)"><svg viewBox="0 0 24 24" fill="none" class="h-6 w-6" style="color:#17499A" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.2"/><path d="M12 4v2m0 12v2M4 12h2m12 0h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
+      <div>
+        <h2 class="font-black leading-tight tracking-tight" style="font-size:clamp(1.5rem, 3vw, 2.25rem); color:var(--text-1)">Fiambrería</h2>
+        <p class="mt-1 text-sm" style="color:var(--text-2)">Cortado en el momento, como lo pidas.</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Pastrón</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">El clásico de la casa, al peso.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Pastrón de pavita</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Más magro, en fetas finas.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Salame tipo hebreo</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Entero o fraccionado.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Salamín</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Picado fino y picado grueso.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Matambre casero</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Arrollado, en fetas.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Pechuga de pavita</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Natural y ahumada.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Mortadela</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">En fetas, al peso.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Lengua a la vinagreta</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Lista para servir.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Pollo ahumado</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">En cuartos o fileteado.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Paté de hígado</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Casero, por porción.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Picadas armadas</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Para dos, cuatro o seis personas.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Sándwiches</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">De pastrón, pavita o matambre.</p>
+          </div>
+    </div>
+  </div>
+</section>
+
+<section id="carniceria" class="section-pad scroll-mt-24" style="background:var(--surface-1)">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+    <div class="rv flex items-center gap-4 mb-10">
+      <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl" style="background:var(--brand-soft)"><svg viewBox="0 0 24 24" fill="none" class="h-6 w-6" style="color:#58A5F0" aria-hidden="true"><path d="M5 10.5A5.5 5.5 0 0 1 10.5 5h3A5.5 5.5 0 0 1 19 10.5c0 3-2.2 4.9-4.6 5.4l-.7 2.6a1.6 1.6 0 0 1-1.6 1.2h-1a1.6 1.6 0 0 1-1.5-1.2l-.7-2.6C6.9 15.2 5 13.3 5 10.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="12" cy="10.5" r="2.2" stroke="currentColor" stroke-width="1.2"/></svg></span>
+      <div>
+        <h2 class="font-black leading-tight tracking-tight" style="font-size:clamp(1.5rem, 3vw, 2.25rem); color:var(--text-1)">Carnicería</h2>
+        <p class="mt-1 text-sm" style="color:var(--text-2)">Con shjitá supervisada.</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Asado</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">De tira, cortado a medida.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Vacío</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Entero o en porciones.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Roast beef</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Para horno o para milanesas.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Carne picada</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Especial y común, del día.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Falda y osobuco</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Para pucheros y guisos.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Bola de lomo</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">En bifes o en trozo.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Milanesas de carne</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Cortadas finas, listas para empanar.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Pollo entero</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Fresco, por unidad.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Pechuga y suprema</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Deshuesada, en bandeja.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Patamuslo</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Con y sin piel.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Alitas</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Por kilo, para horno o parrilla.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Milanesas de pollo</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Finas, listas para freír.</p>
+          </div>
+    </div>
+  </div>
+</section>
+
+<section id="congelados" class="section-pad scroll-mt-24" style="background:var(--surface-0)">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+    <div class="rv flex items-center gap-4 mb-10">
+      <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl" style="background:var(--brand-soft)"><svg viewBox="0 0 24 24" fill="none" class="h-6 w-6" style="color:#3E8BE0" aria-hidden="true"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5 4.2 16.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M12 6.6 9.8 4.6M12 6.6l2.2-2M12 17.4l-2.2 2M12 17.4l2.2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
+      <div>
+        <h2 class="font-black leading-tight tracking-tight" style="font-size:clamp(1.5rem, 3vw, 2.25rem); color:var(--text-1)">Congelados</h2>
+        <p class="mt-1 text-sm" style="color:var(--text-2)">Resuelto para cualquier día de la semana.</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Kneidalaj</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Listos para la sopa.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Kreplaj</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">De carne y de papa.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Varenikes</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">De papa y cebolla.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Empanadas</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">De carne, pollo y verdura.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Tartas y pascualinas</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Porcionadas y enteras.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Milanesas de soja</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">En caja, listas para horno.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Hamburguesas</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">De carne y de pollo, por caja.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Nuggets</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">En bolsa familiar.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Filet de merluza</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Sin espinas, en bandeja.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Salmón</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">En porciones al vacío.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Verduras congeladas</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Arvejas, choclo, brócoli y mixtos.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Papas prefritas</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Bastón y noisette.</p>
+          </div>
+    </div>
+  </div>
+</section>
+
+<section id="almacen" class="section-pad scroll-mt-24" style="background:var(--surface-1)">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+    <div class="rv flex items-center gap-4 mb-10">
+      <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl" style="background:var(--brand-soft)"><svg viewBox="0 0 24 24" fill="none" class="h-6 w-6" style="color:#123C7A" aria-hidden="true"><path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 12v8" stroke="currentColor" stroke-width="1.2"/></svg></span>
+      <div>
+        <h2 class="font-black leading-tight tracking-tight" style="font-size:clamp(1.5rem, 3vw, 2.25rem); color:var(--text-1)">Almacén e importados</h2>
+        <p class="mt-1 text-sm" style="color:var(--text-2)">De Israel, Estados Unidos y Europa.</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Vinos kosher</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Tintos, blancos y dulces para kidush.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Jugo de uva</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Para kidush, en botella y en litro.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Aceite de oliva</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Virgen extra, nacional e importado.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Aceite de girasol y maíz</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">En botella y en bidón.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Conservas</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Atún, sardinas, arvejas y choclo.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Pepinos y aceitunas</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">En frasco y al peso.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Tejina y jumus</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">En pote, listos para servir.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Especias y condimentos</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Za'atar, páprika, comino y mezclas.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Harinas y premezclas</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Común, integral y para Pésaj.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Fideos y arroz</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Secos, en paquete.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Café, té e infusiones</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Molido, en cápsulas y en saquitos.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Galletitas y snacks</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Dulces y saladas, marcas importadas.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Chocolates</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">En tableta y bombones.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Miel y mermeladas</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">En frasco, surtido de sabores.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Bebidas sin alcohol</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Gaseosas, aguas y jugos.</p>
+          </div>
+          <div class="rv rounded-2xl p-5 card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
+            <h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">Descartables</h3>
+            <p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">Platos, vasos y bandejas para eventos.</p>
+          </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ CONSULTAS ══════════════════════════ -->
+<section class="section-pad" style="background:var(--surface-0)">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="rv relative rounded-3xl overflow-hidden px-8 py-12 sm:px-14 sm:py-14"
+         style="background:linear-gradient(135deg, #0F3573 0%, #1E5FBF 100%); box-shadow:0 24px 56px -18px rgba(15,53,115,0.45)">
+      <div class="absolute top-0 right-0 w-72 h-72 rounded-full -translate-y-1/2 translate-x-1/3 pointer-events-none" style="background:rgba(255,255,255,0.10)"></div>
+
+      <div class="relative z-10 grid lg:grid-cols-2 gap-8 items-center">
+        <div>
+          <h2 class="font-black text-white leading-tight tracking-tight" style="font-size:clamp(1.5rem, 3vw, 2.25rem)">
+            ¿Buscás algo que no está en la lista?
+          </h2>
+          <p class="mt-3 text-white/75 leading-relaxed max-w-md">
+            Traemos productos a pedido y tenemos más marcas de las que entran acá.
+            Escribinos y te decimos si lo tenemos.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row lg:justify-end gap-3">
+          <a href="https://wa.me/541148078617?text=Hola%20El%20Jaial%20Palermo!%20Quer%C3%ADa%20consultar%20por%20un%20producto."
+             target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-4 text-sm font-bold text-white transition-all hover:-translate-y-0.5"
+             style="background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.25)">
+            Palermo
+          </a>
+          <a href="https://wa.me/541145326985?text=Hola%20El%20Jaial%20Belgrano!%20Quer%C3%ADa%20consultar%20por%20un%20producto."
+             target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-4 text-sm font-bold text-white transition-all hover:-translate-y-0.5"
+             style="background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.25)">
+            Belgrano
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ════════════════════════════ FOOTER ════════════════════════════ -->
+<footer style="background:var(--surface-1); border-top:1px solid var(--border)">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
+
+      <!-- Marca -->
+      <div class="lg:col-span-1">
+        <div class="mb-5">
+        <svg viewBox="0 0 208 64" xmlns="http://www.w3.org/2000/svg" class="h-[52px] w-auto" role="img" aria-label="El Jaial · Kosher Market">
+          <defs>
+            <clipPath id="sign-clip-f"><rect width="208" height="64" rx="9"/></clipPath>
+          </defs>
+          <g clip-path="url(#sign-clip-f)">
+            <rect width="208" height="64" fill="#0A0A0C"/>
+            <g stroke="rgba(255,255,255,0.13)" stroke-width="1.5" fill="none">
+              <path d="M0 16h208M0 32h208M0 48h208M26 0v16M78 0v16M130 0v16M182 0v16M0 16v16M52 16v16M104 16v16M156 16v16M208 16v16M26 32v16M78 32v16M130 32v16M182 32v16M0 48v16M52 48v16M104 48v16M156 48v16"/>
+            </g>
+            <g transform="rotate(-2.2 104 28)">
+              <text x="104" y="30" text-anchor="middle" fill="#FFFFFF"
+                    font-family="Inter, system-ui, sans-serif" font-weight="900" font-size="30" letter-spacing="2.5"
+                    transform="skewX(-7)" transform-origin="104 30">EL JAIAL</text>
+            </g>
+            <g transform="rotate(-2.2 104 48)">
+              <text x="104" y="50" text-anchor="middle" fill="#FFFFFF"
+                    font-family="Inter, system-ui, sans-serif" font-weight="800" font-size="10.5" letter-spacing="1.6"
+                    transform="skewX(-7)" transform-origin="104 50"><tspan fill="#E5352B">&#9733;</tspan> KOSHER MARKET <tspan fill="#E5352B">&#9733;</tspan></text>
+            </g>
+          </g>
+        </svg>
+        </div>
+        <p class="text-sm leading-relaxed mb-6" style="color:var(--text-2)">
+          Mercado y supermercado kosher en Buenos Aires. Productos frescos del día e
+          importados seleccionados, bajo supervisión rabínica.
+        </p>
+
+        <div class="flex gap-2">
+          <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-xl flex items-center justify-center transition-all hover:bg-white/[0.1]"
+             style="background:var(--surface-2); color:var(--text-2); border:1px solid var(--border)">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook" class="w-9 h-9 rounded-xl flex items-center justify-center transition-all hover:bg-white/[0.1]"
+             style="background:var(--surface-2); color:var(--text-2); border:1px solid var(--border)">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="https://wa.me/541145326985" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"
+             class="w-9 h-9 rounded-xl flex items-center justify-center transition-all hover:bg-white/[0.1]"
+             style="background:var(--surface-2); color:var(--text-2); border:1px solid var(--border)">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Navegación -->
+      <div>
+        <h3 class="font-bold text-xs uppercase tracking-[0.15em] mb-5" style="color:var(--text-3)">Navegación</h3>
+        <ul class="space-y-3">
+          <li><a href="index.html" class="text-sm transition-colors hover:text-[#1E5FBF]" style="color:var(--text-2)">Inicio</a></li>
+          <li><a href="pasillos.html" class="text-sm transition-colors hover:text-[#1E5FBF]" style="color:var(--text-2)">Nuestros pasillos</a></li>
+          <li><a href="index.html#sucursales" class="text-sm transition-colors hover:text-[#1E5FBF]" style="color:var(--text-2)">Sucursales</a></li>
+          <li><a href="index.html#resenas" class="text-sm transition-colors hover:text-[#1E5FBF]" style="color:var(--text-2)">Reseñas</a></li>
+          <li><a href="index.html#info" class="text-sm transition-colors hover:text-[#1E5FBF]" style="color:var(--text-2)">Contacto</a></li>
+        </ul>
+      </div>
+
+      <!-- Horarios -->
+      <div>
+        <h3 class="font-bold text-xs uppercase tracking-[0.15em] mb-5" style="color:var(--text-3)">Horarios</h3>
+        <ul class="space-y-3">
+          <li class="flex items-start gap-2">
+            <svg class="w-3.5 h-3.5 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" style="color:#1E5FBF" aria-hidden="true"><circle cx="12" cy="12" r="8.2" stroke="currentColor" stroke-width="1.7"/><path d="M12 7.4V12l3 1.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            <div>
+              <p class="text-sm font-medium" style="color:var(--text-1)">Palermo · Lun a jue</p>
+              <p class="text-xs" style="color:var(--text-2)">9:30 – 19:00 · Vie 9:00 – 16:00</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="w-3.5 h-3.5 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" style="color:#1E5FBF" aria-hidden="true"><circle cx="12" cy="12" r="8.2" stroke="currentColor" stroke-width="1.7"/><path d="M12 7.4V12l3 1.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            <div>
+              <p class="text-sm font-medium" style="color:var(--text-1)">Belgrano · Lun a jue y dom</p>
+              <p class="text-xs" style="color:var(--text-2)">8:00 – 20:00 · Vie 8:00 – 14:30</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="w-3.5 h-3.5 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" style="color:#1E5FBF" aria-hidden="true"><circle cx="12" cy="12" r="8.2" stroke="currentColor" stroke-width="1.7"/><path d="M12 7.4V12l3 1.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            <div>
+              <p class="text-sm font-medium" style="color:var(--text-1)">Shabat</p>
+              <p class="text-xs" style="color:var(--text-2)">Cerrado en ambas sucursales</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Contacto -->
+      <div>
+        <h3 class="font-bold text-xs uppercase tracking-[0.15em] mb-5" style="color:var(--text-3)">Contacto</h3>
+        <ul class="space-y-4 mb-6">
+          <li class="flex items-start gap-3">
+            <svg class="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" style="color:#1E5FBF" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
+            <p class="text-sm" style="color:var(--text-2)">Raúl Scalabrini Ortiz 3306, CABA</p>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" style="color:#1E5FBF" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
+            <p class="text-sm" style="color:var(--text-2)">Moldes 2454, CABA</p>
+          </li>
+          <li class="flex items-center gap-3">
+            <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" style="color:#1E5FBF" aria-hidden="true"><path d="M4.5 5.5c0 8 6 14 14 14l1.6-3.3-4-1.9-1.7 2a12 12 0 0 1-6.7-6.7l2-1.7-1.9-4L4.5 5.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+            <a href="tel:+541148078617" class="text-sm transition-colors hover:text-[#1E5FBF]" style="color:var(--text-2)">+54 11 4807-8617</a>
+          </li>
+          <li class="flex items-center gap-3">
+            <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" style="color:#1E5FBF" aria-hidden="true"><path d="M4.5 5.5c0 8 6 14 14 14l1.6-3.3-4-1.9-1.7 2a12 12 0 0 1-6.7-6.7l2-1.7-1.9-4L4.5 5.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+            <a href="tel:+541145326985" class="text-sm transition-colors hover:text-[#1E5FBF]" style="color:var(--text-2)">+54 11 4532-6985</a>
+          </li>
+        </ul>
+
+        <a href="https://wa.me/541145326985" target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold text-white transition-all hover:brightness-110"
+           style="background:#16a34a; box-shadow:0 4px 16px rgba(22,163,74,0.3)">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8" style="border-top:1px solid var(--border)">
+      <p class="text-xs" style="color:var(--text-3)">© <span data-year>2026</span> El Jaial. Todos los derechos reservados.</p>
+      <p class="text-xs" style="color:var(--text-3)">Buenos Aires, Argentina · Productos bajo supervisión kosher</p>
+    </div>
+  </div>
+</footer>
+
+<!-- FAB WhatsApp -->
+<a href="https://wa.me/541145326985" target="_blank" rel="noopener noreferrer" title="Contactar por WhatsApp"
+   class="fixed bottom-6 right-6 z-40 w-14 h-14 bg-green-500 hover:bg-green-400 rounded-2xl flex items-center justify-center shadow-2xl shadow-green-500/40 transition-all hover:scale-110 active:scale-95">
+  <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+(function () {
+  'use strict';
+
+  /* Foto del hero. Prueba las extensiones habituales, así da igual si el
+     archivo es .png, .jpg o .webp. Si carga, endurecemos el scrim y apagamos
+     las tramas; si no hay ninguna, queda el degradado de marca. */
+  var heroSection = document.querySelector('[data-hero]');
+  var heroImg = document.querySelector('[data-hero-img]');
+  if (heroImg) {
+    var sources = ['assets/hero.png', 'assets/hero.jpg', 'assets/hero.jpeg', 'assets/hero.webp'];
+    var at = 0;
+    var applyPhoto = function () { heroSection.classList.add('has-photo'); };
+    var tryNext = function () {
+      at += 1;
+      if (at < sources.length) heroImg.src = sources[at];
+      else heroImg.style.display = 'none';
+    };
+    heroImg.addEventListener('load', applyPhoto);
+    heroImg.addEventListener('error', tryNext);
+    if (heroImg.complete) {
+      if (heroImg.naturalWidth > 0) applyPhoto(); else tryNext();
+    }
+  }
+
+  /* Header: transparente → glass-dark al hacer scroll (scrollY > 30) */
+  var header = document.querySelector('[data-header]');
+  function onScroll() {
+    if (header.hasAttribute('data-header-solid') || window.scrollY > 30) {
+      header.classList.add('glass-dark', 'shadow-2xl', 'shadow-black/40');
+      header.classList.remove('bg-transparent');
+    } else {
+      header.classList.remove('glass-dark', 'shadow-2xl', 'shadow-black/40');
+      header.classList.add('bg-transparent');
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* Drawer mobile */
+  var btn = document.querySelector('[data-menu-btn]');
+  var closeBtn = document.querySelector('[data-menu-close]');
+  var drawer = document.querySelector('[data-drawer]');
+  var overlay = document.querySelector('[data-overlay]');
+
+  function openMenu() {
+    drawer.hidden = false;
+    overlay.hidden = false;
+    requestAnimationFrame(function () {
+      drawer.classList.remove('translate-x-full');
+      overlay.classList.remove('opacity-0');
+    });
+    btn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    drawer.classList.add('translate-x-full');
+    overlay.classList.add('opacity-0');
+    btn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    window.setTimeout(function () {
+      drawer.hidden = true;
+      overlay.hidden = true;
+    }, 300);
+  }
+
+  btn.addEventListener('click', function () {
+    if (drawer.hidden) openMenu(); else closeMenu();
+  });
+  closeBtn.addEventListener('click', closeMenu);
+  overlay.addEventListener('click', closeMenu);
+  document.querySelectorAll('[data-drawer-nav] a').forEach(function (a) {
+    a.addEventListener('click', closeMenu);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !drawer.hidden) closeMenu();
+  });
+
+  /* Reveal on scroll (equivalente a whileInView + stagger) */
+  var items = document.querySelectorAll('.rv:not(.in)');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+
+    items.forEach(function (el) {
+      var siblings = Array.prototype.slice.call(el.parentElement.children).filter(function (n) {
+        return n.classList && n.classList.contains('rv');
+      });
+      var i = siblings.indexOf(el);
+      el.style.transitionDelay = (i > 0 ? Math.min(i, 4) * 80 : 0) + 'ms';
+      io.observe(el);
+    });
+  } else {
+    items.forEach(function (el) { el.classList.add('in'); });
+  }
+
+  /* Año */
+  var y = document.querySelector('[data-year]');
+  if (y) y.textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
