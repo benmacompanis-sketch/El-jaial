@@ -1,8 +1,13 @@
 # Fotos de producto
 
-Cada tarjeta de `pasillos.html` busca su foto acá, por nombre de archivo.
-Si el archivo no está, la tarjeta muestra el ícono del sector — nunca se ve
-una imagen rota, así que podés ir subiéndolas de a una.
+> **Las imágenes que hay ahora son ilustraciones de relleno, generadas por
+> código para poder mostrar la web.** No son fotos y no representan los
+> productos reales del local: hay que reemplazarlas antes de publicar.
+
+Cada tarjeta de `pasillos.html` busca su imagen acá, por nombre de archivo.
+Para cambiar una, subí tu foto con el mismo nombre y pisa la ilustración.
+Si borrás un archivo, la tarjeta muestra el ícono del sector — nunca se ve
+una imagen rota.
 
 **Formato:** JPG, apaisado, idealmente 800 × 600 px y menos de 150 KB.
 Se recortan a 4:3, así que conviene que el producto esté centrado.
