@@ -1527,7 +1527,9 @@
   function pintar() {
     if (!CAT || !destino) return;
     var g = guardado();
-    if (g && g.sectores) CAT = g;
+    // Sólo se muestra el borrador local mientras esté sin publicar; una vez
+    // publicado manda el archivo, que es lo que ve el resto de los dispositivos.
+    if (g && g.sectores && g._publicado !== true) CAT = g;
 
     var chips = document.querySelector('[data-chips]');
     if (chips) {

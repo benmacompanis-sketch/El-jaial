@@ -525,10 +525,14 @@
     catch (e) { return null; }
   }
 
-  function guardar() {
+  function guardar(publicado) {
     try {
+      // El sello dice si este borrador ya está en el repositorio. La página
+      // pública sólo muestra el borrador mientras esté sin publicar, así
+      // nunca tapa lo que se publicó desde otra computadora.
+      cat._publicado = publicado === true;
       localStorage.setItem(CLAVE, JSON.stringify(cat));
-      estado('Cambios guardados en este navegador');
+      estado(cat._publicado ? 'Publicado' : 'Cambios sin publicar');
       return true;
     } catch (e) {
       // Las imágenes incrustadas son lo único que puede llenar el espacio
@@ -864,10 +868,9 @@
       hecho++;
       // las fotos ya viven en el repositorio: dejamos las rutas, no los datos
       cat = paquete.datos;
-      guardar();
+      guardar(true);
       pintar();
       ocupado(false);
-      estado('Publicado');
       avisar('¡Listo! Los cambios se ven online en un minuto.');
     }).catch(function (e) {
       ocupado(false);
@@ -1106,7 +1109,8 @@
   /* ── Arranque ── */
   refrescarFiltro();
   marcarConectado();
-  if (cargar()) estado('Con cambios sin publicar');
+  var borrador = cargar();
+  if (borrador) estado(borrador._publicado ? 'Publicado' : 'Cambios sin publicar');
   pintar();
 })();
 </script>
