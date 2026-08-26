@@ -276,6 +276,8 @@
             style="background:var(--surface-1); border:1px solid var(--border); color:var(--text-1)">
       <option value="">Todos los sectores</option>
     </select>
+    <button type="button" data-nuevo-sector class="px-4 py-2.5 rounded-xl text-sm font-bold text-white transition-all active:scale-95 hover:brightness-110"
+            style="background:#FF6B35">+ Nuevo sector</button>
     <button type="button" data-restaurar class="px-4 py-2.5 rounded-xl text-sm font-semibold transition-all hover:bg-white/[0.07]"
             style="border:1px solid var(--border); color:var(--text-2)">Descartar cambios</button>
   </div>
@@ -353,12 +355,90 @@
   </div>
 </div>
 
+<!-- ─────────────────────── Editor de sector ─────────────────────── -->
+<div data-smodal hidden class="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-6">
+  <div data-smodal-fondo class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+  <div class="relative w-full sm:max-w-lg max-h-[92vh] overflow-y-auto rounded-t-3xl sm:rounded-3xl"
+       style="background:var(--surface-1); border:1px solid var(--border)">
+    <div class="sticky top-0 flex items-center justify-between px-6 py-4" style="background:var(--surface-1); border-bottom:1px solid var(--border)">
+      <h2 class="font-black text-white" data-smodal-titulo>Sector</h2>
+      <button type="button" data-smodal-cerrar class="p-2 rounded-lg transition-colors hover:bg-white/[0.07]" style="color:var(--text-2)" aria-label="Cerrar">
+        <svg viewBox="0 0 24 24" fill="none" class="h-5 w-5" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+
+    <form data-sform class="px-6 py-5 space-y-5">
+      <label class="block">
+        <span class="block text-xs font-bold uppercase tracking-[0.12em] mb-2" style="color:var(--text-3)">Nombre del sector</span>
+        <input data-s-nombre type="text" required placeholder="Frutas y verduras"
+               class="w-full rounded-xl px-4 py-2.5 text-sm outline-none"
+               style="background:var(--surface-2); border:1px solid var(--border); color:var(--text-1)" />
+      </label>
+
+      <label class="block">
+        <span class="block text-xs font-bold uppercase tracking-[0.12em] mb-2" style="color:var(--text-3)">Bajada</span>
+        <input data-s-bajada type="text" placeholder="Frescas, del día."
+               class="w-full rounded-xl px-4 py-2.5 text-sm outline-none"
+               style="background:var(--surface-2); border:1px solid var(--border); color:var(--text-1)" />
+      </label>
+
+      <div>
+        <span class="block text-xs font-bold uppercase tracking-[0.12em] mb-2" style="color:var(--text-3)">Ícono</span>
+        <div data-s-iconos class="grid grid-cols-8 gap-2"></div>
+      </div>
+
+      <div>
+        <span class="block text-xs font-bold uppercase tracking-[0.12em] mb-2" style="color:var(--text-3)">Color</span>
+        <div data-s-colores class="flex flex-wrap gap-2"></div>
+      </div>
+
+      <div data-s-orden class="flex items-center gap-2 pt-1">
+        <span class="text-xs" style="color:var(--text-3)">Orden en la página</span>
+        <button type="button" data-s-subir class="px-3 py-1.5 rounded-lg text-xs font-bold transition-all hover:bg-white/[0.07]"
+                style="border:1px solid var(--border); color:var(--text-2)">↑ Subir</button>
+        <button type="button" data-s-bajar class="px-3 py-1.5 rounded-lg text-xs font-bold transition-all hover:bg-white/[0.07]"
+                style="border:1px solid var(--border); color:var(--text-2)">↓ Bajar</button>
+      </div>
+
+      <div class="flex gap-3 pt-2">
+        <button type="submit" class="flex-1 py-3 rounded-xl text-sm font-bold text-white transition-all active:scale-95 hover:brightness-110"
+                style="background:#FF6B35">Guardar sector</button>
+        <button type="button" data-s-eliminar class="px-5 py-3 rounded-xl text-sm font-bold transition-all hover:bg-red-500/10"
+                style="border:1px solid var(--border); color:#f87171">Eliminar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <div data-aviso class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-5 py-3 rounded-xl text-sm font-semibold text-white opacity-0 pointer-events-none transition-opacity duration-300"
      style="background:#16a34a; box-shadow:0 8px 30px rgba(0,0,0,.5)"></div>
 
 <script>
 (function () {
   'use strict';
+
+  /* Íconos disponibles para los sectores. Trazo simple, para que combinen
+     entre sí y con los que ya usa la página. */
+  var ICONOS = {
+    pan:      '<path d="M4.5 9.5c0-2.2 1.8-4 4-4h7c2.2 0 4 1.8 4 4l-1 8a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8l-1-8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9.5 6v13M14.5 6v13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>',
+    leche:    '<path d="M9 3h6v3l2.5 4v9a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-9L9 6V3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6.5 13h11" stroke="currentColor" stroke-width="1.2"/>',
+    fiambre:  '<circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.2"/><path d="M12 4v2m0 12v2M4 12h2m12 0h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>',
+    carne:    '<path d="M5 10.5A5.5 5.5 0 0 1 10.5 5h3A5.5 5.5 0 0 1 19 10.5c0 3-2.2 4.9-4.6 5.4l-.7 2.6a1.6 1.6 0 0 1-1.6 1.2h-1a1.6 1.6 0 0 1-1.5-1.2l-.7-2.6C6.9 15.2 5 13.3 5 10.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="12" cy="10.5" r="2.2" stroke="currentColor" stroke-width="1.2"/>',
+    frio:     '<path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5 4.2 16.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M12 6.6 9.8 4.6M12 6.6l2.2-2M12 17.4l-2.2 2M12 17.4l2.2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>',
+    caja:     '<path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 12v8" stroke="currentColor" stroke-width="1.2"/>',
+    fruta:    '<path d="M12 7c0-2 1.6-3.4 3.5-3.4C15.5 5.6 14 7 12 7Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M12 7c-3.6 0-6 2.4-6 6s2.8 8 6 8 6-4.4 6-8-2.4-6-6-6Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>',
+    verdura:  '<path d="M6 20c7 0 12-5 12-12-7 0-12 5-12 12Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6 20c2-4 5-7 9-9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>',
+    pescado:  '<path d="M3 12c3-4 7-5 10-5s6 2 8 5c-2 3-5 5-8 5s-7-1-10-5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="16.5" cy="11" r="1.1" fill="currentColor"/><path d="M3 12 6 9v6l-3-3Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>',
+    bebida:   '<path d="M8 3h8l-1 4H9L8 3Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M9 7v3l-1.5 2.5V19a2 2 0 0 0 2 2h5a2 2 0 0 0 2-2v-6.5L15 10V7" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>',
+    vino:     '<path d="M8 3h8v4a4 4 0 0 1-8 0V3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 11v7M9 21h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>',
+    cafe:     '<path d="M5 8h11v6a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4V8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M16 10h2a2 2 0 0 1 0 4h-2" stroke="currentColor" stroke-width="1.3"/><path d="M4 21h13" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>',
+    dulce:    '<circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.4"/><path d="m7.6 10.3-4 -1.6v6.6l4-1.6M16.4 10.3l4-1.6v6.6l-4-1.6" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>',
+    limpieza: '<path d="M10 3h4v4h-4V3Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M9 7h6l1 4v8a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-8l1-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9.5 13h5" stroke="currentColor" stroke-width="1.2"/>',
+    huevo:    '<path d="M12 3c3 0 6 5 6 9a6 6 0 0 1-12 0c0-4 3-9 6-9Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>',
+    carrito:  '<path d="M3 4h2l2.2 10.4a2 2 0 0 0 2 1.6h7.2a2 2 0 0 0 2-1.55L20.5 8H6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="19.5" r="1.4" stroke="currentColor" stroke-width="1.3"/><circle cx="17" cy="19.5" r="1.4" stroke="currentColor" stroke-width="1.3"/>',
+  };
+
+  var COLORES = ['#FF6B35','#FFB800','#3B82F6','#EF4444','#8B5CF6','#16a34a','#06b6d4','#ec4899'];
 
   var CLAVE = 'eljaial:catalogo';
   var base = JSON.parse(JSON.stringify(window.CATALOGO));
@@ -442,8 +522,12 @@
         + '<svg viewBox="0 0 24 24" fill="none" class="h-5 w-5" style="color:' + esc(s.color) + '" aria-hidden="true">' + s.icono + '</svg></span>'
         + '<div><h2 class="font-black text-white leading-none">' + esc(s.nombre) + '</h2>'
         + '<p class="text-xs mt-1" style="color:var(--text-3)">' + prods.length + ' producto' + (prods.length === 1 ? '' : 's') + '</p></div></div>'
+        + '<div class="flex items-center gap-2">'
+        + '<button type="button" data-editar-sector="' + esc(s.id) + '" class="px-3.5 py-2 rounded-xl text-xs font-bold transition-all hover:bg-white/[0.07]"'
+        + ' style="border:1px solid var(--border); color:var(--text-2)">Editar sector</button>'
         + '<button type="button" data-nuevo="' + esc(s.id) + '" class="px-3.5 py-2 rounded-xl text-xs font-bold transition-all hover:bg-white/[0.07]"'
         + ' style="border:1px solid var(--border); color:var(--text-2)">+ Agregar</button>'
+        + '</div>'
         + '</div>'
         + '<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">'
         + prods.map(function (p) {
@@ -617,6 +701,142 @@
     avisar('Cambios descartados');
   });
 
+  /* ── Sectores ────────────────────────────────────────────────────── */
+  var sEditando = null;      // id del sector, o null si es nuevo
+  var sIcono = 'caja';
+  var sColor = COLORES[0];
+
+  function pintarIconos() {
+    document.querySelector('[data-s-iconos]').innerHTML = Object.keys(ICONOS).map(function (k) {
+      var act = k === sIcono;
+      return '<button type="button" data-ico="' + k + '" title="' + k + '"'
+        + ' class="grid place-items-center h-10 w-full rounded-xl transition-all"'
+        + ' style="background:' + (act ? 'rgba(255,107,53,0.14)' : 'var(--surface-2)')
+        + '; border:1px solid ' + (act ? sColor : 'var(--border)') + '">'
+        + '<svg viewBox="0 0 24 24" fill="none" class="h-5 w-5" style="color:' + (act ? sColor : 'var(--text-2)') + '">'
+        + ICONOS[k] + '</svg></button>';
+    }).join('');
+  }
+
+  function pintarColores() {
+    document.querySelector('[data-s-colores]').innerHTML = COLORES.map(function (c) {
+      var act = c === sColor;
+      return '<button type="button" data-col="' + c + '" aria-label="' + c + '"'
+        + ' class="h-9 w-9 rounded-full transition-transform' + (act ? ' scale-110' : '') + '"'
+        + ' style="background:' + c + '; box-shadow:' + (act ? '0 0 0 2px var(--surface-1), 0 0 0 4px ' + c : 'none') + '"></button>';
+    }).join('');
+  }
+
+  function idLibre(nombre) {
+    var base = slug(nombre) || 'sector';
+    var id = base, n = 2;
+    while (cat.sectores.some(function (x) { return x.id === id; })) { id = base + '-' + n; n++; }
+    return id;
+  }
+
+  function abrirSector(sid) {
+    sEditando = sid || null;
+    var s = sid ? cat.sectores.filter(function (x) { return x.id === sid; })[0] : null;
+
+    $('[data-smodal-titulo]').textContent = s ? 'Editar sector' : 'Nuevo sector';
+    $('[data-s-nombre]').value = s ? s.nombre : '';
+    $('[data-s-bajada]').value = s ? s.bajada : '';
+    sColor = s ? s.color : COLORES[0];
+
+    // si el ícono guardado coincide con uno de la biblioteca, lo marcamos
+    sIcono = 'caja';
+    if (s) {
+      Object.keys(ICONOS).forEach(function (k) { if (ICONOS[k] === s.icono) sIcono = k; });
+    }
+    pintarIconos(); pintarColores();
+
+    $('[data-s-eliminar]').style.display = s ? '' : 'none';
+    $('[data-s-orden]').style.display = s ? '' : 'none';
+
+    $('[data-smodal]').hidden = false;
+    document.body.style.overflow = 'hidden';
+    setTimeout(function () { $('[data-s-nombre]').focus(); }, 50);
+  }
+
+  function cerrarSector() {
+    $('[data-smodal]').hidden = true;
+    document.body.style.overflow = '';
+    sEditando = null;
+  }
+
+  document.querySelector('[data-s-iconos]').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-ico]');
+    if (!b) return;
+    sIcono = b.getAttribute('data-ico');
+    pintarIconos();
+  });
+
+  document.querySelector('[data-s-colores]').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-col]');
+    if (!b) return;
+    sColor = b.getAttribute('data-col');
+    pintarColores(); pintarIconos();
+  });
+
+  function mover(paso) {
+    if (!sEditando) return;
+    var i = cat.sectores.findIndex(function (x) { return x.id === sEditando; });
+    var j = i + paso;
+    if (j < 0 || j >= cat.sectores.length) return;
+    var tmp = cat.sectores[i];
+    cat.sectores[i] = cat.sectores[j];
+    cat.sectores[j] = tmp;
+    guardar(); pintar(); refrescarFiltro();
+    avisar('Sector movido');
+  }
+  $('[data-s-subir]').addEventListener('click', function () { mover(-1); });
+  $('[data-s-bajar]').addEventListener('click', function () { mover(1); });
+
+  $('[data-sform]').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var nombre = $('[data-s-nombre]').value.trim();
+    if (!nombre) return;
+    var bajada = $('[data-s-bajada]').value.trim();
+
+    if (sEditando) {
+      var s = cat.sectores.filter(function (x) { return x.id === sEditando; })[0];
+      // El id no cambia al renombrar: es el ancla que usan los enlaces de la home
+      s.nombre = nombre; s.bajada = bajada; s.icono = ICONOS[sIcono]; s.color = sColor;
+    } else {
+      cat.sectores.push({
+        id: idLibre(nombre), nombre: nombre, bajada: bajada,
+        icono: ICONOS[sIcono], color: sColor, productos: [],
+      });
+    }
+
+    guardar(); pintar(); refrescarFiltro(); cerrarSector();
+    avisar(sEditando ? 'Sector actualizado' : 'Sector creado');
+  });
+
+  $('[data-s-eliminar]').addEventListener('click', function () {
+    if (!sEditando) return;
+    var s = cat.sectores.filter(function (x) { return x.id === sEditando; })[0];
+    var n = s.productos.length;
+    var msg = n
+      ? '¿Eliminar el sector “' + s.nombre + '” y sus ' + n + ' producto' + (n === 1 ? '' : 's') + '?'
+      : '¿Eliminar el sector “' + s.nombre + '”?';
+    if (!confirm(msg)) return;
+    cat.sectores.splice(cat.sectores.indexOf(s), 1);
+    guardar(); pintar(); refrescarFiltro(); cerrarSector();
+    avisar('Sector eliminado');
+  });
+
+  $('[data-nuevo-sector]').addEventListener('click', function () { abrirSector(null); });
+  $('[data-smodal-cerrar]').addEventListener('click', cerrarSector);
+  $('[data-smodal-fondo]').addEventListener('click', cerrarSector);
+
+  function refrescarFiltro() {
+    var sel = $('[data-filtro]'), v = sel.value;
+    sel.innerHTML = '<option value="">Todos los sectores</option>'
+      + cat.sectores.map(function (s) { return '<option value="' + esc(s.id) + '">' + esc(s.nombre) + '</option>'; }).join('');
+    if (cat.sectores.some(function (s) { return s.id === v; })) sel.value = v;
+  }
+
   /* Miniaturas: si el archivo no está, se oculta y queda el fondo */
   document.addEventListener('error', function (e) {
     var t = e.target;
@@ -628,18 +848,23 @@
     var ed = e.target.closest('[data-editar]');
     if (ed) { var t = ed.getAttribute('data-editar').split('|'); abrir(t[0], t[1]); return; }
     var nv = e.target.closest('[data-nuevo]');
-    if (nv) abrir(nv.getAttribute('data-nuevo'), null);
+    if (nv) { abrir(nv.getAttribute('data-nuevo'), null); return; }
+    var es = e.target.closest('[data-editar-sector]');
+    if (es) abrirSector(es.getAttribute('data-editar-sector'));
   });
 
   $('[data-modal-cerrar]').addEventListener('click', cerrar);
   $('[data-modal-fondo]').addEventListener('click', cerrar);
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !modal.hidden) cerrar(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    if (!$('[data-smodal]').hidden) cerrarSector();
+    else if (!modal.hidden) cerrar();
+  });
   $('[data-buscar]').addEventListener('input', pintar);
   $('[data-filtro]').addEventListener('change', pintar);
 
   /* ── Arranque ── */
-  $('[data-filtro]').innerHTML = '<option value="">Todos los sectores</option>'
-    + cat.sectores.map(function (s) { return '<option value="' + esc(s.id) + '">' + esc(s.nombre) + '</option>'; }).join('');
+  refrescarFiltro();
   if (cargar()) estado('Con cambios sin publicar');
   pintar();
 })();
