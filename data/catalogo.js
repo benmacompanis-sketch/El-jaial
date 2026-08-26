@@ -105,6 +105,14 @@ window.CATALOGO = {
           "precio": "",
           "disponible": true,
           "img": "assets/productos/matza.jpg"
+        },
+        {
+          "id": "bamba",
+          "img": "assets/productos/bamba.jpg",
+          "nombre": "Bamba",
+          "desc": "El mejor snack",
+          "precio": "7000",
+          "disponible": true
         }
       ]
     },
