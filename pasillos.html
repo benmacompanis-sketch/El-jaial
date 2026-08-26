@@ -11,6 +11,7 @@
 <meta name="theme-color" content="#09090B" />
 
 <script src="https://cdn.tailwindcss.com"></script>
+<script src="data/catalogo.js"></script>
 <script>
   tailwind.config = {
     theme: {
@@ -63,6 +64,10 @@
     --shadow-hover: 0 8px 40px rgba(0,0,0,0.7), 0 2px 8px rgba(0,0,0,0.5);
     --shadow-lg: 0 24px 64px rgba(0,0,0,0.8);
   }
+
+  /* La clase flex de Tailwind le gana a [hidden] y deja elementos ocultos
+     capturando clics. Esto lo zanja para toda la página. */
+  [hidden] { display: none !important; }
 
   *, *::before, *::after { box-sizing: border-box; }
 
@@ -352,17 +357,16 @@
     </div>
 
     <!-- Accesos rápidos -->
-    <div class="rv mt-10 flex flex-wrap gap-2">
-        <a href="#panaderia" class="rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 hover:-translate-y-0.5" style="background:var(--surface-2); border:1px solid var(--border); color:var(--text-2)">Panadería</a>
-        <a href="#lacteos" class="rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 hover:-translate-y-0.5" style="background:var(--surface-2); border:1px solid var(--border); color:var(--text-2)">Lácteos</a>
-        <a href="#fiambreria" class="rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 hover:-translate-y-0.5" style="background:var(--surface-2); border:1px solid var(--border); color:var(--text-2)">Fiambrería</a>
-        <a href="#carniceria" class="rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 hover:-translate-y-0.5" style="background:var(--surface-2); border:1px solid var(--border); color:var(--text-2)">Carnicería</a>
-        <a href="#congelados" class="rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 hover:-translate-y-0.5" style="background:var(--surface-2); border:1px solid var(--border); color:var(--text-2)">Congelados</a>
-        <a href="#almacen" class="rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 hover:-translate-y-0.5" style="background:var(--surface-2); border:1px solid var(--border); color:var(--text-2)">Almacén e importados</a>
-    </div>
+    <div class="rv mt-10 flex flex-wrap gap-2" data-chips></div>
   </div>
 </section>
 
+<!-- El catálogo se dibuja desde data/catalogo.js, con los cambios del panel
+     de administración aplicados encima. Si el JS no corre, queda el respaldo
+     estático de más abajo. -->
+<div data-catalogo></div>
+
+<noscript>
 <section id="panaderia" class="section-pad scroll-mt-24" style="background:var(--surface-0)">
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
 
@@ -1295,6 +1299,8 @@
   </div>
 </section>
 
+</noscript>
+
 <!-- ══════════════════════════ CONSULTAS ══════════════════════════ -->
 <section class="section-pad" style="background:var(--surface-0)">
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
@@ -1472,6 +1478,81 @@
 <script>
 (function () {
   'use strict';
+
+  /* ── Catálogo ──────────────────────────────────────────────────────
+     Los datos vienen de data/catalogo.js. El panel de administración guarda
+     sus cambios en localStorage y acá se aplican encima, así lo editado se
+     ve en la página sin tocar el archivo. */
+  var CAT = window.CATALOGO;
+  var destino = document.querySelector('[data-catalogo]');
+
+  function guardado() {
+    try {
+      var raw = localStorage.getItem('eljaial:catalogo');
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) { return null; }
+  }
+
+  function esc(t) {
+    return String(t == null ? '' : t)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+  }
+
+  function precioFmt(v) {
+    var n = parseFloat(String(v).replace(',', '.'));
+    if (!isFinite(n) || n <= 0) return '';
+    return '$' + n.toLocaleString('es-AR', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+  }
+
+  function tarjeta(p, sec) {
+    var precio = precioFmt(p.precio);
+    return '<div class="rv rounded-2xl overflow-hidden card-hover' + (p.disponible === false ? ' opacity-60' : '') + '"'
+      + ' style="background:var(--surface-2); border:1px solid var(--border)">'
+      + '<div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">'
+      + '<svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:' + esc(sec.color) + '" aria-hidden="true">' + sec.icono + '</svg>'
+      + '<img data-prod src="' + esc(p.img) + '" alt="' + esc(p.nombre) + '" loading="lazy" decoding="async"'
+      + ' class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />'
+      + (p.disponible === false ? '<span class="absolute top-2.5 left-2.5 rounded-full px-2 py-0.5 text-[10px] font-bold text-white" style="background:rgba(0,0,0,0.65)">Sin stock</span>' : '')
+      + '</div>'
+      + '<div class="p-4">'
+      + '<div class="flex items-start justify-between gap-3">'
+      + '<h3 class="font-bold text-sm leading-tight" style="color:var(--text-1)">' + esc(p.nombre) + '</h3>'
+      + (precio ? '<span class="shrink-0 font-black text-sm" style="color:#FF6B35">' + esc(precio) + '</span>' : '')
+      + '</div>'
+      + '<p class="mt-1.5 text-xs leading-relaxed" style="color:var(--text-2)">' + esc(p.desc) + '</p>'
+      + '</div></div>';
+  }
+
+  function pintar() {
+    if (!CAT || !destino) return;
+    var g = guardado();
+    if (g && g.sectores) CAT = g;
+
+    var chips = document.querySelector('[data-chips]');
+    if (chips) {
+      chips.innerHTML = CAT.sectores.map(function (s) {
+        return '<a href="#' + esc(s.id) + '" class="rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 hover:-translate-y-0.5"'
+          + ' style="background:var(--surface-2); border:1px solid var(--border); color:var(--text-2)">' + esc(s.nombre) + '</a>';
+      }).join('');
+    }
+
+    destino.innerHTML = CAT.sectores.map(function (s, i) {
+      var fondo = i % 2 === 0 ? 'var(--surface-0)' : 'var(--surface-1)';
+      return '<section id="' + esc(s.id) + '" class="section-pad scroll-mt-24" style="background:' + fondo + '">'
+        + '<div class="max-w-7xl mx-auto px-4 sm:px-6">'
+        + '<div class="rv flex items-center gap-4 mb-10">'
+        + '<span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl" style="background:rgba(255,107,53,0.08)">'
+        + '<svg viewBox="0 0 24 24" fill="none" class="h-6 w-6" style="color:' + esc(s.color) + '" aria-hidden="true">' + s.icono + '</svg></span>'
+        + '<div><h2 class="font-black leading-tight tracking-tight" style="font-size:clamp(1.5rem, 3vw, 2.25rem); color:var(--text-1)">' + esc(s.nombre) + '</h2>'
+        + '<p class="mt-1 text-sm" style="color:var(--text-2)">' + esc(s.bajada) + '</p></div></div>'
+        + '<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">'
+        + s.productos.map(function (p) { return tarjeta(p, s); }).join('')
+        + '</div></div></section>';
+    }).join('');
+  }
+
+  pintar();
 
   /* Fotos de producto: aparecen sólo cuando el archivo existe. Mientras no
      esté, la tarjeta muestra el ícono del sector y nunca un ícono roto. */

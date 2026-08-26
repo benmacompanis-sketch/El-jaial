@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Administración — El Jaial</title>
+<meta name="description" content="Mercado y supermercado kosher en Buenos Aires. Panadería, lácteos, fiambrería, carnicería, congelados e importados. Sucursales en Palermo y Belgrano." />
+<meta property="og:title" content="El Jaial" />
+<meta property="og:description" content="Mercado y supermercado kosher en Buenos Aires. Productos frescos del día e importados seleccionados." />
+<meta property="og:type" content="grocery_or_supermarket" />
+<meta name="theme-color" content="#09090B" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="data/catalogo.js"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          brand:   { DEFAULT: '#FF6B35', dark: '#E55520', light: '#FF8A5C' },
+          gold:    '#FFB800',
+          surface: { 0: '#09090B', 1: '#111115', 2: '#18181D', 3: '#222229' },
+          ink:     { 1: '#F4F4F6', 2: '#8B8B99', 3: '#55555F' },
+        },
+        fontFamily: {
+          sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
+        },
+        boxShadow: {
+          brand: '0 8px 32px rgba(255,107,53,0.4)',
+          card:  '0 1px 3px rgba(0,0,0,0.5), 0 4px 16px rgba(0,0,0,0.4)',
+          hover: '0 8px 40px rgba(0,0,0,0.7), 0 2px 8px rgba(0,0,0,0.5)',
+          lg2:   '0 24px 64px rgba(0,0,0,0.8)',
+        },
+        keyframes: {
+          floaty: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(7px)' } },
+        },
+        animation: { floaty: 'floaty 2s ease-in-out infinite' },
+      },
+    },
+  }
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --brand: #FF6B35;
+    --brand-dark: #E55520;
+    --brand-light: #FF8A5C;
+    --gold: #FFB800;
+    --surface-0: #09090B;
+    --surface-1: #111115;
+    --surface-2: #18181D;
+    --surface-3: #222229;
+    --border: rgba(255,255,255,0.06);
+    --border-strong: rgba(255,255,255,0.11);
+    --text-1: #F4F4F6;
+    --text-2: #8B8B99;
+    --text-3: #55555F;
+    --shadow-brand: 0 8px 32px rgba(255,107,53,0.4);
+    --shadow-card: 0 1px 3px rgba(0,0,0,0.5), 0 4px 16px rgba(0,0,0,0.4);
+    --shadow-hover: 0 8px 40px rgba(0,0,0,0.7), 0 2px 8px rgba(0,0,0,0.5);
+    --shadow-lg: 0 24px 64px rgba(0,0,0,0.8);
+  }
+
+  /* La clase flex de Tailwind le gana a [hidden] y deja elementos ocultos
+     capturando clics. Esto lo zanja para toda la página. */
+  [hidden] { display: none !important; }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: var(--surface-0);
+    color: var(--text-1);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  }
+
+  ::selection { background: rgba(255,107,53,0.28); color: #fff; }
+
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: var(--surface-1); }
+  ::-webkit-scrollbar-thumb { background: var(--surface-3); border-radius: 99px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--text-3); }
+
+  .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .hide-scrollbar::-webkit-scrollbar { display: none; }
+
+  .gradient-brand { background: linear-gradient(135deg, var(--brand) 0%, var(--gold) 100%); }
+
+  .text-gradient {
+    background: linear-gradient(135deg, #FF6B35 0%, #FFB800 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-white {
+    background: linear-gradient(180deg, #FFFFFF 0%, rgba(255,255,255,0.65) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass {
+    background: rgba(255,255,255,0.04);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--border);
+  }
+
+  .glass-dark {
+    background: rgba(9,9,11,0.82);
+    backdrop-filter: blur(24px) saturate(160%);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .card {
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-card);
+  }
+
+  .card-hover {
+    transition: transform 250ms cubic-bezier(0.4,0,0.2,1),
+                box-shadow 250ms cubic-bezier(0.4,0,0.2,1),
+                border-color 250ms cubic-bezier(0.4,0,0.2,1);
+  }
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--border-strong);
+  }
+
+  .btn-brand {
+    background: var(--brand);
+    color: #fff;
+    font-weight: 700;
+    box-shadow: var(--shadow-brand);
+    transition: all 200ms cubic-bezier(0.4,0,0.2,1);
+  }
+  .btn-brand:hover {
+    background: var(--brand-dark);
+    box-shadow: 0 12px 40px rgba(255,107,53,0.5);
+    transform: translateY(-1px);
+  }
+  .btn-brand:active { transform: scale(0.97); }
+
+  .section-pad { padding-top: 6rem; padding-bottom: 6rem; }
+  @media (max-width: 640px) { .section-pad { padding-top: 4rem; padding-bottom: 4rem; } }
+
+  .glow { box-shadow: 0 0 60px rgba(255,107,53,0.2), 0 8px 32px rgba(255,107,53,0.35); }
+
+  .dot-grid {
+    background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* Scrim del hero: se endurece cuando hay foto de fondo */
+  .scrim-photo { opacity: 0; transition: opacity .4s ease; }
+  .scrim-plain { opacity: 1; transition: opacity .4s ease; }
+  .has-photo .scrim-photo { opacity: 1; }
+  .has-photo .scrim-plain { opacity: 0; }
+  .has-photo .hero-fallback { opacity: 0; }
+
+  /* Tonos del texto del hero: con foto se aclaran para no depender del velo */
+  :root { --hero-sub: rgba(255,255,255,0.55); --hero-dim: rgba(255,255,255,0.50); --hero-dimmer: rgba(255,255,255,0.38); }
+  .has-photo { --hero-sub: rgba(255,255,255,0.82); --hero-dim: rgba(255,255,255,0.78); --hero-dimmer: rgba(255,255,255,0.66); }
+
+  /* Con foto la legibilidad la da la sombra del texto, no un velo sobre la imagen */
+  .has-photo .hero-copy { text-shadow: 0 2px 16px rgba(0,0,0,0.65), 0 1px 3px rgba(0,0,0,0.5); }
+  /* El texto en degradado usa background-clip: la text-shadow se ve a través
+     de las letras y las ensucia. drop-shadow sí respeta la silueta. */
+  .has-photo .hero-copy .text-gradient {
+    text-shadow: none;
+    filter: drop-shadow(0 2px 12px rgba(0,0,0,0.75)) drop-shadow(0 1px 3px rgba(0,0,0,0.6));
+  }
+  /* con foto no van las tramas encima: ensucian la imagen */
+  .has-photo [data-hero-tiles],
+  .has-photo [data-hero-dots],
+  .has-photo [data-hero-glow] { opacity: 0; }
+
+  /* Pared de azulejos del cartel de la sucursal */
+  .tile-wall {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='72'%3E%3Cg stroke='rgba(255,255,255,0.07)' stroke-width='2' fill='none'%3E%3Cpath d='M0 1H80M0 37H80M1 0V36M41 36V72'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 80px 72px;
+  }
+
+  /* Equivalente en CSS a los whileInView de framer-motion */
+  .rv { opacity: 0; transform: translateY(18px); transition: opacity .55s cubic-bezier(.4,0,.2,1), transform .55s cubic-bezier(.4,0,.2,1); }
+  .rv-x-l { transform: translateX(-24px); }
+  .rv-x-r { transform: translateX(24px); }
+  .rv.in { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .rv { opacity: 1 !important; transform: none !important; transition: none; }
+    .animate-floaty, .animate-pulse { animation: none !important; }
+  }
+</style>
+<noscript><style>.rv { opacity: 1 !important; transform: none !important; }</style></noscript>
+</head>
+
+<body class="font-sans" style="background:var(--surface-0)">
+
+<!-- ─────────────────────────── Barra ─────────────────────────── -->
+<header class="sticky top-0 z-40 glass-dark">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="flex h-16 items-center justify-between gap-4">
+      <div class="flex items-center gap-3 min-w-0">
+        <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl" style="background:#FF6B35">
+          <svg viewBox="0 0 24 24" fill="none" class="h-5 w-5 text-white" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </span>
+        <div class="min-w-0">
+          <p class="font-black text-white text-sm leading-none truncate">Administración</p>
+          <p class="text-[11px] mt-0.5" style="color:var(--text-3)">El Jaial · catálogo</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <span data-estado class="hidden sm:inline text-xs" style="color:var(--text-3)"></span>
+        <a href="pasillos.html" target="_blank" rel="noopener"
+           class="hidden sm:inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all hover:bg-white/[0.07]"
+           style="border:1px solid var(--border); color:var(--text-2)">Ver la página</a>
+        <button type="button" data-exportar
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-white transition-all active:scale-95 hover:brightness-110"
+                style="background:#FF6B35; box-shadow:0 4px 16px rgba(255,107,53,0.35)">
+          Exportar catálogo
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+
+  <!-- Cómo publicar -->
+  <div class="rounded-2xl p-5 mb-6" style="background:var(--surface-1); border:1px solid var(--border)">
+    <div class="flex items-start gap-3">
+      <svg viewBox="0 0 24 24" fill="none" class="h-5 w-5 shrink-0 mt-0.5" style="color:#FFB800" aria-hidden="true">
+        <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 8v5M12 16.2v.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+      <div class="text-sm leading-relaxed" style="color:var(--text-2)">
+        <p><span class="font-bold" style="color:var(--text-1)">Los cambios se guardan en este navegador.</span>
+        Se ven al instante en la página, pero sólo acá: nadie más los ve todavía.</p>
+        <p class="mt-1.5">Para publicarlos: <span class="font-semibold" style="color:var(--text-1)">Exportar catálogo</span>
+        descarga <code class="px-1 rounded" style="background:var(--surface-3)">catalogo.js</code>; reemplazá con él
+        <code class="px-1 rounded" style="background:var(--surface-3)">data/catalogo.js</code> en el repositorio.
+        Las fotos nuevas se descargan aparte y van en
+        <code class="px-1 rounded" style="background:var(--surface-3)">assets/productos/</code>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Herramientas -->
+  <div class="flex flex-wrap items-center gap-3 mb-6">
+    <div class="relative flex-1 min-w-[220px]">
+      <svg viewBox="0 0 24 24" fill="none" class="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4" style="color:var(--text-3)" aria-hidden="true">
+        <circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.6"/><path d="m16 16 4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <input data-buscar type="search" placeholder="Buscar producto…"
+             class="w-full rounded-xl pl-10 pr-4 py-2.5 text-sm outline-none transition-colors"
+             style="background:var(--surface-1); border:1px solid var(--border); color:var(--text-1)" />
+    </div>
+    <select data-filtro class="rounded-xl px-4 py-2.5 text-sm outline-none"
+            style="background:var(--surface-1); border:1px solid var(--border); color:var(--text-1)">
+      <option value="">Todos los sectores</option>
+    </select>
+    <button type="button" data-restaurar class="px-4 py-2.5 rounded-xl text-sm font-semibold transition-all hover:bg-white/[0.07]"
+            style="border:1px solid var(--border); color:var(--text-2)">Descartar cambios</button>
+  </div>
+
+  <div data-lista class="space-y-10"></div>
+</main>
+
+<!-- ─────────────────────────── Editor ─────────────────────────── -->
+<div data-modal hidden class="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-6">
+  <div data-modal-fondo class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+  <div class="relative w-full sm:max-w-lg max-h-[92vh] overflow-y-auto rounded-t-3xl sm:rounded-3xl"
+       style="background:var(--surface-1); border:1px solid var(--border)">
+    <div class="sticky top-0 flex items-center justify-between px-6 py-4" style="background:var(--surface-1); border-bottom:1px solid var(--border)">
+      <h2 class="font-black text-white" data-modal-titulo>Producto</h2>
+      <button type="button" data-modal-cerrar class="p-2 rounded-lg transition-colors hover:bg-white/[0.07]" style="color:var(--text-2)" aria-label="Cerrar">
+        <svg viewBox="0 0 24 24" fill="none" class="h-5 w-5" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+
+    <form data-form class="px-6 py-5 space-y-5">
+      <div class="flex gap-4">
+        <div class="relative h-24 w-32 shrink-0 rounded-xl overflow-hidden" style="background:rgba(255,107,53,0.08); border:1px solid var(--border)">
+          <img data-f-preview alt="" class="absolute inset-0 h-full w-full object-cover" />
+        </div>
+        <div class="flex-1 min-w-0 flex flex-col justify-center gap-2">
+          <label class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold cursor-pointer transition-all hover:bg-white/[0.07]"
+                 style="border:1px solid var(--border); color:var(--text-1)">
+            Cambiar imagen
+            <input data-f-archivo type="file" accept="image/*" class="hidden" />
+          </label>
+          <button type="button" data-f-descargar class="px-4 py-2.5 rounded-xl text-xs font-bold transition-all hover:bg-white/[0.07]"
+                  style="border:1px solid var(--border); color:var(--text-2)">Descargar imagen</button>
+          <p class="text-[11px] leading-snug" style="color:var(--text-3)">Se ajusta a 800×600. Guardala en <code>assets/productos/</code>.</p>
+        </div>
+      </div>
+
+      <label class="block">
+        <span class="block text-xs font-bold uppercase tracking-[0.12em] mb-2" style="color:var(--text-3)">Nombre</span>
+        <input data-f-nombre type="text" required class="w-full rounded-xl px-4 py-2.5 text-sm outline-none"
+               style="background:var(--surface-2); border:1px solid var(--border); color:var(--text-1)" />
+      </label>
+
+      <label class="block">
+        <span class="block text-xs font-bold uppercase tracking-[0.12em] mb-2" style="color:var(--text-3)">Descripción</span>
+        <textarea data-f-desc rows="3" class="w-full rounded-xl px-4 py-2.5 text-sm outline-none resize-none"
+                  style="background:var(--surface-2); border:1px solid var(--border); color:var(--text-1)"></textarea>
+      </label>
+
+      <div class="grid grid-cols-2 gap-4">
+        <label class="block">
+          <span class="block text-xs font-bold uppercase tracking-[0.12em] mb-2" style="color:var(--text-3)">Precio</span>
+          <input data-f-precio type="text" inputmode="decimal" placeholder="vacío = no se muestra"
+                 class="w-full rounded-xl px-4 py-2.5 text-sm outline-none"
+                 style="background:var(--surface-2); border:1px solid var(--border); color:var(--text-1)" />
+        </label>
+        <label class="block">
+          <span class="block text-xs font-bold uppercase tracking-[0.12em] mb-2" style="color:var(--text-3)">Sector</span>
+          <select data-f-sector class="w-full rounded-xl px-4 py-2.5 text-sm outline-none"
+                  style="background:var(--surface-2); border:1px solid var(--border); color:var(--text-1)"></select>
+        </label>
+      </div>
+
+      <label class="flex items-center gap-3 cursor-pointer">
+        <input data-f-disponible type="checkbox" class="h-4 w-4 rounded" />
+        <span class="text-sm" style="color:var(--text-2)">Disponible (si lo destildás, sale como “Sin stock”)</span>
+      </label>
+
+      <div class="flex gap-3 pt-2">
+        <button type="submit" class="flex-1 py-3 rounded-xl text-sm font-bold text-white transition-all active:scale-95 hover:brightness-110"
+                style="background:#FF6B35">Guardar</button>
+        <button type="button" data-f-eliminar class="px-5 py-3 rounded-xl text-sm font-bold transition-all hover:bg-red-500/10"
+                style="border:1px solid var(--border); color:#f87171">Eliminar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div data-aviso class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-5 py-3 rounded-xl text-sm font-semibold text-white opacity-0 pointer-events-none transition-opacity duration-300"
+     style="background:#16a34a; box-shadow:0 8px 30px rgba(0,0,0,.5)"></div>
+
+<script>
+(function () {
+  'use strict';
+
+  var CLAVE = 'eljaial:catalogo';
+  var base = JSON.parse(JSON.stringify(window.CATALOGO));
+  var cat = cargar() || JSON.parse(JSON.stringify(base));
+  var editando = null;   // { sid, pid } o { sid, nuevo:true }
+
+  var $ = function (s) { return document.querySelector(s); };
+  var lista = $('[data-lista]');
+  var modal = $('[data-modal]');
+  var form = $('[data-form]');
+
+  function esc(t) {
+    return String(t == null ? '' : t)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+  }
+
+  function cargar() {
+    try { var r = localStorage.getItem(CLAVE); return r ? JSON.parse(r) : null; }
+    catch (e) { return null; }
+  }
+
+  function guardar() {
+    try {
+      localStorage.setItem(CLAVE, JSON.stringify(cat));
+      estado('Cambios guardados en este navegador');
+      return true;
+    } catch (e) {
+      // Las imágenes incrustadas son lo único que puede llenar el espacio
+      estado('No entra en el almacenamiento del navegador', true);
+      avisar('Sin espacio para guardar. Descargá la imagen y ponela en assets/productos/ en vez de incrustarla.', true);
+      return false;
+    }
+  }
+
+  function estado(txt, malo) {
+    var e = $('[data-estado]');
+    e.textContent = txt;
+    e.style.color = malo ? '#f87171' : 'var(--text-3)';
+  }
+
+  var avisoT;
+  function avisar(txt, malo) {
+    var a = $('[data-aviso]');
+    a.textContent = txt;
+    a.style.background = malo ? '#dc2626' : '#16a34a';
+    a.style.opacity = '1';
+    clearTimeout(avisoT);
+    avisoT = setTimeout(function () { a.style.opacity = '0'; }, malo ? 5200 : 2400);
+  }
+
+  function slug(t) {
+    return String(t).normalize('NFD').replace(/[̀-ͯ]/g, '')
+      .replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-+|-+$/g, '').toLowerCase();
+  }
+
+  function precioFmt(v) {
+    var n = parseFloat(String(v).replace(',', '.'));
+    if (!isFinite(n) || n <= 0) return '';
+    return '$' + n.toLocaleString('es-AR', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+  }
+
+  /* ── Listado ── */
+  function pintar() {
+    var q = $('[data-buscar]').value.trim().toLowerCase();
+    var filtro = $('[data-filtro]').value;
+    var vacio = true;
+
+    lista.innerHTML = cat.sectores.map(function (s) {
+      if (filtro && s.id !== filtro) return '';
+      var prods = s.productos.filter(function (p) {
+        return !q || (p.nombre + ' ' + p.desc).toLowerCase().indexOf(q) !== -1;
+      });
+      if (!prods.length && q) return '';
+      vacio = false;
+
+      return '<section>'
+        + '<div class="flex items-center justify-between gap-4 mb-4">'
+        + '<div class="flex items-center gap-3">'
+        + '<span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl" style="background:rgba(255,107,53,0.08)">'
+        + '<svg viewBox="0 0 24 24" fill="none" class="h-5 w-5" style="color:' + esc(s.color) + '" aria-hidden="true">' + s.icono + '</svg></span>'
+        + '<div><h2 class="font-black text-white leading-none">' + esc(s.nombre) + '</h2>'
+        + '<p class="text-xs mt-1" style="color:var(--text-3)">' + prods.length + ' producto' + (prods.length === 1 ? '' : 's') + '</p></div></div>'
+        + '<button type="button" data-nuevo="' + esc(s.id) + '" class="px-3.5 py-2 rounded-xl text-xs font-bold transition-all hover:bg-white/[0.07]"'
+        + ' style="border:1px solid var(--border); color:var(--text-2)">+ Agregar</button>'
+        + '</div>'
+        + '<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">'
+        + prods.map(function (p) {
+            var precio = precioFmt(p.precio);
+            return '<button type="button" data-editar="' + esc(s.id) + '|' + esc(p.id) + '"'
+              + ' class="flex gap-3 text-left rounded-2xl p-3 transition-all hover:-translate-y-0.5' + (p.disponible === false ? ' opacity-60' : '') + '"'
+              + ' style="background:var(--surface-1); border:1px solid var(--border)">'
+              + '<span class="relative h-16 w-20 shrink-0 rounded-xl overflow-hidden" style="background:rgba(255,107,53,0.08)">'
+              + '<img data-thumb src="' + esc(p.img) + '" alt="" loading="lazy" class="absolute inset-0 h-full w-full object-cover" /></span>'
+              + '<span class="min-w-0 flex-1">'
+              + '<span class="flex items-start justify-between gap-2">'
+              + '<span class="block font-bold text-sm leading-tight truncate" style="color:var(--text-1)">' + esc(p.nombre) + '</span>'
+              + (precio ? '<span class="shrink-0 text-xs font-black" style="color:#FF6B35">' + esc(precio) + '</span>' : '')
+              + '</span>'
+              + '<span class="block text-xs mt-1 line-clamp-2" style="color:var(--text-3)">' + esc(p.desc) + '</span>'
+              + (p.disponible === false ? '<span class="inline-block mt-1.5 text-[10px] font-bold px-2 py-0.5 rounded-full" style="background:rgba(0,0,0,.5); color:var(--text-2)">Sin stock</span>' : '')
+              + '</span></button>';
+          }).join('')
+        + '</div></section>';
+    }).join('');
+
+    if (vacio) {
+      lista.innerHTML = '<p class="text-center py-16 text-sm" style="color:var(--text-3)">No hay productos que coincidan.</p>';
+    }
+  }
+
+  /* ── Editor ── */
+  function abrir(sid, pid) {
+    var s = cat.sectores.filter(function (x) { return x.id === sid; })[0];
+    var p = pid ? s.productos.filter(function (x) { return x.id === pid; })[0]
+                : { id: '', nombre: '', desc: '', precio: '', disponible: true, img: '' };
+    editando = { sid: sid, pid: pid || null };
+
+    $('[data-modal-titulo]').textContent = pid ? 'Editar producto' : 'Nuevo producto';
+    $('[data-f-nombre]').value = p.nombre;
+    $('[data-f-desc]').value = p.desc;
+    $('[data-f-precio]').value = p.precio || '';
+    $('[data-f-disponible]').checked = p.disponible !== false;
+    $('[data-f-preview]').src = p.img || '';
+    $('[data-f-eliminar]').style.display = pid ? '' : 'none';
+
+    var sel = $('[data-f-sector]');
+    sel.innerHTML = cat.sectores.map(function (x) {
+      return '<option value="' + esc(x.id) + '"' + (x.id === sid ? ' selected' : '') + '>' + esc(x.nombre) + '</option>';
+    }).join('');
+
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+    setTimeout(function () { $('[data-f-nombre]').focus(); }, 50);
+  }
+
+  function cerrar() {
+    modal.hidden = true;
+    document.body.style.overflow = '';
+    editando = null;
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!editando) return;
+
+    var nombre = $('[data-f-nombre]').value.trim();
+    if (!nombre) return;
+
+    var destinoId = $('[data-f-sector]').value;
+    var origen = cat.sectores.filter(function (x) { return x.id === editando.sid; })[0];
+    var destino = cat.sectores.filter(function (x) { return x.id === destinoId; })[0];
+
+    var p;
+    if (editando.pid) {
+      p = origen.productos.filter(function (x) { return x.id === editando.pid; })[0];
+      if (destino !== origen) {
+        origen.productos.splice(origen.productos.indexOf(p), 1);
+        destino.productos.push(p);
+      }
+    } else {
+      p = { id: slug(nombre) || ('item-' + Date.now()), img: '' };
+      destino.productos.push(p);
+    }
+
+    p.nombre = nombre;
+    p.desc = $('[data-f-desc]').value.trim();
+    p.precio = $('[data-f-precio]').value.trim();
+    p.disponible = $('[data-f-disponible]').checked;
+    var prev = $('[data-f-preview]').src;
+    if (prev && prev.indexOf('data:') === 0) p.img = prev;
+    else if (!p.img) p.img = 'assets/productos/' + p.id + '.jpg';
+
+    guardar();
+    pintar();
+    cerrar();
+    avisar('Producto guardado');
+  });
+
+  $('[data-f-eliminar]').addEventListener('click', function () {
+    if (!editando || !editando.pid) return;
+    var s = cat.sectores.filter(function (x) { return x.id === editando.sid; })[0];
+    var p = s.productos.filter(function (x) { return x.id === editando.pid; })[0];
+    if (!confirm('¿Eliminar “' + p.nombre + '” del catálogo?')) return;
+    s.productos.splice(s.productos.indexOf(p), 1);
+    guardar(); pintar(); cerrar();
+    avisar('Producto eliminado');
+  });
+
+  /* ── Imagen: se ajusta a 800×600 antes de guardarla ── */
+  $('[data-f-archivo]').addEventListener('change', function (e) {
+    var f = e.target.files && e.target.files[0];
+    if (!f) return;
+    var lector = new FileReader();
+    lector.onload = function () {
+      var im = new Image();
+      im.onload = function () {
+        var c = document.createElement('canvas');
+        c.width = 800; c.height = 600;
+        var g = c.getContext('2d');
+        // recorte centrado a 4:3, igual que en la página
+        var r = Math.max(800 / im.width, 600 / im.height);
+        var w = im.width * r, h = im.height * r;
+        g.drawImage(im, (800 - w) / 2, (600 - h) / 2, w, h);
+        $('[data-f-preview]').src = c.toDataURL('image/jpeg', 0.82);
+        avisar('Imagen lista. Acordate de descargarla.');
+      };
+      im.src = lector.result;
+    };
+    lector.readAsDataURL(f);
+    e.target.value = '';
+  });
+
+  $('[data-f-descargar]').addEventListener('click', function () {
+    var src = $('[data-f-preview]').src;
+    if (!src) { avisar('Todavía no hay imagen', true); return; }
+    var nombre = slug($('[data-f-nombre]').value.trim() || 'producto') + '.jpg';
+    if (src.indexOf('data:') !== 0) { window.open(src, '_blank'); return; }
+    bajar(src, nombre);
+    avisar('Guardala en assets/productos/');
+  });
+
+  function bajar(href, nombre) {
+    var a = document.createElement('a');
+    a.href = href; a.download = nombre;
+    document.body.appendChild(a); a.click(); a.remove();
+  }
+
+  /* ── Exportar ── */
+  $('[data-exportar]').addEventListener('click', function () {
+    var limpio = JSON.parse(JSON.stringify(cat));
+    var incrustadas = 0;
+    limpio.sectores.forEach(function (s) {
+      s.productos.forEach(function (p) {
+        if (p.img && p.img.indexOf('data:') === 0) {
+          p.img = 'assets/productos/' + p.id + '.jpg';
+          incrustadas++;
+        }
+      });
+    });
+    var txt = '// Catálogo de El Jaial. Lo edita admin.html; para publicar cambios,\n'
+            + '// exportá desde el panel y reemplazá este archivo.\n'
+            + 'window.CATALOGO = ' + JSON.stringify(limpio, null, 2) + ';\n';
+    bajar(URL.createObjectURL(new Blob([txt], { type: 'text/javascript' })), 'catalogo.js');
+    avisar(incrustadas
+      ? 'Exportado. Faltan subir ' + incrustadas + ' imagen' + (incrustadas === 1 ? '' : 'es') + ' a assets/productos/'
+      : 'Exportado. Reemplazá data/catalogo.js');
+  });
+
+  $('[data-restaurar]').addEventListener('click', function () {
+    if (!confirm('¿Descartar todos los cambios y volver al catálogo publicado?')) return;
+    localStorage.removeItem(CLAVE);
+    cat = JSON.parse(JSON.stringify(base));
+    pintar();
+    estado('');
+    avisar('Cambios descartados');
+  });
+
+  /* Miniaturas: si el archivo no está, se oculta y queda el fondo */
+  document.addEventListener('error', function (e) {
+    var t = e.target;
+    if (t && t.tagName === 'IMG' && t.hasAttribute('data-thumb')) t.style.display = 'none';
+  }, true);
+
+  /* ── Eventos ── */
+  lista.addEventListener('click', function (e) {
+    var ed = e.target.closest('[data-editar]');
+    if (ed) { var t = ed.getAttribute('data-editar').split('|'); abrir(t[0], t[1]); return; }
+    var nv = e.target.closest('[data-nuevo]');
+    if (nv) abrir(nv.getAttribute('data-nuevo'), null);
+  });
+
+  $('[data-modal-cerrar]').addEventListener('click', cerrar);
+  $('[data-modal-fondo]').addEventListener('click', cerrar);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !modal.hidden) cerrar(); });
+  $('[data-buscar]').addEventListener('input', pintar);
+  $('[data-filtro]').addEventListener('change', pintar);
+
+  /* ── Arranque ── */
+  $('[data-filtro]').innerHTML = '<option value="">Todos los sectores</option>'
+    + cat.sectores.map(function (s) { return '<option value="' + esc(s.id) + '">' + esc(s.nombre) + '</option>'; }).join('');
+  if (cargar()) estado('Con cambios sin publicar');
+  pintar();
+})();
+</script>
+</body>
+</html>
