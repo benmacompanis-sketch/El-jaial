@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Nuestros pasillos — El Jaial</title>
-<meta name="description" content="Todo lo que encontrás en El Jaial: panadería, lácteos, fiambrería, carnicería, congelados y almacén importado, sector por sector." />
+<meta name="description" content="Mercado y supermercado kosher en Buenos Aires. Panadería, lácteos, fiambrería, carnicería, congelados e importados. Sucursales en Palermo y Belgrano." />
 <meta property="og:title" content="Nuestros pasillos — El Jaial" />
 <meta property="og:description" content="Mercado y supermercado kosher en Buenos Aires. Productos frescos del día e importados seleccionados." />
 <meta property="og:type" content="grocery_or_supermarket" />
@@ -16,8 +16,8 @@
     theme: {
       extend: {
         colors: {
-          brand:   { DEFAULT: '#1E5FBF', dark: '#17499A', light: '#4A87DD' },
-          gold:    '#58A5F0',
+          brand:   { DEFAULT: '#FF6B35', dark: '#E55520', light: '#FF8A5C' },
+          gold:    '#FFB800',
           surface: { 0: '#09090B', 1: '#111115', 2: '#18181D', 3: '#222229' },
           ink:     { 1: '#F4F4F6', 2: '#8B8B99', 3: '#55555F' },
         },
@@ -25,7 +25,7 @@
           sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
         },
         boxShadow: {
-          brand: '0 8px 32px rgba(30,95,191,0.4)',
+          brand: '0 8px 32px rgba(255,107,53,0.4)',
           card:  '0 1px 3px rgba(0,0,0,0.5), 0 4px 16px rgba(0,0,0,0.4)',
           hover: '0 8px 40px rgba(0,0,0,0.7), 0 2px 8px rgba(0,0,0,0.5)',
           lg2:   '0 24px 64px rgba(0,0,0,0.8)',
@@ -45,31 +45,23 @@
 
 <style>
   :root {
-    /* Azul de marca */
-    --brand: #1E5FBF;
-    --brand-dark: #17499A;
-    --brand-light: #4A87DD;
-    --brand-soft: #E8F0FC;
-    --accent: #58A5F0;
-
-    /* Superficies claras: blanco puro y azules muy lavados */
-    --surface-0: #FFFFFF;
-    --surface-1: #F4F8FD;
-    --surface-2: #FFFFFF;
-    --surface-3: #E9F1FB;
-
-    --border: rgba(16,49,96,0.10);
-    --border-strong: rgba(16,49,96,0.20);
-
-    /* Texto: azul profundo en vez de negro */
-    --text-1: #0F2E5F;
-    --text-2: #506C93;
-    --text-3: #8FA4C0;
-
-    --shadow-brand: 0 8px 28px rgba(30,95,191,0.30);
-    --shadow-card: 0 1px 2px rgba(16,49,96,0.05), 0 8px 24px -10px rgba(16,49,96,0.16);
-    --shadow-hover: 0 2px 4px rgba(16,49,96,0.07), 0 22px 44px -16px rgba(16,49,96,0.28);
-    --shadow-lg: 0 28px 64px -20px rgba(16,49,96,0.30);
+    --brand: #FF6B35;
+    --brand-dark: #E55520;
+    --brand-light: #FF8A5C;
+    --gold: #FFB800;
+    --surface-0: #09090B;
+    --surface-1: #111115;
+    --surface-2: #18181D;
+    --surface-3: #222229;
+    --border: rgba(255,255,255,0.06);
+    --border-strong: rgba(255,255,255,0.11);
+    --text-1: #F4F4F6;
+    --text-2: #8B8B99;
+    --text-3: #55555F;
+    --shadow-brand: 0 8px 32px rgba(255,107,53,0.4);
+    --shadow-card: 0 1px 3px rgba(0,0,0,0.5), 0 4px 16px rgba(0,0,0,0.4);
+    --shadow-hover: 0 8px 40px rgba(0,0,0,0.7), 0 2px 8px rgba(0,0,0,0.5);
+    --shadow-lg: 0 24px 64px rgba(0,0,0,0.8);
   }
 
   *, *::before, *::after { box-sizing: border-box; }
@@ -88,20 +80,20 @@
     font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
   }
 
-  ::selection { background: rgba(30,95,191,0.22); color: var(--text-1); }
+  ::selection { background: rgba(255,107,53,0.28); color: #fff; }
 
   ::-webkit-scrollbar { width: 5px; }
   ::-webkit-scrollbar-track { background: var(--surface-1); }
-  ::-webkit-scrollbar-thumb { background: #C6DAF2; border-radius: 99px; }
-  ::-webkit-scrollbar-thumb:hover { background: var(--brand-light); }
+  ::-webkit-scrollbar-thumb { background: var(--surface-3); border-radius: 99px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--text-3); }
 
   .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   .hide-scrollbar::-webkit-scrollbar { display: none; }
 
-  .gradient-brand { background: linear-gradient(135deg, var(--brand) 0%, var(--accent) 100%); }
+  .gradient-brand { background: linear-gradient(135deg, var(--brand) 0%, var(--gold) 100%); }
 
   .text-gradient {
-    background: linear-gradient(135deg, #6FB4FF 0%, #BFDCFF 100%);
+    background: linear-gradient(135deg, #FF6B35 0%, #FFB800 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -115,22 +107,14 @@
   }
 
   .glass {
-    background: rgba(255,255,255,0.70);
+    background: rgba(255,255,255,0.04);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     border: 1px solid var(--border);
   }
 
-  /* La barra arranca sobre la foto (texto claro) y al scrollear pasa a blanco
-     (texto azul oscuro). El color lo decide la clase glass-dark del header. */
-  .nav-link { color: rgba(255,255,255,0.78); transition: color .2s, background-color .2s; }
-  .nav-link:hover { color: #fff; background: rgba(255,255,255,0.14); }
-  [data-header].glass-dark .nav-link { color: var(--text-2); }
-  [data-header].glass-dark .nav-link:hover { color: var(--text-1); background: var(--surface-1); }
-
-  /* Barra al hacer scroll: blanco translúcido sobre contenido claro */
   .glass-dark {
-    background: rgba(255,255,255,0.88);
+    background: rgba(9,9,11,0.82);
     backdrop-filter: blur(24px) saturate(160%);
     -webkit-backdrop-filter: blur(24px) saturate(160%);
     border-bottom: 1px solid var(--border);
@@ -162,7 +146,7 @@
   }
   .btn-brand:hover {
     background: var(--brand-dark);
-    box-shadow: 0 12px 36px rgba(30,95,191,0.38);
+    box-shadow: 0 12px 40px rgba(255,107,53,0.5);
     transform: translateY(-1px);
   }
   .btn-brand:active { transform: scale(0.97); }
@@ -170,10 +154,10 @@
   .section-pad { padding-top: 6rem; padding-bottom: 6rem; }
   @media (max-width: 640px) { .section-pad { padding-top: 4rem; padding-bottom: 4rem; } }
 
-  .glow { box-shadow: 0 0 60px rgba(30,95,191,0.18), 0 8px 32px rgba(30,95,191,0.28); }
+  .glow { box-shadow: 0 0 60px rgba(255,107,53,0.2), 0 8px 32px rgba(255,107,53,0.35); }
 
   .dot-grid {
-    background-image: radial-gradient(rgba(16,49,96,0.07) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
     background-size: 24px 24px;
   }
 
@@ -269,25 +253,25 @@
 
       <!-- Nav desktop -->
       <nav class="hidden md:flex items-center gap-0.5">
-        <a href="index.html" class="nav-link px-4 py-2 text-sm font-medium rounded-xl">Inicio</a>
-        <a href="pasillos.html" class="nav-link px-4 py-2 text-sm font-medium rounded-xl">Pasillos</a>
-        <a href="index.html#sucursales" class="nav-link px-4 py-2 text-sm font-medium rounded-xl">Sucursales</a>
-        <a href="index.html#resenas" class="nav-link px-4 py-2 text-sm font-medium rounded-xl">Reseñas</a>
-        <a href="index.html#whatsapp" class="nav-link px-4 py-2 text-sm font-medium rounded-xl">WhatsApp</a>
-        <a href="index.html#info" class="nav-link px-4 py-2 text-sm font-medium rounded-xl">Contacto</a>
+        <a href="index.html" class="px-4 py-2 text-sm font-medium text-white/60 hover:text-white rounded-xl hover:bg-white/[0.07] transition-all duration-200">Inicio</a>
+        <a href="pasillos.html" class="px-4 py-2 text-sm font-medium text-white/60 hover:text-white rounded-xl hover:bg-white/[0.07] transition-all duration-200">Pasillos</a>
+        <a href="index.html#sucursales" class="px-4 py-2 text-sm font-medium text-white/60 hover:text-white rounded-xl hover:bg-white/[0.07] transition-all duration-200">Sucursales</a>
+        <a href="index.html#resenas" class="px-4 py-2 text-sm font-medium text-white/60 hover:text-white rounded-xl hover:bg-white/[0.07] transition-all duration-200">Reseñas</a>
+        <a href="index.html#whatsapp" class="px-4 py-2 text-sm font-medium text-white/60 hover:text-white rounded-xl hover:bg-white/[0.07] transition-all duration-200">WhatsApp</a>
+        <a href="index.html#info" class="px-4 py-2 text-sm font-medium text-white/60 hover:text-white rounded-xl hover:bg-white/[0.07] transition-all duration-200">Contacto</a>
       </nav>
 
       <!-- Acciones -->
       <div class="flex items-center gap-1.5">
         <a href="tel:+541145326985"
            class="relative flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-sm text-white transition-all active:scale-95 hover:brightness-110"
-           style="background:#1E5FBF; box-shadow:0 4px 20px rgba(30,95,191,0.4)">
+           style="background:#FF6B35; box-shadow:0 4px 20px rgba(255,107,53,0.4)">
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 5.5c0 8 6 14 14 14l1.6-3.3-4-1.9-1.7 2a12 12 0 0 1-6.7-6.7l2-1.7-1.9-4L4.5 5.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
           <span class="hidden sm:inline text-sm">Llamar</span>
         </a>
 
         <button type="button" data-menu-btn aria-expanded="false" aria-label="Abrir menú"
-                class="nav-link md:hidden p-2.5 rounded-xl">
+                class="md:hidden p-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/[0.07] transition-all">
           <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
         </button>
       </div>
@@ -299,8 +283,8 @@
 <div data-overlay hidden class="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm md:hidden opacity-0 transition-opacity duration-300"></div>
 <aside data-drawer hidden
        class="fixed top-0 right-0 bottom-0 z-50 w-72 flex flex-col md:hidden translate-x-full transition-transform duration-300"
-       style="background:#FFFFFF; border-left:1px solid var(--border)">
-  <div class="flex items-center justify-between p-5" style="border-bottom:1px solid var(--border)">
+       style="background:#111115; border-left:1px solid rgba(255,255,255,0.06)">
+  <div class="flex items-center justify-between p-5" style="border-bottom:1px solid rgba(255,255,255,0.06)">
     <div class="flex items-center gap-2.5">
         <svg viewBox="0 0 208 64" xmlns="http://www.w3.org/2000/svg" class="h-9 w-auto" role="img" aria-label="El Jaial · Kosher Market">
           <defs>
@@ -324,21 +308,21 @@
           </g>
         </svg>
     </div>
-    <button type="button" data-menu-close aria-label="Cerrar menú" class="p-2 rounded-lg transition-all hover:bg-[#F4F8FD]" style="color:var(--text-2)">
+    <button type="button" data-menu-close aria-label="Cerrar menú" class="p-2 rounded-lg text-white/50 hover:text-white hover:bg-white/[0.07] transition-all">
       <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
     </button>
   </div>
 
   <nav class="p-4 flex-1 overflow-y-auto" data-drawer-nav>
-    <a href="index.html"        class="flex items-center px-4 py-3.5 rounded-xl font-semibold transition-all mb-1 text-sm hover:bg-[#F4F8FD]" style="color:var(--text-1)">Inicio</a>
-    <a href="pasillos.html"   class="flex items-center px-4 py-3.5 rounded-xl font-semibold transition-all mb-1 text-sm hover:bg-[#F4F8FD]" style="color:var(--text-1)">Pasillos</a>
-    <a href="index.html#sucursales" class="flex items-center px-4 py-3.5 rounded-xl font-semibold transition-all mb-1 text-sm hover:bg-[#F4F8FD]" style="color:var(--text-1)">Sucursales</a>
-    <a href="index.html#resenas"    class="flex items-center px-4 py-3.5 rounded-xl font-semibold transition-all mb-1 text-sm hover:bg-[#F4F8FD]" style="color:var(--text-1)">Reseñas</a>
-    <a href="index.html#whatsapp"   class="flex items-center px-4 py-3.5 rounded-xl font-semibold transition-all mb-1 text-sm hover:bg-[#F4F8FD]" style="color:var(--text-1)">WhatsApp</a>
-    <a href="index.html#info"       class="flex items-center px-4 py-3.5 rounded-xl font-semibold transition-all mb-1 text-sm hover:bg-[#F4F8FD]" style="color:var(--text-1)">Contacto</a>
+    <a href="index.html"        class="flex items-center px-4 py-3.5 text-white/75 hover:text-white hover:bg-white/[0.06] rounded-xl font-semibold transition-all mb-1 text-sm">Inicio</a>
+    <a href="pasillos.html" class="flex items-center px-4 py-3.5 text-white/75 hover:text-white hover:bg-white/[0.06] rounded-xl font-semibold transition-all mb-1 text-sm">Pasillos</a>
+    <a href="index.html#sucursales" class="flex items-center px-4 py-3.5 text-white/75 hover:text-white hover:bg-white/[0.06] rounded-xl font-semibold transition-all mb-1 text-sm">Sucursales</a>
+    <a href="index.html#resenas"    class="flex items-center px-4 py-3.5 text-white/75 hover:text-white hover:bg-white/[0.06] rounded-xl font-semibold transition-all mb-1 text-sm">Reseñas</a>
+    <a href="index.html#whatsapp"   class="flex items-center px-4 py-3.5 text-white/75 hover:text-white hover:bg-white/[0.06] rounded-xl font-semibold transition-all mb-1 text-sm">WhatsApp</a>
+    <a href="index.html#info"       class="flex items-center px-4 py-3.5 text-white/75 hover:text-white hover:bg-white/[0.06] rounded-xl font-semibold transition-all mb-1 text-sm">Contacto</a>
   </nav>
 
-  <div class="p-4" style="border-top:1px solid var(--border)">
+  <div class="p-4" style="border-top:1px solid rgba(255,255,255,0.06)">
     <a href="https://wa.me/541145326985" target="_blank" rel="noopener noreferrer"
        class="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl text-sm font-bold text-white transition-all" style="background:#16a34a">
       <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -354,7 +338,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
     <div class="rv max-w-2xl">
       <span class="inline-block text-xs font-bold uppercase tracking-[0.18em] mb-4 px-3 py-1 rounded-full"
-            style="color:var(--brand); background:rgba(30,95,191,0.08); border:1px solid rgba(30,95,191,0.18)">
+            style="color:#FF6B35; background:rgba(255,107,53,0.1); border:1px solid rgba(255,107,53,0.2)">
         Nuestros pasillos
       </span>
       <h1 class="font-black leading-tight tracking-tight" style="font-size:clamp(2rem, 5vw, 3.25rem); color:var(--text-1)">
@@ -383,7 +367,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
 
     <div class="rv flex items-center gap-4 mb-10">
-      <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl" style="background:var(--brand-soft)"><svg viewBox="0 0 24 24" fill="none" class="h-6 w-6" style="color:#1E5FBF" aria-hidden="true"><path d="M4.5 9.5c0-2.2 1.8-4 4-4h7c2.2 0 4 1.8 4 4l-1 8a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8l-1-8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9.5 6v13M14.5 6v13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
+      <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl" style="background:rgba(255,107,53,0.08)"><svg viewBox="0 0 24 24" fill="none" class="h-6 w-6" style="color:#FFB800" aria-hidden="true"><path d="M4.5 9.5c0-2.2 1.8-4 4-4h7c2.2 0 4 1.8 4 4l-1 8a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8l-1-8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9.5 6v13M14.5 6v13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
       <div>
         <h2 class="font-black leading-tight tracking-tight" style="font-size:clamp(1.5rem, 3vw, 2.25rem); color:var(--text-1)">Panadería</h2>
         <p class="mt-1 text-sm" style="color:var(--text-2)">Horneado en el local, todos los días.</p>
@@ -392,8 +376,8 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#1E5FBF" aria-hidden="true"><path d="M4.5 9.5c0-2.2 1.8-4 4-4h7c2.2 0 4 1.8 4 4l-1 8a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8l-1-8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9.5 6v13M14.5 6v13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#FFB800" aria-hidden="true"><path d="M4.5 9.5c0-2.2 1.8-4 4-4h7c2.2 0 4 1.8 4 4l-1 8a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8l-1-8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9.5 6v13M14.5 6v13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               <img data-prod src="assets/productos/jala-trenzada.jpg" alt="Jalá trenzada" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -403,8 +387,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#1E5FBF" aria-hidden="true"><path d="M4.5 9.5c0-2.2 1.8-4 4-4h7c2.2 0 4 1.8 4 4l-1 8a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8l-1-8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9.5 6v13M14.5 6v13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#FFB800" aria-hidden="true"><path d="M4.5 9.5c0-2.2 1.8-4 4-4h7c2.2 0 4 1.8 4 4l-1 8a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8l-1-8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9.5 6v13M14.5 6v13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               <img data-prod src="assets/productos/jala-dulce-con-pasas.jpg" alt="Jalá dulce con pasas" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -414,8 +398,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#1E5FBF" aria-hidden="true"><path d="M4.5 9.5c0-2.2 1.8-4 4-4h7c2.2 0 4 1.8 4 4l-1 8a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8l-1-8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9.5 6v13M14.5 6v13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#FFB800" aria-hidden="true"><path d="M4.5 9.5c0-2.2 1.8-4 4-4h7c2.2 0 4 1.8 4 4l-1 8a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8l-1-8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9.5 6v13M14.5 6v13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               <img data-prod src="assets/productos/pan-de-campo.jpg" alt="Pan de campo" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -425,8 +409,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#1E5FBF" aria-hidden="true"><path d="M4.5 9.5c0-2.2 1.8-4 4-4h7c2.2 0 4 1.8 4 4l-1 8a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8l-1-8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9.5 6v13M14.5 6v13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#FFB800" aria-hidden="true"><path d="M4.5 9.5c0-2.2 1.8-4 4-4h7c2.2 0 4 1.8 4 4l-1 8a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8l-1-8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9.5 6v13M14.5 6v13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               <img data-prod src="assets/productos/pan-lactal.jpg" alt="Pan lactal" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -436,8 +420,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#1E5FBF" aria-hidden="true"><path d="M4.5 9.5c0-2.2 1.8-4 4-4h7c2.2 0 4 1.8 4 4l-1 8a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8l-1-8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9.5 6v13M14.5 6v13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#FFB800" aria-hidden="true"><path d="M4.5 9.5c0-2.2 1.8-4 4-4h7c2.2 0 4 1.8 4 4l-1 8a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8l-1-8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9.5 6v13M14.5 6v13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               <img data-prod src="assets/productos/pan-de-centeno.jpg" alt="Pan de centeno" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -447,8 +431,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#1E5FBF" aria-hidden="true"><path d="M4.5 9.5c0-2.2 1.8-4 4-4h7c2.2 0 4 1.8 4 4l-1 8a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8l-1-8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9.5 6v13M14.5 6v13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#FFB800" aria-hidden="true"><path d="M4.5 9.5c0-2.2 1.8-4 4-4h7c2.2 0 4 1.8 4 4l-1 8a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8l-1-8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9.5 6v13M14.5 6v13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               <img data-prod src="assets/productos/bagels.jpg" alt="Bagels" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -458,8 +442,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#1E5FBF" aria-hidden="true"><path d="M4.5 9.5c0-2.2 1.8-4 4-4h7c2.2 0 4 1.8 4 4l-1 8a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8l-1-8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9.5 6v13M14.5 6v13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#FFB800" aria-hidden="true"><path d="M4.5 9.5c0-2.2 1.8-4 4-4h7c2.2 0 4 1.8 4 4l-1 8a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8l-1-8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9.5 6v13M14.5 6v13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               <img data-prod src="assets/productos/facturas-surtidas.jpg" alt="Facturas surtidas" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -469,8 +453,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#1E5FBF" aria-hidden="true"><path d="M4.5 9.5c0-2.2 1.8-4 4-4h7c2.2 0 4 1.8 4 4l-1 8a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8l-1-8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9.5 6v13M14.5 6v13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#FFB800" aria-hidden="true"><path d="M4.5 9.5c0-2.2 1.8-4 4-4h7c2.2 0 4 1.8 4 4l-1 8a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8l-1-8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9.5 6v13M14.5 6v13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               <img data-prod src="assets/productos/rugelaj.jpg" alt="Rugelaj" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -480,8 +464,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#1E5FBF" aria-hidden="true"><path d="M4.5 9.5c0-2.2 1.8-4 4-4h7c2.2 0 4 1.8 4 4l-1 8a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8l-1-8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9.5 6v13M14.5 6v13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#FFB800" aria-hidden="true"><path d="M4.5 9.5c0-2.2 1.8-4 4-4h7c2.2 0 4 1.8 4 4l-1 8a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8l-1-8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9.5 6v13M14.5 6v13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               <img data-prod src="assets/productos/bizcochuelos-y-budines.jpg" alt="Bizcochuelos y budines" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -491,8 +475,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#1E5FBF" aria-hidden="true"><path d="M4.5 9.5c0-2.2 1.8-4 4-4h7c2.2 0 4 1.8 4 4l-1 8a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8l-1-8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9.5 6v13M14.5 6v13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#FFB800" aria-hidden="true"><path d="M4.5 9.5c0-2.2 1.8-4 4-4h7c2.2 0 4 1.8 4 4l-1 8a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8l-1-8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9.5 6v13M14.5 6v13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               <img data-prod src="assets/productos/galletas-de-manteca.jpg" alt="Galletas de manteca" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -502,8 +486,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#1E5FBF" aria-hidden="true"><path d="M4.5 9.5c0-2.2 1.8-4 4-4h7c2.2 0 4 1.8 4 4l-1 8a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8l-1-8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9.5 6v13M14.5 6v13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#FFB800" aria-hidden="true"><path d="M4.5 9.5c0-2.2 1.8-4 4-4h7c2.2 0 4 1.8 4 4l-1 8a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8l-1-8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9.5 6v13M14.5 6v13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               <img data-prod src="assets/productos/masas-secas.jpg" alt="Masas secas" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -513,8 +497,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#1E5FBF" aria-hidden="true"><path d="M4.5 9.5c0-2.2 1.8-4 4-4h7c2.2 0 4 1.8 4 4l-1 8a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8l-1-8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9.5 6v13M14.5 6v13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#FFB800" aria-hidden="true"><path d="M4.5 9.5c0-2.2 1.8-4 4-4h7c2.2 0 4 1.8 4 4l-1 8a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8l-1-8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9.5 6v13M14.5 6v13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               <img data-prod src="assets/productos/matza.jpg" alt="Matzá" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -531,7 +515,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
 
     <div class="rv flex items-center gap-4 mb-10">
-      <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl" style="background:var(--brand-soft)"><svg viewBox="0 0 24 24" fill="none" class="h-6 w-6" style="color:#2E7BD6" aria-hidden="true"><path d="M9 3h6v3l2.5 4v9a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-9L9 6V3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6.5 13h11" stroke="currentColor" stroke-width="1.2"/></svg></span>
+      <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl" style="background:rgba(255,107,53,0.08)"><svg viewBox="0 0 24 24" fill="none" class="h-6 w-6" style="color:#3B82F6" aria-hidden="true"><path d="M9 3h6v3l2.5 4v9a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-9L9 6V3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6.5 13h11" stroke="currentColor" stroke-width="1.2"/></svg></span>
       <div>
         <h2 class="font-black leading-tight tracking-tight" style="font-size:clamp(1.5rem, 3vw, 2.25rem); color:var(--text-1)">Lácteos</h2>
         <p class="mt-1 text-sm" style="color:var(--text-2)">Jalav israel y marcas de góndola.</p>
@@ -540,8 +524,8 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#2E7BD6" aria-hidden="true"><path d="M9 3h6v3l2.5 4v9a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-9L9 6V3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6.5 13h11" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#3B82F6" aria-hidden="true"><path d="M9 3h6v3l2.5 4v9a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-9L9 6V3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6.5 13h11" stroke="currentColor" stroke-width="1.2"/></svg>
               <img data-prod src="assets/productos/leche-entera-y-descremada.jpg" alt="Leche entera y descremada" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -551,8 +535,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#2E7BD6" aria-hidden="true"><path d="M9 3h6v3l2.5 4v9a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-9L9 6V3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6.5 13h11" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#3B82F6" aria-hidden="true"><path d="M9 3h6v3l2.5 4v9a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-9L9 6V3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6.5 13h11" stroke="currentColor" stroke-width="1.2"/></svg>
               <img data-prod src="assets/productos/yogur-firme-y-bebible.jpg" alt="Yogur firme y bebible" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -562,8 +546,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#2E7BD6" aria-hidden="true"><path d="M9 3h6v3l2.5 4v9a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-9L9 6V3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6.5 13h11" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#3B82F6" aria-hidden="true"><path d="M9 3h6v3l2.5 4v9a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-9L9 6V3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6.5 13h11" stroke="currentColor" stroke-width="1.2"/></svg>
               <img data-prod src="assets/productos/queso-cremoso.jpg" alt="Queso cremoso" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -573,8 +557,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#2E7BD6" aria-hidden="true"><path d="M9 3h6v3l2.5 4v9a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-9L9 6V3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6.5 13h11" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#3B82F6" aria-hidden="true"><path d="M9 3h6v3l2.5 4v9a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-9L9 6V3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6.5 13h11" stroke="currentColor" stroke-width="1.2"/></svg>
               <img data-prod src="assets/productos/queso-port-salut.jpg" alt="Queso port salut" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -584,8 +568,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#2E7BD6" aria-hidden="true"><path d="M9 3h6v3l2.5 4v9a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-9L9 6V3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6.5 13h11" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#3B82F6" aria-hidden="true"><path d="M9 3h6v3l2.5 4v9a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-9L9 6V3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6.5 13h11" stroke="currentColor" stroke-width="1.2"/></svg>
               <img data-prod src="assets/productos/muzzarella.jpg" alt="Muzzarella" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -595,8 +579,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#2E7BD6" aria-hidden="true"><path d="M9 3h6v3l2.5 4v9a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-9L9 6V3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6.5 13h11" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#3B82F6" aria-hidden="true"><path d="M9 3h6v3l2.5 4v9a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-9L9 6V3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6.5 13h11" stroke="currentColor" stroke-width="1.2"/></svg>
               <img data-prod src="assets/productos/queso-untable.jpg" alt="Queso untable" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -606,8 +590,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#2E7BD6" aria-hidden="true"><path d="M9 3h6v3l2.5 4v9a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-9L9 6V3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6.5 13h11" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#3B82F6" aria-hidden="true"><path d="M9 3h6v3l2.5 4v9a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-9L9 6V3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6.5 13h11" stroke="currentColor" stroke-width="1.2"/></svg>
               <img data-prod src="assets/productos/ricota.jpg" alt="Ricota" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -617,8 +601,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#2E7BD6" aria-hidden="true"><path d="M9 3h6v3l2.5 4v9a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-9L9 6V3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6.5 13h11" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#3B82F6" aria-hidden="true"><path d="M9 3h6v3l2.5 4v9a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-9L9 6V3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6.5 13h11" stroke="currentColor" stroke-width="1.2"/></svg>
               <img data-prod src="assets/productos/queso-rallado.jpg" alt="Queso rallado" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -628,8 +612,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#2E7BD6" aria-hidden="true"><path d="M9 3h6v3l2.5 4v9a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-9L9 6V3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6.5 13h11" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#3B82F6" aria-hidden="true"><path d="M9 3h6v3l2.5 4v9a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-9L9 6V3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6.5 13h11" stroke="currentColor" stroke-width="1.2"/></svg>
               <img data-prod src="assets/productos/manteca-y-margarina.jpg" alt="Manteca y margarina" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -639,8 +623,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#2E7BD6" aria-hidden="true"><path d="M9 3h6v3l2.5 4v9a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-9L9 6V3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6.5 13h11" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#3B82F6" aria-hidden="true"><path d="M9 3h6v3l2.5 4v9a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-9L9 6V3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6.5 13h11" stroke="currentColor" stroke-width="1.2"/></svg>
               <img data-prod src="assets/productos/crema-de-leche.jpg" alt="Crema de leche" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -650,8 +634,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#2E7BD6" aria-hidden="true"><path d="M9 3h6v3l2.5 4v9a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-9L9 6V3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6.5 13h11" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#3B82F6" aria-hidden="true"><path d="M9 3h6v3l2.5 4v9a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-9L9 6V3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6.5 13h11" stroke="currentColor" stroke-width="1.2"/></svg>
               <img data-prod src="assets/productos/dulce-de-leche.jpg" alt="Dulce de leche" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -661,8 +645,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#2E7BD6" aria-hidden="true"><path d="M9 3h6v3l2.5 4v9a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-9L9 6V3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6.5 13h11" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#3B82F6" aria-hidden="true"><path d="M9 3h6v3l2.5 4v9a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-9L9 6V3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6.5 13h11" stroke="currentColor" stroke-width="1.2"/></svg>
               <img data-prod src="assets/productos/postres-y-flanes.jpg" alt="Postres y flanes" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -679,7 +663,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
 
     <div class="rv flex items-center gap-4 mb-10">
-      <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl" style="background:var(--brand-soft)"><svg viewBox="0 0 24 24" fill="none" class="h-6 w-6" style="color:#17499A" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.2"/><path d="M12 4v2m0 12v2M4 12h2m12 0h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
+      <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl" style="background:rgba(255,107,53,0.08)"><svg viewBox="0 0 24 24" fill="none" class="h-6 w-6" style="color:#EF4444" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.2"/><path d="M12 4v2m0 12v2M4 12h2m12 0h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
       <div>
         <h2 class="font-black leading-tight tracking-tight" style="font-size:clamp(1.5rem, 3vw, 2.25rem); color:var(--text-1)">Fiambrería</h2>
         <p class="mt-1 text-sm" style="color:var(--text-2)">Cortado en el momento, como lo pidas.</p>
@@ -688,8 +672,8 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#17499A" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.2"/><path d="M12 4v2m0 12v2M4 12h2m12 0h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#EF4444" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.2"/><path d="M12 4v2m0 12v2M4 12h2m12 0h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               <img data-prod src="assets/productos/pastron.jpg" alt="Pastrón" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -699,8 +683,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#17499A" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.2"/><path d="M12 4v2m0 12v2M4 12h2m12 0h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#EF4444" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.2"/><path d="M12 4v2m0 12v2M4 12h2m12 0h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               <img data-prod src="assets/productos/pastron-de-pavita.jpg" alt="Pastrón de pavita" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -710,8 +694,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#17499A" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.2"/><path d="M12 4v2m0 12v2M4 12h2m12 0h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#EF4444" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.2"/><path d="M12 4v2m0 12v2M4 12h2m12 0h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               <img data-prod src="assets/productos/salame-tipo-hebreo.jpg" alt="Salame tipo hebreo" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -721,8 +705,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#17499A" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.2"/><path d="M12 4v2m0 12v2M4 12h2m12 0h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#EF4444" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.2"/><path d="M12 4v2m0 12v2M4 12h2m12 0h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               <img data-prod src="assets/productos/salamin.jpg" alt="Salamín" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -732,8 +716,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#17499A" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.2"/><path d="M12 4v2m0 12v2M4 12h2m12 0h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#EF4444" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.2"/><path d="M12 4v2m0 12v2M4 12h2m12 0h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               <img data-prod src="assets/productos/matambre-casero.jpg" alt="Matambre casero" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -743,8 +727,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#17499A" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.2"/><path d="M12 4v2m0 12v2M4 12h2m12 0h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#EF4444" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.2"/><path d="M12 4v2m0 12v2M4 12h2m12 0h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               <img data-prod src="assets/productos/pechuga-de-pavita.jpg" alt="Pechuga de pavita" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -754,8 +738,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#17499A" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.2"/><path d="M12 4v2m0 12v2M4 12h2m12 0h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#EF4444" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.2"/><path d="M12 4v2m0 12v2M4 12h2m12 0h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               <img data-prod src="assets/productos/mortadela.jpg" alt="Mortadela" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -765,8 +749,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#17499A" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.2"/><path d="M12 4v2m0 12v2M4 12h2m12 0h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#EF4444" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.2"/><path d="M12 4v2m0 12v2M4 12h2m12 0h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               <img data-prod src="assets/productos/lengua-a-la-vinagreta.jpg" alt="Lengua a la vinagreta" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -776,8 +760,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#17499A" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.2"/><path d="M12 4v2m0 12v2M4 12h2m12 0h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#EF4444" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.2"/><path d="M12 4v2m0 12v2M4 12h2m12 0h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               <img data-prod src="assets/productos/pollo-ahumado.jpg" alt="Pollo ahumado" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -787,8 +771,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#17499A" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.2"/><path d="M12 4v2m0 12v2M4 12h2m12 0h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#EF4444" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.2"/><path d="M12 4v2m0 12v2M4 12h2m12 0h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               <img data-prod src="assets/productos/pate-de-higado.jpg" alt="Paté de hígado" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -798,8 +782,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#17499A" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.2"/><path d="M12 4v2m0 12v2M4 12h2m12 0h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#EF4444" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.2"/><path d="M12 4v2m0 12v2M4 12h2m12 0h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               <img data-prod src="assets/productos/picadas-armadas.jpg" alt="Picadas armadas" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -809,8 +793,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#17499A" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.2"/><path d="M12 4v2m0 12v2M4 12h2m12 0h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#EF4444" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.2"/><path d="M12 4v2m0 12v2M4 12h2m12 0h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               <img data-prod src="assets/productos/sandwiches.jpg" alt="Sándwiches" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -827,7 +811,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
 
     <div class="rv flex items-center gap-4 mb-10">
-      <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl" style="background:var(--brand-soft)"><svg viewBox="0 0 24 24" fill="none" class="h-6 w-6" style="color:#58A5F0" aria-hidden="true"><path d="M5 10.5A5.5 5.5 0 0 1 10.5 5h3A5.5 5.5 0 0 1 19 10.5c0 3-2.2 4.9-4.6 5.4l-.7 2.6a1.6 1.6 0 0 1-1.6 1.2h-1a1.6 1.6 0 0 1-1.5-1.2l-.7-2.6C6.9 15.2 5 13.3 5 10.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="12" cy="10.5" r="2.2" stroke="currentColor" stroke-width="1.2"/></svg></span>
+      <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl" style="background:rgba(255,107,53,0.08)"><svg viewBox="0 0 24 24" fill="none" class="h-6 w-6" style="color:#FF6B35" aria-hidden="true"><path d="M5 10.5A5.5 5.5 0 0 1 10.5 5h3A5.5 5.5 0 0 1 19 10.5c0 3-2.2 4.9-4.6 5.4l-.7 2.6a1.6 1.6 0 0 1-1.6 1.2h-1a1.6 1.6 0 0 1-1.5-1.2l-.7-2.6C6.9 15.2 5 13.3 5 10.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="12" cy="10.5" r="2.2" stroke="currentColor" stroke-width="1.2"/></svg></span>
       <div>
         <h2 class="font-black leading-tight tracking-tight" style="font-size:clamp(1.5rem, 3vw, 2.25rem); color:var(--text-1)">Carnicería</h2>
         <p class="mt-1 text-sm" style="color:var(--text-2)">Con shjitá supervisada.</p>
@@ -836,8 +820,8 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#58A5F0" aria-hidden="true"><path d="M5 10.5A5.5 5.5 0 0 1 10.5 5h3A5.5 5.5 0 0 1 19 10.5c0 3-2.2 4.9-4.6 5.4l-.7 2.6a1.6 1.6 0 0 1-1.6 1.2h-1a1.6 1.6 0 0 1-1.5-1.2l-.7-2.6C6.9 15.2 5 13.3 5 10.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="12" cy="10.5" r="2.2" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#FF6B35" aria-hidden="true"><path d="M5 10.5A5.5 5.5 0 0 1 10.5 5h3A5.5 5.5 0 0 1 19 10.5c0 3-2.2 4.9-4.6 5.4l-.7 2.6a1.6 1.6 0 0 1-1.6 1.2h-1a1.6 1.6 0 0 1-1.5-1.2l-.7-2.6C6.9 15.2 5 13.3 5 10.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="12" cy="10.5" r="2.2" stroke="currentColor" stroke-width="1.2"/></svg>
               <img data-prod src="assets/productos/asado.jpg" alt="Asado" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -847,8 +831,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#58A5F0" aria-hidden="true"><path d="M5 10.5A5.5 5.5 0 0 1 10.5 5h3A5.5 5.5 0 0 1 19 10.5c0 3-2.2 4.9-4.6 5.4l-.7 2.6a1.6 1.6 0 0 1-1.6 1.2h-1a1.6 1.6 0 0 1-1.5-1.2l-.7-2.6C6.9 15.2 5 13.3 5 10.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="12" cy="10.5" r="2.2" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#FF6B35" aria-hidden="true"><path d="M5 10.5A5.5 5.5 0 0 1 10.5 5h3A5.5 5.5 0 0 1 19 10.5c0 3-2.2 4.9-4.6 5.4l-.7 2.6a1.6 1.6 0 0 1-1.6 1.2h-1a1.6 1.6 0 0 1-1.5-1.2l-.7-2.6C6.9 15.2 5 13.3 5 10.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="12" cy="10.5" r="2.2" stroke="currentColor" stroke-width="1.2"/></svg>
               <img data-prod src="assets/productos/vacio.jpg" alt="Vacío" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -858,8 +842,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#58A5F0" aria-hidden="true"><path d="M5 10.5A5.5 5.5 0 0 1 10.5 5h3A5.5 5.5 0 0 1 19 10.5c0 3-2.2 4.9-4.6 5.4l-.7 2.6a1.6 1.6 0 0 1-1.6 1.2h-1a1.6 1.6 0 0 1-1.5-1.2l-.7-2.6C6.9 15.2 5 13.3 5 10.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="12" cy="10.5" r="2.2" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#FF6B35" aria-hidden="true"><path d="M5 10.5A5.5 5.5 0 0 1 10.5 5h3A5.5 5.5 0 0 1 19 10.5c0 3-2.2 4.9-4.6 5.4l-.7 2.6a1.6 1.6 0 0 1-1.6 1.2h-1a1.6 1.6 0 0 1-1.5-1.2l-.7-2.6C6.9 15.2 5 13.3 5 10.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="12" cy="10.5" r="2.2" stroke="currentColor" stroke-width="1.2"/></svg>
               <img data-prod src="assets/productos/roast-beef.jpg" alt="Roast beef" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -869,8 +853,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#58A5F0" aria-hidden="true"><path d="M5 10.5A5.5 5.5 0 0 1 10.5 5h3A5.5 5.5 0 0 1 19 10.5c0 3-2.2 4.9-4.6 5.4l-.7 2.6a1.6 1.6 0 0 1-1.6 1.2h-1a1.6 1.6 0 0 1-1.5-1.2l-.7-2.6C6.9 15.2 5 13.3 5 10.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="12" cy="10.5" r="2.2" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#FF6B35" aria-hidden="true"><path d="M5 10.5A5.5 5.5 0 0 1 10.5 5h3A5.5 5.5 0 0 1 19 10.5c0 3-2.2 4.9-4.6 5.4l-.7 2.6a1.6 1.6 0 0 1-1.6 1.2h-1a1.6 1.6 0 0 1-1.5-1.2l-.7-2.6C6.9 15.2 5 13.3 5 10.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="12" cy="10.5" r="2.2" stroke="currentColor" stroke-width="1.2"/></svg>
               <img data-prod src="assets/productos/carne-picada.jpg" alt="Carne picada" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -880,8 +864,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#58A5F0" aria-hidden="true"><path d="M5 10.5A5.5 5.5 0 0 1 10.5 5h3A5.5 5.5 0 0 1 19 10.5c0 3-2.2 4.9-4.6 5.4l-.7 2.6a1.6 1.6 0 0 1-1.6 1.2h-1a1.6 1.6 0 0 1-1.5-1.2l-.7-2.6C6.9 15.2 5 13.3 5 10.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="12" cy="10.5" r="2.2" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#FF6B35" aria-hidden="true"><path d="M5 10.5A5.5 5.5 0 0 1 10.5 5h3A5.5 5.5 0 0 1 19 10.5c0 3-2.2 4.9-4.6 5.4l-.7 2.6a1.6 1.6 0 0 1-1.6 1.2h-1a1.6 1.6 0 0 1-1.5-1.2l-.7-2.6C6.9 15.2 5 13.3 5 10.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="12" cy="10.5" r="2.2" stroke="currentColor" stroke-width="1.2"/></svg>
               <img data-prod src="assets/productos/falda-y-osobuco.jpg" alt="Falda y osobuco" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -891,8 +875,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#58A5F0" aria-hidden="true"><path d="M5 10.5A5.5 5.5 0 0 1 10.5 5h3A5.5 5.5 0 0 1 19 10.5c0 3-2.2 4.9-4.6 5.4l-.7 2.6a1.6 1.6 0 0 1-1.6 1.2h-1a1.6 1.6 0 0 1-1.5-1.2l-.7-2.6C6.9 15.2 5 13.3 5 10.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="12" cy="10.5" r="2.2" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#FF6B35" aria-hidden="true"><path d="M5 10.5A5.5 5.5 0 0 1 10.5 5h3A5.5 5.5 0 0 1 19 10.5c0 3-2.2 4.9-4.6 5.4l-.7 2.6a1.6 1.6 0 0 1-1.6 1.2h-1a1.6 1.6 0 0 1-1.5-1.2l-.7-2.6C6.9 15.2 5 13.3 5 10.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="12" cy="10.5" r="2.2" stroke="currentColor" stroke-width="1.2"/></svg>
               <img data-prod src="assets/productos/bola-de-lomo.jpg" alt="Bola de lomo" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -902,8 +886,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#58A5F0" aria-hidden="true"><path d="M5 10.5A5.5 5.5 0 0 1 10.5 5h3A5.5 5.5 0 0 1 19 10.5c0 3-2.2 4.9-4.6 5.4l-.7 2.6a1.6 1.6 0 0 1-1.6 1.2h-1a1.6 1.6 0 0 1-1.5-1.2l-.7-2.6C6.9 15.2 5 13.3 5 10.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="12" cy="10.5" r="2.2" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#FF6B35" aria-hidden="true"><path d="M5 10.5A5.5 5.5 0 0 1 10.5 5h3A5.5 5.5 0 0 1 19 10.5c0 3-2.2 4.9-4.6 5.4l-.7 2.6a1.6 1.6 0 0 1-1.6 1.2h-1a1.6 1.6 0 0 1-1.5-1.2l-.7-2.6C6.9 15.2 5 13.3 5 10.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="12" cy="10.5" r="2.2" stroke="currentColor" stroke-width="1.2"/></svg>
               <img data-prod src="assets/productos/milanesas-de-carne.jpg" alt="Milanesas de carne" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -913,8 +897,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#58A5F0" aria-hidden="true"><path d="M5 10.5A5.5 5.5 0 0 1 10.5 5h3A5.5 5.5 0 0 1 19 10.5c0 3-2.2 4.9-4.6 5.4l-.7 2.6a1.6 1.6 0 0 1-1.6 1.2h-1a1.6 1.6 0 0 1-1.5-1.2l-.7-2.6C6.9 15.2 5 13.3 5 10.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="12" cy="10.5" r="2.2" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#FF6B35" aria-hidden="true"><path d="M5 10.5A5.5 5.5 0 0 1 10.5 5h3A5.5 5.5 0 0 1 19 10.5c0 3-2.2 4.9-4.6 5.4l-.7 2.6a1.6 1.6 0 0 1-1.6 1.2h-1a1.6 1.6 0 0 1-1.5-1.2l-.7-2.6C6.9 15.2 5 13.3 5 10.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="12" cy="10.5" r="2.2" stroke="currentColor" stroke-width="1.2"/></svg>
               <img data-prod src="assets/productos/pollo-entero.jpg" alt="Pollo entero" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -924,8 +908,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#58A5F0" aria-hidden="true"><path d="M5 10.5A5.5 5.5 0 0 1 10.5 5h3A5.5 5.5 0 0 1 19 10.5c0 3-2.2 4.9-4.6 5.4l-.7 2.6a1.6 1.6 0 0 1-1.6 1.2h-1a1.6 1.6 0 0 1-1.5-1.2l-.7-2.6C6.9 15.2 5 13.3 5 10.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="12" cy="10.5" r="2.2" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#FF6B35" aria-hidden="true"><path d="M5 10.5A5.5 5.5 0 0 1 10.5 5h3A5.5 5.5 0 0 1 19 10.5c0 3-2.2 4.9-4.6 5.4l-.7 2.6a1.6 1.6 0 0 1-1.6 1.2h-1a1.6 1.6 0 0 1-1.5-1.2l-.7-2.6C6.9 15.2 5 13.3 5 10.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="12" cy="10.5" r="2.2" stroke="currentColor" stroke-width="1.2"/></svg>
               <img data-prod src="assets/productos/pechuga-y-suprema.jpg" alt="Pechuga y suprema" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -935,8 +919,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#58A5F0" aria-hidden="true"><path d="M5 10.5A5.5 5.5 0 0 1 10.5 5h3A5.5 5.5 0 0 1 19 10.5c0 3-2.2 4.9-4.6 5.4l-.7 2.6a1.6 1.6 0 0 1-1.6 1.2h-1a1.6 1.6 0 0 1-1.5-1.2l-.7-2.6C6.9 15.2 5 13.3 5 10.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="12" cy="10.5" r="2.2" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#FF6B35" aria-hidden="true"><path d="M5 10.5A5.5 5.5 0 0 1 10.5 5h3A5.5 5.5 0 0 1 19 10.5c0 3-2.2 4.9-4.6 5.4l-.7 2.6a1.6 1.6 0 0 1-1.6 1.2h-1a1.6 1.6 0 0 1-1.5-1.2l-.7-2.6C6.9 15.2 5 13.3 5 10.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="12" cy="10.5" r="2.2" stroke="currentColor" stroke-width="1.2"/></svg>
               <img data-prod src="assets/productos/patamuslo.jpg" alt="Patamuslo" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -946,8 +930,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#58A5F0" aria-hidden="true"><path d="M5 10.5A5.5 5.5 0 0 1 10.5 5h3A5.5 5.5 0 0 1 19 10.5c0 3-2.2 4.9-4.6 5.4l-.7 2.6a1.6 1.6 0 0 1-1.6 1.2h-1a1.6 1.6 0 0 1-1.5-1.2l-.7-2.6C6.9 15.2 5 13.3 5 10.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="12" cy="10.5" r="2.2" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#FF6B35" aria-hidden="true"><path d="M5 10.5A5.5 5.5 0 0 1 10.5 5h3A5.5 5.5 0 0 1 19 10.5c0 3-2.2 4.9-4.6 5.4l-.7 2.6a1.6 1.6 0 0 1-1.6 1.2h-1a1.6 1.6 0 0 1-1.5-1.2l-.7-2.6C6.9 15.2 5 13.3 5 10.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="12" cy="10.5" r="2.2" stroke="currentColor" stroke-width="1.2"/></svg>
               <img data-prod src="assets/productos/alitas.jpg" alt="Alitas" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -957,8 +941,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#58A5F0" aria-hidden="true"><path d="M5 10.5A5.5 5.5 0 0 1 10.5 5h3A5.5 5.5 0 0 1 19 10.5c0 3-2.2 4.9-4.6 5.4l-.7 2.6a1.6 1.6 0 0 1-1.6 1.2h-1a1.6 1.6 0 0 1-1.5-1.2l-.7-2.6C6.9 15.2 5 13.3 5 10.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="12" cy="10.5" r="2.2" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#FF6B35" aria-hidden="true"><path d="M5 10.5A5.5 5.5 0 0 1 10.5 5h3A5.5 5.5 0 0 1 19 10.5c0 3-2.2 4.9-4.6 5.4l-.7 2.6a1.6 1.6 0 0 1-1.6 1.2h-1a1.6 1.6 0 0 1-1.5-1.2l-.7-2.6C6.9 15.2 5 13.3 5 10.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="12" cy="10.5" r="2.2" stroke="currentColor" stroke-width="1.2"/></svg>
               <img data-prod src="assets/productos/milanesas-de-pollo.jpg" alt="Milanesas de pollo" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -975,7 +959,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
 
     <div class="rv flex items-center gap-4 mb-10">
-      <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl" style="background:var(--brand-soft)"><svg viewBox="0 0 24 24" fill="none" class="h-6 w-6" style="color:#3E8BE0" aria-hidden="true"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5 4.2 16.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M12 6.6 9.8 4.6M12 6.6l2.2-2M12 17.4l-2.2 2M12 17.4l2.2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
+      <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl" style="background:rgba(255,107,53,0.08)"><svg viewBox="0 0 24 24" fill="none" class="h-6 w-6" style="color:#8B5CF6" aria-hidden="true"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5 4.2 16.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M12 6.6 9.8 4.6M12 6.6l2.2-2M12 17.4l-2.2 2M12 17.4l2.2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
       <div>
         <h2 class="font-black leading-tight tracking-tight" style="font-size:clamp(1.5rem, 3vw, 2.25rem); color:var(--text-1)">Congelados</h2>
         <p class="mt-1 text-sm" style="color:var(--text-2)">Resuelto para cualquier día de la semana.</p>
@@ -984,8 +968,8 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#3E8BE0" aria-hidden="true"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5 4.2 16.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M12 6.6 9.8 4.6M12 6.6l2.2-2M12 17.4l-2.2 2M12 17.4l2.2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#8B5CF6" aria-hidden="true"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5 4.2 16.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M12 6.6 9.8 4.6M12 6.6l2.2-2M12 17.4l-2.2 2M12 17.4l2.2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               <img data-prod src="assets/productos/kneidalaj.jpg" alt="Kneidalaj" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -995,8 +979,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#3E8BE0" aria-hidden="true"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5 4.2 16.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M12 6.6 9.8 4.6M12 6.6l2.2-2M12 17.4l-2.2 2M12 17.4l2.2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#8B5CF6" aria-hidden="true"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5 4.2 16.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M12 6.6 9.8 4.6M12 6.6l2.2-2M12 17.4l-2.2 2M12 17.4l2.2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               <img data-prod src="assets/productos/kreplaj.jpg" alt="Kreplaj" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -1006,8 +990,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#3E8BE0" aria-hidden="true"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5 4.2 16.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M12 6.6 9.8 4.6M12 6.6l2.2-2M12 17.4l-2.2 2M12 17.4l2.2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#8B5CF6" aria-hidden="true"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5 4.2 16.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M12 6.6 9.8 4.6M12 6.6l2.2-2M12 17.4l-2.2 2M12 17.4l2.2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               <img data-prod src="assets/productos/varenikes.jpg" alt="Varenikes" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -1017,8 +1001,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#3E8BE0" aria-hidden="true"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5 4.2 16.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M12 6.6 9.8 4.6M12 6.6l2.2-2M12 17.4l-2.2 2M12 17.4l2.2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#8B5CF6" aria-hidden="true"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5 4.2 16.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M12 6.6 9.8 4.6M12 6.6l2.2-2M12 17.4l-2.2 2M12 17.4l2.2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               <img data-prod src="assets/productos/empanadas.jpg" alt="Empanadas" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -1028,8 +1012,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#3E8BE0" aria-hidden="true"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5 4.2 16.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M12 6.6 9.8 4.6M12 6.6l2.2-2M12 17.4l-2.2 2M12 17.4l2.2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#8B5CF6" aria-hidden="true"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5 4.2 16.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M12 6.6 9.8 4.6M12 6.6l2.2-2M12 17.4l-2.2 2M12 17.4l2.2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               <img data-prod src="assets/productos/tartas-y-pascualinas.jpg" alt="Tartas y pascualinas" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -1039,8 +1023,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#3E8BE0" aria-hidden="true"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5 4.2 16.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M12 6.6 9.8 4.6M12 6.6l2.2-2M12 17.4l-2.2 2M12 17.4l2.2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#8B5CF6" aria-hidden="true"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5 4.2 16.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M12 6.6 9.8 4.6M12 6.6l2.2-2M12 17.4l-2.2 2M12 17.4l2.2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               <img data-prod src="assets/productos/milanesas-de-soja.jpg" alt="Milanesas de soja" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -1050,8 +1034,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#3E8BE0" aria-hidden="true"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5 4.2 16.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M12 6.6 9.8 4.6M12 6.6l2.2-2M12 17.4l-2.2 2M12 17.4l2.2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#8B5CF6" aria-hidden="true"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5 4.2 16.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M12 6.6 9.8 4.6M12 6.6l2.2-2M12 17.4l-2.2 2M12 17.4l2.2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               <img data-prod src="assets/productos/hamburguesas.jpg" alt="Hamburguesas" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -1061,8 +1045,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#3E8BE0" aria-hidden="true"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5 4.2 16.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M12 6.6 9.8 4.6M12 6.6l2.2-2M12 17.4l-2.2 2M12 17.4l2.2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#8B5CF6" aria-hidden="true"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5 4.2 16.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M12 6.6 9.8 4.6M12 6.6l2.2-2M12 17.4l-2.2 2M12 17.4l2.2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               <img data-prod src="assets/productos/nuggets.jpg" alt="Nuggets" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -1072,8 +1056,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#3E8BE0" aria-hidden="true"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5 4.2 16.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M12 6.6 9.8 4.6M12 6.6l2.2-2M12 17.4l-2.2 2M12 17.4l2.2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#8B5CF6" aria-hidden="true"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5 4.2 16.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M12 6.6 9.8 4.6M12 6.6l2.2-2M12 17.4l-2.2 2M12 17.4l2.2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               <img data-prod src="assets/productos/filet-de-merluza.jpg" alt="Filet de merluza" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -1083,8 +1067,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#3E8BE0" aria-hidden="true"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5 4.2 16.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M12 6.6 9.8 4.6M12 6.6l2.2-2M12 17.4l-2.2 2M12 17.4l2.2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#8B5CF6" aria-hidden="true"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5 4.2 16.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M12 6.6 9.8 4.6M12 6.6l2.2-2M12 17.4l-2.2 2M12 17.4l2.2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               <img data-prod src="assets/productos/salmon.jpg" alt="Salmón" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -1094,8 +1078,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#3E8BE0" aria-hidden="true"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5 4.2 16.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M12 6.6 9.8 4.6M12 6.6l2.2-2M12 17.4l-2.2 2M12 17.4l2.2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#8B5CF6" aria-hidden="true"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5 4.2 16.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M12 6.6 9.8 4.6M12 6.6l2.2-2M12 17.4l-2.2 2M12 17.4l2.2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               <img data-prod src="assets/productos/verduras-congeladas.jpg" alt="Verduras congeladas" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -1105,8 +1089,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#3E8BE0" aria-hidden="true"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5 4.2 16.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M12 6.6 9.8 4.6M12 6.6l2.2-2M12 17.4l-2.2 2M12 17.4l2.2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#8B5CF6" aria-hidden="true"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5 4.2 16.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M12 6.6 9.8 4.6M12 6.6l2.2-2M12 17.4l-2.2 2M12 17.4l2.2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               <img data-prod src="assets/productos/papas-prefritas.jpg" alt="Papas prefritas" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -1123,7 +1107,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
 
     <div class="rv flex items-center gap-4 mb-10">
-      <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl" style="background:var(--brand-soft)"><svg viewBox="0 0 24 24" fill="none" class="h-6 w-6" style="color:#123C7A" aria-hidden="true"><path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 12v8" stroke="currentColor" stroke-width="1.2"/></svg></span>
+      <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl" style="background:rgba(255,107,53,0.08)"><svg viewBox="0 0 24 24" fill="none" class="h-6 w-6" style="color:#16a34a" aria-hidden="true"><path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 12v8" stroke="currentColor" stroke-width="1.2"/></svg></span>
       <div>
         <h2 class="font-black leading-tight tracking-tight" style="font-size:clamp(1.5rem, 3vw, 2.25rem); color:var(--text-1)">Almacén e importados</h2>
         <p class="mt-1 text-sm" style="color:var(--text-2)">De Israel, Estados Unidos y Europa.</p>
@@ -1132,8 +1116,8 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#123C7A" aria-hidden="true"><path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 12v8" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#16a34a" aria-hidden="true"><path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 12v8" stroke="currentColor" stroke-width="1.2"/></svg>
               <img data-prod src="assets/productos/vinos-kosher.jpg" alt="Vinos kosher" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -1143,8 +1127,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#123C7A" aria-hidden="true"><path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 12v8" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#16a34a" aria-hidden="true"><path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 12v8" stroke="currentColor" stroke-width="1.2"/></svg>
               <img data-prod src="assets/productos/jugo-de-uva.jpg" alt="Jugo de uva" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -1154,8 +1138,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#123C7A" aria-hidden="true"><path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 12v8" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#16a34a" aria-hidden="true"><path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 12v8" stroke="currentColor" stroke-width="1.2"/></svg>
               <img data-prod src="assets/productos/aceite-de-oliva.jpg" alt="Aceite de oliva" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -1165,8 +1149,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#123C7A" aria-hidden="true"><path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 12v8" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#16a34a" aria-hidden="true"><path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 12v8" stroke="currentColor" stroke-width="1.2"/></svg>
               <img data-prod src="assets/productos/aceite-de-girasol-y-maiz.jpg" alt="Aceite de girasol y maíz" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -1176,8 +1160,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#123C7A" aria-hidden="true"><path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 12v8" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#16a34a" aria-hidden="true"><path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 12v8" stroke="currentColor" stroke-width="1.2"/></svg>
               <img data-prod src="assets/productos/conservas.jpg" alt="Conservas" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -1187,8 +1171,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#123C7A" aria-hidden="true"><path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 12v8" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#16a34a" aria-hidden="true"><path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 12v8" stroke="currentColor" stroke-width="1.2"/></svg>
               <img data-prod src="assets/productos/pepinos-y-aceitunas.jpg" alt="Pepinos y aceitunas" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -1198,8 +1182,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#123C7A" aria-hidden="true"><path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 12v8" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#16a34a" aria-hidden="true"><path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 12v8" stroke="currentColor" stroke-width="1.2"/></svg>
               <img data-prod src="assets/productos/tejina-y-jumus.jpg" alt="Tejina y jumus" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -1209,8 +1193,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#123C7A" aria-hidden="true"><path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 12v8" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#16a34a" aria-hidden="true"><path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 12v8" stroke="currentColor" stroke-width="1.2"/></svg>
               <img data-prod src="assets/productos/especias-y-condimentos.jpg" alt="Especias y condimentos" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -1220,8 +1204,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#123C7A" aria-hidden="true"><path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 12v8" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#16a34a" aria-hidden="true"><path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 12v8" stroke="currentColor" stroke-width="1.2"/></svg>
               <img data-prod src="assets/productos/harinas-y-premezclas.jpg" alt="Harinas y premezclas" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -1231,8 +1215,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#123C7A" aria-hidden="true"><path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 12v8" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#16a34a" aria-hidden="true"><path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 12v8" stroke="currentColor" stroke-width="1.2"/></svg>
               <img data-prod src="assets/productos/fideos-y-arroz.jpg" alt="Fideos y arroz" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -1242,8 +1226,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#123C7A" aria-hidden="true"><path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 12v8" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#16a34a" aria-hidden="true"><path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 12v8" stroke="currentColor" stroke-width="1.2"/></svg>
               <img data-prod src="assets/productos/cafe-te-e-infusiones.jpg" alt="Café, té e infusiones" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -1253,8 +1237,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#123C7A" aria-hidden="true"><path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 12v8" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#16a34a" aria-hidden="true"><path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 12v8" stroke="currentColor" stroke-width="1.2"/></svg>
               <img data-prod src="assets/productos/galletitas-y-snacks.jpg" alt="Galletitas y snacks" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -1264,8 +1248,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#123C7A" aria-hidden="true"><path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 12v8" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#16a34a" aria-hidden="true"><path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 12v8" stroke="currentColor" stroke-width="1.2"/></svg>
               <img data-prod src="assets/productos/chocolates.jpg" alt="Chocolates" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -1275,8 +1259,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#123C7A" aria-hidden="true"><path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 12v8" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#16a34a" aria-hidden="true"><path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 12v8" stroke="currentColor" stroke-width="1.2"/></svg>
               <img data-prod src="assets/productos/miel-y-mermeladas.jpg" alt="Miel y mermeladas" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -1286,8 +1270,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#123C7A" aria-hidden="true"><path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 12v8" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#16a34a" aria-hidden="true"><path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 12v8" stroke="currentColor" stroke-width="1.2"/></svg>
               <img data-prod src="assets/productos/bebidas-sin-alcohol.jpg" alt="Bebidas sin alcohol" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -1297,8 +1281,8 @@
             </div>
           </div>
           <div class="rv rounded-2xl overflow-hidden card-hover" style="background:var(--surface-2); border:1px solid var(--border)">
-            <div class="relative aspect-[4/3] overflow-hidden" style="background:var(--brand-soft)">
-              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#123C7A" aria-hidden="true"><path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 12v8" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background:rgba(255,107,53,0.08)">
+              <svg viewBox="0 0 24 24" fill="none" class="absolute inset-0 m-auto h-10 w-10 opacity-30" style="color:#16a34a" aria-hidden="true"><path d="M3.5 8 12 4l8.5 4-8.5 4-8.5-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M3.5 8v8l8.5 4 8.5-4V8" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 12v8" stroke="currentColor" stroke-width="1.2"/></svg>
               <img data-prod src="assets/productos/descartables.jpg" alt="Descartables" loading="lazy" decoding="async"
                    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300" />
             </div>
@@ -1315,7 +1299,7 @@
 <section class="section-pad" style="background:var(--surface-0)">
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
     <div class="rv relative rounded-3xl overflow-hidden px-8 py-12 sm:px-14 sm:py-14"
-         style="background:linear-gradient(135deg, #0F3573 0%, #1E5FBF 100%); box-shadow:0 24px 56px -18px rgba(15,53,115,0.45)">
+         style="background:linear-gradient(135deg, #16a34a 0%, #059669 100%); box-shadow:0 24px 64px rgba(22,163,74,0.35)">
       <div class="absolute top-0 right-0 w-72 h-72 rounded-full -translate-y-1/2 translate-x-1/3 pointer-events-none" style="background:rgba(255,255,255,0.10)"></div>
 
       <div class="relative z-10 grid lg:grid-cols-2 gap-8 items-center">
@@ -1405,11 +1389,11 @@
       <div>
         <h3 class="font-bold text-xs uppercase tracking-[0.15em] mb-5" style="color:var(--text-3)">Navegación</h3>
         <ul class="space-y-3">
-          <li><a href="index.html" class="text-sm transition-colors hover:text-[#1E5FBF]" style="color:var(--text-2)">Inicio</a></li>
-          <li><a href="pasillos.html" class="text-sm transition-colors hover:text-[#1E5FBF]" style="color:var(--text-2)">Nuestros pasillos</a></li>
-          <li><a href="index.html#sucursales" class="text-sm transition-colors hover:text-[#1E5FBF]" style="color:var(--text-2)">Sucursales</a></li>
-          <li><a href="index.html#resenas" class="text-sm transition-colors hover:text-[#1E5FBF]" style="color:var(--text-2)">Reseñas</a></li>
-          <li><a href="index.html#info" class="text-sm transition-colors hover:text-[#1E5FBF]" style="color:var(--text-2)">Contacto</a></li>
+          <li><a href="index.html" class="text-sm transition-colors hover:text-[#FF6B35]" style="color:var(--text-2)">Inicio</a></li>
+          <li><a href="pasillos.html" class="text-sm transition-colors hover:text-[#FF6B35]" style="color:var(--text-2)">Nuestros pasillos</a></li>
+          <li><a href="index.html#sucursales" class="text-sm transition-colors hover:text-[#FF6B35]" style="color:var(--text-2)">Sucursales</a></li>
+          <li><a href="index.html#resenas" class="text-sm transition-colors hover:text-[#FF6B35]" style="color:var(--text-2)">Reseñas</a></li>
+          <li><a href="index.html#info" class="text-sm transition-colors hover:text-[#FF6B35]" style="color:var(--text-2)">Contacto</a></li>
         </ul>
       </div>
 
@@ -1418,21 +1402,21 @@
         <h3 class="font-bold text-xs uppercase tracking-[0.15em] mb-5" style="color:var(--text-3)">Horarios</h3>
         <ul class="space-y-3">
           <li class="flex items-start gap-2">
-            <svg class="w-3.5 h-3.5 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" style="color:#1E5FBF" aria-hidden="true"><circle cx="12" cy="12" r="8.2" stroke="currentColor" stroke-width="1.7"/><path d="M12 7.4V12l3 1.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            <svg class="w-3.5 h-3.5 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" style="color:#FF6B35" aria-hidden="true"><circle cx="12" cy="12" r="8.2" stroke="currentColor" stroke-width="1.7"/><path d="M12 7.4V12l3 1.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
             <div>
               <p class="text-sm font-medium" style="color:var(--text-1)">Palermo · Lun a jue</p>
               <p class="text-xs" style="color:var(--text-2)">9:30 – 19:00 · Vie 9:00 – 16:00</p>
             </div>
           </li>
           <li class="flex items-start gap-2">
-            <svg class="w-3.5 h-3.5 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" style="color:#1E5FBF" aria-hidden="true"><circle cx="12" cy="12" r="8.2" stroke="currentColor" stroke-width="1.7"/><path d="M12 7.4V12l3 1.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            <svg class="w-3.5 h-3.5 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" style="color:#FF6B35" aria-hidden="true"><circle cx="12" cy="12" r="8.2" stroke="currentColor" stroke-width="1.7"/><path d="M12 7.4V12l3 1.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
             <div>
               <p class="text-sm font-medium" style="color:var(--text-1)">Belgrano · Lun a jue y dom</p>
               <p class="text-xs" style="color:var(--text-2)">8:00 – 20:00 · Vie 8:00 – 14:30</p>
             </div>
           </li>
           <li class="flex items-start gap-2">
-            <svg class="w-3.5 h-3.5 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" style="color:#1E5FBF" aria-hidden="true"><circle cx="12" cy="12" r="8.2" stroke="currentColor" stroke-width="1.7"/><path d="M12 7.4V12l3 1.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            <svg class="w-3.5 h-3.5 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" style="color:#FF6B35" aria-hidden="true"><circle cx="12" cy="12" r="8.2" stroke="currentColor" stroke-width="1.7"/><path d="M12 7.4V12l3 1.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
             <div>
               <p class="text-sm font-medium" style="color:var(--text-1)">Shabat</p>
               <p class="text-xs" style="color:var(--text-2)">Cerrado en ambas sucursales</p>
@@ -1446,20 +1430,20 @@
         <h3 class="font-bold text-xs uppercase tracking-[0.15em] mb-5" style="color:var(--text-3)">Contacto</h3>
         <ul class="space-y-4 mb-6">
           <li class="flex items-start gap-3">
-            <svg class="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" style="color:#1E5FBF" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
+            <svg class="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" style="color:#FF6B35" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
             <p class="text-sm" style="color:var(--text-2)">Raúl Scalabrini Ortiz 3306, CABA</p>
           </li>
           <li class="flex items-start gap-3">
-            <svg class="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" style="color:#1E5FBF" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
+            <svg class="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" style="color:#FF6B35" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
             <p class="text-sm" style="color:var(--text-2)">Moldes 2454, CABA</p>
           </li>
           <li class="flex items-center gap-3">
-            <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" style="color:#1E5FBF" aria-hidden="true"><path d="M4.5 5.5c0 8 6 14 14 14l1.6-3.3-4-1.9-1.7 2a12 12 0 0 1-6.7-6.7l2-1.7-1.9-4L4.5 5.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
-            <a href="tel:+541148078617" class="text-sm transition-colors hover:text-[#1E5FBF]" style="color:var(--text-2)">+54 11 4807-8617</a>
+            <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" style="color:#FF6B35" aria-hidden="true"><path d="M4.5 5.5c0 8 6 14 14 14l1.6-3.3-4-1.9-1.7 2a12 12 0 0 1-6.7-6.7l2-1.7-1.9-4L4.5 5.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+            <a href="tel:+541148078617" class="text-sm transition-colors hover:text-[#FF6B35]" style="color:var(--text-2)">+54 11 4807-8617</a>
           </li>
           <li class="flex items-center gap-3">
-            <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" style="color:#1E5FBF" aria-hidden="true"><path d="M4.5 5.5c0 8 6 14 14 14l1.6-3.3-4-1.9-1.7 2a12 12 0 0 1-6.7-6.7l2-1.7-1.9-4L4.5 5.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
-            <a href="tel:+541145326985" class="text-sm transition-colors hover:text-[#1E5FBF]" style="color:var(--text-2)">+54 11 4532-6985</a>
+            <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" style="color:#FF6B35" aria-hidden="true"><path d="M4.5 5.5c0 8 6 14 14 14l1.6-3.3-4-1.9-1.7 2a12 12 0 0 1-6.7-6.7l2-1.7-1.9-4L4.5 5.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+            <a href="tel:+541145326985" class="text-sm transition-colors hover:text-[#FF6B35]" style="color:var(--text-2)">+54 11 4532-6985</a>
           </li>
         </ul>
 
