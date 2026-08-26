@@ -911,9 +911,27 @@
     if (!c.token) return;
 
     ocupado(true, 'Verificando…');
-    api(c, 'data/catalogo.js').then(function (r) {
+    // Se comprueba también el permiso de escritura: si sólo se leyera un
+    // archivo, una clave de sólo lectura pasaría la prueba y recién fallaría
+    // al publicar.
+    fetch('https://api.github.com/repos/' + c.owner + '/' + c.repo, {
+      headers: {
+        'Authorization': 'Bearer ' + c.token,
+        'Accept': 'application/vnd.github+json',
+        'X-GitHub-Api-Version': '2022-11-28',
+      },
+    }).then(function (r) {
       if (r.status === 401) throw new Error('La clave no es válida.');
-      if (r.status === 404) throw new Error('No se encuentra el repositorio o la clave no tiene permiso.');
+      if (r.status === 404) throw new Error('La clave no tiene acceso a este repositorio. Al crearla, elegí “Only select repositories” y marcá ' + c.repo + '.');
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    }).then(function (j) {
+      if (j.permissions && j.permissions.push !== true) {
+        throw new Error('A la clave le falta permiso de escritura. Editala y poné Contents en “Read and write”.');
+      }
+      return api(c, 'data/catalogo.js');
+    }).then(function (r) {
+      if (r.status === 404) throw new Error('No se encuentra data/catalogo.js en la rama ' + c.branch + '.');
       if (!r.ok) throw new Error('HTTP ' + r.status);
       localStorage.setItem(CONEXION, JSON.stringify(c));
       ocupado(false);
