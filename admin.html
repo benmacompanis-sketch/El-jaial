@@ -233,9 +233,15 @@
            class="hidden sm:inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all hover:bg-white/[0.07]"
            style="border:1px solid var(--border); color:var(--text-2)">Ver la página</a>
         <button type="button" data-exportar
-                class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-white transition-all active:scale-95 hover:brightness-110"
+                class="hidden md:inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all hover:bg-white/[0.07]"
+                style="border:1px solid var(--border); color:var(--text-2)">
+          Exportar
+        </button>
+        <button type="button" data-publicar
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-white transition-all active:scale-95 hover:brightness-110 disabled:opacity-60"
                 style="background:#FF6B35; box-shadow:0 4px 16px rgba(255,107,53,0.35)">
-          Exportar catálogo
+          <svg viewBox="0 0 24 24" fill="none" class="h-4 w-4" aria-hidden="true"><path d="M12 19V5m0 0-6 6m6-6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span data-publicar-txt>Publicar cambios</span>
         </button>
       </div>
     </div>
@@ -251,13 +257,10 @@
         <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 8v5M12 16.2v.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
       </svg>
       <div class="text-sm leading-relaxed" style="color:var(--text-2)">
-        <p><span class="font-bold" style="color:var(--text-1)">Los cambios se guardan en este navegador.</span>
-        Se ven al instante en la página, pero sólo acá: nadie más los ve todavía.</p>
-        <p class="mt-1.5">Para publicarlos: <span class="font-semibold" style="color:var(--text-1)">Exportar catálogo</span>
-        descarga <code class="px-1 rounded" style="background:var(--surface-3)">catalogo.js</code>; reemplazá con él
-        <code class="px-1 rounded" style="background:var(--surface-3)">data/catalogo.js</code> en el repositorio.
-        Las fotos nuevas se descargan aparte y van en
-        <code class="px-1 rounded" style="background:var(--surface-3)">assets/productos/</code>.</p>
+        <p><span class="font-bold" style="color:var(--text-1)">Editá lo que necesites y tocá “Publicar cambios”.</span>
+        Los cambios se ven online en un minuto.</p>
+        <p class="mt-1.5" data-ayuda-conectar>Antes de publicar por primera vez hay que conectar el panel una sola vez.
+        <button type="button" data-abrir-conexion class="font-semibold underline" style="color:#FF6B35">Conectar ahora</button></p>
       </div>
     </div>
   </div>
@@ -405,6 +408,67 @@
                 style="background:#FF6B35">Guardar sector</button>
         <button type="button" data-s-eliminar class="px-5 py-3 rounded-xl text-sm font-bold transition-all hover:bg-red-500/10"
                 style="border:1px solid var(--border); color:#f87171">Eliminar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ─────────────── Conexión (se configura una sola vez) ─────────────── -->
+<div data-cmodal hidden class="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-6">
+  <div data-cmodal-fondo class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+  <div class="relative w-full sm:max-w-lg max-h-[92vh] overflow-y-auto rounded-t-3xl sm:rounded-3xl"
+       style="background:var(--surface-1); border:1px solid var(--border)">
+    <div class="sticky top-0 flex items-center justify-between px-6 py-4" style="background:var(--surface-1); border-bottom:1px solid var(--border)">
+      <h2 class="font-black text-white">Conectar el panel</h2>
+      <button type="button" data-cmodal-cerrar class="p-2 rounded-lg transition-colors hover:bg-white/[0.07]" style="color:var(--text-2)" aria-label="Cerrar">
+        <svg viewBox="0 0 24 24" fill="none" class="h-5 w-5" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+
+    <form data-cform class="px-6 py-5 space-y-5">
+      <div class="rounded-xl p-4 text-xs leading-relaxed" style="background:var(--surface-2); border:1px solid var(--border); color:var(--text-2)">
+        <p class="font-bold mb-1" style="color:var(--text-1)">Esto se hace una sola vez, en esta computadora.</p>
+        <p>Hace falta una clave que le da permiso al panel para actualizar la web. Se genera en GitHub:</p>
+        <ol class="mt-2 space-y-1 list-decimal list-inside">
+          <li>Abrí <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener" class="underline" style="color:#FF6B35">esta página</a> (pide iniciar sesión).</li>
+          <li>En <em>Repository access</em>, elegí <em>Only select repositories</em> y marcá <strong>El-jaial</strong>.</li>
+          <li>En <em>Permissions → Repository permissions</em>, poné <strong>Contents</strong> en <em>Read and write</em>.</li>
+          <li>Generá la clave y pegala acá abajo.</li>
+        </ol>
+      </div>
+
+      <label class="block">
+        <span class="block text-xs font-bold uppercase tracking-[0.12em] mb-2" style="color:var(--text-3)">Clave de acceso</span>
+        <input data-c-token type="password" required placeholder="github_pat_…" autocomplete="off"
+               class="w-full rounded-xl px-4 py-2.5 text-sm outline-none font-mono"
+               style="background:var(--surface-2); border:1px solid var(--border); color:var(--text-1)" />
+      </label>
+
+      <details>
+        <summary class="text-xs cursor-pointer" style="color:var(--text-3)">Repositorio y rama</summary>
+        <div class="grid grid-cols-3 gap-3 mt-3">
+          <label class="block"><span class="block text-[10px] uppercase tracking-wider mb-1" style="color:var(--text-3)">Usuario</span>
+            <input data-c-owner type="text" class="w-full rounded-lg px-3 py-2 text-xs outline-none"
+                   style="background:var(--surface-2); border:1px solid var(--border); color:var(--text-1)" /></label>
+          <label class="block"><span class="block text-[10px] uppercase tracking-wider mb-1" style="color:var(--text-3)">Repositorio</span>
+            <input data-c-repo type="text" class="w-full rounded-lg px-3 py-2 text-xs outline-none"
+                   style="background:var(--surface-2); border:1px solid var(--border); color:var(--text-1)" /></label>
+          <label class="block"><span class="block text-[10px] uppercase tracking-wider mb-1" style="color:var(--text-3)">Rama</span>
+            <input data-c-branch type="text" class="w-full rounded-lg px-3 py-2 text-xs outline-none"
+                   style="background:var(--surface-2); border:1px solid var(--border); color:var(--text-1)" /></label>
+        </div>
+      </details>
+
+      <p class="text-[11px] leading-relaxed" style="color:var(--text-3)">
+        La clave queda guardada sólo en este navegador y nunca se sube a la web.
+        Si esta computadora la usa otra persona, mejor no guardarla acá.
+      </p>
+
+      <div class="flex gap-3">
+        <button type="submit" class="flex-1 py-3 rounded-xl text-sm font-bold text-white transition-all active:scale-95 hover:brightness-110"
+                style="background:#FF6B35">Conectar</button>
+        <button type="button" data-c-desconectar class="px-5 py-3 rounded-xl text-sm font-bold transition-all hover:bg-white/[0.07]"
+                style="border:1px solid var(--border); color:var(--text-2)">Desconectar</button>
       </div>
     </form>
   </div>
@@ -701,6 +765,181 @@
     avisar('Cambios descartados');
   });
 
+  /* ── Publicar ──────────────────────────────────────────────────────
+     El panel sube los archivos al repositorio por la API de GitHub. Para
+     quien lo usa es un botón: no hay que saber nada de git. La clave se
+     configura una sola vez y queda en este navegador. */
+  var CONEXION = 'eljaial:conexion';
+  var POR_DEFECTO = { owner: 'benmacompanis-sketch', repo: 'El-jaial', branch: 'claude/el-jaial-landing-39uquw' };
+
+  function conexion() {
+    try {
+      var c = JSON.parse(localStorage.getItem(CONEXION) || 'null');
+      return c && c.token ? c : null;
+    } catch (e) { return null; }
+  }
+
+  function b64(txt) {
+    var bytes = new TextEncoder().encode(txt), bin = '';
+    for (var i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+    return btoa(bin);
+  }
+
+  function api(c, ruta, opciones) {
+    return fetch('https://api.github.com/repos/' + c.owner + '/' + c.repo + '/contents/' + ruta
+                 + (opciones && opciones.method ? '' : '?ref=' + encodeURIComponent(c.branch)),
+      Object.assign({
+        headers: {
+          'Authorization': 'Bearer ' + c.token,
+          'Accept': 'application/vnd.github+json',
+          'X-GitHub-Api-Version': '2022-11-28',
+        },
+      }, opciones || {}));
+  }
+
+  function subir(c, ruta, contenidoB64, mensaje) {
+    // Hace falta el sha del archivo actual para reemplazarlo
+    return api(c, ruta).then(function (r) {
+      return r.status === 200 ? r.json().then(function (j) { return j.sha; }) : null;
+    }).then(function (sha) {
+      var cuerpo = { message: mensaje, content: contenidoB64, branch: c.branch };
+      if (sha) cuerpo.sha = sha;
+      return api(c, ruta, { method: 'PUT', body: JSON.stringify(cuerpo) });
+    }).then(function (r) {
+      if (r.ok) return true;
+      return r.json().catch(function () { return {}; }).then(function (j) {
+        var e = new Error(j.message || ('HTTP ' + r.status));
+        e.status = r.status;
+        throw e;
+      });
+    });
+  }
+
+  function catalogoLimpio() {
+    var limpio = JSON.parse(JSON.stringify(cat));
+    var fotos = [];
+    limpio.sectores.forEach(function (s) {
+      s.productos.forEach(function (p) {
+        if (p.img && p.img.indexOf('data:') === 0) {
+          fotos.push({ ruta: 'assets/productos/' + p.id + '.jpg', datos: p.img.split(',')[1] });
+          p.img = 'assets/productos/' + p.id + '.jpg';
+        }
+      });
+    });
+    return { datos: limpio, fotos: fotos };
+  }
+
+  function textoCatalogo(limpio) {
+    return '// Catálogo de El Jaial. Lo edita admin.html; para publicar cambios,\n'
+         + '// exportá desde el panel y reemplazá este archivo.\n'
+         + 'window.CATALOGO = ' + JSON.stringify(limpio, null, 2) + ';\n';
+  }
+
+  function ocupado(si, txt) {
+    $('[data-publicar]').disabled = si;
+    $('[data-publicar-txt]').textContent = txt || (si ? 'Publicando…' : 'Publicar cambios');
+  }
+
+  function publicar() {
+    var c = conexion();
+    if (!c) { abrirConexion(); return; }
+
+    var paquete = catalogoLimpio();
+    var total = paquete.fotos.length + 1;
+    var hecho = 0;
+    ocupado(true, 'Publicando… 0/' + total);
+
+    var cadena = Promise.resolve();
+    paquete.fotos.forEach(function (f) {
+      cadena = cadena.then(function () {
+        return subir(c, f.ruta, f.datos, 'Actualiza la foto de ' + f.ruta.split('/').pop());
+      }).then(function () {
+        hecho++; ocupado(true, 'Publicando… ' + hecho + '/' + total);
+      });
+    });
+
+    cadena.then(function () {
+      return subir(c, 'data/catalogo.js', b64(textoCatalogo(paquete.datos)), 'Actualiza el catálogo desde el panel');
+    }).then(function () {
+      hecho++;
+      // las fotos ya viven en el repositorio: dejamos las rutas, no los datos
+      cat = paquete.datos;
+      guardar();
+      pintar();
+      ocupado(false);
+      estado('Publicado');
+      avisar('¡Listo! Los cambios se ven online en un minuto.');
+    }).catch(function (e) {
+      ocupado(false);
+      var msg = 'No se pudo publicar. ';
+      if (e.status === 401) msg += 'La clave no es válida o venció: volvé a conectar.';
+      else if (e.status === 403 || e.status === 404) msg += 'La clave no tiene permiso sobre el repositorio.';
+      else if (e.status === 409) msg += 'Alguien más cambió el archivo. Probá de nuevo.';
+      else msg += (e.message || 'Revisá la conexión a internet.');
+      avisar(msg, true);
+      estado('Error al publicar', true);
+    });
+  }
+
+  function abrirConexion() {
+    var c = conexion() || POR_DEFECTO;
+    $('[data-c-token]').value = '';
+    $('[data-c-owner]').value = c.owner || POR_DEFECTO.owner;
+    $('[data-c-repo]').value = c.repo || POR_DEFECTO.repo;
+    $('[data-c-branch]').value = c.branch || POR_DEFECTO.branch;
+    $('[data-cmodal]').hidden = false;
+    document.body.style.overflow = 'hidden';
+    setTimeout(function () { $('[data-c-token]').focus(); }, 50);
+  }
+
+  function cerrarConexion() {
+    $('[data-cmodal]').hidden = true;
+    document.body.style.overflow = '';
+  }
+
+  $('[data-cform]').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var c = {
+      token: $('[data-c-token]').value.trim(),
+      owner: $('[data-c-owner]').value.trim() || POR_DEFECTO.owner,
+      repo: $('[data-c-repo]').value.trim() || POR_DEFECTO.repo,
+      branch: $('[data-c-branch]').value.trim() || POR_DEFECTO.branch,
+    };
+    if (!c.token) return;
+
+    ocupado(true, 'Verificando…');
+    api(c, 'data/catalogo.js').then(function (r) {
+      if (r.status === 401) throw new Error('La clave no es válida.');
+      if (r.status === 404) throw new Error('No se encuentra el repositorio o la clave no tiene permiso.');
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      localStorage.setItem(CONEXION, JSON.stringify(c));
+      ocupado(false);
+      marcarConectado();
+      cerrarConexion();
+      avisar('Panel conectado. Ya podés publicar.');
+    }).catch(function (err) {
+      ocupado(false);
+      avisar(err.message || 'No se pudo verificar la clave.', true);
+    });
+  });
+
+  $('[data-c-desconectar]').addEventListener('click', function () {
+    localStorage.removeItem(CONEXION);
+    marcarConectado();
+    cerrarConexion();
+    avisar('Panel desconectado');
+  });
+
+  function marcarConectado() {
+    var ayuda = $('[data-ayuda-conectar]');
+    if (ayuda) ayuda.style.display = conexion() ? 'none' : '';
+  }
+
+  $('[data-publicar]').addEventListener('click', publicar);
+  $('[data-abrir-conexion]').addEventListener('click', abrirConexion);
+  $('[data-cmodal-cerrar]').addEventListener('click', cerrarConexion);
+  $('[data-cmodal-fondo]').addEventListener('click', cerrarConexion);
+
   /* ── Sectores ────────────────────────────────────────────────────── */
   var sEditando = null;      // id del sector, o null si es nuevo
   var sIcono = 'caja';
@@ -857,7 +1096,8 @@
   $('[data-modal-fondo]').addEventListener('click', cerrar);
   document.addEventListener('keydown', function (e) {
     if (e.key !== 'Escape') return;
-    if (!$('[data-smodal]').hidden) cerrarSector();
+    if (!$('[data-cmodal]').hidden) cerrarConexion();
+    else if (!$('[data-smodal]').hidden) cerrarSector();
     else if (!modal.hidden) cerrar();
   });
   $('[data-buscar]').addEventListener('input', pintar);
@@ -865,6 +1105,7 @@
 
   /* ── Arranque ── */
   refrescarFiltro();
+  marcarConectado();
   if (cargar()) estado('Con cambios sin publicar');
   pintar();
 })();
